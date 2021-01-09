@@ -1,0 +1,106 @@
+.Portfolio {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #dd734f;
+
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+  }
+  /* 
+  a:visited,
+  :active,
+  :link {
+    color: #ffffff;
+    //color: #FF4B3E;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #ff4b3e;
+  }
+
+  .TileBar {
+    height: 200px;
+  } */
+
+  .List {
+    // margin: 0 auto;
+    margin-top: 30px !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    //align-items: stretch;
+    //justify-content: center;
+    width: 100%;
+
+    /* &-card {
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      width: 320px;
+      margin: 20px;
+      box-shadow: 0 0 10px #fff;
+      color: #fff;
+
+      @media (min-width: 600px) {
+        flex-direction: row;
+        width: 650px;
+      }
+
+      a:visited,
+      :active,
+      :link {
+        color: #ffffff;
+        //color: #FF4B3E;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #ff4b3e;
+      }
+
+      &Img {
+        img {
+          max-width: 100%;
+        }
+
+        .title {
+          text-align: center;
+          @media (min-width: 600px) {
+            display: none;
+          }
+        }
+      }
+
+      &Content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (min-width: 600px) {
+          align-items: flex-start;
+          margin-left: 5px;
+        }
+
+        span {
+          text-align: center;
+          @media (min-width: 600px) {
+            text-align: left;
+          }
+        }
+
+        .title {
+          display: none;
+          @media (min-width: 600px) {
+            display: flex;
+          }
+        }
+      }
+    } */
+  }
+}
