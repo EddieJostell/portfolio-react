@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Navigation from './components/Navigation';
-import { IQuoteItem, ProjectList, QuoteInfo } from './utils/data';
+import Navigation from './components/Navigation/Navigation';
+import {
+  IQuoteItem,
+  ProjectList,
+  QuoteInfo,
+  NavigationLinks,
+} from './utils/data';
 import { QuoteProvider } from './utils/HelperContext';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Container from './components/Container/Container';
 
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
@@ -22,43 +27,29 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen text-center">
-      <QuoteProvider value={appState.quoteList}>
+    <QuoteProvider value={appState.quoteList}>
+      <div className="min-h-screen text-center">
         <Router>
           <Navigation
             navIsOpen={appState.navIsOpen}
             toggleNav={toggleNav}
             name="Edward 'Eddie' Jostell"
+            navLinks={NavigationLinks}
           />
-
-          {/*  <Route exact path="/" component={About} /> */}
-          {/* <Route path="/About" render={() => <About />} /> */}
-          {/*  <Route
+          <Container>
+            <h1 className="text-6xl text-orange">HELLO WORLD</h1>
+            {/*  <Route exact path="/" component={About} /> */}
+            {/* <Route path="/About" render={() => <About />} /> */}
+            {/*  <Route
               path="/Portfolio"
               render={() => <Portfolio data={appState.projectList} />}
             />
             <Route path="/Contact" render={() => <Contact />} /> */}
+          </Container>
         </Router>
-      </QuoteProvider>
-    </div>
+      </div>
+    </QuoteProvider>
   );
 }
 
 export default App;
-
-{
-  /*     <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */
-}
