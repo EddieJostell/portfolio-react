@@ -15,6 +15,9 @@ module.exports = {
   variants: {
     extend: {
       fontSize: ['hover'],
+      /* boxShadow: {
+        white: 'box-shadow: 0 0 10px #FFF',
+      }, */
     },
   },
   plugins: [],

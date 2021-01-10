@@ -1,0 +1,63 @@
+.Contact {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+
+  @media (min-width: 1025px) {
+    height: ~"calc(100vh - 77px)";
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .List {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 769px) {
+      flex-direction: row;
+      margin-top: 100px;
+      justify-content: space-around;
+    }
+
+    &-items {
+      height: 200px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 10px #FFF;
+
+      a:visited,
+      :active,
+      :link {
+        color: #ffffff;
+        //color: #FF4B3E;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #FF4B3E;
+        text-decoration: underline;
+      }
+
+      img {
+        height: 50px;
+        width: 50px;
+        stroke: #fff;
+        fill: #fff;
+      }
+    }
+  }
+}

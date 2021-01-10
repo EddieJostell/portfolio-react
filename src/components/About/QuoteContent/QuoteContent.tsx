@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './QuoteContent.less';
 
 interface Props {
   quote: string;
@@ -8,9 +7,9 @@ interface Props {
 
 const QuoteContent = (props: Props) => {
   return (
-    <div className="QuoteContent">
+    <div className="relative flex flex-col justify-start max-w-xl m-auto my-24">
       {/* <h2>Quote</h2> */}
-      <span>
+      <span className="text-2xl">
         <i>{props.quote}</i>
       </span>
       <span>- {props.author}</span>

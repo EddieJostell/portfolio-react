@@ -8,11 +8,10 @@ import {
   NavigationLinks,
 } from './utils/data';
 import { QuoteProvider } from './utils/HelperContext';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Container from './components/Container/Container';
-
-import { IRouteInfoItem, RouteInfo } from './utils/Route';
-import RouteLinks from './components/RouteLinks/RouteLinks';
+import About from './components/About/About';
+import Contact from './components/Contact/Contact';
 
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
@@ -29,11 +28,9 @@ function App() {
     setAppState({ ...appState, navIsOpen: visible });
   };
 
-  console.log(RouteInfo);
-
   return (
     <QuoteProvider value={appState.quoteList}>
-      <div className="min-h-screen text-center">
+      <div className="min-h-screen text-center bg-gray-700">
         <Router>
           <Navigation
             navIsOpen={appState.navIsOpen}
@@ -42,14 +39,14 @@ function App() {
             navLinks={NavigationLinks}
           />
           <Container>
-            <h1 className="text-6xl text-orange">HELLO WORLD</h1>
-            {/*  <RouteLinks routeInfo={RouteInfo} /> */}
-            {/* <Route path="/" render={() => <About />} /> */}
+            {/*  <h1 className="text-6xl text-orange">HELLO WORLD</h1> */}
+            <Route exact path="/" render={() => <About />} />
             {/*  <Route
+            exact
               path="/Portfolio"
               render={() => <Portfolio data={appState.projectList} />}
-            />
-            <Route path="/Contact" render={() => <Contact />} /> */}
+            /> */}
+            <Route exact path="/Contact" render={() => <Contact />} />
           </Container>
         </Router>
       </div>

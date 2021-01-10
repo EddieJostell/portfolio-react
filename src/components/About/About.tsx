@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import QuoteContext from '../../utils/HelperContext';
 import QuoteContent from './QuoteContent/QuoteContent';
-import { IQuoteItem } from '../../utils/data';
 
 interface IAboutProps {}
 
@@ -14,34 +13,34 @@ const About = (props: IAboutProps) => {
   let quotes = quoteList[Math.floor(Math.random() * quoteList.length)];
 
   return (
-    <div className="About">
-      <div className="Top">
-        <span className="intro">
+    <div className="flex flex-col justify-around w-full h-full px-5">
+      <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
+        <span className="text-5xl text-white">
           Hello! My name is Eddie and I am a Frontend-developer.
         </span>
         <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
 
-      <div className="Bot">
-        <div className="Bot-box">
-          <h2>Likes</h2>
-          <div>
+      <div className="flex flex-col items-start justify-center text-white m-7 lg:flex-row">
+        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:mr-5 lg:mt-0">
+          <h2 className="text-2xl text-center">Likes</h2>
+          <div className="text-xl">
             When Im not hitting the keyboard to create magic on the web or
             playing games I like to hang out with my friends, go to the gym,
             long walks, relax with movies/tvshows or just listening to good
             music.
           </div>
         </div>
-        <div className="Bot-box">
-          <h2>Me</h2>
-          <div>Name: Edward 'Eddie' Jostell.</div>
-          <div>Age: 32 summers.</div>
-          <div>From: Stockholm, Sweden.</div>
-          <div>Occupation: Frontend-developer.</div>
+        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:mr-5 lg:mt-0">
+          <h2 className="text-2xl text-center">Me</h2>
+          <div className="text-xl">Name: Edward 'Eddie' Jostell.</div>
+          <div className="text-xl">Age: 32 summers.</div>
+          <div className="text-xl">From: Stockholm, Sweden.</div>
+          <div className="text-xl">Occupation: Frontend-developer.</div>
         </div>
-        <div className="Bot-box">
-          <h2>Gamer</h2>
-          <div>
+        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:m-5 lg:mt-0 lg:mr-0">
+          <h2 className="text-2xl text-center">Gamer</h2>
+          <div className="text-xl">
             Before I wanted to become a web-developer I played at a
             semi-professional level in the computer game Counter Strike - Global
             Offensive. Even tho I dont play on that level anymore I still dream
