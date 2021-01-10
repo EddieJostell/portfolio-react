@@ -20,8 +20,6 @@ const defaultProps: Partial<INavProps> = {
 const Navigation = (props: INavProps) => {
   const { name, navIsOpen, toggleNav, navLinks } = props;
 
-  console.log('Navigation', navLinks);
-
   return (
     <>
       <TopMenu

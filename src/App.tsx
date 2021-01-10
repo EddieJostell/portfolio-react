@@ -8,8 +8,11 @@ import {
   NavigationLinks,
 } from './utils/data';
 import { QuoteProvider } from './utils/HelperContext';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Container from './components/Container/Container';
+
+import { IRouteInfoItem, RouteInfo } from './utils/Route';
+import RouteLinks from './components/RouteLinks/RouteLinks';
 
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
@@ -26,6 +29,8 @@ function App() {
     setAppState({ ...appState, navIsOpen: visible });
   };
 
+  console.log(RouteInfo);
+
   return (
     <QuoteProvider value={appState.quoteList}>
       <div className="min-h-screen text-center">
@@ -38,8 +43,8 @@ function App() {
           />
           <Container>
             <h1 className="text-6xl text-orange">HELLO WORLD</h1>
-            {/*  <Route exact path="/" component={About} /> */}
-            {/* <Route path="/About" render={() => <About />} /> */}
+            {/*  <RouteLinks routeInfo={RouteInfo} /> */}
+            {/* <Route path="/" render={() => <About />} /> */}
             {/*  <Route
               path="/Portfolio"
               render={() => <Portfolio data={appState.projectList} />}
