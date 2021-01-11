@@ -8,10 +8,11 @@ import {
   NavigationLinks,
 } from './utils/data';
 import { QuoteProvider } from './utils/HelperContext';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Container from './components/Container/Container';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
+import Portfolio from './components/Portfolio/Portfolio';
 
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
@@ -41,11 +42,11 @@ function App() {
           <Container>
             {/*  <h1 className="text-6xl text-orange">HELLO WORLD</h1> */}
             <Route exact path="/" render={() => <About />} />
-            {/*  <Route
-            exact
+            <Route
+              exact
               path="/Portfolio"
               render={() => <Portfolio data={appState.projectList} />}
-            /> */}
+            />
             <Route exact path="/Contact" render={() => <Contact />} />
           </Container>
         </Router>
