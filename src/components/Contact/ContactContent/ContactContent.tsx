@@ -15,7 +15,7 @@ const ContactContent = (props: Props) => {
         </div>
         <span>+46 73 026 30 92</span>
       </li>
-      <li className="flex flex-col items-center justify-center w-48 h-48 rounded-md shadow-2xl">
+      <li className="flex flex-col items-center justify-center w-48 h-48 border-white rounded-md shadow-2xl">
         <div className="">
           <a href="mailto:eddie.jostell@gmail.com">
             <img alt="mail" className="w-12 h-12" src={iconMail} />
@@ -28,7 +28,7 @@ const ContactContent = (props: Props) => {
           <h3>Email</h3>
         </a>
       </li>
-      <li className="flex flex-col items-center justify-center w-48 h-48 rounded-md shadow-2xl">
+      <li className="flex flex-col items-center justify-center w-48 h-48 border-white rounded-md shadow-2xl">
         <div className="">
           <a
             className="active:text-white hover:text-orange hover:underline"
@@ -48,7 +48,7 @@ const ContactContent = (props: Props) => {
           <h3>LinkedIn</h3>
         </a>
       </li>
-      <li className="flex flex-col items-center justify-center w-48 h-48 rounded-md shadow-2xl">
+      <li className="flex flex-col items-center justify-center w-48 h-48 border-white rounded-md shadow-2xl">
         <div className="">
           <a
             className="active:text-white hover:text-orange hover:underline"

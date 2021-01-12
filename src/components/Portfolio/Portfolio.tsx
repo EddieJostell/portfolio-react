@@ -24,10 +24,10 @@ const Portfolio = (props: IPortfolioProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full h-full px-5 text-orange">
-      <h1 className="mt-8 text-2xl text-center">PROJECTS</h1>
-
-      {/* <ul className="List">{displayPortfolioData()}</ul> */}
+    <div className="flex flex-col items-center w-full h-full px-5 text-white">
+      <div className="px-10 pt-0 pb-10 mt-32 rounded-md shadow-2xl">
+        <h1 className="mt-8 text-5xl text-center">PROJECTS</h1>
+      </div>
       <div className="flex flex-row flex-wrap w-full mt-8">
         {displayPortfolioData()}
       </div>
