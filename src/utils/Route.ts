@@ -1,6 +1,6 @@
 import About from '../components/About/About';
 import Contact from '../components/Contact/Contact';
-/* import Portfolio from '../components/Portfolio/Portfolio'; */
+import Portfolio from '../components/Portfolio/Portfolio';
 
 export interface IRouteInfoItem {
   id: number;
@@ -16,12 +16,12 @@ export const RouteInfo: IRouteInfoItem[] = [
     exact: true,
     component: About,
   },
-  /*  {
+  {
     id: 2,
     path: '/Portfolio',
     exact: true,
     component: Portfolio,
-  }, */
+  },
   {
     id: 3,
     path: '/Contact',

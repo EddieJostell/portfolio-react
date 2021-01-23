@@ -13,9 +13,12 @@ import Container from './components/Container/Container';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Portfolio from './components/Portfolio/Portfolio';
+import RouteLinks from './components/RouteLinks/RouteLinks';
+import { IRouteInfoItem, RouteInfo } from '../src/utils/Route';
 
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
+  routeInfo: IRouteInfoItem[];
 }
 
 function App() {
@@ -23,11 +26,14 @@ function App() {
     navIsOpen: false,
     quoteList: QuoteInfo,
     projectList: ProjectList,
+    routeInfo: RouteInfo,
   });
 
   const toggleNav = (visible: boolean) => {
     setAppState({ ...appState, navIsOpen: visible });
   };
+
+  console.log(appState.routeInfo);
 
   return (
     <QuoteProvider value={appState.quoteList}>
@@ -40,7 +46,7 @@ function App() {
             navLinks={NavigationLinks}
           />
           <Container>
-            {/*  <h1 className="text-6xl text-orange">HELLO WORLD</h1> */}
+            {/*  <RouteLinks routeInfo={appState.routeInfo} /> */}
             <Route exact path="/" render={() => <About />} />
             <Route
               exact
