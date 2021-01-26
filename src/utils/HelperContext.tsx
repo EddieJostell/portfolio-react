@@ -1,5 +1,5 @@
-import React, { ReactNode, createContext } from "react";
-import { QuoteInfo, IQuoteItem } from "./data";
+import React, { ReactNode, createContext } from 'react';
+import { QuoteInfo, IQuoteItem } from './data';
 
 //Trying to sort a proper Context...
 
@@ -27,7 +27,7 @@ const HelperProvider = (props: IContextProps) => {
 export { HelperContext, HelperProvider }; */
 
 export interface IContextState {
-  quoteItem?: IQuoteItem | never[];
+  quoteItem?: IQuoteItem;
 }
 
 export const QuoteContext = createContext([] as IQuoteItem[]);
