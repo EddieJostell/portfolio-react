@@ -7,7 +7,7 @@ import {
   QuoteInfo,
   NavigationLinks,
 } from './utils/data';
-import { QuoteProvider } from './utils/HelperContext';
+import { ContextProvider } from './utils/HelperContext';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Container from './components/Container/Container';
 import About from './components/About/About';
@@ -33,10 +33,12 @@ function App() {
     setAppState({ ...appState, navIsOpen: visible });
   };
 
-  console.log(appState.routeInfo);
+  /* const HelperContextValue: IContextState {
+    appInfo: appState,
+  } */
 
   return (
-    <QuoteProvider value={appState.quoteList}>
+    <ContextProvider value={appState.quoteList}>
       <div className="min-h-screen text-center bg-gray-700">
         <Router>
           <Navigation
@@ -57,7 +59,7 @@ function App() {
           </Container>
         </Router>
       </div>
-    </QuoteProvider>
+    </ContextProvider>
   );
 }
 

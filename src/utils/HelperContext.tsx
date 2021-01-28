@@ -1,5 +1,7 @@
+import { ReactComponent } from '*.svg';
 import React, { ReactNode, createContext } from 'react';
-import { QuoteInfo, IQuoteItem } from './data';
+import { IQuoteItem, IPortfolioItem } from './data';
+import { IRouteInfoItem } from './Route';
 
 //Trying to sort a proper Context...
 
@@ -9,29 +11,33 @@ import { QuoteInfo, IQuoteItem } from './data';
 }
 
 export interface IContextState {
-  quoteItem?: IQuoteItem | never[];
+  quoteItem: IQuoteItem;
+  portItem: IPortfolioItem;
+  routeItem: IRouteInfoItem;
+  navIsOpen: boolean;
 }
 
-const HelperCtx: IContextState = { quoteItem: [] };
+const initialHelperContext: IContextState = {
+  quoteItem: { id: 0, quote: '', author: '' },
+  portItem: { id: 0, title: '', tech: '', link: '', img: '', text: '' },
+  routeItem: { id: 0, path: '', exact: true, component: ReactComponent },
+  navIsOpen: false,
+};
 
-const HelperContext = React.createContext(HelperCtx);
+const HelperContext = createContext<IContextState>(initialHelperContext);
 
-const HelperProvider = (props: IContextProps) => {
+export const ContextProvider = (props: IContextProps) => {
   const { state, children } = props;
 
   return (
     <HelperContext.Provider value={state}>{children}</HelperContext.Provider>
   );
-};
+}; */
 
-export { HelperContext, HelperProvider }; */
-
-export interface IContextState {
-  quoteItem?: IQuoteItem;
-}
+//export { HelperContext, HelperProvider };
 
 export const QuoteContext = createContext([] as IQuoteItem[]);
 
-export const QuoteProvider = QuoteContext.Provider;
+export const ContextProvider = QuoteContext.Provider;
 
 export default QuoteContext;
