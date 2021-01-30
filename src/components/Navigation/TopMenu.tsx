@@ -19,11 +19,14 @@ const TopMenu = (props: ITopMenuProps) => {
       <div className="z-20 flex justify-end">
         {navIsOpen ? (
           <div onClick={() => toggleNav(false)}>
-            <img className="w-6 h-6 cursor-pointer sm:w-8 h-9" src={iconX} />
+            <img className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8" src={iconX} />
           </div>
         ) : (
           <div onClick={() => toggleNav(true)}>
-            <img className="w-6 h-6 cursor-pointer sm:w-8 h-9" src={iconMenu} />
+            <img
+              className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8"
+              src={iconMenu}
+            />
           </div>
         )}
       </div>

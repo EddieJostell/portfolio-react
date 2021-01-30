@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route } from 'react-router-dom';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { IRouteInfoItem } from '../../utils/Route';
 
-export interface IRouteLinksProps {
-  routeInfo: IRouteInfoItem[];
-}
+export interface IRouteLinksProps {}
 
 const RouteLinks = (props: IRouteLinksProps) => {
-  const { routeInfo } = props;
+  const Routes = useContext<IContextState>(HelperContext);
 
-  const routeLinks = routeInfo.map(({ path, component }, key: number) => (
-    <Route key={key} exact path={path} component={component.name} />
-  ));
+  console.log(Routes);
+
+  const routeLinks = Routes.routeItem.map(
+    ({ path, component }, key: number) => (
+      <Route key={key} exact path={path} render={() => component} />
+    )
+  );
 
   return <div>{routeLinks}</div>;
 };

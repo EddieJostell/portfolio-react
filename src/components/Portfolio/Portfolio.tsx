@@ -1,17 +1,15 @@
-import React from 'react';
-
-import { IPortfolioItem } from '../../utils/data';
+import React, { useContext } from 'react';
+import { IPortfolioItem, ProjectList } from '../../utils/data';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
 
 import PortfolioContent from './PortfolioContent/PortfolioContent';
-interface IPortfolioProps {
-  data: IPortfolioItem[];
-}
+interface IPortfolioProps {}
 
 const Portfolio = (props: IPortfolioProps) => {
-  const { data } = props;
+  const Projects = useContext<IContextState>(HelperContext);
 
   const displayPortfolioData = () => {
-    return data.map((port, key) => (
+    return Projects.portItem.map((port, key) => (
       <PortfolioContent
         key={key}
         title={port.title}

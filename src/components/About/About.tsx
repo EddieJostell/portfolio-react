@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { useContext, useState } from 'react';
-import QuoteContext from '../../utils/HelperContext';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
 import QuoteContent from './QuoteContent/QuoteContent';
 
 interface IAboutProps {}
 
 const About = (props: IAboutProps) => {
-  const Quote = useContext(QuoteContext);
+  const Quotes = useContext<IContextState>(HelperContext);
 
-  const [quoteList, setQuoteList] = useState(Quote);
+  const [quoteList, setQuoteList] = useState(Quotes);
 
-  let quotes = quoteList[Math.floor(Math.random() * quoteList.length)];
+  let quotes =
+    quoteList.quoteItem[Math.floor(Math.random() * quoteList.quoteItem.length)];
 
   return (
     <div className="flex flex-col justify-around w-full h-full px-5">
@@ -21,8 +22,8 @@ const About = (props: IAboutProps) => {
         <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
 
-      <div className="flex flex-col items-start justify-center text-white m-7 lg:flex-row">
-        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:mr-5 lg:mt-0">
+      <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
+        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Likes</h2>
           <div className="text-xl">
             When Im not hitting the keyboard to create magic on the web or
@@ -31,14 +32,16 @@ const About = (props: IAboutProps) => {
             music.
           </div>
         </div>
-        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:mr-5 lg:mt-0">
+
+        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Me</h2>
           <div className="text-xl">Name: Edward 'Eddie' Jostell.</div>
           <div className="text-xl">Age: 32 summers.</div>
           <div className="text-xl">From: Stockholm, Sweden.</div>
           <div className="text-xl">Occupation: Frontend-developer.</div>
         </div>
-        <div className="flex-row justify-center w-full h-full p-8 m-5 shadow-2xl lg:m-5 lg:mt-0 lg:mr-0">
+
+        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:m-5 lg:mt-0 lg:mr-0">
           <h2 className="text-2xl text-center">Gamer</h2>
           <div className="text-xl">
             Before I wanted to become a web-developer I played at a

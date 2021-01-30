@@ -6,8 +6,9 @@ import {
   ProjectList,
   QuoteInfo,
   NavigationLinks,
+  IPortfolioItem,
 } from './utils/data';
-import { ContextProvider } from './utils/HelperContext';
+import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Container from './components/Container/Container';
 import About from './components/About/About';
@@ -19,26 +20,29 @@ import { IRouteInfoItem, RouteInfo } from '../src/utils/Route';
 export interface IPropertyState {
   quoteItem: IQuoteItem[];
   routeInfo: IRouteInfoItem[];
+  portItem: IPortfolioItem[];
 }
 
 function App() {
   const [appState, setAppState] = useState({
     navIsOpen: false,
-    quoteList: QuoteInfo,
-    projectList: ProjectList,
-    routeInfo: RouteInfo,
+    /* quoteItem: QuoteInfo,
+    portItem: ProjectList,
+    routeInfo: RouteInfo */
   });
 
   const toggleNav = (visible: boolean) => {
     setAppState({ ...appState, navIsOpen: visible });
   };
 
-  /* const HelperContextValue: IContextState {
-    appInfo: appState,
-  } */
+  const HelperContextValue: IContextState = {
+    quoteItem: QuoteInfo,
+    portItem: ProjectList,
+    routeItem: RouteInfo,
+  };
 
   return (
-    <ContextProvider value={appState.quoteList}>
+    <ContextProvider state={HelperContextValue}>
       <div className="min-h-screen text-center bg-gray-700">
         <Router>
           <Navigation
@@ -48,13 +52,9 @@ function App() {
             navLinks={NavigationLinks}
           />
           <Container>
-            {/*  <RouteLinks routeInfo={appState.routeInfo} /> */}
+            {/* <RouteLinks /> */}
             <Route exact path="/" render={() => <About />} />
-            <Route
-              exact
-              path="/Portfolio"
-              render={() => <Portfolio data={appState.projectList} />}
-            />
+            <Route exact path="/Portfolio" render={() => <Portfolio />} />
             <Route exact path="/Contact" render={() => <Contact />} />
           </Container>
         </Router>
