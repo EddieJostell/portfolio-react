@@ -7,13 +7,11 @@ import {
   QuoteInfo,
   NavigationLinks,
   IPortfolioItem,
+  INavLinkItem,
 } from './utils/data';
 import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Container from './components/Container/Container';
-import About from './components/About/About';
-import Contact from './components/Contact/Contact';
-import Portfolio from './components/Portfolio/Portfolio';
 import RouteLinks from './components/RouteLinks/RouteLinks';
 import { IRouteInfoItem, RouteInfo } from '../src/utils/Route';
 
@@ -26,9 +24,6 @@ export interface IPropertyState {
 function App() {
   const [appState, setAppState] = useState({
     navIsOpen: false,
-    /* quoteItem: QuoteInfo,
-    portItem: ProjectList,
-    routeInfo: RouteInfo */
   });
 
   const toggleNav = (visible: boolean) => {
@@ -53,9 +48,6 @@ function App() {
           />
           <Container>
             <RouteLinks />
-            {/* <Route exact path="/" render={() => <About />} />
-            <Route exact path="/Portfolio" render={() => <Portfolio />} />
-            <Route exact path="/Contact" render={() => <Contact />} /> */}
           </Container>
         </Router>
       </div>
