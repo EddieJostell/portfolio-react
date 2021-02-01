@@ -5,6 +5,9 @@ interface Props {}
 
 interface State {}
 
+
+// Refactor into FunctionComponent.
+
 export default class Contact extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);

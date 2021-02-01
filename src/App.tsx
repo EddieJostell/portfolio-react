@@ -52,10 +52,10 @@ function App() {
             navLinks={NavigationLinks}
           />
           <Container>
-            {/* <RouteLinks /> */}
-            <Route exact path="/" render={() => <About />} />
+            <RouteLinks />
+            {/* <Route exact path="/" render={() => <About />} />
             <Route exact path="/Portfolio" render={() => <Portfolio />} />
-            <Route exact path="/Contact" render={() => <Contact />} />
+            <Route exact path="/Contact" render={() => <Contact />} /> */}
           </Container>
         </Router>
       </div>
