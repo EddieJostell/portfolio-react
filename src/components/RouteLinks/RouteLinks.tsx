@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Route } from 'react-router-dom';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
-
 
 export interface IRouteLinksProps {}
 
 const RouteLinks = (props: IRouteLinksProps) => {
   const Routes = useContext<IContextState>(HelperContext);
-
-  console.log(Routes);
 
   const routeLinks = Routes.routeItem.map(
     ({ path, component }, key: number) => (
@@ -16,7 +13,7 @@ const RouteLinks = (props: IRouteLinksProps) => {
     )
   );
 
-  return <div>{routeLinks}</div>;
+  return <Fragment>{routeLinks}</Fragment>;
 };
 
 export default RouteLinks;
