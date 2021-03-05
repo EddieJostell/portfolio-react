@@ -4,6 +4,21 @@ export interface INavLinkItem {
   path: string;
 }
 
+export interface IPortfolioItem {
+  id: number;
+  title: string;
+  tech: string;
+  link: string;
+  img: string;
+  text: string;
+}
+
+export interface IQuoteItem {
+  id: number;
+  quote: string;
+  author: string;
+}
+
 export const NavigationLinks: INavLinkItem[] = [
   { id: 1, text: 'ABOUT', path: '/' },
   {
@@ -13,15 +28,6 @@ export const NavigationLinks: INavLinkItem[] = [
   },
   { id: 3, text: 'CONTACT', path: '/Contact' },
 ];
-
-export interface IPortfolioItem {
-  id: number;
-  title: string;
-  tech: string;
-  link: string;
-  img: string;
-  text: string;
-}
 
 export const ProjectList: IPortfolioItem[] = [
   {
@@ -79,12 +85,6 @@ export const ProjectList: IPortfolioItem[] = [
       '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
-
-export interface IQuoteItem {
-  id: number;
-  quote: string;
-  author: string;
-}
 
 export const QuoteInfo: IQuoteItem[] = [
   {

@@ -7,8 +7,8 @@ interface IAboutProps {}
 
 const About = (props: IAboutProps) => {
   const Quotes = useContext<IContextState>(HelperContext);
-
-  const [quoteList, setQuoteList] = useState(Quotes);
+  // eslint-disable-next-line
+  const [quoteList, setQuoteList] = useState<IContextState>(Quotes);
 
   let quotes =
     quoteList.quoteItem[Math.floor(Math.random() * quoteList.quoteItem.length)];

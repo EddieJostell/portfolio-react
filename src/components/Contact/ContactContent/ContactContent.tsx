@@ -11,7 +11,7 @@ const ContactContent = (props: Props) => {
     <ul className="flex flex-col items-center justify-between w-full mt-12 md:flex-row md:mt-24 md:justify-around">
       <li className="flex flex-col items-center justify-center w-48 h-48 rounded-md shadow-2xl">
         <div className="">
-          <img className="w-12 h-12" src={iconPhone} />
+          <img alt="phone" className="w-12 h-12" src={iconPhone} />
         </div>
         <span>+46 73 026 30 92</span>
       </li>

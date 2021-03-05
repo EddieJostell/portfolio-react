@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
-import {
-  IQuoteItem,
-  ProjectList,
-  QuoteInfo,
-  NavigationLinks,
-  IPortfolioItem,
-  INavLinkItem,
-} from './utils/data';
+import { ProjectList, QuoteInfo, NavigationLinks } from './utils/data';
 import { ContextProvider, IContextState } from './utils/HelperContext';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container/Container';
 import RouteLinks from './components/RouteLinks/RouteLinks';
-import { IRouteInfoItem, RouteInfo } from '../src/utils/Route';
-
-export interface IPropertyState {
-  quoteItem: IQuoteItem[];
-  routeInfo: IRouteInfoItem[];
-  portItem: IPortfolioItem[];
+import { RouteInfo } from '../src/utils/Route';
+interface IAppState {
+  navIsOpen: boolean;
 }
 
 function App() {
-  const [appState, setAppState] = useState({
+  const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
   });
 

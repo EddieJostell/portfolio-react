@@ -14,16 +14,21 @@ const TopMenu = (props: ITopMenuProps) => {
   return (
     <div className="fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full h-20 px-2 bg-black text-orange">
       <div className="z-20 text-base sm:text-2xl">
-        <a>{name}</a>
+        <span>{name}</span>
       </div>
       <div className="z-20 flex justify-end">
         {navIsOpen ? (
           <div onClick={() => toggleNav(false)}>
-            <img className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8" src={iconX} />
+            <img
+              alt="close"
+              className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8"
+              src={iconX}
+            />
           </div>
         ) : (
           <div onClick={() => toggleNav(true)}>
             <img
+              alt="menu"
               className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8"
               src={iconMenu}
             />
