@@ -16,9 +16,14 @@ const About = (props: IAboutProps) => {
   return (
     <div className="flex flex-col justify-around w-full h-full px-5">
       <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
-        <span className="text-5xl text-white">
-          Hello! My name is Eddie and I am a Frontend-developer.
-        </span>
+        <div className="flex flex-col ">
+          <div className="flex text-5xl text-white flex-start">
+            <span>Edward 'Eddie' Jostell</span>
+          </div>
+          <div className="text-3xl text-white">
+            <i>Frontend Developer</i>
+          </div>
+        </div>
         <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
 

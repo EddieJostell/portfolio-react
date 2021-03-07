@@ -32,7 +32,7 @@ export const NavigationLinks: INavLinkItem[] = [
 export const ProjectList: IPortfolioItem[] = [
   {
     id: 1,
-    title: 'COOP.se',
+    title: 'COOP',
     tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
