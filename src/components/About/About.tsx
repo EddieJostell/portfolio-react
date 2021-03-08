@@ -16,11 +16,11 @@ const About = (props: IAboutProps) => {
   return (
     <div className="flex flex-col justify-around w-full h-full px-5">
       <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
-        <div className="flex flex-col ">
-          <div className="flex text-5xl text-white flex-start">
-            <span>Edward 'Eddie' Jostell</span>
+        <div className="flex flex-col items-center sm:items-start">
+          <div className="w-auto text-5xl text-white justify-self-start">
+            <span className="">Edward 'Eddie' Jostell</span>
           </div>
-          <div className="text-3xl text-white">
+          <div className="w-auto text-3xl text-white">
             <i>Frontend Developer</i>
           </div>
         </div>
@@ -28,7 +28,7 @@ const About = (props: IAboutProps) => {
       </div>
 
       <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
-        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:mr-5 lg:mt-0">
+        <div className="flex-col w-full p-8 shadow-2xl bg-red-200justify-center lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Likes</h2>
           <div className="text-xl">
             When Im not hitting the keyboard to create magic on the web or
@@ -38,7 +38,7 @@ const About = (props: IAboutProps) => {
           </div>
         </div>
 
-        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:mr-5 lg:mt-0">
+        <div className="flex-col justify-center w-full p-8 shadow-2xl flex-column lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Me</h2>
           <div className="text-xl">Name: Edward 'Eddie' Jostell.</div>
           <div className="text-xl">Age: 32 summers.</div>
@@ -46,7 +46,7 @@ const About = (props: IAboutProps) => {
           <div className="text-xl">Occupation: Frontend-developer.</div>
         </div>
 
-        <div className="justify-center w-full h-full p-8 m-5 shadow-2xl flex-column lg:m-5 lg:mt-0 lg:mr-0">
+        <div className="flex-col justify-center w-full p-8 shadow-2xl flex-column lg:m-5 lg:mt-0 lg:mr-0">
           <h2 className="text-2xl text-center">Gamer</h2>
           <div className="text-xl">
             Before I wanted to become a web-developer I played at a

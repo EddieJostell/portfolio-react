@@ -7,8 +7,7 @@ interface Props {
 
 const QuoteContent = (props: Props) => {
   return (
-    <div className="relative flex flex-col max-w-xl my-24 flex-end">
-      {/* <h2>Quote</h2> */}
+    <div className="relative flex flex-col items-center max-w-xl mx-auto my-20">
       <span className="text-2xl">
         <i>{props.quote}</i>
       </span>
