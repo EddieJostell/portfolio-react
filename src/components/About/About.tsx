@@ -13,17 +13,28 @@ const About = (props: IAboutProps) => {
   let quotes =
     quoteList.quoteItem[Math.floor(Math.random() * quoteList.quoteItem.length)];
 
+  const personalInfo = () => {
+    let name = "Hello my name is Edward 'Eddie' Jostell";
+    let work = 'I am a Frontend Developer';
+    let onlyName = name.substr(17, name.length - 1);
+    let onlyWork = work.substr(7, work.length - 1);
+
+    return (
+      <div className="flex flex-col items-center sm:items-start">
+        <div className="w-auto text-5xl text-white justify-self-start">
+          <span className="">{onlyName}</span>
+        </div>
+        <div className="w-auto text-3xl text-white">
+          <i>{onlyWork}</i>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col justify-around w-full h-full px-5">
       <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
-        <div className="flex flex-col items-center sm:items-start">
-          <div className="w-auto text-5xl text-white justify-self-start">
-            <span className="">Edward 'Eddie' Jostell</span>
-          </div>
-          <div className="w-auto text-3xl text-white">
-            <i>Frontend Developer</i>
-          </div>
-        </div>
+        {personalInfo()}
         <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
 
