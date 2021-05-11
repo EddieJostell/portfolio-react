@@ -19,6 +19,34 @@ export interface IQuoteItem {
   author: string;
 }
 
+export interface IAboutMe {
+  likes: string;
+  personal: IPersonal;
+  gamer: string;
+}
+
+export interface IPersonal {
+  name: string;
+  age: string;
+  from: string;
+  occupation: string;
+}
+
+export const AboutMe: IAboutMe[] = [
+  {
+    likes:
+      'When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.',
+    personal: {
+      name: "Edward 'Eddie' Jostell",
+      age: '33 summers',
+      from: 'Stockholm, Sweden',
+      occupation: 'Frontend Developer',
+    },
+    gamer:
+      'Before I wanted to become a web-developer I played at a semi-professional level in the computer game Counter Strike - Global Offensive. Even tho I dont play on that level anymore I still dream of a comeback.',
+  },
+];
+
 export const NavigationLinks: INavLinkItem[] = [
   { id: 1, text: 'ABOUT', path: '/' },
   {
@@ -36,8 +64,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
     id: 2,
@@ -45,8 +72,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
     img: 'img/cloud9.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
     id: 3,
@@ -54,8 +80,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
     link: 'https://eddiejostell.github.io/News-Hub/',
     img: 'img/news-hub.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
     id: 4,
@@ -63,8 +88,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/SASS #JavaScript',
     link: 'https://eddiejostell.github.io/MovieDatabase/',
     img: 'img/moviedatabase.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
     id: 5,
@@ -72,8 +96,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/todo-app/',
     img: 'img/todo.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
   {
     id: 6,
@@ -81,8 +104,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
-    text:
-      '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
 
