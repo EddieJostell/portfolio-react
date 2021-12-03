@@ -37,7 +37,9 @@ const PortfolioContent = (props: Props) => {
             <p className="mt-2 text-left text-white">{tech}</p>
             {/*  <div className="flex flex-wrap mt-5">{showProjectTech()}</div> */}
             <div className="flex flex-wrap mt-2 text-white cursor-pointer hover:underline">
-              {link}
+              <a href={link} target="_blank" rel="noreferrer">
+                {link}
+              </a>
             </div>
           </div>
         </div>
