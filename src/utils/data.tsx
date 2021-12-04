@@ -1,3 +1,8 @@
+import iconMail from '../Icons/mail.svg';
+import iconPhone from '../Icons/phone-call.svg';
+import iconLinkedIn from '../Icons/linkedin.svg';
+import iconGitHub from '../Icons/github.svg';
+import iconInsta from '../Icons/instagram.svg';
 export interface INavLinkItem {
   id: number;
   text: string;
@@ -31,6 +36,51 @@ export interface IPersonal {
   from: string;
   occupation: string;
 }
+
+export interface IContactItem {
+  id: number;
+  title: string;
+  iconSrc: string;
+  text: string;
+  link?: string;
+}
+
+export const ContactInfo: IContactItem[] = [
+  {
+    id: 1,
+    title: '+46 73 026 30 92',
+    iconSrc: iconPhone,
+    text: 'Give me a call!',
+  },
+  {
+    id: 2,
+    title: 'Email',
+    iconSrc: iconMail,
+    link: 'mailto:eddie.jostell@gmail.com',
+    text: 'Send me a email!',
+  },
+  {
+    id: 3,
+    title: 'LinkedIn',
+    iconSrc: iconLinkedIn,
+    link: 'https://www.linkedin.com/in/eddiejostell',
+    text: 'Add me to your network!',
+  },
+  {
+    id: 4,
+    title: 'Github',
+    iconSrc: iconGitHub,
+    link: 'https://github.com/EddieJostell',
+    text: 'Checkout my projects on Github!',
+  },
+  {
+    id: 5,
+    title: 'Instagram',
+    iconSrc: iconInsta,
+    link: 'https://www.instagram.com/eduardojostello/',
+    text: 'Be cool and follow me on intagram!',
+  },
+];
 
 export const AboutMe: IAboutMe[] = [
   {

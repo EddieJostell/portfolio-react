@@ -6,6 +6,8 @@ import {
   IQuoteItem,
   IAboutMe,
   AboutMe,
+  ContactInfo,
+  IContactItem,
 } from '../utils/data';
 import { IRouteInfoItem, RouteInfo } from './Route';
 export interface IContextProps {
@@ -18,6 +20,7 @@ export interface IContextState {
   portItem: IPortfolioItem[];
   routeItem: IRouteInfoItem[];
   aboutItem: IAboutMe[];
+  contactItem: IContactItem[];
 }
 
 const initialHelperContext: IContextState = {
@@ -25,6 +28,7 @@ const initialHelperContext: IContextState = {
   portItem: ProjectList,
   routeItem: RouteInfo,
   aboutItem: AboutMe,
+  contactItem: ContactInfo,
 };
 
 export const HelperContext = createContext<IContextState>(initialHelperContext);

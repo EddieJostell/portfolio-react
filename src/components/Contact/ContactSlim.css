@@ -1,0 +1,10 @@
+.ContactSlim {
+  background-color: hotpink;
+  position: fixed;
+  top: 50%;
+  right: 0;
+}
+
+.ContactSlim h1 {
+  font-size: 30px;
+}

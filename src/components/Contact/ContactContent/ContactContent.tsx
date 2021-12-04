@@ -3,6 +3,7 @@ import iconMail from '../../../Icons/mail.svg';
 import iconPhone from '../../../Icons/phone-call.svg';
 import iconLinkedIn from '../../../Icons/linkedin.svg';
 import iconGitHub from '../../../Icons/github.svg';
+/* import iconInsta from '../../../Icons/instagram.svg';*/
 
 interface Props {}
 
