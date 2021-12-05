@@ -40,3 +40,6 @@ const TopMenu = (props: ITopMenuProps) => {
 };
 
 export default TopMenu;
+
+//Change the navbar to house the links at the top for desktop
+//then have them hidden with hamburger for phone size.

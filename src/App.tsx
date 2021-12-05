@@ -18,6 +18,8 @@ import Container from './components/Container/Container';
 import RouteLinks from './components/RouteLinks/RouteLinks';
 import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
+/* import About from './components/About/About';
+import Portfolio from './components/Portfolio/Portfolio'; */
 interface IAppState {
   navIsOpen: boolean;
 }
@@ -53,6 +55,8 @@ function App() {
           <Container>
             <RouteLinks />
             <ContactSlim contactInfo={contact.contactItem} />
+            {/* <About />
+            <Portfolio /> */}
           </Container>
         </Router>
       </div>

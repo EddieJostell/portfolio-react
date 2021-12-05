@@ -2,7 +2,16 @@
   border: 1px solid red;
   position: fixed;
   top: 50%;
-  right: 0;
+  right: -30px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+
+  &:hover {
+    right: 0;
+  }
 
   &-wrapper {
     width: 100%;
@@ -12,9 +21,18 @@
 
     .ContactSlim-right {
       img {
-        height: 50px;
-        margin: 25px;
+        height: 40px;
+        margin: 15px;
         border: 1px solid red;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+
+        &:hover {
+          height: 80px;
+        }
       }
     }
     .ContactSlim-left {
