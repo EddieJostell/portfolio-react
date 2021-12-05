@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import {
@@ -8,7 +8,11 @@ import {
   AboutMe,
   ContactInfo,
 } from './utils/data';
-import { ContextProvider, IContextState } from './utils/HelperContext';
+import {
+  ContextProvider,
+  HelperContext,
+  IContextState,
+} from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container/Container';
 import RouteLinks from './components/RouteLinks/RouteLinks';
@@ -19,6 +23,7 @@ interface IAppState {
 }
 
 function App() {
+  const contact = useContext<IContextState>(HelperContext);
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
   });
@@ -47,7 +52,7 @@ function App() {
           />
           <Container>
             <RouteLinks />
-            <ContactSlim />
+            <ContactSlim contactInfo={contact.contactItem} />
           </Container>
         </Router>
       </div>

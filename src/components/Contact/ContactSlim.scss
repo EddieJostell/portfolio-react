@@ -1,0 +1,24 @@
+.ContactSlim {
+  border: 1px solid red;
+  position: fixed;
+  top: 50%;
+  right: 0;
+
+  &-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+
+    .ContactSlim-right {
+      img {
+        height: 50px;
+        margin: 25px;
+        border: 1px solid red;
+      }
+    }
+    .ContactSlim-left {
+      border: 1px solid red;
+    }
+  }
+}

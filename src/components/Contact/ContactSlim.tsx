@@ -1,14 +1,30 @@
 import * as React from 'react';
-import './ContactSlim.css';
+import { IContactItem } from '../../utils/data';
+import './ContactSlim.scss';
 
-interface IContactSlimProps {}
+interface IContactSlimProps {
+  contactInfo: IContactItem[];
+}
 
 const ContactSlim = (props: IContactSlimProps) => {
-  return (
-    <div className="ContactSlim">
-      <h1>CONTENT</h1>
-    </div>
-  );
+  const { contactInfo } = props;
+  console.log('contact', contactInfo);
+  const displayContactInfo = () => {
+    return contactInfo.map((tact, key) => (
+      <div className="ContactSlim-wrapper" key={key}>
+        <div className="ContactSlim-right">
+          <img alt={tact.title} src={tact.iconSrc} />
+        </div>
+        <div className="ContactSlim-left">
+          <div>{tact.link}</div>
+          <div>{tact.text}</div>
+          <div>{tact.title}</div>
+        </div>
+      </div>
+    ));
+  };
+
+  return <div className="ContactSlim">{displayContactInfo()}</div>;
 };
 
 export default ContactSlim;

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import './PortfolioContent.css';
+import './PortfolioContent.scss';
+import placeholder from '.../../../public/img/placeholder_360x640.png';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -14,7 +15,7 @@ const PortfolioContent = (props: IPortfolioContent) => {
   return (
     <li className="flex flex-col justify-start m-5 list-none shadow-2xl md:flex-row">
       <div className="card">
-        <img src={img} alt={title} />
+        <img src={img ? img : placeholder} alt={title} />
         <div className="info">
           <h1>{title}</h1>
           <p>{tech}</p>

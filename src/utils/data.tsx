@@ -40,7 +40,7 @@ export interface IPersonal {
 export interface IContactItem {
   id: number;
   title: string;
-  iconSrc: string;
+  iconSrc: any;
   text: string;
   link?: string;
 }
@@ -154,6 +154,14 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
+    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  },
+  {
+    id: 7,
+    title: 'REACT-FOOD',
+    tech: '#REACT #Tailwindcss',
+    link: 'https://eddiejostell.github.io/react-food/',
+    img: '',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
 ];
