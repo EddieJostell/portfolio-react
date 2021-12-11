@@ -10,6 +10,9 @@ module.exports = {
           light: '',
         },
       },
+      backgroundColor: {
+        'cool-black': '#1c1d24',
+      },
     },
   },
   variants: {

@@ -2,7 +2,6 @@ import React from 'react';
 import iconX from '../../Icons/x.svg';
 import iconMenu from '../../Icons/menu.svg';
 import TopMenu from './TopMenu';
-import NavList from './NavList';
 import { INavLinkItem } from '../../utils/data';
 
 interface INavProps {
@@ -28,8 +27,8 @@ const Navigation = (props: INavProps) => {
         toggleNav={toggleNav}
         iconX={iconX}
         iconMenu={iconMenu}
+        navLinks={navLinks}
       />
-      {navIsOpen && <NavList toggleNav={toggleNav} navListItems={navLinks} />}
     </>
   );
 };

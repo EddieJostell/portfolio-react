@@ -44,7 +44,7 @@ function App() {
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className="min-h-screen text-center bg-gray-700">
+      <div className="min-h-screen text-center bg-cool-black">
         <Router>
           <Navigation
             navIsOpen={appState.navIsOpen}
@@ -65,3 +65,5 @@ function App() {
 }
 
 export default App;
+
+//
