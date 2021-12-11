@@ -9,6 +9,11 @@ module.exports = {
           dark: '',
           light: '',
         },
+        gray: {
+          DEFAULT: '#b0b2c3',
+          dark: '',
+          light: '',
+        },
       },
       backgroundColor: {
         'cool-black': '#1c1d24',

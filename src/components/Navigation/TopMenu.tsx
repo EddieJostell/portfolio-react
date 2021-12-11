@@ -15,15 +15,18 @@ interface ITopMenuProps {
 
 const TopMenu = (props: ITopMenuProps) => {
   const { name, navIsOpen, toggleNav, iconMenu, iconX, navLinks } = props;
+
   return (
-    <div className="fixed top-0 left-0 z-50 flex flex-row items-center w-full h-20 px-2 text-orange">
+    <div className="fixed top-0 left-0 z-50 flex flex-row items-center w-full h-20 px-2 text-gray">
       <div className="container px-5 mx-auto">
         <div className="flex flex-row items-center justify-between">
           <div className="z-20 text-base sm:text-2xl">
             <span>{name}</span>
           </div>
           <div className="z-20 flex justify-end">
-            {navIsOpen ? (
+            {isMobileMax ? (
+              <NavList toggleNav={toggleNav} navListItems={navLinks} />
+            ) : navIsOpen ? (
               <div onClick={() => toggleNav(false)}>
                 <img
                   alt="close"
@@ -43,7 +46,9 @@ const TopMenu = (props: ITopMenuProps) => {
           </div>
         </div>
       </div>
-      {navIsOpen && <NavList toggleNav={toggleNav} navListItems={navLinks} />}
+      {!isMobileMax
+        ? navIsOpen && <NavList toggleNav={toggleNav} navListItems={navLinks} />
+        : ''}
     </div>
   );
 };

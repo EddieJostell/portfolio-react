@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import {
@@ -8,24 +8,18 @@ import {
   AboutMe,
   ContactInfo,
 } from './utils/data';
-import {
-  ContextProvider,
-  HelperContext,
-  IContextState,
-} from './utils/HelperContext';
+import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container/Container';
 import RouteLinks from './components/RouteLinks/RouteLinks';
 import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
-/* import About from './components/About/About';
-import Portfolio from './components/Portfolio/Portfolio'; */
+import { isMobileMax } from './utils/userAgent';
 interface IAppState {
   navIsOpen: boolean;
 }
 
 function App() {
-  const contact = useContext<IContextState>(HelperContext);
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
   });
@@ -54,9 +48,7 @@ function App() {
           />
           <Container>
             <RouteLinks />
-            <ContactSlim contactInfo={contact.contactItem} />
-            {/* <About />
-            <Portfolio /> */}
+            {isMobileMax && <ContactSlim />}
           </Container>
         </Router>
       </div>

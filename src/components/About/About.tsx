@@ -22,11 +22,11 @@ const About = (props: IAboutProps) => {
     let onlyWork = work.substr(7, work.length - 1);
 
     return (
-      <div className='flex flex-col items-center sm:items-start'>
-        <div className='w-auto text-5xl text-white justify-self-start'>
-          <span className=''>{onlyName}</span>
+      <div className="flex flex-col items-center sm:items-start">
+        <div className="w-auto text-5xl text-white justify-self-start">
+          <span className="">{onlyName}</span>
         </div>
-        <div className='w-auto text-3xl text-white'>
+        <div className="w-auto text-3xl text-white">
           <i>{onlyWork}</i>
         </div>
       </div>
@@ -34,12 +34,12 @@ const About = (props: IAboutProps) => {
   };
 
   return (
-    <div className='flex flex-col justify-around w-full h-full px-5'>
-      <div className='flex flex-col flex-wrap justify-between pt-12 text-center text-orange'>
+    <div className="flex flex-col justify-around w-full h-full px-5">
+      <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
         {personalInfo()}
         <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
-      <div className='flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row'>
+      {/* <div className='flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row'>
         <div className='flex-col w-full p-8 shadow-2xl bg-red-200justify-center lg:mr-5 lg:mt-0'>
           <h2 className='text-2xl text-center'>Likes</h2>
           <div className='text-xl'>
@@ -67,7 +67,7 @@ const About = (props: IAboutProps) => {
             of a comeback.
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

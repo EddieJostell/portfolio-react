@@ -46,12 +46,12 @@ export interface IContactItem {
 }
 
 export const ContactInfo: IContactItem[] = [
-  {
+  /*  {
     id: 1,
     title: '+46 73 026 30 92',
     iconSrc: iconPhone,
     text: 'Give me a call!',
-  },
+  }, */
   {
     id: 2,
     title: 'Email',
@@ -98,13 +98,13 @@ export const AboutMe: IAboutMe[] = [
 ];
 
 export const NavigationLinks: INavLinkItem[] = [
-  { id: 1, text: 'ABOUT', path: '/' },
+  { id: 1, text: 'Home', path: '/' },
   {
     id: 2,
-    text: 'PORTFOLIO',
+    text: 'Portfolio',
     path: '/Portfolio',
   },
-  { id: 3, text: 'CONTACT', path: '/Contact' },
+  { id: 3, text: 'Contact', path: '/Contact' },
 ];
 
 export const ProjectList: IPortfolioItem[] = [

@@ -1,30 +1,32 @@
 import * as React from 'react';
-import { IContactItem } from '../../utils/data';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { isMobileMax } from '../../utils/userAgent';
 import './ContactSlim.scss';
 
-interface IContactSlimProps {
-  contactInfo: IContactItem[];
-}
+interface IContactSlimProps {}
 
 const ContactSlim = (props: IContactSlimProps) => {
-  const { contactInfo } = props;
-  console.log('contact', contactInfo);
+  const contactInfo = React.useContext<IContextState>(HelperContext);
+
   const displayContactInfo = () => {
-    return contactInfo.map((tact, key) => (
-      <div className="ContactSlim-wrapper" key={key}>
-        <div className="ContactSlim-right">
+    return contactInfo.contactItem.map((tact, key) => (
+      <div className="ContactSlim-icons">
+        <a href={tact.link} target="_blank" rel="noreferrer">
           <img alt={tact.title} src={tact.iconSrc} />
-        </div>
-        <div className="ContactSlim-left">
-          <div>{tact.link}</div>
-          <div>{tact.text}</div>
-          <div>{tact.title}</div>
-        </div>
+        </a>
       </div>
     ));
   };
 
-  return <div className="ContactSlim">{displayContactInfo()}</div>;
+  return (
+    <div
+      className={
+        isMobileMax ? 'ContactSlim' : 'ContactSlim ContactSlim--mobile'
+      }
+    >
+      {displayContactInfo()}
+    </div>
+  );
 };
 
 export default ContactSlim;

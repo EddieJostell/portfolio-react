@@ -1,42 +1,32 @@
 .ContactSlim {
-  border: 1px solid red;
   position: fixed;
-  top: 50%;
-  right: -30px;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
+  top: 25vh;
+  right: 0;
+  display: flex;
+  flex-direction: column;
 
-  &:hover {
-    right: 0;
+  &.ContactSlim--mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    top: auto;
+    right: auto;
   }
 
-  &-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
+  .ContactSlim-icons {
+    img {
+      height: 40px;
+      margin: 15px;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -o-transition: all 0.5s;
 
-    .ContactSlim-right {
-      img {
-        height: 40px;
-        margin: 15px;
-        border: 1px solid red;
-        transition: all 0.5s;
-        -webkit-transition: all 0.5s;
-        -moz-transition: all 0.5s;
-        -ms-transition: all 0.5s;
-        -o-transition: all 0.5s;
-
-        &:hover {
-          height: 80px;
-        }
+      &:hover {
+        height: 80px;
       }
-    }
-    .ContactSlim-left {
-      border: 1px solid red;
     }
   }
 }
