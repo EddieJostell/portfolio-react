@@ -1,16 +1,28 @@
-.Navbar {
+.TopMenu {
   width: 100%;
-  padding: 5px 10px;
-  background-color: #000000;
+  height: 5rem;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
-  color: #dd734f;
+  z-index: 50;
+  color: #b0b2c3;
+
+  .TopMenu-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .Links {
+      z-index: 20;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
 
   &-name {
     z-index: 2;
