@@ -1,17 +1,26 @@
 import * as React from 'react';
+import { HelperContext, IContextState } from '../../../utils/HelperContext';
 
-interface Props {
-  quote: string;
-  author: string;
-}
+interface Props {}
 
 const QuoteContent = (props: Props) => {
+  const randomQuotes = React.useContext<IContextState>(HelperContext);
+  // eslint-disable-next-line
+  const [quotetInfo] = React.useState<IContextState>(randomQuotes);
+
+  let quotes =
+    quotetInfo.quoteItem[
+      Math.floor(Math.random() * quotetInfo.quoteItem.length)
+    ];
+
+  console.log(quotes);
+
   return (
-    <div className="relative flex flex-col items-center max-w-xl mx-auto my-20">
-      <span className="text-2xl">
-        <i>{props.quote}</i>
+    <div className="fixed flex flex-col items-center max-w-xl mx-auto my-20 bottom-5 text-gray">
+      <span className="text-xl">
+        <i>{quotes.quote}</i>
       </span>
-      <span>- {props.author}</span>
+      <span>- {quotes.author}</span>
     </div>
   );
 };

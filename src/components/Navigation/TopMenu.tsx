@@ -21,7 +21,7 @@ const TopMenu = (props: ITopMenuProps) => {
     <div className="TopMenu">
       <div className="container px-5 mx-auto">
         <div className="TopMenu-wrapper">
-          <div className="z-20 text-base sm:text-2xl">
+          <div className="z-20 text-base sm:text-3xl TopMenu-name">
             <span>{name}</span>
           </div>
           <div className="Links">
@@ -31,7 +31,7 @@ const TopMenu = (props: ITopMenuProps) => {
               <div onClick={() => toggleNav(false)}>
                 <img
                   alt="close"
-                  className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8"
+                  className="w-6 h-6 cursor-pointer cross sm:w-8 sm:h-8"
                   src={iconX}
                 />
               </div>
@@ -39,7 +39,7 @@ const TopMenu = (props: ITopMenuProps) => {
               <div onClick={() => toggleNav(true)}>
                 <img
                   alt="menu"
-                  className="w-6 h-6 cursor-pointer sm:w-8 sm:h-8"
+                  className="w-6 h-6 cursor-pointer menu sm:w-8 sm:h-8"
                   src={iconMenu}
                 />
               </div>

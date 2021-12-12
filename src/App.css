@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
 .App {
   text-align: center;
   background-color: green;
@@ -37,3 +42,19 @@
     transform: rotate(360deg);
   }
 } */
+
+/* font-family: 'Audiowide', cursive;
+
+font-family: 'Diplomata', cursive;
+
+font-family: 'Fontdiner Swanky', cursive;
+
+font-family: 'Goldman', cursive;
+
+font-family: 'Nosifer', cursive;
+
+font-family: 'Permanent Marker', cursive;
+
+font-family: 'Ultra', serif;
+
+font-family: 'Zilla Slab Highlight', cursive; */

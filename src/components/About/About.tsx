@@ -1,20 +1,8 @@
 import * as React from 'react';
-import { useContext, useState } from 'react';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
-import QuoteContent from './QuoteContent/QuoteContent';
 
 interface IAboutProps {}
 
 const About = (props: IAboutProps) => {
-  const Information = useContext<IContextState>(HelperContext);
-  // eslint-disable-next-line
-  const [contextInfo, setContextInfo] = useState<IContextState>(Information);
-
-  let quotes =
-    contextInfo.quoteItem[
-      Math.floor(Math.random() * contextInfo.quoteItem.length)
-    ];
-
   const personalInfo = () => {
     let name = "Hello my name is Edward 'Eddie' Jostell";
     let work = 'I am a Frontend Developer';
@@ -37,7 +25,6 @@ const About = (props: IAboutProps) => {
     <div className="flex flex-col justify-around w-full h-full px-5">
       <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
         {personalInfo()}
-        <QuoteContent quote={quotes.quote} author={quotes.author} />
       </div>
       <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
         <div className="flex-col w-full p-8 shadow-2xl bg-red-200justify-center lg:mr-5 lg:mt-0">
