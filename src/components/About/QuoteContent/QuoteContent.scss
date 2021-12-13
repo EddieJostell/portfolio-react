@@ -1,0 +1,66 @@
+.QuoteContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  span {
+    font-size: 25px;
+  }
+}
+
+/* @keyframes flickerAnimation {
+
+  0%   { opacity:1; }
+
+  50%  { opacity:0; }
+
+  100% { opacity:1; }
+
+}
+
+@-o-keyframes flickerAnimation{
+
+  0%   { opacity:1; }
+
+  50%  { opacity:0; }
+
+  100% { opacity:1; }
+
+}
+
+@-moz-keyframes flickerAnimation{
+
+  0%   { opacity:1; }
+
+  50%  { opacity:0; }
+
+  100% { opacity:1; }
+
+}
+
+@-webkit-keyframes flickerAnimation{
+
+  0%   { opacity:1; }
+
+  50%  { opacity:0; }
+
+  100% { opacity:1; }
+
+}
+
+.animClass {
+
+   -webkit-animation: flickerAnimation 10s infinite;
+
+   -moz-animation: flickerAnimation 10s infinite;
+
+   -o-animation: flickerAnimation 10s infinite;
+
+    animation: flickerAnimation 10s infinite;
+
+} */

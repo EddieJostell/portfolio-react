@@ -10,8 +10,8 @@ const ContactSlim = (props: IContactSlimProps) => {
 
   const displayContactInfo = () => {
     return contactInfo.contactItem.map((tact, key) => (
-      <div className="ContactSlim-icons">
-        <a href={tact.link} target="_blank" rel="noreferrer">
+      <div key={key} className='ContactSlim-icons'>
+        <a href={tact.link} target='_blank' rel='noreferrer'>
           <img alt={tact.title} src={tact.iconSrc} />
         </a>
       </div>
