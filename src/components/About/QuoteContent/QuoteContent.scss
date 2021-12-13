@@ -13,54 +13,80 @@
   }
 }
 
-/* @keyframes flickerAnimation {
-
-  0%   { opacity:1; }
-
-  50%  { opacity:0; }
-
-  100% { opacity:1; }
-
+.animation {
+  -webkit-animation: fadeinout 10s infinite;
+  animation: fadeinout 10s infinite;
 }
 
-@-o-keyframes flickerAnimation{
-
-  0%   { opacity:1; }
-
-  50%  { opacity:0; }
-
-  100% { opacity:1; }
-
+@-webkit-keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-@-moz-keyframes flickerAnimation{
-
-  0%   { opacity:1; }
-
-  50%  { opacity:0; }
-
-  100% { opacity:1; }
-
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-@-webkit-keyframes flickerAnimation{
+/* @-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
 
-  0%   { opacity:1; }
+  50% {
+    opacity: 0.5;
+  }
 
-  50%  { opacity:0; }
-
-  100% { opacity:1; }
-
+  100% {
+    opacity: 0;
+  }
 }
 
-.animClass {
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
 
-   -webkit-animation: flickerAnimation 10s infinite;
+  50% {
+    opacity: 0.5;
+  }
 
-   -moz-animation: flickerAnimation 10s infinite;
+  100% {
+    opacity: 0;
+  }
+}
 
-   -o-animation: flickerAnimation 10s infinite;
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
 
-    animation: flickerAnimation 10s infinite;
+  50% {
+    opacity: 0.5;
+  }
 
+  100% {
+    opacity: 0;
+  }
 } */
+
+/* .animation {
+  -webkit-animation: flickerAnimation 5s infinite;
+
+  -moz-animation: flickerAnimation 5s infinite;
+
+  -o-animation: flickerAnimation 5s infinite;
+
+  animation: flickerAnimation 5s infinite;
+}
+ */

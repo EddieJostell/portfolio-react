@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
+import './QuoteContent.scss';
 
 interface Props {}
 
@@ -32,13 +33,13 @@ const QuoteContent = (props: Props) => {
         quote: randomizedQuotes.quote,
         author: randomizedQuotes.author,
       });
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className='fixed flex flex-col items-center max-w-xl mx-auto my-20 bottom-5 text-gray'>
+    <div className='animation fixed flex flex-col items-center max-w-xl mx-auto my-20 bottom-5 text-gray'>
       <span className='text-xl'>
         <i>{quote.quote}</i>
       </span>
