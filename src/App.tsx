@@ -50,7 +50,7 @@ function App() {
           <Container>
             <RouteLinks />
             {isMobileMax && <ContactSlim />}
-            <QuoteContent />
+            {isMobileMax && <QuoteContent />}
           </Container>
         </Router>
       </div>

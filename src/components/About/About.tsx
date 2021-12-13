@@ -6,8 +6,8 @@ const About = (props: IAboutProps) => {
   const personalInfo = () => {
     let name = "Hello my name is Edward 'Eddie' Jostell";
     let work = 'I am a Frontend Developer';
-    let onlyName = name.substr(17, name.length - 1);
-    let onlyWork = work.substr(7, work.length - 1);
+    let onlyName = name.substring(17, name.length);
+    let onlyWork = work.substring(7, work.length);
 
     return (
       <div className="flex flex-col items-center sm:items-start">
