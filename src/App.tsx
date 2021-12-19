@@ -39,13 +39,17 @@ function App() {
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className="min-h-screen text-center bg-cool-black">
+      <div
+        className="min-h-screen text-center bg-cool-black"
+        data-testid="application"
+      >
         <Router>
           <Navigation
             navIsOpen={appState.navIsOpen}
             toggleNav={toggleNav}
             name="EJ"
             navLinks={NavigationLinks}
+            data-testid="navigation"
           />
           <Container>
             <RouteLinks />

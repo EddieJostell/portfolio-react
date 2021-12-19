@@ -36,11 +36,11 @@ const QuoteContent = (props: Props) => {
     }, 10000);
 
     return () => clearInterval(interval);
-  }, []);
+  });
 
   return (
-    <div className='animation fixed flex flex-col items-center max-w-xl mx-auto my-20 bottom-5 text-gray'>
-      <span className='text-xl'>
+    <div className="fixed flex flex-col items-center max-w-xl mx-auto my-20 animation bottom-5 text-gray">
+      <span className="text-xl">
         <i>{quote.quote}</i>
       </span>
       <span>- {quote.author}</span>
