@@ -26,7 +26,7 @@ const Navigation = (props: INavProps) => {
       <div className="container px-5 mx-auto">
         <div className="Navigation-wrapper">
           <div className="z-20 text-base sm:text-3xl Navigation-name">
-            <span>{name}</span>
+            {!navIsOpen && <span>{name}</span>}
           </div>
           <div className="Links">
             {isMobileMax ? (
