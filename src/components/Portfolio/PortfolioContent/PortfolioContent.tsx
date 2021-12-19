@@ -14,7 +14,7 @@ const PortfolioContent = (props: IPortfolioContent) => {
 
   return (
     <li className="flex flex-col justify-start m-5 list-none shadow-2xl md:flex-row">
-      <div className="card">
+      <a className="card" href={link} target="_blank" rel="noreferrer">
         <img src={img ? img : placeholder} alt={title} />
         <div className="info">
           <h1>{title}</h1>
@@ -23,7 +23,7 @@ const PortfolioContent = (props: IPortfolioContent) => {
             {title}
           </a>
         </div>
-      </div>
+      </a>
     </li>
   );
 };
