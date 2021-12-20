@@ -22,7 +22,7 @@ const Navigation = (props: INavProps) => {
   const { name, navIsOpen, toggleNav, navLinks } = props;
 
   return (
-    <div className="Navigation">
+    <div className="Navigation" data-testid="navigation">
       <div className="container px-5 mx-auto">
         <div className="Navigation-wrapper">
           <div className="z-20 text-base sm:text-3xl Navigation-name">

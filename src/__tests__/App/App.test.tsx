@@ -2,8 +2,13 @@ import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import App from '../../App';
 import Container from '../../components/Container/Container';
-/* import Navigation from '../../components/Navigation/Navigation'; */
+/* import Navigation from '../../components/Navigation/Navigation';
+import { INavLinkItem } from '../../utils/data'; */
 
+/* interface AppProps {
+  navLinks: INavLinkItem[];
+}
+ */
 afterEach(() => {
   cleanup();
 });
@@ -24,7 +29,7 @@ test('renders Container component', () => {
 });
 
 /* test('renders Navigation component', () => {
-  render(<Navigation name="Edward" />);
-  const ContainerElement = screen.getByTestId('container');
+  render(<Navigation name="Edward" navLinks={navLinks} />);
+  const ContainerElement = screen.getByTestId('navigation');
   expect(ContainerElement).not.toBe(undefined);
 }); */
