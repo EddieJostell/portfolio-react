@@ -5,6 +5,7 @@ import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import { isMobileMax } from '../../utils/userAgent';
 import './Navigation.scss';
+import { Link } from 'react-router-dom';
 
 interface INavProps {
   name: string;
@@ -25,27 +26,25 @@ const Navigation = (props: INavProps) => {
     <div className="Navigation" data-testid="navigation">
       <div className="container px-5 mx-auto">
         <div className="Navigation-wrapper">
-          <div className="z-20 text-base sm:text-3xl Navigation-name">
-            {!navIsOpen && <span>{name}</span>}
-          </div>
+          <Link
+            className={
+              !navIsOpen ? 'Navigation-name' : 'Navigation-name nav-transparent'
+            }
+            to="/"
+          >
+            {name}
+          </Link>
+
           <div className="Links">
             {isMobileMax ? (
               <NavList toggleNav={toggleNav} navListItems={navLinks} />
             ) : navIsOpen ? (
               <div onClick={() => toggleNav(false)}>
-                <img
-                  alt="close"
-                  className="w-6 h-6 cursor-pointer cross sm:w-8 sm:h-8"
-                  src={iconX}
-                />
+                <img alt="close" className="cross" src={iconX} />
               </div>
             ) : (
               <div onClick={() => toggleNav(true)}>
-                <img
-                  alt="menu"
-                  className="w-6 h-6 cursor-pointer menu sm:w-8 sm:h-8"
-                  src={iconMenu}
-                />
+                <img alt="menu" className="menu" src={iconMenu} />
               </div>
             )}
           </div>

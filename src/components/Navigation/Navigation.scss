@@ -11,18 +11,8 @@
   z-index: 50;
   color: #b0b2c3;
 
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     color: #fff;
-  }
-
-  .Navigation-name {
-    font-size: 64px;
-    font-family: 'Diplomata', cursive;
-    color: #b0b2c3;
-
-    @media (max-width: 767px) {
-      color: #fff;
-    }
   }
 
   .Navigation-wrapper {
@@ -31,10 +21,36 @@
     align-items: center;
     justify-content: space-between;
 
+    .Navigation-name {
+      font-size: 64px;
+      font-family: 'Diplomata', cursive;
+      color: #fff;
+
+      &.nav-transparent {
+        color: transparent;
+      }
+
+      @media (min-width: 768px) {
+        color: #b0b2c3;
+      }
+    }
+
     .Links {
       z-index: 20;
       display: flex;
       justify-content: flex-end;
+
+      .cross,
+      .menu {
+        width: 1.5em;
+        height: 1.5em;
+        cursor: pointer;
+
+        @media (min-width: 768px) {
+          width: 2em;
+          height: 2em;
+        }
+      }
     }
   }
 }
