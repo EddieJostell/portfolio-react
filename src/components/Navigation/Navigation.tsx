@@ -63,9 +63,7 @@ Navigation.defaultProps = defaultProps;
 
 //border-red-500 border-opacity-100
 
-//Change the navbar to house the links at the top for desktop
-//then have them hidden with hamburger for phone size.
-
+//eslint-disable-next-line
 {
   /* <div aria-label="Mobile Menu" className="Links-menu">
   <span className="menu-trigger">

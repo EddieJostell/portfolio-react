@@ -15,7 +15,7 @@ import RouteLinks from './components/RouteLinks/RouteLinks';
 import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
-import QuoteContent from './components/About/QuoteContent/QuoteContent';
+import QuoteContent from './components/QuoteContent/QuoteContent';
 interface IAppState {
   navIsOpen: boolean;
 }

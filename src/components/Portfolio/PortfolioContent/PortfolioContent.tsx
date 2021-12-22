@@ -32,6 +32,7 @@ export default PortfolioContent;
 
 //Cool card animation to try
 
+//eslint-disable-next-line
 {
   /* <div class="card">
     <div class="image">

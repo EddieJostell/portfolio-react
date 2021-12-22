@@ -1,15 +1,20 @@
 .QuoteContent {
-  position: relative;
+  position: fixed;
+  bottom: 1.25rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  max-width: 600px;
+  align-items: center;
+  justify-content: center;
+  max-width: 36rem;
   margin: 0 auto;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  color: #b0b2c3;
 
-  span {
-    font-size: 25px;
+  & > .quote {
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 

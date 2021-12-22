@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { HelperContext, IContextState } from '../../../utils/HelperContext';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
 import './QuoteContent.scss';
 
 interface Props {}
@@ -39,10 +39,8 @@ const QuoteContent = (props: Props) => {
   });
 
   return (
-    <div className="fixed flex flex-col items-center max-w-xl mx-auto my-20 animation bottom-5 text-gray">
-      <span className="text-xl">
-        <i>{quote.quote}</i>
-      </span>
+    <div className="QuoteContent animation">
+      <span className="quote">{quote.quote}</span>
       <span>- {quote.author}</span>
     </div>
   );

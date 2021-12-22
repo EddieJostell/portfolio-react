@@ -64,3 +64,5 @@ export const NavList = (props: INavListProps) => {
 };
 
 export default NavList;
+
+// Remove tailwind and write SASS
