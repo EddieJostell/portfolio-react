@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import Navigation from './components/Navigation/Navigation';
 import {
   ProjectList,
@@ -39,10 +39,7 @@ function App() {
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div
-        className="min-h-screen text-center bg-cool-black"
-        data-testid="application"
-      >
+      <div className="App" data-testid="application">
         <Router>
           <Navigation
             navIsOpen={appState.navIsOpen}

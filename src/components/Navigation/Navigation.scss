@@ -5,9 +5,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   z-index: 50;
   color: #b0b2c3;
 
@@ -40,6 +38,9 @@
       display: flex;
       justify-content: flex-end;
 
+      & .desktopLinks {
+      }
+
       .cross,
       .menu {
         width: 1.5em;
@@ -49,6 +50,46 @@
         @media (min-width: 768px) {
           width: 2em;
           height: 2em;
+        }
+      }
+    }
+  }
+}
+
+.NavList-mobile {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000;
+  opacity: 0.9;
+
+  & > .NavList-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 14rem;
+    height: 100vh;
+
+    @media (min-width: 640px) {
+      padding-bottom: 18rem;
+    }
+
+    & > .NavList-item {
+      margin: 1rem;
+      list-style-type: none;
+      cursor: pointer;
+      & > .link {
+        font-family: sans-serif;
+        font-size: 3rem;
+        line-height: 1;
+        color: #fff;
+        &:active,
+        :visited {
+          color: #fff;
         }
       }
     }
