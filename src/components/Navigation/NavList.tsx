@@ -24,11 +24,8 @@ export const NavList = (props: INavListProps) => {
 
   const desktopNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
-      <li key={item.id} className="m-4 list-none cursor-pointer">
-        <Link
-          className="font-sans text-2xl list-none cursor-pointer text-gray hover:text-white hover: active:text-white visited:text-white"
-          to={item.path}
-        >
+      <li key={item.id} className="NavList-item">
+        <Link className="link" to={item.path}>
           {item.text}
         </Link>
       </li>
@@ -37,11 +34,7 @@ export const NavList = (props: INavListProps) => {
 
   const renderLinks = () => {
     if (isMobileMax) {
-      return (
-        <ul className="flex flex-row items-center justify-center">
-          {desktopNavItems()}
-        </ul>
-      );
+      return <ul className="NavList-desktop">{desktopNavItems()}</ul>;
     } else {
       return (
         <div className="NavList-mobile ">
@@ -62,3 +55,4 @@ export const NavList = (props: INavListProps) => {
 export default NavList;
 
 // Remove tailwind and write SASS
+//font-sans text-2xl list-none cursor-pointer text-gray hover:text-white active:text-white visited:text-white

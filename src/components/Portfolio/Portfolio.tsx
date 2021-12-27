@@ -21,7 +21,7 @@ const Portfolio = (props: IPortfolioProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full h-full px-5 text-white md:px-0">
+    <div className="Portfolio">
       <div className="px-10 pt-0 pb-10 mt-10 rounded-md shadow-2xl">
         <h1 className="mt-8 text-5xl">PROJECTS</h1>
       </div>
@@ -34,3 +34,4 @@ const Portfolio = (props: IPortfolioProps) => {
 };
 
 export default Portfolio;
+//flex flex-col items-center w-full h-full px-5 text-white md:px-0
