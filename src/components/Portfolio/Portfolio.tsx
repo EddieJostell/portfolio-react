@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
+import './Portfolio.scss';
 
 import PortfolioContent from './PortfolioContent/PortfolioContent';
 interface IPortfolioProps {}
