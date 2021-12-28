@@ -15,7 +15,6 @@ import RouteLinks from './components/RouteLinks/RouteLinks';
 import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
-import QuoteContent from './components/QuoteContent/QuoteContent';
 interface IAppState {
   navIsOpen: boolean;
 }
@@ -51,7 +50,6 @@ function App() {
           <Container>
             <RouteLinks />
             {isMobileMax && <ContactSlim />}
-            {isMobileMax && <QuoteContent />}
           </Container>
         </Router>
       </div>
