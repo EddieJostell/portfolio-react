@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
-import About from '../components/About/About';
 import Contact from '../components/Contact/Contact';
+import Home from '../components/Home/Home';
 import Portfolio from '../components/Portfolio/Portfolio';
 
 export interface IRouteInfoItem {
@@ -15,7 +15,7 @@ export const RouteInfo: IRouteInfoItem[] = [
     id: 1,
     path: '/',
     exact: true,
-    component: About,
+    component: Home,
   },
   {
     id: 2,
