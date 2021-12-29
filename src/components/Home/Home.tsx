@@ -24,11 +24,11 @@ const Home = (props: IHomeProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-around w-full h-full px-5">
+    <div className="Home">
       <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
         {personalInfo()}
       </div>
-      <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
+      {/* <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
         <div className="flex-col w-full p-8 shadow-2xl bg-red-200justify-center lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Likes</h2>
           <div className="text-xl">
@@ -56,7 +56,7 @@ const Home = (props: IHomeProps) => {
             of a comeback.
           </div>
         </div>
-      </div>
+      </div> */}
       {isMobileMax && <QuoteContent />}
     </div>
   );
