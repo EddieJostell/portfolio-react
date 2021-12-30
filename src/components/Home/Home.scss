@@ -3,4 +3,21 @@
   width: 100%;
   height: 100%;
   padding: 0 1.25rem;
+
+  &-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 3rem;
+    color: #fff;
+
+    & .name {
+      font-family: Goldman, sans-serif;
+      font-size: 3rem;
+    }
+    & .work {
+      font-size: 2rem;
+    }
+  }
 }

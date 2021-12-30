@@ -13,22 +13,16 @@ const Home = (props: IHomeProps) => {
     let onlyWork = work.substring(7, work.length);
 
     return (
-      <div className="flex flex-col items-center sm:items-start">
-        <div className="w-auto text-5xl text-white justify-self-start">
-          <span className="">{onlyName}</span>
-        </div>
-        <div className="w-auto text-3xl text-white">
-          <i>{onlyWork}</i>
-        </div>
-      </div>
+      <>
+        <span className="name">{onlyName}</span>
+        <span className="work">{onlyWork}</span>
+      </>
     );
   };
 
   return (
     <div className="Home">
-      <div className="flex flex-col flex-wrap justify-between pt-12 text-center text-orange">
-        {personalInfo()}
-      </div>
+      <div className="Home-banner">{personalInfo()}</div>
       {/* <div className="flex flex-col items-start justify-center h-full text-white m-7 lg:flex-row">
         <div className="flex-col w-full p-8 shadow-2xl bg-red-200justify-center lg:mr-5 lg:mt-0">
           <h2 className="text-2xl text-center">Likes</h2>
