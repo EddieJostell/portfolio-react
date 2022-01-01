@@ -1,6 +1,4 @@
 import React from 'react';
-import iconX from '../../Icons/x.svg';
-import iconMenu from '../../Icons/menu.svg';
 import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import { isMobileMax } from '../../utils/userAgent';
@@ -22,30 +20,36 @@ const defaultProps: Partial<INavProps> = {
 const Navigation = (props: INavProps) => {
   const { name, navIsOpen, toggleNav, navLinks } = props;
 
+  const menu = () => {
+    return (
+      <div
+        onClick={() => toggleNav(!navIsOpen)}
+        className={navIsOpen ? 'icon nav-icon-5 open' : 'icon nav-icon-5'}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    );
+  };
+
   return (
     <div className="Navigation" data-testid="navigation">
-      <div className="container px-5 mx-auto">
+      <div className="container mx-auto md:px-5">
         <div className="Navigation-wrapper">
-          <Link
-            className={
-              !navIsOpen ? 'Navigation-name' : 'Navigation-name nav-transparent'
-            }
-            to="/"
-          >
-            {name}
-          </Link>
+          {!navIsOpen ? (
+            <Link className="Navigation-name" to="/">
+              {name}
+            </Link>
+          ) : (
+            <div />
+          )}
 
           <div className="Links">
             {isMobileMax ? (
               <NavList toggleNav={toggleNav} navListItems={navLinks} />
-            ) : navIsOpen ? (
-              <div onClick={() => toggleNav(false)}>
-                <img alt="close" className="cross" src={iconX} />
-              </div>
             ) : (
-              <div onClick={() => toggleNav(true)}>
-                <img alt="menu" className="menu" src={iconMenu} />
-              </div>
+              menu()
             )}
           </div>
         </div>
@@ -60,19 +64,3 @@ const Navigation = (props: INavProps) => {
 export default Navigation;
 
 Navigation.defaultProps = defaultProps;
-
-//border-red-500 border-opacity-100
-
-//eslint-disable-next-line
-{
-  /* <div aria-label="Mobile Menu" className="Links-menu">
-  <span className="menu-trigger">
-    <i className="menu-trigger-bar top"></i>
-    <i className="menu-trigger-bar middle"></i>
-    <i className="menu-trigger-bar bottom"></i>
-  </span>
-</div>;
- */
-}
-
-//Menu bars from Riccardo Z
