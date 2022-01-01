@@ -2,6 +2,7 @@
   margin: 1rem;
   list-style-type: none;
   cursor: pointer;
+  font-family: Goldman, 'Times New Roman', Times, serif;
 }
 
 .Navigation {
@@ -29,14 +30,15 @@
       font-size: 64px;
       font-family: 'Diplomata', cursive;
       color: #fff;
+      transition: opacity 0.35s ease 0.65s;
 
       &:hover {
-        color: #fff;
-        transition: all 0.5s ease-in-in;
-        -webkit-transition: all 0.5s ease-in-in;
-        -moz-transition: all 0.5s ease-in-in;
-        -ms-transition: all 0.5s ease-in-in;
-        -o-transition: all 0.5s ease-in-in;
+        color: #b0b2c3;
+        transition: opacity 0.25s ease;
+        -webkit-transition: opacity 0.25s ease;
+        -moz-transition: opacity 0.25s ease;
+        -ms-transition: opacity 0.25s ease;
+        -o-transition: opacity 0.25s ease;
       }
 
       &.nav-transparent {
@@ -44,7 +46,7 @@
       }
 
       @media (min-width: 768px) {
-        color: #b0b2c3;
+        color: #fff;
       }
     }
 
@@ -93,7 +95,6 @@
     & > .NavList-item {
       @include item;
       & > .link {
-        font-family: sans-serif;
         font-size: 3rem;
         line-height: 1;
         color: #fff;
@@ -116,7 +117,6 @@
   > .NavList-item {
     @include item;
     > .link {
-      font-family: sans-serif;
       font-size: 1.5rem;
       line-height: 2rem;
       list-style-type: none;

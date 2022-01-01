@@ -43,7 +43,7 @@ function App() {
           <Navigation
             navIsOpen={appState.navIsOpen}
             toggleNav={toggleNav}
-            name="EJ"
+            name="E"
             navLinks={NavigationLinks}
             data-testid="navigation"
           />
