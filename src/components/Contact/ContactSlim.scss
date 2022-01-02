@@ -1,7 +1,7 @@
 .ContactSlim {
   position: fixed;
   top: 25vh;
-  right: 0;
+  right: 20px;
   display: flex;
   flex-direction: column;
 
@@ -16,7 +16,7 @@
 
   .ContactSlim-icons {
     img {
-      height: 40px;
+      height: 60px;
       margin: 15px;
       transition: all 0.5s;
       -webkit-transition: all 0.5s;
@@ -25,7 +25,7 @@
       -o-transition: all 0.5s;
 
       &:hover {
-        height: 80px;
+        height: 100px;
       }
     }
   }

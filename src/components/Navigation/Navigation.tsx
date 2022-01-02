@@ -35,7 +35,7 @@ const Navigation = (props: INavProps) => {
 
   return (
     <div className="Navigation" data-testid="navigation">
-      <div className="container mx-auto md:px-5">
+      <div className="Container">
         <div className="Navigation-wrapper">
           {!navIsOpen ? (
             <Link className="Navigation-name" to="/">

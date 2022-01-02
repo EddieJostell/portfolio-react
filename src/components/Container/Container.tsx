@@ -1,10 +1,11 @@
 import React from 'react';
+import './Container.scss';
 
 export interface IContainerProps {}
 
 function Container(props: { children: React.ReactNode }) {
   return (
-    <div className="container mx-auto" data-testid="container">
+    <div className="Container" data-testid="container">
       {props.children}
     </div>
   );
