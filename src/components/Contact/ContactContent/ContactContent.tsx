@@ -9,10 +9,10 @@ const ContactContent = (props: ContactContentProps) => {
   const displayContactInfo = () => {
     return contactInfo.contactItem.map((con, key) => (
       <li key={key} className="List-items">
-        <a href={con.link}>
+        <a href={con.link} target="_blank" rel="noopener noreferrer">
           <img alt={con.title} src={con.iconSrc} />
         </a>
-        <a href={con.link}>
+        <a href={con.link} target="_blank" rel="noopener noreferrer">
           <h3>{con.title}</h3>
         </a>
       </li>
