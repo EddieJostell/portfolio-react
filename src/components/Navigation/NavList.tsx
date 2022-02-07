@@ -7,10 +7,11 @@ import ContactSlim from '../Contact/ContactSlim';
 export interface INavListProps {
   navListItems: INavLinkItem[];
   toggleNav: (visible: boolean) => void;
+  scrollTest?: () => void;
 }
 
 export const NavList = (props: INavListProps) => {
-  const { toggleNav, navListItems } = props;
+  const { toggleNav, navListItems, scrollTest } = props;
 
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
@@ -25,7 +26,7 @@ export const NavList = (props: INavListProps) => {
   const desktopNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
       <li key={item.id} className="NavList-item">
-        <Link className="link" to={item.path}>
+        <Link className="link" to={item.path} onClick={scrollTest}>
           {item.text}
         </Link>
       </li>

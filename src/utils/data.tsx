@@ -105,6 +105,7 @@ export const NavigationLinks: INavLinkItem[] = [
     path: '/Portfolio',
   },
   { id: 3, text: 'Contact', path: '/Contact' },
+  { id: 4, text: 'ScrollTest', path: '' },
 ];
 
 export const ProjectList: IPortfolioItem[] = [

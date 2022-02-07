@@ -15,6 +15,7 @@ import RouteLinks from './components/RouteLinks/RouteLinks';
 import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
+import Portfolio from './components/Portfolio/Portfolio';
 interface IAppState {
   navIsOpen: boolean;
 }
@@ -36,6 +37,19 @@ function App() {
     contactItem: ContactInfo,
   };
 
+  const clickMe = () => {
+    const element = document.getElementById('test');
+
+    const topPos = element!.getBoundingClientRect();
+
+    let rectTop = topPos.top + window.scrollY;
+
+    window.scrollTo({
+      top: rectTop,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <ContextProvider state={HelperContextValue}>
       <div className="App" data-testid="application">
@@ -46,10 +60,12 @@ function App() {
             name="E"
             navLinks={NavigationLinks}
             data-testid="navigation"
+            scrollTest={clickMe}
           />
           <Container>
             <RouteLinks />
             {isMobileMax && <ContactSlim />}
+            <Portfolio />
           </Container>
         </Router>
       </div>

@@ -11,6 +11,7 @@ interface INavProps {
   toggleNav: (visible: boolean) => void;
   status?: string;
   navLinks: INavLinkItem[];
+  scrollTest?: () => void;
 }
 
 const defaultProps: Partial<INavProps> = {
@@ -18,9 +19,9 @@ const defaultProps: Partial<INavProps> = {
 };
 
 const Navigation = (props: INavProps) => {
-  const { name, navIsOpen, toggleNav, navLinks } = props;
+  const { name, navIsOpen, toggleNav, navLinks, scrollTest } = props;
 
-  const menu = () => {
+  const hamburgerMenu = () => {
     return (
       <div
         onClick={() => toggleNav(!navIsOpen)}
@@ -47,9 +48,13 @@ const Navigation = (props: INavProps) => {
 
           <div className="Links">
             {isMobileMax ? (
-              <NavList toggleNav={toggleNav} navListItems={navLinks} />
+              <NavList
+                toggleNav={toggleNav}
+                navListItems={navLinks}
+                scrollTest={scrollTest}
+              />
             ) : (
-              menu()
+              hamburgerMenu()
             )}
           </div>
         </div>
