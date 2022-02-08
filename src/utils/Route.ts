@@ -9,6 +9,11 @@ export interface IRouteInfoItem {
   exact?: boolean;
   component: FunctionComponent;
 }
+export interface IScrollItem {
+  id: number;
+  scrollId?: string;
+  name: string;
+}
 
 export const RouteInfo: IRouteInfoItem[] = [
   {
@@ -28,5 +33,23 @@ export const RouteInfo: IRouteInfoItem[] = [
     path: '/Contact',
     exact: true,
     component: Contact,
+  },
+];
+
+export const ScrollInfo: IScrollItem[] = [
+  {
+    id: 1,
+    scrollId: 'portfolio',
+    name: 'Portfolio',
+  },
+  {
+    id: 2,
+    scrollId: 'contact',
+    name: 'Contact',
+  },
+  {
+    id: 3,
+    scrollId: 'experiments',
+    name: 'Experiments',
   },
 ];
