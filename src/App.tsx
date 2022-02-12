@@ -12,7 +12,7 @@ import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container/Container';
 import RouteLinks from './components/RouteLinks/RouteLinks';
-import { RouteInfo } from '../src/utils/Route';
+import { RouteInfo, ScrollInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
 import Portfolio from './components/Portfolio/Portfolio';
@@ -35,6 +35,7 @@ function App() {
     routeItem: RouteInfo,
     aboutItem: AboutMe,
     contactItem: ContactInfo,
+    scrollItem: ScrollInfo,
   };
 
   const clickMe = () => {
