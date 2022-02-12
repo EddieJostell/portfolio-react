@@ -39,16 +39,21 @@ export const RouteInfo: IRouteInfoItem[] = [
 export const ScrollInfo: IScrollItem[] = [
   {
     id: 1,
+    scrollId: 'home',
+    name: 'Home',
+  },
+  {
+    id: 2,
     scrollId: 'portfolio',
     name: 'Portfolio',
   },
   {
-    id: 2,
+    id: 3,
     scrollId: 'contact',
     name: 'Contact',
   },
   {
-    id: 3,
+    id: 4,
     scrollId: 'experiments',
     name: 'Experiments',
   },

@@ -9,7 +9,7 @@ import {
   ContactInfo,
   IContactItem,
 } from '../utils/data';
-import { IRouteInfoItem, RouteInfo } from './Route';
+import { IRouteInfoItem, RouteInfo, IScrollItem, ScrollInfo } from './Route';
 export interface IContextProps {
   state: IContextState;
   children?: ReactNode;
@@ -21,6 +21,7 @@ export interface IContextState {
   routeItem: IRouteInfoItem[];
   aboutItem: IAboutMe[];
   contactItem: IContactItem[];
+  scrollItem: IScrollItem[];
 }
 
 const initialHelperContext: IContextState = {
@@ -29,6 +30,7 @@ const initialHelperContext: IContextState = {
   routeItem: RouteInfo,
   aboutItem: AboutMe,
   contactItem: ContactInfo,
+  scrollItem: ScrollInfo,
 };
 
 export const HelperContext = createContext<IContextState>(initialHelperContext);
