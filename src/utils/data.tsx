@@ -107,8 +107,8 @@ export const NavigationLinks: INavLinkItem[] = [
     scrollId: 'portfolio',
   },
   { id: 3, text: 'Experiments', path: '', scrollId: 'experiements' },
-  { id: 4, text: 'Contact', path: '/Contact', scrollId: 'contact' },
-  { id: 5, text: 'Skills', path: '', scrollId: 'skills' },
+  { id: 4, text: 'Skills', path: '', scrollId: 'skills' },
+  { id: 5, text: 'Contact', path: '/Contact', scrollId: 'contact' },
 ];
 
 export const ProjectList: IPortfolioItem[] = [

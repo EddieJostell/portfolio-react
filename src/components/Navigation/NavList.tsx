@@ -20,16 +20,22 @@ export const NavList = (props: INavListProps) => {
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
       <li key={item.id} className="NavList-item">
-        <Link
-          className="link"
-          to={item.scrollId}
-          spy={true}
-          smooth={true}
-          duration={600}
-          onClick={() => toggleNav(false)}
-        >
-          {item.text}
-        </Link>
+        {item.scrollId === 'contact' ? (
+          <span className="link" onClick={showContact}>
+            {item.text}
+          </span>
+        ) : (
+          <Link
+            className="link"
+            to={item.scrollId}
+            spy={true}
+            smooth={true}
+            duration={600}
+            onClick={() => toggleNav(false)}
+          >
+            {item.text}
+          </Link>
+        )}
       </li>
     ));
   };

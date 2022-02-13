@@ -18,14 +18,16 @@ import Portfolio from './components/Portfolio/Portfolio';
 import Home from './components/Home/Home';
 import Skills from './components/Skills/Skills';
 import Experiments from './components/Experiments/Experiments';
-import Contact from './components/Contact/Contact';
+
 interface IAppState {
   navIsOpen: boolean;
+  contactIsActive: boolean;
 }
 
 function App() {
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
+    contactIsActive: false,
   });
 
   const toggleNav = (visible: boolean) => {
@@ -70,7 +72,6 @@ function App() {
             <Portfolio />
             <Skills />
             <Experiments />
-            <Contact />
             {isMobileMax && <ContactSlim />}
           </Container>
         </Router>
