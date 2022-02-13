@@ -11,11 +11,14 @@ import {
 import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Container from './components/Container/Container';
-import RouteLinks from './components/RouteLinks/RouteLinks';
-import { RouteInfo, ScrollInfo } from '../src/utils/Route';
+import { RouteInfo } from '../src/utils/Route';
 import ContactSlim from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
 import Portfolio from './components/Portfolio/Portfolio';
+import Home from './components/Home/Home';
+import Skills from './components/Skills/Skills';
+import Experiments from './components/Experiments/Experiments';
+import Contact from './components/Contact/Contact';
 interface IAppState {
   navIsOpen: boolean;
 }
@@ -35,10 +38,9 @@ function App() {
     routeItem: RouteInfo,
     aboutItem: AboutMe,
     contactItem: ContactInfo,
-    scrollItem: ScrollInfo,
   };
 
-  const clickMe = () => {
+  /*   const clickMe = () => {
     const element = document.getElementById('test');
 
     const topPos = element!.getBoundingClientRect();
@@ -49,7 +51,7 @@ function App() {
       top: rectTop,
       behavior: 'smooth',
     });
-  };
+  }; */
 
   return (
     <ContextProvider state={HelperContextValue}>
@@ -61,12 +63,15 @@ function App() {
             name="E"
             navLinks={NavigationLinks}
             data-testid="navigation"
-            scrollTest={clickMe}
           />
           <Container>
-            <RouteLinks />
-            {isMobileMax && <ContactSlim />}
+            {/* <RouteLinks /> */}
+            <Home />
             <Portfolio />
+            <Skills />
+            <Experiments />
+            <Contact />
+            {isMobileMax && <ContactSlim />}
           </Container>
         </Router>
       </div>

@@ -1,18 +1,15 @@
 import { FunctionComponent } from 'react';
 import Contact from '../components/Contact/Contact';
+import Experiments from '../components/Experiments/Experiments';
 import Home from '../components/Home/Home';
 import Portfolio from '../components/Portfolio/Portfolio';
+import Skills from '../components/Skills/Skills';
 
 export interface IRouteInfoItem {
   id: number;
-  path: string;
+  path?: string;
   exact?: boolean;
-  component: FunctionComponent;
-}
-export interface IScrollItem {
-  id: number;
-  scrollId?: string;
-  name: string;
+  component?: FunctionComponent;
 }
 
 export const RouteInfo: IRouteInfoItem[] = [
@@ -34,27 +31,16 @@ export const RouteInfo: IRouteInfoItem[] = [
     exact: true,
     component: Contact,
   },
-];
-
-export const ScrollInfo: IScrollItem[] = [
   {
-    id: 1,
-    scrollId: 'home',
-    name: 'Home',
-  },
-  {
-    id: 2,
-    scrollId: 'portfolio',
-    name: 'Portfolio',
-  },
-  {
-    id: 3,
-    scrollId: 'contact',
-    name: 'Contact',
+    id: 4,
+    path: '/Experiments',
+    exact: true,
+    component: Experiments,
   },
   {
     id: 4,
-    scrollId: 'experiments',
-    name: 'Experiments',
+    path: '/Skills',
+    exact: true,
+    component: Skills,
   },
 ];

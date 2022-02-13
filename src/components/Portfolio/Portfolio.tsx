@@ -22,7 +22,7 @@ const Portfolio = (props: IPortfolioProps) => {
   };
 
   return (
-    <div id="test" className="Portfolio">
+    <div id="portfolio" className="Portfolio">
       <div className="Portfolio-title">
         <h1>PROJECTS</h1>
       </div>

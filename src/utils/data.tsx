@@ -7,6 +7,7 @@ export interface INavLinkItem {
   id: number;
   text: string;
   path: string;
+  scrollId: string;
 }
 
 export interface IPortfolioItem {
@@ -98,15 +99,16 @@ export const AboutMe: IAboutMe[] = [
 ];
 
 export const NavigationLinks: INavLinkItem[] = [
-  { id: 1, text: 'Home', path: '/' },
+  /* { id: 1, text: 'Home', path: '/', scrollId: 'home' }, */
   {
     id: 2,
     text: 'Portfolio',
     path: '/Portfolio',
+    scrollId: 'portfolio',
   },
-  { id: 3, text: 'Experiments', path: '' },
-  { id: 4, text: 'Contact', path: '/Contact' },
-  { id: 5, text: 'ScrollTest', path: '' },
+  { id: 3, text: 'Experiments', path: '', scrollId: 'experiements' },
+  { id: 4, text: 'Contact', path: '/Contact', scrollId: 'contact' },
+  { id: 5, text: 'Skills', path: '', scrollId: 'skills' },
 ];
 
 export const ProjectList: IPortfolioItem[] = [

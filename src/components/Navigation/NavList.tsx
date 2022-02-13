@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+/* import { Link } from 'react-router-dom'; */
+import { Link } from 'react-scroll';
 import { INavLinkItem } from '../../utils/data';
 import { isMobileMax } from '../../utils/userAgent';
 import ContactSlim from '../Contact/ContactSlim';
@@ -7,16 +8,26 @@ import ContactSlim from '../Contact/ContactSlim';
 export interface INavListProps {
   navListItems: INavLinkItem[];
   toggleNav: (visible: boolean) => void;
-  scrollTest?: () => void;
 }
 
 export const NavList = (props: INavListProps) => {
-  const { toggleNav, navListItems, scrollTest } = props;
+  const { toggleNav, navListItems } = props;
+
+  const showContact = () => {
+    alert('Contact Component here');
+  };
 
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
       <li key={item.id} className="NavList-item">
-        <Link className="link" to={item.path} onClick={() => toggleNav(false)}>
+        <Link
+          className="link"
+          to={item.scrollId}
+          spy={true}
+          smooth={true}
+          duration={600}
+          onClick={() => toggleNav(false)}
+        >
           {item.text}
         </Link>
       </li>
@@ -26,9 +37,21 @@ export const NavList = (props: INavListProps) => {
   const desktopNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
       <li key={item.id} className="NavList-item">
-        <Link className="link" to={item.path} onClick={scrollTest}>
-          {item.text}
-        </Link>
+        {item.scrollId === 'contact' ? (
+          <span className="link" onClick={showContact}>
+            {item.text}
+          </span>
+        ) : (
+          <Link
+            className="link"
+            to={item.scrollId}
+            spy={true}
+            smooth={true}
+            duration={600}
+          >
+            {item.text}
+          </Link>
+        )}
       </li>
     ));
   };
