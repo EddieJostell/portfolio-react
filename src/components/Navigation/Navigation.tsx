@@ -47,7 +47,11 @@ const Navigation = (props: INavProps) => {
 
           <div className="Links">
             {isMobileMax ? (
-              <NavList toggleNav={toggleNav} navListItems={navLinks} />
+              <NavList
+                toggleNav={toggleNav}
+                navListItems={navLinks}
+                navIsOpen={navIsOpen}
+              />
             ) : (
               hamburgerMenu()
             )}
@@ -55,7 +59,13 @@ const Navigation = (props: INavProps) => {
         </div>
       </div>
       {!isMobileMax
-        ? navIsOpen && <NavList toggleNav={toggleNav} navListItems={navLinks} />
+        ? navIsOpen && (
+            <NavList
+              toggleNav={toggleNav}
+              navListItems={navLinks}
+              navIsOpen={navIsOpen}
+            />
+          )
         : ''}
     </div>
   );

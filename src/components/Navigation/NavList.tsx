@@ -8,13 +8,15 @@ import ContactSlim from '../Contact/ContactSlim';
 export interface INavListProps {
   navListItems: INavLinkItem[];
   toggleNav: (visible: boolean) => void;
+  navIsOpen: boolean;
 }
 
 export const NavList = (props: INavListProps) => {
-  const { toggleNav, navListItems } = props;
+  const { toggleNav, navListItems, navIsOpen } = props;
 
   const showContact = () => {
     alert('Contact Component here');
+    toggleNav(!navIsOpen);
   };
 
   const mobileNavItems = () => {
@@ -30,8 +32,8 @@ export const NavList = (props: INavListProps) => {
             to={item.scrollId}
             spy={true}
             smooth={true}
-            duration={600}
-            onClick={() => toggleNav(false)}
+            duration={800}
+            onClick={() => toggleNav(!navIsOpen)}
           >
             {item.text}
           </Link>
