@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
-import QuoteContent from '../QuoteContent/QuoteContent';
+import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
 
 interface IHomeProps {}
 
-const Home = (props: IHomeProps) => {
+export const Home = (props: IHomeProps) => {
   const personalInfo = () => {
     let name = "Hello my name is Edward 'Eddie' Jostell";
     let work = 'I am a Frontend Developer';
@@ -56,8 +56,6 @@ const Home = (props: IHomeProps) => {
     </div>
   );
 };
-
-export default Home;
 
 //https://stackoverflow.com/questions/42094060/changing-shuffling-text-every-1-5-second-in-a-react-component
 

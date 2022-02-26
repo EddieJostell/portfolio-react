@@ -141,6 +141,11 @@
         }
       }
     }
+
+    & .NavList-contactLinks {
+      position: absolute;
+      bottom: 2.5rem;
+    }
   }
 }
 

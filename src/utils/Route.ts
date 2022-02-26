@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
-import Contact from '../components/Contact/Contact';
-import Experiments from '../components/Experiments/Experiments';
-import Home from '../components/Home/Home';
-import Portfolio from '../components/Portfolio/Portfolio';
-import Skills from '../components/Skills/Skills';
+import { Contact } from '../components/Contact/Contact';
+import { Experiments } from '../components/Experiments/Experiments';
+import { Home } from '../components/Home/Home';
+import { Portfolio } from '../components/Portfolio/Portfolio';
+import { Skills } from '../components/Skills/Skills';
 
 export interface IRouteInfoItem {
   id: number;

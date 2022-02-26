@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-scroll';
 import { INavLinkItem } from '../../utils/data';
 import { isMobileMax } from '../../utils/userAgent';
-import ContactSlim from '../Contact/ContactSlim';
+import { ContactSlim } from '../Contact/ContactSlim';
 
 export interface INavListProps {
   navListItems: INavLinkItem[];
@@ -21,7 +21,7 @@ export const NavList = (props: INavListProps) => {
 
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
-      <li key={item.id} className="NavList-item">
+      <div key={item.id} className="NavList-item">
         {item.scrollId === 'contact' ? (
           <span className="link" onClick={showContact}>
             {item.text}
@@ -38,7 +38,7 @@ export const NavList = (props: INavListProps) => {
             {item.text}
           </Link>
         )}
-      </li>
+      </div>
     ));
   };
 
@@ -70,12 +70,12 @@ export const NavList = (props: INavListProps) => {
     } else {
       return (
         <div className="NavList-mobile ">
-          <ul className="NavList-container">
+          <div className="NavList-container">
             {mobileNavItems()}
-            <div className="absolute bottom-10">
+            <div className="NavList-contactLinks">
               <ContactSlim />
             </div>
-          </ul>
+          </div>
         </div>
       );
     }
@@ -83,8 +83,6 @@ export const NavList = (props: INavListProps) => {
 
   return <Fragment>{renderLinks()}</Fragment>;
 };
-
-export default NavList;
 
 // Remove tailwind and write SASS
 //font-sans text-2xl list-none cursor-pointer text-gray hover:text-white active:text-white visited:text-white

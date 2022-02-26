@@ -1,10 +1,10 @@
 import * as React from 'react';
-import ContactContent from './ContactContent/ContactContent';
+import { ContactContent } from './ContactContent/ContactContent';
 import './Contact.scss';
 
 interface IContactProps {}
 
-const Contact = (props: IContactProps) => {
+export const Contact = (props: IContactProps) => {
   return (
     <div className="Contact" id="contact">
       <div className="Contact-title">
@@ -14,5 +14,3 @@ const Contact = (props: IContactProps) => {
     </div>
   );
 };
-
-export default Contact;

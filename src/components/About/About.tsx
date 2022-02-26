@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
-import QuoteContent from '../QuoteContent/QuoteContent';
+import { QuoteContent } from '../QuoteContent/QuoteContent';
 
 interface IAboutProps {}
 

@@ -17,7 +17,7 @@ const defaultProps: Partial<INavProps> = {
   status: '12315',
 };
 
-const Navigation = (props: INavProps) => {
+export const Navigation = (props: INavProps) => {
   const { name, navIsOpen, toggleNav, navLinks } = props;
 
   const hamburgerMenu = () => {
@@ -70,7 +70,5 @@ const Navigation = (props: INavProps) => {
     </div>
   );
 };
-
-export default Navigation;
 
 Navigation.defaultProps = defaultProps;

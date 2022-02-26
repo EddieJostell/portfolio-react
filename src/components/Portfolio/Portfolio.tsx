@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
+import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import './Portfolio.scss';
 
-import PortfolioContent from './PortfolioContent/PortfolioContent';
+import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 interface IPortfolioProps {}
 
-const Portfolio = (props: IPortfolioProps) => {
+export const Portfolio = (props: IPortfolioProps) => {
   const Projects = useContext<IContextState>(HelperContext);
 
   const displayPortfolioData = () => {
-    return Projects.portItem.map((port, key) => (
+    return Projects.portItem.map((port: IPortfolioItem, key: number) => (
       <PortfolioContent
         key={key}
         title={port.title}
@@ -26,13 +27,11 @@ const Portfolio = (props: IPortfolioProps) => {
       <div className="Portfolio-title">
         <h1>PROJECTS</h1>
       </div>
-      <ul className="List">
+      <div className="List">
         {displayPortfolioData()}
         {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
-      </ul>
+      </div>
     </div>
   );
 };
-
-export default Portfolio;
 //flex flex-col items-center w-full h-full px-5 text-white md:px-0

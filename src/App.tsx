@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
 import './App.scss';
-import Navigation from './components/Navigation/Navigation';
+import React, { useState } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -8,16 +7,18 @@ import {
   AboutMe,
   ContactInfo,
 } from './utils/data';
+import { Navigation } from './components/Navigation/Navigation';
 import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Container from './components/Container/Container';
+import { Container } from './components/Container/Container';
 import { RouteInfo } from '../src/utils/Route';
-import ContactSlim from './components/Contact/ContactSlim';
+import { ContactSlim } from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
-import Portfolio from './components/Portfolio/Portfolio';
-import Home from './components/Home/Home';
-import Skills from './components/Skills/Skills';
-import Experiments from './components/Experiments/Experiments';
+import { Portfolio } from './components/Portfolio/Portfolio';
+import { Home } from './components/Home/Home';
+import { Skills } from './components/Skills/Skills';
+import { Experiments } from './components/Experiments/Experiments';
+import { Footer } from './components/Footer/Footer';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -73,6 +74,7 @@ function App() {
             <Skills />
             <Experiments />
             {isMobileMax && <ContactSlim />}
+            <Footer />
           </Container>
         </Router>
       </div>

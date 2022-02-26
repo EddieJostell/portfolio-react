@@ -22,3 +22,5 @@ export const chromeCheck: boolean =
 
 export const isMobileMax: boolean = window.innerWidth > 767;
 export const isComputerMin: boolean = window.innerWidth > 992;
+export const isMobileMin: boolean = window.innerWidth < 767;
+export const isLargeScreenMin: boolean = window.innerWidth > 1199;

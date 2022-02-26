@@ -9,11 +9,11 @@ interface IPortfolioContent {
   text: string;
 }
 
-const PortfolioContent = (props: IPortfolioContent) => {
+export const PortfolioContent = (props: IPortfolioContent) => {
   const { link, img, title, tech } = props;
 
   return (
-    <li className="List-item">
+    <div className="List-item">
       <a className="card" href={link} target="_blank" rel="noreferrer">
         <img src={img ? img : placeholder} alt={title} />
         <div className="info">
@@ -24,11 +24,9 @@ const PortfolioContent = (props: IPortfolioContent) => {
           </a>
         </div>
       </a>
-    </li>
+    </div>
   );
 };
-
-export default PortfolioContent;
 
 //Created something similar to RZ,
 //Big cards with hover and colors.

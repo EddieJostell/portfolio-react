@@ -10,7 +10,7 @@ interface IQuoteState {
   author: string;
 }
 
-const QuoteContent = (props: Props) => {
+export const QuoteContent = (props: Props) => {
   const randomQuotes = React.useContext<IContextState>(HelperContext);
   // eslint-disable-next-line
 
@@ -45,5 +45,3 @@ const QuoteContent = (props: Props) => {
     </div>
   );
 };
-
-export default QuoteContent;
