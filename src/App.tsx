@@ -19,6 +19,7 @@ import { Home } from './components/Home/Home';
 import { Skills } from './components/Skills/Skills';
 import { Experiments } from './components/Experiments/Experiments';
 import { Footer } from './components/Footer/Footer';
+import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -43,38 +44,42 @@ function App() {
     contactItem: ContactInfo,
   };
 
-  /*   const clickMe = () => {
-    const element = document.getElementById('test');
-
-    const topPos = element!.getBoundingClientRect();
-
-    let rectTop = topPos.top + window.scrollY;
-
-    window.scrollTo({
-      top: rectTop,
-      behavior: 'smooth',
-    });
-  }; */
+  const toggleContact = () => {
+    console.log('toggleContact Executed!');
+    setAppState({ ...appState, contactIsActive: !appState.contactIsActive });
+  };
 
   return (
     <ContextProvider state={HelperContextValue}>
       <div className="App" data-testid="application">
         <Router>
-          <Navigation
-            navIsOpen={appState.navIsOpen}
-            toggleNav={toggleNav}
-            name="E"
-            navLinks={NavigationLinks}
-            data-testid="navigation"
-          />
+          {!appState.contactIsActive && (
+            <Navigation
+              navIsOpen={appState.navIsOpen}
+              toggleNav={toggleNav}
+              name="E"
+              navLinks={NavigationLinks}
+              toggleContact={toggleContact}
+              data-testid="navigation"
+            />
+          )}
           <Container>
             {/* <RouteLinks /> */}
-            <Home />
-            <Portfolio />
-            <Skills />
-            <Experiments />
-            {isMobileMax && <ContactSlim />}
-            <Footer />
+            {!appState.contactIsActive ? (
+              [
+                <Home />,
+                <Portfolio />,
+                <Skills />,
+                <Experiments />,
+                isMobileMax && <ContactSlim />,
+                <Footer />,
+              ]
+            ) : (
+              <ContactForm
+                toggleContact={toggleContact}
+                contactIsActive={appState.contactIsActive}
+              />
+            )}
           </Container>
         </Router>
       </div>

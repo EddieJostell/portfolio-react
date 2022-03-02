@@ -9,21 +9,17 @@ export interface INavListProps {
   navListItems: INavLinkItem[];
   toggleNav: (visible: boolean) => void;
   navIsOpen: boolean;
+  toggleContact: () => void;
 }
 
 export const NavList = (props: INavListProps) => {
-  const { toggleNav, navListItems, navIsOpen } = props;
-
-  const showContact = () => {
-    alert('Contact Component here');
-    toggleNav(!navIsOpen);
-  };
+  const { toggleNav, navListItems, navIsOpen, toggleContact } = props;
 
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
       <div key={item.id} className="NavList-item">
         {item.scrollId === 'contact' ? (
-          <span className="link" onClick={showContact}>
+          <span className="link" onClick={toggleContact}>
             {item.text}
           </span>
         ) : (
@@ -46,7 +42,7 @@ export const NavList = (props: INavListProps) => {
     return navListItems.map((item: INavLinkItem) => (
       <li key={item.id} className="NavList-item">
         {item.scrollId === 'contact' ? (
-          <span className="link" onClick={showContact}>
+          <span className="link" onClick={toggleContact}>
             {item.text}
           </span>
         ) : (

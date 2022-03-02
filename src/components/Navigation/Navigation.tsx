@@ -11,6 +11,7 @@ interface INavProps {
   toggleNav: (visible: boolean) => void;
   status?: string;
   navLinks: INavLinkItem[];
+  toggleContact: () => void;
 }
 
 const defaultProps: Partial<INavProps> = {
@@ -18,7 +19,7 @@ const defaultProps: Partial<INavProps> = {
 };
 
 export const Navigation = (props: INavProps) => {
-  const { name, navIsOpen, toggleNav, navLinks } = props;
+  const { name, navIsOpen, toggleNav, navLinks, toggleContact } = props;
 
   const hamburgerMenu = () => {
     return (
@@ -51,6 +52,7 @@ export const Navigation = (props: INavProps) => {
                 toggleNav={toggleNav}
                 navListItems={navLinks}
                 navIsOpen={navIsOpen}
+                toggleContact={toggleContact}
               />
             ) : (
               hamburgerMenu()
@@ -64,6 +66,7 @@ export const Navigation = (props: INavProps) => {
               toggleNav={toggleNav}
               navListItems={navLinks}
               navIsOpen={navIsOpen}
+              toggleContact={toggleContact}
             />
           )
         : ''}
