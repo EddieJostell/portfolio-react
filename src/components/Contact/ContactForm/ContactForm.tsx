@@ -12,7 +12,7 @@ export const ContactForm = (props: IContactFormProps) => {
 
   const contactHamburger = () => {
     return (
-      <div onClick={() => toggleContact()} className={'icon nav-icon-5'}>
+      <div onClick={() => toggleContact()} className={'icon nav-icon-5 open'}>
         <span></span>
         <span></span>
         <span></span>

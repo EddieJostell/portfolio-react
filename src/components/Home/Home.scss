@@ -7,12 +7,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin-top: 18.75rem;
+    padding-top: 18.75rem;
     color: #fff;
     font-family: Goldman, sans-serif;
 
     @media (min-width: 768px) {
-      margin-left: 6rem;
+      padding-left: 6rem;
     }
 
     & .name {
