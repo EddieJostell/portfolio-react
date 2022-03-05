@@ -40,7 +40,7 @@ export const NavList = (props: INavListProps) => {
 
   const desktopNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
-      <li key={item.id} className="NavList-item">
+      <div key={item.id} className="NavList-item">
         {item.scrollId === 'contact' ? (
           <span className="link" onClick={toggleContact}>
             {item.text}
@@ -56,13 +56,13 @@ export const NavList = (props: INavListProps) => {
             {item.text}
           </Link>
         )}
-      </li>
+      </div>
     ));
   };
 
   const renderLinks = () => {
     if (isMobileMax) {
-      return <ul className="NavList-desktop">{desktopNavItems()}</ul>;
+      return <div className="NavList-desktop">{desktopNavItems()}</div>;
     } else {
       return (
         <div className="NavList-mobile ">

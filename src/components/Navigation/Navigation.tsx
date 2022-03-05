@@ -4,6 +4,7 @@ import { NavList } from './NavList';
 import { isMobileMax } from '../../utils/userAgent';
 import './Navigation.scss';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 interface INavProps {
   name: string;
@@ -39,25 +40,36 @@ export const Navigation = (props: INavProps) => {
       <div className="Container">
         <div className="Navigation-wrapper">
           {!navIsOpen ? (
-            <Link className="Navigation-name" to="/">
-              {name}
-            </Link>
+            <motion.div
+              initial={{ x: -300, opacity: 0, scale: 0 }}
+              animate={{ x: 0, opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, type: 'spring', stiffness: 90 }}
+            >
+              <Link className="Navigation-name" to="/">
+                {name}
+              </Link>
+            </motion.div>
           ) : (
             <div />
           )}
-
-          <div className="Links">
-            {isMobileMax ? (
-              <NavList
-                toggleNav={toggleNav}
-                navListItems={navLinks}
-                navIsOpen={navIsOpen}
-                toggleContact={toggleContact}
-              />
-            ) : (
-              hamburgerMenu()
-            )}
-          </div>
+          <motion.div
+            initial={{ x: -300, opacity: 0, scale: 0 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, type: 'spring', stiffness: 90 }}
+          >
+            <div className="Links">
+              {isMobileMax ? (
+                <NavList
+                  toggleNav={toggleNav}
+                  navListItems={navLinks}
+                  navIsOpen={navIsOpen}
+                  toggleContact={toggleContact}
+                />
+              ) : (
+                hamburgerMenu()
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
       {!isMobileMax

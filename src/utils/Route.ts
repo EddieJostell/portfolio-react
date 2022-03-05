@@ -7,40 +7,35 @@ import { Skills } from '../components/Skills/Skills';
 
 export interface IRouteInfoItem {
   id: number;
-  path?: string;
-  exact?: boolean;
-  component?: FunctionComponent;
+  path: string;
+
+  element: FunctionComponent;
 }
 
 export const RouteInfo: IRouteInfoItem[] = [
   {
     id: 1,
     path: '/',
-    exact: true,
-    component: Home,
+    element: Home,
   },
   {
     id: 2,
     path: '/Portfolio',
-    exact: true,
-    component: Portfolio,
+    element: Portfolio,
   },
   {
     id: 3,
     path: '/Contact',
-    exact: true,
-    component: Contact,
+    element: Contact,
   },
   {
     id: 4,
     path: '/Experiments',
-    exact: true,
-    component: Experiments,
+    element: Experiments,
   },
   {
     id: 4,
     path: '/Skills',
-    exact: true,
-    component: Skills,
+    element: Skills,
   },
 ];

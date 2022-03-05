@@ -46,7 +46,12 @@ function App() {
 
   const toggleContact = () => {
     console.log('toggleContact Executed!');
-    setAppState({ ...appState, contactIsActive: !appState.contactIsActive });
+    console.log('navIsOpen before', appState.navIsOpen);
+    setAppState({
+      ...appState,
+      contactIsActive: !appState.contactIsActive,
+    });
+    console.log('navIsOpen after', appState.navIsOpen);
   };
 
   return (
@@ -64,18 +69,18 @@ function App() {
             />
           )}
           <Container>
-            {/* <RouteLinks /> */}
             {!appState.contactIsActive ? (
               [
-                <Home />,
-                <Portfolio />,
-                <Skills />,
-                <Experiments />,
-                isMobileMax && <ContactSlim />,
-                <Footer />,
+                <Home key="1" />,
+                <Portfolio key="2" />,
+                <Skills key="3" />,
+                <Experiments key="4" />,
+                isMobileMax && <ContactSlim key="5" />,
+                <Footer key="6" />,
               ]
             ) : (
               <ContactForm
+                key="7"
                 toggleContact={toggleContact}
                 contactIsActive={appState.contactIsActive}
               />
@@ -88,5 +93,3 @@ function App() {
 }
 
 export default App;
-
-//

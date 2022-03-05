@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './PortfolioContent.scss';
-import placeholder from '.../../../public/img/placeholder_360x640.png';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -15,7 +14,7 @@ export const PortfolioContent = (props: IPortfolioContent) => {
   return (
     <div className="List-item">
       <a className="card" href={link} target="_blank" rel="noreferrer">
-        <img src={img ? img : placeholder} alt={title} />
+        <img src={img ? img : 'img/placeholder_360x640.png'} alt={title} />
         <div className="info">
           <h1>{title}</h1>
           <p>{tech}</p>
