@@ -3,7 +3,6 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -12,6 +11,7 @@
   background-color: transparent;
   display: flex;
   flex-direction: column-reverse;
+  box-shadow: 0 20px 80px 0 rgba(0, 0, 0, 0.55);
 
   @media screen and (min-width: 768px) {
     width: 1170px;
@@ -21,20 +21,32 @@
   }
 
   &-about {
-    border: 1px solid red;
+    position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #fff;
 
     @media screen and (min-width: 768px) {
       width: 50%;
       height: 100%;
+    }
+
+    .title {
+      position: absolute;
+      top: 30px;
+      right: -200px;
+      color: #000;
+      opacity: 0.03;
+      font-size: 190px;
+      opacity: 0.07;
+      font-family: Audiowide, Helvetica, Arial, sans-serif;
+      z-index: 0;
     }
   }
 
   &-contact {
     position: relative;
-    border: 1px solid red;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -44,11 +56,25 @@
       height: 100%;
     }
 
+    .title {
+      position: absolute;
+      bottom: 30px;
+      right: -300px;
+      color: #fff;
+      font-size: 190px;
+      position: absolute;
+      opacity: 0.07;
+      font-family: Audiowide, Helvetica, Arial, sans-serif;
+      z-index: 0;
+    }
+
     .nav-icon-5 {
       width: 35px;
       height: 30px;
-      margin: 10px;
-      position: relative;
+      margin: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
       cursor: pointer;
       display: inline-block;
     }

@@ -23,11 +23,13 @@ export const ContactForm = (props: IContactFormProps) => {
   return (
     <div className="Form">
       <div className="Form-about">
-        <h1>About</h1>
+        <div className="title">About</div>
+        <div className="content"></div>
       </div>
       <div className="Form-contact">
-        <h1>Contact</h1>
+        <div className="title">Contact</div>
         {contactHamburger()}
+        <div className="form"></div>
       </div>
     </div>
   );
