@@ -17,7 +17,6 @@ import { isMobileMax } from './utils/userAgent';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Skills } from './components/Skills/Skills';
-import { Experiments } from './components/Experiments/Experiments';
 import { Footer } from './components/Footer/Footer';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import { About } from './components/About/About';
@@ -63,31 +62,31 @@ function App() {
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className='App' data-testid='application'>
+      <div className="App" data-testid="application">
         <Router>
           {!appState.contactIsActive && (
             <Navigation
               navIsOpen={appState.navIsOpen}
               toggleNav={toggleNav}
-              name='E'
+              name="E"
               navLinks={NavigationLinks}
               toggleContact={toggleContact}
-              data-testid='navigation'
+              data-testid="navigation"
             />
           )}
           <Container>
             {!appState.contactIsActive ? (
               [
-                <Home key='1' />,
-                <About key='2' />,
-                <Portfolio key='3' />,
-                <Skills key='4' />,
-                isMobileMax && <ContactSlim key='5' />,
-                <Footer key='6' />,
+                <Home key="1" />,
+                <About key="2" />,
+                <Portfolio key="3" />,
+                <Skills key="4" />,
+                isMobileMax && <ContactSlim key="5" />,
+                <Footer key="6" />,
               ]
             ) : (
               <ContactForm
-                key='7'
+                key="7"
                 toggleContact={toggleContact}
                 contactIsActive={appState.contactIsActive}
               />
