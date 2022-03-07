@@ -2,6 +2,7 @@ import iconMail from '../Icons/mail.svg';
 import iconLinkedIn from '../Icons/linkedin.svg';
 import iconGitHub from '../Icons/github.svg';
 import iconInsta from '../Icons/instagram.svg';
+import iconTwitter from '../Icons/twitter.svg';
 
 export interface INavLinkItem {
   id: number;
@@ -64,14 +65,14 @@ export const ContactInfo: IContactItem[] = [
     id: 3,
     title: 'LinkedIn',
     iconSrc: iconLinkedIn,
-    link: 'https://www.linkedin.com/in/eddiejostell',
+    link: 'https://www.linkedin.com/in/eddiejostell/',
     text: 'Add me to your network!',
   },
   {
     id: 4,
     title: 'Github',
     iconSrc: iconGitHub,
-    link: 'https://github.com/EddieJostell',
+    link: 'https://github.com/EddieJostell/',
     text: 'Checkout my projects on Github!',
   },
   {
@@ -79,10 +80,16 @@ export const ContactInfo: IContactItem[] = [
     title: 'Instagram',
     iconSrc: iconInsta,
     link: 'https://www.instagram.com/eduardojostello/',
-    text: 'Be cool and follow me on intagram!',
+    text: 'Be cool and follow me on Instagram!',
+  },
+  {
+    id: 6,
+    title: 'Twitter',
+    iconSrc: iconTwitter,
+    link: 'https://twitter.com/El_Wardinho/',
+    text: 'Be cool and follow me on Twitter!',
   },
 ];
-
 export const AboutMe: IAboutMe[] = [
   {
     likes:
@@ -99,16 +106,15 @@ export const AboutMe: IAboutMe[] = [
 ];
 
 export const NavigationLinks: INavLinkItem[] = [
-  /* { id: 1, text: 'Home', path: '/', scrollId: 'home' }, */
+  { id: 1, text: 'About', path: '/About', scrollId: 'about' },
   {
     id: 2,
-    text: 'Portfolio',
-    path: '/Portfolio',
+    text: 'Projects',
+    path: '/Projects',
     scrollId: 'portfolio',
   },
-  { id: 3, text: 'Experiments', path: '', scrollId: 'experiements' },
-  { id: 4, text: 'Skills', path: '', scrollId: 'skills' },
-  { id: 5, text: 'Contact', path: '/Contact', scrollId: 'contact' },
+  { id: 3, text: 'Skills', path: '', scrollId: 'skills' },
+  { id: 4, text: 'Contact', path: '/Contact', scrollId: 'contact' },
 ];
 
 export const ProjectList: IPortfolioItem[] = [

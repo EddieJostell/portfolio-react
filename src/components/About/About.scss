@@ -1,0 +1,17 @@
+.About {
+  border: 1px solid red;
+  height: 100vh;
+  color: #fff;
+
+  display: flex;
+  flex-direction: row;
+
+  .box {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

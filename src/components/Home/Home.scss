@@ -7,27 +7,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 18.75rem;
+    padding-top: 9.375rem;
     color: #fff;
     font-family: Goldman, sans-serif;
 
     @media (min-width: 768px) {
       padding-left: 6rem;
+      padding-top: 18.75rem;
     }
 
     & .name {
-      font-size: 3rem;
-      width: 100%;
-
-      @media (min-width: 768px) {
-        width: auto;
-      }
-    }
-    & .work {
       font-size: 2rem;
       width: 100%;
 
       @media (min-width: 768px) {
+        font-size: 3rem;
+        width: auto;
+      }
+    }
+    & .work {
+      font-size: 1.5rem;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        font-size: 2rem;
         width: auto;
       }
     }

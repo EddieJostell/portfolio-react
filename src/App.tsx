@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -20,6 +20,7 @@ import { Skills } from './components/Skills/Skills';
 import { Experiments } from './components/Experiments/Experiments';
 import { Footer } from './components/Footer/Footer';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
+import { About } from './components/About/About';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -44,43 +45,49 @@ function App() {
     contactItem: ContactInfo,
   };
 
-  const toggleContact = () => {
-    console.log('toggleContact Executed!');
-    console.log('navIsOpen before', appState.navIsOpen);
+  const toggleContact = useCallback(() => {
     setAppState({
       ...appState,
       contactIsActive: !appState.contactIsActive,
+      navIsOpen: false,
     });
-    console.log('navIsOpen after', appState.navIsOpen);
-  };
+  }, [appState.contactIsActive]);
+
+  /* const toggleContact = () => {
+    setAppState({
+      ...appState,
+      contactIsActive: !appState.contactIsActive,
+      navIsOpen: false,
+    });
+  }; */
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className="App" data-testid="application">
+      <div className='App' data-testid='application'>
         <Router>
           {!appState.contactIsActive && (
             <Navigation
               navIsOpen={appState.navIsOpen}
               toggleNav={toggleNav}
-              name="E"
+              name='E'
               navLinks={NavigationLinks}
               toggleContact={toggleContact}
-              data-testid="navigation"
+              data-testid='navigation'
             />
           )}
           <Container>
             {!appState.contactIsActive ? (
               [
-                <Home key="1" />,
-                <Portfolio key="2" />,
-                <Skills key="3" />,
-                <Experiments key="4" />,
-                isMobileMax && <ContactSlim key="5" />,
-                <Footer key="6" />,
+                <Home key='1' />,
+                <About key='2' />,
+                <Portfolio key='3' />,
+                <Skills key='4' />,
+                isMobileMax && <ContactSlim key='5' />,
+                <Footer key='6' />,
               ]
             ) : (
               <ContactForm
-                key="7"
+                key='7'
                 toggleContact={toggleContact}
                 contactIsActive={appState.contactIsActive}
               />

@@ -1,3 +1,5 @@
+@import '../../../utils/mixins.scss';
+
 .Form {
   position: relative;
   width: 100%;
@@ -43,6 +45,9 @@
       font-family: Audiowide, Helvetica, Arial, sans-serif;
       z-index: 0;
     }
+
+    .description {
+    }
   }
 
   &-contact {
@@ -68,57 +73,53 @@
       z-index: 0;
     }
 
-    .nav-icon-5 {
-      width: 35px;
-      height: 30px;
-      margin: 20px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      cursor: pointer;
-      display: inline-block;
-    }
-    .nav-icon-5 span {
-      background-color: #fff;
-      position: absolute;
-      transition: 0.3s cubic-bezier(0.8, 0.5, 0.2, 1.4);
-      width: 100%;
-      height: 4px;
-      transition-duration: 500ms;
-    }
-    .nav-icon-5 span:nth-child(1) {
-      top: 0px;
-      left: 0px;
-    }
-    .nav-icon-5 span:nth-child(2) {
-      top: 13px;
-      left: 0px;
-      opacity: 1;
-    }
-    .nav-icon-5 span:nth-child(3) {
-      bottom: 0px;
-      left: 0px;
-    }
-    /* .nav-icon-5:not(.open):hover span:nth-child(1) {
-        transform: scaleX(0.8);
+    .content {
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+      color: #fff;
+      padding: 40px;
+      margin-top: 40px;
+      font-family: Audiowide, Helvetica, Arial, sans-serif;
+
+      label {
+        margin-bottom: 5px;
+        font-size: 14px;
       }
-      .nav-icon-5:not(.open):hover span:nth-child(2) {
-        transform: scaleX(0.5);
+
+      .fields {
+        margin-bottom: 30px;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid silver;
+        padding: 8px 5px;
+        z-index: 1;
+        caret-color: silver;
+        -webkit-appearance: none;
+        -ms-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        &:focus {
+          border: none;
+          border-bottom: 2px solid silver;
+          outline: none;
+        }
       }
-      .nav-icon-5:not(.open):hover span:nth-child(3) {
-        transform: scaleX(0.8);
+      .btn {
+        padding: 12px 20px;
+        background: #ff4b3e;
+        border: none;
+        color: silver;
+        cursor: pointer;
+        z-index: 1;
+        font-size: 0.875em;
+        letter-spacing: 2px;
       }
- */
-    .nav-icon-5.open span:nth-child(1) {
-      transform: rotate(45deg);
-      top: 13px;
     }
-    .nav-icon-5.open span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav-icon-5.open span:nth-child(3) {
-      transform: rotate(-45deg);
-      top: 13px;
-    }
+
+    @include ContactX;
   }
 }
