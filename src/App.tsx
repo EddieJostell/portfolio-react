@@ -52,41 +52,33 @@ function App() {
     });
   }, [appState.contactIsActive]);
 
-  /* const toggleContact = () => {
-    setAppState({
-      ...appState,
-      contactIsActive: !appState.contactIsActive,
-      navIsOpen: false,
-    });
-  }; */
-
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className="App" data-testid="application">
+      <div className='App' data-testid='application'>
         <Router>
           {!appState.contactIsActive && (
             <Navigation
               navIsOpen={appState.navIsOpen}
               toggleNav={toggleNav}
-              name="E"
+              name='E'
               navLinks={NavigationLinks}
               toggleContact={toggleContact}
-              data-testid="navigation"
+              data-testid='navigation'
             />
           )}
           <Container>
             {!appState.contactIsActive ? (
               [
-                <Home key="1" />,
-                <About key="2" />,
-                <Portfolio key="3" />,
-                <Skills key="4" />,
-                isMobileMax && <ContactSlim key="5" />,
-                <Footer key="6" />,
+                <Home key='1' />,
+                <About key='2' />,
+                <Portfolio key='3' />,
+                <Skills key='4' />,
+                isMobileMax && <ContactSlim key='5' />,
+                <Footer key='6' />,
               ]
             ) : (
               <ContactForm
-                key="7"
+                key='7'
                 toggleContact={toggleContact}
                 contactIsActive={appState.contactIsActive}
               />

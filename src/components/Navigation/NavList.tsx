@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { Fragment } from 'react';
-/* import { Link } from 'react-router-dom'; */
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-scroll';
 import { INavLinkItem } from '../../utils/data';
 import { isMobileMax } from '../../utils/userAgent';
@@ -15,6 +14,12 @@ export interface INavListProps {
 
 export const NavList = (props: INavListProps) => {
   const { toggleNav, navListItems, navIsOpen, toggleContact } = props;
+  const [IsVisible, setIsVisible] = useState(false);
+
+  const handleStuff = () => {
+    setIsVisible(!IsVisible);
+    toggleContact();
+  };
 
   const list = {
     visible: {
@@ -23,8 +28,8 @@ export const NavList = (props: INavListProps) => {
       transition: {
         when: 'beforeChildren',
         staggerChildren: 0.3,
-        delay: 0.35,
-        duration: 0.3,
+        delay: 0.45,
+        duration: 0.5,
       },
     },
 
@@ -33,31 +38,31 @@ export const NavList = (props: INavListProps) => {
       x: -300,
       transition: {
         when: 'afterChildren',
-        delay: 0.3,
-        duration: 0.3,
+        delay: 0.6,
+        duration: 1,
       },
     },
   };
 
   const item = {
     visible: { opacity: 1, x: 0, transition: { delay: 0.3, duration: 0.3 } },
-    hidden: { opacity: 0, x: -300, transition: { delay: 0.3, duration: 0.3 } },
+    hidden: { opacity: 0, x: -300, transition: { duration: 0.3 } },
   };
 
   const mobileNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
-      <div key={item.id} className="NavList-item">
+      <div key={item.id} className='NavList-item'>
         {item.scrollId === 'contact' ? (
-          <span className="link" onClick={toggleContact}>
+          <span className='link' onClick={handleStuff}>
             {item.text}
           </span>
         ) : (
           <Link
-            className="link"
+            className='link'
             to={item.scrollId}
             spy={true}
             smooth={true}
-            duration={800}
+            duration={1000}
             onClick={() => toggleNav(!navIsOpen)}
           >
             {item.text}
@@ -69,18 +74,18 @@ export const NavList = (props: INavListProps) => {
 
   const desktopNavItems = () => {
     return navListItems.map((item: INavLinkItem) => (
-      <div key={item.id} className="NavList-item">
+      <div key={item.id} className='NavList-item'>
         {item.scrollId === 'contact' ? (
-          <span className="link" onClick={toggleContact}>
+          <span className='link' onClick={toggleContact}>
             {item.text}
           </span>
         ) : (
           <Link
-            className="link"
+            className='link'
             to={item.scrollId}
             spy={true}
             smooth={true}
-            duration={600}
+            duration={1000}
           >
             {item.text}
           </Link>
@@ -91,28 +96,32 @@ export const NavList = (props: INavListProps) => {
 
   const renderLinks = () => {
     if (isMobileMax) {
-      return <div className="NavList-desktop">{desktopNavItems()}</div>;
+      return <div className='NavList-desktop'>{desktopNavItems()}</div>;
     } else {
       return (
         <AnimatePresence>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={list}
-            key="nav-mobile"
-            className="NavList-mobile "
-          >
+          {!IsVisible && (
             <motion.div
-              key="items"
-              variants={item}
-              className="NavList-container"
+              initial='hidden'
+              animate='visible'
+              variants={list}
+              key='nav-mobile'
+              className='NavList-mobile '
             >
-              {mobileNavItems()}
-              <div className="NavList-contactLinks">
-                {/* <ContactSlim /> */}
-              </div>
+              <motion.div
+                key='items'
+                initial='hidden'
+                animate='visible'
+                variants={item}
+                className='NavList-container'
+              >
+                {mobileNavItems()}
+                <div className='NavList-contactLinks'>
+                  <ContactSlim />
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          )}
         </AnimatePresence>
       );
     }

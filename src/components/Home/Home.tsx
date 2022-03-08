@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
 import { QuoteContent } from '../QuoteContent/QuoteContent';
@@ -14,8 +15,20 @@ export const Home = (props: IHomeProps) => {
 
     return (
       <>
-        <span className='name'>{onlyName}</span>
-        <span className='work'>{onlyWork}</span>
+        <motion.div
+          initial={{ x: -500, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+        >
+          <span className='name'>{onlyName}</span>
+        </motion.div>
+        <motion.div
+          initial={{ x: -500, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+        >
+          <span className='work'>{onlyWork}</span>
+        </motion.div>
       </>
     );
   };

@@ -12,17 +12,22 @@
     position: relative;
     top: auto;
     right: auto;
+    bottom: 20px;
   }
 
   .ContactSlim-icons {
     img {
-      height: 60px;
-      margin: 15px;
+      height: 30px;
+      margin: 5px;
       transition: all 0.5s;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
       -ms-transition: all 0.5s;
       -o-transition: all 0.5s;
+
+      @media (min-width: 769px) {
+        height: 60px;
+      }
 
       &:hover {
         height: 100px;
