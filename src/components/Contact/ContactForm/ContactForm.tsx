@@ -40,6 +40,8 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 500);
   };
 
+  const InputOnChange = () => {};
+
   const success = () => {
     alert('SUCCESS!!');
   };
@@ -53,7 +55,8 @@ export const ContactForm = (props: IContactFormProps) => {
     if (
       InputValue.nameInput !== '' &&
       InputValue.emailInput !== '' &&
-      InputValue.messageInput !== ''
+      InputValue.messageInput !== '' &&
+      InputValue.emailInput.includes('@')
     ) {
       emailjs
         .sendForm(
@@ -81,7 +84,8 @@ export const ContactForm = (props: IContactFormProps) => {
     if (
       InputValue.nameInput !== '' &&
       InputValue.emailInput !== '' &&
-      InputValue.messageInput !== ''
+      InputValue.messageInput !== '' &&
+      InputValue.emailInput.includes('@')
     ) {
       setIsLoading(true);
       setTimeout(() => {
@@ -103,7 +107,8 @@ export const ContactForm = (props: IContactFormProps) => {
     if (
       InputValue.nameInput !== '' &&
       InputValue.emailInput !== '' &&
-      InputValue.messageInput !== ''
+      InputValue.messageInput !== '' &&
+      InputValue.emailInput.includes('@')
     ) {
       setIsValidated(true);
     } else {
@@ -125,14 +130,14 @@ export const ContactForm = (props: IContactFormProps) => {
     <AnimatePresence>
       {!isVisible && (
         <motion.div
-          key='form-parent'
+          key="form-parent"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { delay: 0.3 } }}
-          className='Form'
+          className="Form"
         >
           <motion.div
-            key='contact-child'
+            key="contact-child"
             initial={{ y: -600, opacity: 0 }}
             animate={{
               y: 0,
@@ -140,34 +145,34 @@ export const ContactForm = (props: IContactFormProps) => {
               transition: { duration: 1, delay: 0.2 },
             }}
             exit={{ y: -1000, transition: { duration: 1 } }}
-            className='Form-contact'
+            className="Form-contact"
           >
-            <div className='title'>Contact</div>
+            <div className="title">Contact</div>
             {contactHamburger()}
-            <form ref={form} className='content' onSubmit={mockSend}>
+            <form ref={form} className="content" onSubmit={mockSend}>
               <h2>Get in touch!</h2>
-              <label htmlFor='name' className='form-label'>
+              <label htmlFor="name" className="form-label">
                 Name:{' '}
                 {isValidated === false && InputValue.nameInput === '' && (
-                  <span className='error-label'>
+                  <span className="error-label">
                     Oh, I think you might have forgotten to state your name?
                   </span>
                 )}
               </label>
               <input
-                type='text'
-                className='fields name'
-                name='name'
+                type="text"
+                className="fields name"
+                name="name"
                 value={InputValue.nameInput}
                 onChange={(e) =>
                   setInputValue({ ...InputValue, nameInput: e.target.value })
                 }
               />
 
-              <label htmlFor='email' className='form-label'>
+              <label htmlFor="email" className="form-label">
                 E-mail:{' '}
                 {isValidated === false && InputValue.emailInput === '' && (
-                  <span className='error-label'>
+                  <span className="error-label">
                     Oh noes, if you don't type a email I will not be able to
                     answer you!
                   </span>
@@ -175,32 +180,32 @@ export const ContactForm = (props: IContactFormProps) => {
                 {isValidated === false &&
                   InputValue.emailInput !== '' &&
                   !InputValue.emailInput.includes('@') && (
-                    <span className='error-label'>
+                    <span className="error-label">
                       The email must have a @ sign!, please try again!
                     </span>
                   )}
               </label>
               <input
-                type='text'
-                className='fields email'
-                name='email'
+                type="text"
+                className="fields email"
+                name="email"
                 value={InputValue.emailInput}
                 onChange={(e) =>
                   setInputValue({ ...InputValue, emailInput: e.target.value })
                 }
               />
-              <label htmlFor='message' className='form-label'>
+              <label htmlFor="message" className="form-label">
                 Message:{' '}
                 {isValidated === false && InputValue.messageInput === '' && (
-                  <span className='error-label'>
+                  <span className="error-label">
                     Sorry, I can't read your mind...
                   </span>
                 )}
               </label>
 
               <textarea
-                className='fields message'
-                name='message'
+                className="fields message"
+                name="message"
                 rows={5}
                 value={InputValue.messageInput}
                 onChange={(e) =>
@@ -211,8 +216,8 @@ export const ContactForm = (props: IContactFormProps) => {
               <button
                 disabled={isLoading}
                 className={isLoading ? 'btn btn-disabled' : 'btn'}
-                type='submit'
-                value='Submit'
+                type="submit"
+                value="Submit"
                 onClick={handleValidation}
               >
                 {isLoading ? 'Loading...' : 'Send Message'}
