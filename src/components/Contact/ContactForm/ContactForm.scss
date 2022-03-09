@@ -91,17 +91,16 @@
       margin-top: 40px;
       font-family: Audiowide, Helvetica, Arial, sans-serif;
 
-      label {
+      .form-label {
         margin-bottom: 5px;
         font-size: 14px;
         position: relative;
+      }
 
-        &::after {
-          content: '*';
-          position: relative;
-          top: -3px;
-          right: -6px;
-        }
+      .error-label {
+        color: red;
+        font-size: 12px;
+        margin-left: 10px;
       }
 
       .fields {
@@ -130,9 +129,15 @@
         border: none;
         color: silver;
         cursor: pointer;
-        z-index: 1;
+        z-index: 2;
         font-size: 0.875em;
         letter-spacing: 2px;
+
+        &.btn-disabled {
+          opacity: 0.9;
+          background: grey;
+          cursor: not-allowed;
+        }
       }
     }
 
