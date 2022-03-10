@@ -31,20 +31,21 @@
     .Navigation-name {
       font-size: 64px;
       font-family: 'Diplomata', cursive;
+      color: #b0b2c3;
       color: #fff;
       transition: opacity 0.35s ease 0.65s;
       text-decoration: none;
 
       @media (min-width: 768px) {
+        color: #b0b2c3;
         &:hover {
-          color: #b0b2c3;
+          color: #fff;
           transition: opacity 0.25s ease;
           -webkit-transition: opacity 0.25s ease;
           -moz-transition: opacity 0.25s ease;
           -ms-transition: opacity 0.25s ease;
           -o-transition: opacity 0.25s ease;
         }
-        color: #fff;
       }
     }
 

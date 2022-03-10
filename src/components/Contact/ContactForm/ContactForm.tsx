@@ -15,12 +15,19 @@ interface IFormState {
   messageInput: string;
 }
 
+interface IVisibleState {
+  showForm: boolean;
+  showThanks: boolean;
+}
+
 export const ContactForm = (props: IContactFormProps) => {
   const { toggleContact } = props;
 
   const form = useRef<HTMLFormElement>(null);
 
   const [isVisible, setVisible] = useState(false);
+
+  const [showThanks, setShowThanks] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,14 +40,22 @@ export const ContactForm = (props: IContactFormProps) => {
     undefined
   );
 
-  const handleStuff = () => {
+  const completeContactForm = () => {
+    setVisible(!isVisible);
+    setTimeout(() => {
+      setShowThanks(true);
+    }, 2000);
+    setTimeout(() => {
+      toggleContact();
+    }, 6000);
+  };
+
+  const closeContactForm = () => {
     setVisible(!isVisible);
     setTimeout(() => {
       toggleContact();
-    }, 500);
+    }, 2000);
   };
-
-  const InputOnChange = () => {};
 
   const success = () => {
     alert('SUCCESS!!');
@@ -74,7 +89,7 @@ export const ContactForm = (props: IContactFormProps) => {
           }
         );
       e.target.reset();
-      toggleContact();
+      completeContactForm();
     }
   };
 
@@ -91,7 +106,7 @@ export const ContactForm = (props: IContactFormProps) => {
       setTimeout(() => {
         if (1 + 1 === 2) {
           success();
-          toggleContact();
+          completeContactForm();
         } else {
           setIsLoading(false);
           fail();
@@ -118,7 +133,7 @@ export const ContactForm = (props: IContactFormProps) => {
 
   const contactHamburger = () => {
     return (
-      <div onClick={handleStuff} className={'icon nav-icon-5 open'}>
+      <div onClick={closeContactForm} className={'icon nav-icon-5 open'}>
         <span></span>
         <span></span>
         <span></span>
@@ -126,98 +141,130 @@ export const ContactForm = (props: IContactFormProps) => {
     );
   };
 
+  const showLabel = (
+    htmlFor: string,
+    inputValue: string,
+    labelText: string,
+    errorLabelText: string,
+    errorLabelText2?: string
+  ) => {
+    if (
+      isValidated === false &&
+      inputValue !== '' &&
+      !inputValue.includes('@')
+    ) {
+      return (
+        <label htmlFor={htmlFor} className='form-label'>
+          {labelText}
+          <span className='error-label'>{errorLabelText2}</span>
+        </label>
+      );
+    } else {
+      return (
+        <label htmlFor={htmlFor} className='form-label'>
+          {labelText}
+          {isValidated === false && inputValue === '' && (
+            <span className='error-label'>{errorLabelText}</span>
+          )}
+        </label>
+      );
+    }
+  };
+
+  const showInput = (
+    className: string,
+    name: string,
+    value: string,
+    changeEvent: (e: any) => void
+  ) => {
+    if (name === 'message') {
+      return (
+        <textarea
+          className={className}
+          name={name}
+          rows={5}
+          value={value}
+          onChange={changeEvent}
+        />
+      );
+    } else {
+      return (
+        <input
+          type='text'
+          className={className}
+          name={name}
+          value={value}
+          onChange={changeEvent}
+        />
+      );
+    }
+  };
+
   return (
     <AnimatePresence>
       {!isVisible && (
         <motion.div
-          key="form-parent"
+          key='form-parent'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { delay: 0.3 } }}
-          className="Form"
+          exit={{ opacity: 0, transition: { delay: 0.5 } }}
+          className='Form'
         >
           <motion.div
-            key="contact-child"
+            key='contact-child'
             initial={{ y: -600, opacity: 0 }}
             animate={{
               y: 0,
               opacity: 1,
               transition: { duration: 1, delay: 0.2 },
             }}
-            exit={{ y: -1000, transition: { duration: 1 } }}
-            className="Form-contact"
+            exit={{ x: -1000, transition: { duration: 1 } }}
+            className='Form-contact'
           >
-            <div className="title">Contact</div>
+            <div className='title'>Contact</div>
             {contactHamburger()}
-            <form ref={form} className="content" onSubmit={mockSend}>
+            <form ref={form} className='content' onSubmit={mockSend}>
               <h2>Get in touch!</h2>
-              <label htmlFor="name" className="form-label">
-                Name:{' '}
-                {isValidated === false && InputValue.nameInput === '' && (
-                  <span className="error-label">
-                    Oh, I think you might have forgotten to state your name?
-                  </span>
-                )}
-              </label>
-              <input
-                type="text"
-                className="fields name"
-                name="name"
-                value={InputValue.nameInput}
-                onChange={(e) =>
-                  setInputValue({ ...InputValue, nameInput: e.target.value })
-                }
-              />
-
-              <label htmlFor="email" className="form-label">
-                E-mail:{' '}
-                {isValidated === false && InputValue.emailInput === '' && (
-                  <span className="error-label">
-                    Oh noes, if you don't type a email I will not be able to
-                    answer you!
-                  </span>
-                )}
-                {isValidated === false &&
-                  InputValue.emailInput !== '' &&
-                  !InputValue.emailInput.includes('@') && (
-                    <span className="error-label">
-                      The email must have a @ sign!, please try again!
-                    </span>
-                  )}
-              </label>
-              <input
-                type="text"
-                className="fields email"
-                name="email"
-                value={InputValue.emailInput}
-                onChange={(e) =>
-                  setInputValue({ ...InputValue, emailInput: e.target.value })
-                }
-              />
-              <label htmlFor="message" className="form-label">
-                Message:{' '}
-                {isValidated === false && InputValue.messageInput === '' && (
-                  <span className="error-label">
-                    Sorry, I can't read your mind...
-                  </span>
-                )}
-              </label>
-
-              <textarea
-                className="fields message"
-                name="message"
-                rows={5}
-                value={InputValue.messageInput}
-                onChange={(e) =>
-                  setInputValue({ ...InputValue, messageInput: e.target.value })
-                }
-              />
-
+              {showLabel(
+                'name',
+                InputValue.nameInput,
+                'Name:',
+                'Oh, I think you might have forgotten to state your name?'
+              )}
+              {showInput('fields name', 'name', InputValue.nameInput, (e) =>
+                setInputValue({ ...InputValue, nameInput: e.target.value })
+              )}
+              {showLabel(
+                'email',
+                InputValue.emailInput,
+                'E-mail:',
+                "Oh noes, if you don't type a email I will not be able to answer you!",
+                ' The email must have a @ sign!, please try again!'
+              )}
+              {showInput('fields email', 'email', InputValue.emailInput, (e) =>
+                setInputValue({ ...InputValue, emailInput: e.target.value })
+              )}
+              {showLabel(
+                'message',
+                InputValue.messageInput,
+                'Message:',
+                "Sorry, I can't read your mind..."
+              )}
+              {showInput(
+                'fields message',
+                'message',
+                InputValue.messageInput,
+                (e) =>
+                  setInputValue({
+                    ...InputValue,
+                    messageInput: e.target.value,
+                  })
+              )}
               <button
                 disabled={isLoading}
                 className={isLoading ? 'btn btn-disabled' : 'btn'}
-                type="submit"
-                value="Submit"
+                type='submit'
+                value='Submit'
                 onClick={handleValidation}
               >
                 {isLoading ? 'Loading...' : 'Send Message'}
@@ -226,26 +273,34 @@ export const ContactForm = (props: IContactFormProps) => {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
-  );
-};
-
-/*   <motion.div
-            key='about-child'
-            initial={{ y: 600, opacity: 0 }}
+      {showThanks && (
+        <motion.div
+          key='form-parent'
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { delay: 0.2 } }}
+          className='Form'
+        >
+          <motion.div
+            key='thanks-child'
+            initial={{ y: 1000, opacity: 0 }}
             animate={{
               y: 0,
               opacity: 1,
               transition: { duration: 1, delay: 0.2 },
             }}
             exit={{ y: 1000, transition: { duration: 1 } }}
-            className='Form-about'
+            className='Form-thanks'
           >
-            <div className='title'>About</div>
+            <div className='title'>Thanks</div>
             <div className='description'>
-              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-              quae ab illo inventore veritatis et quasi architecto beatae vitae
-              dicta sunt explicabo.
+              <h1>Message has been sent!</h1>
+              Thank you for reaching out! I will get back at you as soon as
+              possible!
             </div>
-          </motion.div> */
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};

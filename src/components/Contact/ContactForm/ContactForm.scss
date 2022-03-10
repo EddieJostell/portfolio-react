@@ -21,23 +21,22 @@
     flex-direction: row;
   }
 
-  /*  &-about {
+  &-thanks {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     overflow-x: hidden;
     background-color: #fff;
 
-    @media screen and (min-width: 768px) {
-      width: 50%;
+    /* @media screen and (min-width: 768px) {
+      width: 100%;
       height: 100%;
       overflow-x: hidden;
-    }
+    } */
 
     .title {
       position: absolute;
-      top: 30px;
+      bottom: 30px;
       right: -200px;
       color: #000;
       opacity: 0.03;
@@ -52,9 +51,9 @@
       text-align: left;
       padding: 40px;
       margin-top: 40px;
-      font-family: Audiowide, Helvetica, Arial, sans-serif;
+      font-family: Goldman, Helvetica, Arial, sans-serif;
     }
-  } */
+  }
 
   &-contact {
     position: relative;
@@ -89,7 +88,7 @@
       color: #fff;
       padding: 40px;
       margin-top: 40px;
-      font-family: Audiowide, Helvetica, Arial, sans-serif;
+      font-family: Goldman, Helvetica, Arial, sans-serif;
 
       .form-label {
         margin-bottom: 5px;
