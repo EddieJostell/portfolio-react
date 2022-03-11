@@ -1,12 +1,14 @@
-import React, { useState, useRef, MutableRefObject } from 'react';
+import React, { useState, useRef } from 'react';
 import './ContactForm.scss';
 import '../../Navigation/Navigation.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { serviceID } from './helpers/serviceID';
+import { templateID } from './helpers/templateID';
+import { userID } from './helpers/userID';
 
 interface IContactFormProps {
   toggleContact: () => void;
-  contactIsActive: boolean;
 }
 
 interface IFormState {
@@ -15,9 +17,12 @@ interface IFormState {
   messageInput: string;
 }
 
-interface IVisibleState {
-  showForm: boolean;
-  showThanks: boolean;
+interface IMailState {
+  showFail: boolean | undefined;
+  showThanks: boolean | undefined;
+
+  isVisible: boolean | undefined;
+  isLoading: boolean | undefined;
 }
 
 export const ContactForm = (props: IContactFormProps) => {
@@ -27,9 +32,12 @@ export const ContactForm = (props: IContactFormProps) => {
 
   const [isVisible, setVisible] = useState(false);
 
-  const [showThanks, setShowThanks] = useState(false);
-
-  const [isLoading, setIsLoading] = useState(false);
+  const [formState, setFormState] = useState<IMailState>({
+    showFail: undefined,
+    showThanks: undefined,
+    isVisible: undefined,
+    isLoading: undefined,
+  });
 
   const [InputValue, setInputValue] = useState<IFormState>({
     nameInput: '',
@@ -41,13 +49,17 @@ export const ContactForm = (props: IContactFormProps) => {
   );
 
   const completeContactForm = () => {
+    setFormState({ ...formState, isLoading: true });
     setVisible(!isVisible);
     setTimeout(() => {
-      setShowThanks(true);
-    }, 2000);
+      setFormState({
+        ...formState,
+        showThanks: !formState.showThanks,
+      });
+    }, 1000);
     setTimeout(() => {
       toggleContact();
-    }, 6000);
+    }, 5000);
   };
 
   const closeContactForm = () => {
@@ -57,12 +69,15 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 2000);
   };
 
-  const success = () => {
-    alert('SUCCESS!!');
-  };
-
-  const fail = () => {
-    alert('FAIL!!');
+  const retryContactForm = () => {
+    setFormState({ ...formState, isLoading: true });
+    setTimeout(() => {
+      setFormState({
+        ...formState,
+        showFail: true,
+        isLoading: false,
+      });
+    }, 2000);
   };
 
   const sendEmail = (e: any) => {
@@ -73,23 +88,18 @@ export const ContactForm = (props: IContactFormProps) => {
       InputValue.messageInput !== '' &&
       InputValue.emailInput.includes('@')
     ) {
-      emailjs
-        .sendForm(
-          'service_k0r4epr',
-          'template_2za46fj',
-          form.current!,
-          'Yq114L0OLt2Ou5HK_'
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
+      setFormState({ ...formState, isLoading: true });
+      emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
+        (result) => {
+          console.log(result.text);
+          completeContactForm();
+        },
+        (error) => {
+          console.log(error.text);
+          retryContactForm();
+        }
+      );
       e.target.reset();
-      completeContactForm();
     }
   };
 
@@ -102,19 +112,16 @@ export const ContactForm = (props: IContactFormProps) => {
       InputValue.messageInput !== '' &&
       InputValue.emailInput.includes('@')
     ) {
-      setIsLoading(true);
+      setFormState({ ...formState, isLoading: true });
       setTimeout(() => {
         if (1 + 1 === 2) {
-          success();
           completeContactForm();
         } else {
-          setIsLoading(false);
-          fail();
+          retryContactForm();
         }
       }, 2000);
     } else {
-      setIsLoading(false);
-      fail();
+      setFormState({ ...formState, isLoading: false });
     }
   };
 
@@ -180,7 +187,8 @@ export const ContactForm = (props: IContactFormProps) => {
     if (name === 'message') {
       return (
         <textarea
-          className={className}
+          disabled={formState.showFail}
+          className={!formState.showFail ? className : className + 'disabled'}
           name={name}
           rows={5}
           value={value}
@@ -190,8 +198,9 @@ export const ContactForm = (props: IContactFormProps) => {
     } else {
       return (
         <input
+          disabled={formState.showFail}
           type='text'
-          className={className}
+          className={!formState.showFail ? className : className + 'disabled'}
           name={name}
           value={value}
           onChange={changeEvent}
@@ -248,7 +257,7 @@ export const ContactForm = (props: IContactFormProps) => {
                 'message',
                 InputValue.messageInput,
                 'Message:',
-                "Sorry, I can't read your mind..."
+                'Oh noes, you forgot to type a message!.'
               )}
               {showInput(
                 'fields message',
@@ -260,20 +269,40 @@ export const ContactForm = (props: IContactFormProps) => {
                     messageInput: e.target.value,
                   })
               )}
-              <button
-                disabled={isLoading}
-                className={isLoading ? 'btn btn-disabled' : 'btn'}
-                type='submit'
-                value='Submit'
-                onClick={handleValidation}
-              >
-                {isLoading ? 'Loading...' : 'Send Message'}
-              </button>
+              {!formState.showFail ? (
+                <button
+                  disabled={formState.isLoading}
+                  className={formState.isLoading ? 'btn btn-disabled' : 'btn'}
+                  type='submit'
+                  value='Submit'
+                  onClick={handleValidation}
+                >
+                  {formState.isLoading ? 'Sending...' : 'Send Message'}
+                </button>
+              ) : (
+                <div className='error-msg'>
+                  <div>
+                    Something has gone wrong :/, please try to send the message
+                    again.
+                  </div>
+                  <button
+                    className={'btn btn-error'}
+                    onClick={() =>
+                      setFormState({
+                        ...formState,
+                        showFail: !formState.showFail,
+                      })
+                    }
+                  >
+                    {'Try again'}
+                  </button>
+                </div>
+              )}
             </form>
           </motion.div>
         </motion.div>
       )}
-      {showThanks && (
+      {formState.showThanks && (
         <motion.div
           key='form-parent'
           initial={{ opacity: 0 }}

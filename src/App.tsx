@@ -77,11 +77,7 @@ function App() {
                 <Footer key='6' />,
               ]
             ) : (
-              <ContactForm
-                key='7'
-                toggleContact={toggleContact}
-                contactIsActive={appState.contactIsActive}
-              />
+              <ContactForm key='7' toggleContact={toggleContact} />
             )}
           </Container>
         </Router>
