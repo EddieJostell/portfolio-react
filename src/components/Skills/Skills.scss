@@ -1,5 +1,40 @@
 .Skills {
-  height: 100vh;
   border: 1px solid red;
-  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    height: 100vh;
+  }
+
+  .title {
+    font-size: 60px;
+    color: white;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .Card {
+      width: 100%;
+      height: 100px;
+      padding: 30px;
+      background-color: #fff;
+      color: #000;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Goldman;
+      margin-bottom: 20px;
+
+      @media (min-width: 769px) {
+        width: 200px;
+      }
+    }
+  }
 }

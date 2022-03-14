@@ -23,12 +23,12 @@ export const Portfolio = (props: IPortfolioProps) => {
   };
 
   return (
-    <div id="portfolio" className="Portfolio">
-      <div className="Portfolio-title">
+    <div id='portfolio' className='Portfolio'>
+      <div className='Portfolio-title'>
         <h1>PROJECTS</h1>
       </div>
-      <div className="List">
-        {displayPortfolioData()}
+      <div className='List'>
+        {/*  {displayPortfolioData()} */}
         {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
       </div>
     </div>

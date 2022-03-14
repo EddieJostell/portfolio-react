@@ -6,6 +6,7 @@ import {
   NavigationLinks,
   AboutMe,
   ContactInfo,
+  SkillsInfo,
 } from './utils/data';
 import { Navigation } from './components/Navigation/Navigation';
 import { ContextProvider, IContextState } from './utils/HelperContext';
@@ -42,6 +43,7 @@ function App() {
     routeItem: RouteInfo,
     aboutItem: AboutMe,
     contactItem: ContactInfo,
+    skillsItem: SkillsInfo,
   };
 
   const toggleContact = useCallback(() => {

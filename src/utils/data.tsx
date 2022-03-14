@@ -4,45 +4,23 @@ import iconGitHub from '../Icons/github.svg';
 import iconInsta from '../Icons/instagram.svg';
 import iconTwitter from '../Icons/twitter.svg';
 
-export interface INavLinkItem {
+export interface ISkillsItem {
   id: number;
-  text: string;
-  path: string;
-  scrollId: string;
+  skill: string;
 }
 
-export interface IPortfolioItem {
-  id: number;
-  title: string;
-  tech: string;
-  link: string;
-  img: string;
-  text: string;
-}
-
-export interface IQuoteItem {
-  id: number;
-  quote: string;
-  author: string;
-}
-
-export interface IAboutMe {
-  likes: string;
-  personal: IPersonal;
-  gamer: string;
-}
-
-export interface IPersonal {
-  name: string;
-  age: string;
-  from: string;
-  occupation: string;
-}
+export const SkillsInfo: ISkillsItem[] = [
+  { id: 1, skill: 'HTML/CSS' },
+  { id: 2, skill: 'JAVASCRIPT' },
+  { id: 3, skill: 'REACT' },
+  { id: 4, skill: 'TYPESCRIPT' },
+  { id: 5, skill: 'EPISERVER / CMS' },
+];
 
 export interface IContactItem {
   id: number;
   title: string;
-  iconSrc: any;
+  iconSrc?: string;
   text: string;
   link?: string;
 }
@@ -90,6 +68,19 @@ export const ContactInfo: IContactItem[] = [
     text: 'Be cool and follow me on Twitter!',
   },
 ];
+
+export interface IAboutMe {
+  likes: string;
+  personal: IPersonal;
+  gamer: string;
+}
+
+export interface IPersonal {
+  name: string;
+  age: string;
+  from: string;
+  occupation: string;
+}
 export const AboutMe: IAboutMe[] = [
   {
     likes:
@@ -105,6 +96,12 @@ export const AboutMe: IAboutMe[] = [
   },
 ];
 
+export interface INavLinkItem {
+  id: number;
+  text: string;
+  path: string;
+  scrollId: string;
+}
 export const NavigationLinks: INavLinkItem[] = [
   { id: 1, text: 'About', path: '/About', scrollId: 'about' },
   {
@@ -117,6 +114,14 @@ export const NavigationLinks: INavLinkItem[] = [
   { id: 4, text: 'Contact', path: '/Contact', scrollId: 'contact' },
 ];
 
+export interface IPortfolioItem {
+  id: number;
+  title: string;
+  tech: string;
+  link: string;
+  img: string;
+  text: string;
+}
 export const ProjectList: IPortfolioItem[] = [
   {
     id: 1,
@@ -176,6 +181,11 @@ export const ProjectList: IPortfolioItem[] = [
   },
 ];
 
+export interface IQuoteItem {
+  id: number;
+  quote: string;
+  author: string;
+}
 export const QuoteInfo: IQuoteItem[] = [
   {
     id: 1,
