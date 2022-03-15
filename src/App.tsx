@@ -1,5 +1,6 @@
 import './App.scss';
-import React, { useState, useCallback, useEffect } from 'react';
+import './App.css';
+import React, { useState, useCallback } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -11,7 +12,6 @@ import {
 import { Navigation } from './components/Navigation/Navigation';
 import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Container } from './components/Container/Container';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
 import { isMobileMax } from './utils/userAgent';
@@ -65,15 +65,15 @@ function App() {
 
   const displayLoader = () => {
     return (
-      <div className='Name-wrapper'>
-        <div className='loader-letter'>E</div>
+      <div className="Name-wrapper">
+        <div className="loader-letter">E</div>
       </div>
     );
   };
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className='App' data-testid='application'>
+      <div className="App" data-testid="application">
         {appState.isLoading ? (
           displayLoader()
         ) : (
@@ -82,24 +82,24 @@ function App() {
               <Navigation
                 navIsOpen={appState.navIsOpen}
                 toggleNav={toggleNav}
-                name='E'
+                name="E"
                 navLinks={NavigationLinks}
                 toggleContact={toggleContact}
-                data-testid='navigation'
+                data-testid="navigation"
               />
             )}
 
             {!appState.contactIsActive ? (
               [
-                <Home key='1' />,
-                <About key='2' />,
-                <Portfolio key='3' />,
-                <Skills key='4' />,
-                isMobileMax && <ContactSlim icons={true} key='5' />,
-                <Footer key='6' />,
+                <Home key="1" />,
+                <About key="2" />,
+                <Portfolio key="3" />,
+                <Skills key="4" />,
+                isMobileMax && <ContactSlim icons={true} key="5" />,
+                <Footer key="6" />,
               ]
             ) : (
-              <ContactForm key='7' toggleContact={toggleContact} />
+              <ContactForm key="7" toggleContact={toggleContact} />
             )}
           </Router>
         )}
