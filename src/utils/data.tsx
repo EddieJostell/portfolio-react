@@ -32,13 +32,13 @@ export const ContactInfo: IContactItem[] = [
     iconSrc: iconPhone,
     text: 'Give me a call!',
   }, */
-  {
+  /*   {
     id: 2,
     title: 'Email',
     iconSrc: iconMail,
     link: 'mailto:eddie.jostell@gmail.com',
     text: 'Send me a email!',
-  },
+  }, */
   {
     id: 3,
     title: 'LinkedIn',

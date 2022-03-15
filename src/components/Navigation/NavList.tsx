@@ -117,7 +117,7 @@ export const NavList = (props: INavListProps) => {
               >
                 {mobileNavItems()}
                 <div className='NavList-contactLinks'>
-                  <ContactSlim />
+                  <ContactSlim icons={true} />
                 </div>
               </motion.div>
             </motion.div>

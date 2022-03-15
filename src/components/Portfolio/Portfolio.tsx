@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { Container } from '../Container/Container';
 import './Portfolio.scss';
 
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
@@ -24,13 +25,15 @@ export const Portfolio = (props: IPortfolioProps) => {
 
   return (
     <div id='portfolio' className='Portfolio'>
-      <div className='Portfolio-title'>
-        <h1>PROJECTS</h1>
-      </div>
-      <div className='List'>
-        {/*  {displayPortfolioData()} */}
-        {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
-      </div>
+      <Container>
+        <div className='Portfolio-title'>
+          <h1>PROJECTS</h1>
+        </div>
+        <div className='List'>
+          {/*  {displayPortfolioData()} */}
+          {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
+        </div>
+      </Container>
     </div>
   );
 };

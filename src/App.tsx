@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -25,12 +25,14 @@ import { About } from './components/About/About';
 interface IAppState {
   navIsOpen: boolean;
   contactIsActive: boolean;
+  isLoading: boolean;
 }
 
 function App() {
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
     contactIsActive: false,
+    isLoading: false,
   });
 
   const toggleNav = (visible: boolean) => {
@@ -54,35 +56,53 @@ function App() {
     });
   }, [appState.contactIsActive]);
 
+  /*  useEffect(() => {
+    setTimeout(() => {
+      setAppState({ ...appState, isLoading: appState.isLoading });
+    }, 2000);
+    setAppState({ ...appState, isLoading: !appState.isLoading });
+  }, []); */
+
+  const displayLoader = () => {
+    return (
+      <div className='Name-wrapper'>
+        <div className='loader-letter'>E</div>
+      </div>
+    );
+  };
+
   return (
     <ContextProvider state={HelperContextValue}>
       <div className='App' data-testid='application'>
-        <Router>
-          {!appState.contactIsActive && (
-            <Navigation
-              navIsOpen={appState.navIsOpen}
-              toggleNav={toggleNav}
-              name='E'
-              navLinks={NavigationLinks}
-              toggleContact={toggleContact}
-              data-testid='navigation'
-            />
-          )}
-          <Container>
+        {appState.isLoading ? (
+          displayLoader()
+        ) : (
+          <Router>
+            {!appState.contactIsActive && (
+              <Navigation
+                navIsOpen={appState.navIsOpen}
+                toggleNav={toggleNav}
+                name='E'
+                navLinks={NavigationLinks}
+                toggleContact={toggleContact}
+                data-testid='navigation'
+              />
+            )}
+
             {!appState.contactIsActive ? (
               [
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
                 <Skills key='4' />,
-                isMobileMax && <ContactSlim key='5' />,
+                isMobileMax && <ContactSlim icons={true} key='5' />,
                 <Footer key='6' />,
               ]
             ) : (
               <ContactForm key='7' toggleContact={toggleContact} />
             )}
-          </Container>
-        </Router>
+          </Router>
+        )}
       </div>
     </ContextProvider>
   );

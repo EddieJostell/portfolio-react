@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
+import { Container } from '../Container/Container';
 import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
 
@@ -35,8 +36,10 @@ export const Home = (props: IHomeProps) => {
 
   return (
     <div className='Home' id='home'>
-      <div className='Home-banner'>{personalInfo()}</div>
-      {isMobileMax && <QuoteContent />}
+      <Container>
+        <div className='Home-banner'>{personalInfo()}</div>
+        {isMobileMax && <QuoteContent />}
+      </Container>
     </div>
   );
 };

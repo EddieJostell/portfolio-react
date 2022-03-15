@@ -5,38 +5,59 @@ import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { isMobileMax } from '../../utils/userAgent';
 import './ContactSlim.scss';
 
-interface IContactSlimProps {}
+interface IContactSlimProps {
+  icons: boolean;
+}
 
 export const ContactSlim = (props: IContactSlimProps) => {
+  const { icons } = props;
   const contactInfo = React.useContext<IContextState>(HelperContext);
 
-  const displayContactInfo = () => {
+  const displayContactIcons = () => {
     return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
-      <div key={key} className='ContactSlim-icons'>
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{
-            repeat: Infinity,
-            duration: 3,
-            repeatType: 'loop',
-            ease: 'linear',
-          }}
-        >
-          <a href={tact.link} target='_blank' rel='noreferrer'>
-            <img alt={tact.title} src={tact.iconSrc} />
-          </a>
-        </motion.div>
-      </div>
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{
+          repeat: Infinity,
+          duration: 3,
+          repeatType: 'loop',
+          ease: 'linear',
+        }}
+      >
+        <a href={tact.link} target='_blank' rel='noopener noreferrer'>
+          <img alt={tact.title} src={tact.iconSrc} />
+        </a>
+      </motion.div>
+    ));
+  };
+
+  const displayContactLinks = () => {
+    return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
+      <a
+        className='item'
+        href={tact.link}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <span>{tact.title}</span>
+      </a>
     ));
   };
 
   return (
-    <div
-      className={
-        isMobileMax ? 'ContactSlim' : 'ContactSlim ContactSlim--mobile'
-      }
-    >
-      {displayContactInfo()}
-    </div>
+    <>
+      {icons ? (
+        <div
+          className={`
+            ContactSlim ContactSlim-icons ${isMobileMax && 'desktop'}`}
+        >
+          {displayContactIcons()}
+        </div>
+      ) : (
+        <div className={`ContactSlim ${!icons && 'fullWidth'}`}>
+          <div className='ContactSlim-links'>{displayContactLinks()}</div>
+        </div>
+      )}
+    </>
   );
 };

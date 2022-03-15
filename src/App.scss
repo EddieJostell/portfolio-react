@@ -29,6 +29,21 @@ body {
   text-align: center;
   min-height: 100vh;
   position: relative;
+
+  .Name-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .loader-letter {
+    font-size: 70px;
+    font-family: 'Diplomata', cursive;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
 h1 {

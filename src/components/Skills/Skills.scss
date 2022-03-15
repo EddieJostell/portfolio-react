@@ -1,8 +1,8 @@
 .Skills {
-  border: 1px solid red;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  background-color: white;
 
   @media (min-width: 769px) {
     height: 100vh;
@@ -23,8 +23,8 @@
       width: 100%;
       height: 100px;
       padding: 30px;
-      background-color: #fff;
-      color: #000;
+      background-color: #000;
+      color: #fff;
       border-radius: 10px;
       display: flex;
       justify-content: center;

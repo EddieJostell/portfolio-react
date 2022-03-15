@@ -1,11 +1,7 @@
 .ContactSlim {
-  position: absolute;
-  top: 25vh;
-  right: 25px;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 
-  &.ContactSlim--mobile {
+  &.ContactSlim-icons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -13,9 +9,7 @@
     top: auto;
     right: auto;
     bottom: 20px;
-  }
 
-  .ContactSlim-icons {
     img {
       height: 30px;
       margin: 5px;
@@ -31,6 +25,51 @@
 
       &:hover {
         height: 100px;
+      }
+    }
+  }
+
+  &.desktop {
+    position: absolute;
+    top: 25vh;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &.fullWidth {
+    width: 100%;
+  }
+  .ContactSlim-links {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .item {
+      color: white;
+      font-size: 20px;
+      position: relative;
+      text-decoration: none;
+      font-family: Goldman, sans-serif, Arial, Helvetica;
+
+      &:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: -4px;
+        content: '';
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: #fff;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+      &:hover:after {
+        width: 100%;
+        left: 0;
       }
     }
   }
