@@ -1,20 +1,30 @@
 .Footer {
-  min-height: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
   position: relative;
-  border: 1px solid cyan;
+  padding: 30px;
 
-  &-name {
-    font-size: 64px;
-    font-family: 'Diplomata', cursive;
-    color: #fff;
-    transition: opacity 0.35s ease 0.65s;
-    text-decoration: none;
-    margin-bottom: 20px;
-    cursor: pointer;
+  .Footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-name {
+      position: relative;
+      font-size: 64px;
+      font-family: 'Diplomata', cursive;
+      color: #fff;
+      transition: opacity 0.35s ease 0.65s;
+      text-decoration: none;
+      margin-bottom: 20px;
+      cursor: pointer;
+      width: 200px;
+
+      .scroll-to-top {
+        position: absolute;
+        top: 31px;
+        right: 8px;
+        font-size: 12px;
+      }
+    }
   }
 }

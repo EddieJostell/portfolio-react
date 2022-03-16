@@ -46,7 +46,8 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
 
     .item {
       color: white;
@@ -54,6 +55,7 @@
       position: relative;
       text-decoration: none;
       font-family: Goldman, sans-serif, Arial, Helvetica;
+      margin: 20px;
 
       &:after {
         background: none repeat scroll 0 0 transparent;
@@ -63,7 +65,7 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: #fff;
+        background: #d90429;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }
