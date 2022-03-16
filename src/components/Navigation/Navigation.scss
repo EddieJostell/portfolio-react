@@ -16,10 +16,10 @@
   align-items: center;
   position: relative;
   z-index: 50;
-  color: #b0b2c3;
+  color: #edf2f4;
 
   @media (min-width: 768px) {
-    color: #fff;
+    color: #edf2f4;
   }
 
   .Navigation-wrapper {
@@ -31,12 +31,12 @@
     .Navigation-name {
       font-size: 64px;
       font-family: 'Diplomata', cursive;
-      color: #fff;
+      color: #edf2f4;
       transition: opacity 0.35s ease 0.65s;
       text-decoration: none;
 
       @media (min-width: 768px) {
-        color: #b0b2c3;
+        color: #edf2f4;
         &:hover {
           color: #fff;
           transition: opacity 0.25s ease;
@@ -118,7 +118,7 @@
       list-style-type: none;
       text-decoration: none;
       cursor: pointer;
-      color: #b0b2c3;
+      color: #edf2f4;
 
       &:hover,
       :active,
@@ -134,7 +134,7 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: #fff;
+        background: #d90429;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }

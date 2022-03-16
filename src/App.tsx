@@ -1,5 +1,4 @@
 import './App.scss';
-import './App.css';
 import React, { useState, useCallback } from 'react';
 import {
   ProjectList,
@@ -65,15 +64,15 @@ function App() {
 
   const displayLoader = () => {
     return (
-      <div className="Name-wrapper">
-        <div className="loader-letter">E</div>
+      <div className='Name-wrapper'>
+        <div className='loader-letter'>E</div>
       </div>
     );
   };
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className="App" data-testid="application">
+      <div className='App' data-testid='application'>
         {appState.isLoading ? (
           displayLoader()
         ) : (
@@ -82,24 +81,24 @@ function App() {
               <Navigation
                 navIsOpen={appState.navIsOpen}
                 toggleNav={toggleNav}
-                name="E"
+                name='E'
                 navLinks={NavigationLinks}
                 toggleContact={toggleContact}
-                data-testid="navigation"
+                data-testid='navigation'
               />
             )}
 
             {!appState.contactIsActive ? (
               [
-                <Home key="1" />,
-                <About key="2" />,
-                <Portfolio key="3" />,
-                <Skills key="4" />,
-                isMobileMax && <ContactSlim icons={true} key="5" />,
-                <Footer key="6" />,
+                <Home key='1' />,
+                <About key='2' />,
+                <Portfolio key='3' />,
+                <Skills key='4' />,
+                isMobileMax && <ContactSlim icons={true} key='5' />,
+                <Footer key='6' />,
               ]
             ) : (
-              <ContactForm key="7" toggleContact={toggleContact} />
+              <ContactForm key='7' toggleContact={toggleContact} />
             )}
           </Router>
         )}
