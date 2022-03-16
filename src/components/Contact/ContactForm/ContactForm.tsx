@@ -114,7 +114,7 @@ export const ContactForm = (props: IContactFormProps) => {
     ) {
       setFormState({ ...formState, isLoading: true });
       setTimeout(() => {
-        if (1 + 1 === 2) {
+        if (1 + 1 === 3) {
           completeContactForm();
         } else {
           retryContactForm();
@@ -233,7 +233,7 @@ export const ContactForm = (props: IContactFormProps) => {
             <div className='title'>Contact</div>
             {contactHamburger()}
             <form ref={form} className='content' onSubmit={mockSend}>
-              <h2>Get in touch!</h2>
+              <h1>Get in touch!</h1>
               {showLabel(
                 'name',
                 InputValue.nameInput,
