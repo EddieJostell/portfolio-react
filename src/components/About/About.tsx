@@ -9,7 +9,7 @@ export const About = (props: IAboutProps) => {
   return (
     <div className='About' id='about'>
       <Container>
-        <h1 className='title'>About Page</h1>
+        <h1 className='title'>ABOUT ME</h1>
         <div className='box-container'>
           <div className='content'>
             <div className='box'>
@@ -42,11 +42,10 @@ export const About = (props: IAboutProps) => {
             </div>
           </div>
           <div className='photo'>
-            <img
-              className='img'
-              src={process.env.PUBLIC_URL + 'KELEDW.jpg'}
-              alt='profile'
-            />
+            <div className='frame'>
+              {/* <div className='layer'></div> */}
+              <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
+            </div>
           </div>
         </div>
       </Container>

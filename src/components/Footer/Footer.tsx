@@ -39,6 +39,7 @@ export const Footer = () => {
             </motion.div>
           </motion.div>
           <ContactSlim icons={false} />
+          <div className='name'>Edward 'Eddie' Jostell</div>
         </div>
       </Container>
     </div>
