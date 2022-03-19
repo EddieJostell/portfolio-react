@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
@@ -9,8 +10,41 @@ export const About = (props: IAboutProps) => {
   return (
     <div className='About' id='about'>
       <Container>
-        <h1 className='title'>ABOUT ME</h1>
-        <div className='box-container'>
+        <motion.h1
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              opacity: 0.07,
+            },
+            hidden: { opacity: 0 },
+          }}
+          transition={{
+            duration: 5,
+            delay: 0.3,
+          }}
+          className='title'
+        >
+          ABOUT ME
+        </motion.h1>
+        <motion.div
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              opacity: 1,
+              y: 0,
+            },
+            hidden: { y: 200, opacity: 0 },
+          }}
+          transition={{
+            duration: 2,
+            delay: 0.1,
+          }}
+          className='box-container'
+        >
           <div className='content'>
             <div className='box'>
               <h2 className=''>Likes</h2>
@@ -47,7 +81,7 @@ export const About = (props: IAboutProps) => {
               <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
             </div>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </div>
   );
