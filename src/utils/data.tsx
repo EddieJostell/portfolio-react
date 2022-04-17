@@ -191,7 +191,7 @@ export const QuoteInfo: IQuoteItem[] = [
     id: 1,
     quote:
       'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
-    author: 'Bodhi Point Break 2015',
+    author: 'Bodhi, Point Break 2015',
   },
   {
     id: 2,
@@ -253,5 +253,10 @@ export const QuoteInfo: IQuoteItem[] = [
     quote:
       'My family is everything. I am what I am thanks to my mother, my father, my brother, my sister... because they have given me everything. The education I have is thanks to them.',
     author: 'Ronaldinho',
+  },
+  {
+    id: 13,
+    quote: "Clear eyes, full hearts, can't lose.",
+    author: 'Coach Eric Taylor, Friday Night Lights (2006-2011)',
   },
 ];
