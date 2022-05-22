@@ -259,4 +259,10 @@ export const QuoteInfo: IQuoteItem[] = [
     quote: "Clear eyes, full hearts, can't lose.",
     author: 'Coach Eric Taylor, Friday Night Lights (2006-2011)',
   },
+  {
+    id: 14,
+    quote:
+      '“Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.”',
+    author: 'Tupac Shakur',
+  },
 ];
