@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { AnimatePresence, motion } from 'framer-motion';
 import './QuoteContent.scss';
 
 interface Props {}
@@ -33,15 +34,31 @@ export const QuoteContent = (props: Props) => {
         quote: randomizedQuotes.quote,
         author: randomizedQuotes.author,
       });
-    }, 10000);
+    }, 6000);
 
     return () => clearInterval(interval);
   });
 
   return (
-    <div className="QuoteContent animation">
-      <span className="quote">{quote.quote}</span>
-      <span>- {quote.author}</span>
-    </div>
+    <AnimatePresence>
+      <motion.div
+        key='quotes'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          repeat: Infinity,
+          repeatType: 'mirror',
+          duration: 3,
+          delay: 6,
+          ease: 'easeInOut',
+        }}
+        exit={{ opacity: 0, transition: { delay: 6 } }}
+      >
+        <div className='QuoteContent'>
+          <span className='quote'>{quote.quote}</span>
+          <span>- {quote.author}</span>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
