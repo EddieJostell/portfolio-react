@@ -52,7 +52,7 @@ export const QuoteContent = (props: Props) => {
           delay: 6,
           ease: 'easeInOut',
         }}
-        exit={{ opacity: 0, transition: { delay: 6 } }}
+        exit={{ opacity: 0, transition: { duration: 3, delay: 6 } }}
       >
         <div className='QuoteContent'>
           <span className='quote'>{quote.quote}</span>
