@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import './QuoteContent.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {}
 
@@ -55,7 +57,11 @@ export const QuoteContent = (props: Props) => {
         exit={{ opacity: 0, transition: { duration: 3, delay: 6 } }}
       >
         <div className='QuoteContent'>
-          <span className='quote'>{quote.quote}</span>
+          <span className='quote'>
+            <FontAwesomeIcon icon={faQuoteLeft} color='white' size='sm' />
+            &nbsp;{quote.quote}&nbsp;
+            <FontAwesomeIcon icon={faQuoteRight} color='white' size='sm' />
+          </span>
           <span>- {quote.author}</span>
         </div>
       </motion.div>
