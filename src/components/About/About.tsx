@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
-import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
 import './About.scss';
 
@@ -59,9 +58,10 @@ export const About = (props: IAboutProps) => {
             <div className='box'>
               <h2 className=''>Me</h2>
               <div className=''>Name: Edward 'Eddie' Jostell.</div>
-              <div className=''>Age: 32 summers.</div>
+              <div className=''>Born: 1987.</div>
               <div className=''>From: Stockholm, Sweden.</div>
               <div className=''>Occupation: Frontend-developer.</div>
+              <div className=''>Current workplace: Skandia.</div>
             </div>
 
             <div className='box'>
@@ -77,7 +77,14 @@ export const About = (props: IAboutProps) => {
           </div>
           <div className='photo'>
             <div className='frame'>
-              {/* <div className='layer'></div> */}
+              <motion.div
+                whileHover={{
+                  opacity: 1,
+                  backgroundColor: 'transparent',
+                  transition: { duration: 1, delay: 0 },
+                }}
+                className='layer'
+              ></motion.div>
               <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
             </div>
           </div>
