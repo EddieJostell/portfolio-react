@@ -1,11 +1,26 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
+import { useForm } from 'react-hook-form';
 import { Container } from '../Container/Container';
 import './About.scss';
 
 interface IAboutProps {}
 
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export const About = (props: IAboutProps) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  console.log(errors);
+
   return (
     <div className='About' id='about'>
       <Container>
@@ -89,6 +104,38 @@ export const About = (props: IAboutProps) => {
             </div>
           </div>
         </motion.div>
+
+        <form
+          className='Form-test'
+          onSubmit={handleSubmit((data) => {
+            console.log('data', data);
+          })}
+        >
+          <h1>Get in touch!</h1>
+          <label htmlFor='name'>Name: </label>
+          <input
+            placeholder='Name'
+            {...register('name', { required: 'Name is required' })}
+          />
+          <p>{errors.name?.message}</p>
+          <label htmlFor='email'>E-mail:</label>
+          <input
+            placeholder='E-mail'
+            {...register('email', { required: 'E-mail is required' })}
+          />
+          <p>{errors.email?.message}</p>
+          <label htmlFor='message'>Message:</label>
+          <textarea
+            rows={5}
+            placeholder='Message'
+            {...register('message', {
+              required: true,
+              minLength: { value: 5, message: 'Min length is 5' },
+            })}
+          />
+          <p>{errors.message?.message}</p>
+          <input type='submit' value='Click Me!' />
+        </form>
       </Container>
     </div>
   );
