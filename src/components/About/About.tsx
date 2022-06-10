@@ -17,9 +17,11 @@ export const About = (props: IAboutProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({ mode: 'onSubmit', reValidateMode: 'onChange' });
 
-  console.log(errors);
+  const doSomething = () => {
+    alert('Working!!');
+  };
 
   return (
     <div className='About' id='about'>
@@ -109,6 +111,7 @@ export const About = (props: IAboutProps) => {
           className='Form-test'
           onSubmit={handleSubmit((data) => {
             console.log('data', data);
+            doSomething();
           })}
         >
           <h1>Get in touch!</h1>
@@ -121,7 +124,13 @@ export const About = (props: IAboutProps) => {
           <label htmlFor='email'>E-mail:</label>
           <input
             placeholder='E-mail'
-            {...register('email', { required: 'E-mail is required' })}
+            {...register('email', {
+              required: 'E-mail is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'invalid email address',
+              },
+            })}
           />
           <p>{errors.email?.message}</p>
           <label htmlFor='message'>Message:</label>
@@ -129,7 +138,7 @@ export const About = (props: IAboutProps) => {
             rows={5}
             placeholder='Message'
             {...register('message', {
-              required: true,
+              required: 'You have to type something :/',
               minLength: { value: 5, message: 'Min length is 5' },
             })}
           />

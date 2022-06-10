@@ -36,12 +36,17 @@
     }
 
     .content {
-      width: 70%;
+      width: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      align-items: center;
 
-      border-right: 2px solid #d90429;
-      padding-right: 10px;
+      @media (min-width: 768px) {
+        width: 70%;
+        flex-direction: row;
+        border-right: 2px solid #d90429;
+        padding-right: 10px;
+      }
     }
 
     .photo {
@@ -104,7 +109,12 @@
       justify-content: flex-start;
       align-items: center;
       font-size: 18px;
-      text-align: left;
+      text-align: center;
+      padding: 5px;
+
+      @media (min-width: 768px) {
+        text-align: left;
+      }
     }
   }
 

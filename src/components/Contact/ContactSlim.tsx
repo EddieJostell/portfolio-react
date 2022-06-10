@@ -17,6 +17,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
   const displayContactIcons = () => {
     return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
       <motion.div
+        key={key}
         whileHover={{
           boxShadow: '0px  0px 8px rgb(255,255,255)',
           color: '#d90429',
@@ -39,6 +40,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
   const displayContactLinks = () => {
     return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
       <a
+        key={key}
         className='item'
         href={tact.link}
         target='_blank'
