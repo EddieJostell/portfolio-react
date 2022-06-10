@@ -1,8 +1,9 @@
-import iconMail from '../Icons/mail.svg';
-import iconLinkedIn from '../Icons/linkedin.svg';
-import iconGitHub from '../Icons/github.svg';
-import iconInsta from '../Icons/instagram.svg';
-import iconTwitter from '../Icons/twitter.svg';
+import {
+  faTwitter,
+  faInstagram,
+  faGithubSquare,
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
 
 export interface ISkillsItem {
   id: number;
@@ -20,7 +21,7 @@ export const SkillsInfo: ISkillsItem[] = [
 export interface IContactItem {
   id: number;
   title: string;
-  iconSrc?: string;
+  iconSrc?: any;
   text: string;
   link?: string;
 }
@@ -42,28 +43,28 @@ export const ContactInfo: IContactItem[] = [
   {
     id: 3,
     title: 'LinkedIn',
-    iconSrc: iconLinkedIn,
+    iconSrc: faLinkedinIn,
     link: 'https://www.linkedin.com/in/eddiejostell/',
     text: 'Add me to your network!',
   },
   {
     id: 4,
     title: 'Github',
-    iconSrc: iconGitHub,
+    iconSrc: faGithubSquare,
     link: 'https://github.com/EddieJostell/',
     text: 'Checkout my projects on Github!',
   },
   {
     id: 5,
     title: 'Instagram',
-    iconSrc: iconInsta,
+    iconSrc: faInstagram,
     link: 'https://www.instagram.com/eduardojostello/',
     text: 'Be cool and follow me on Instagram!',
   },
   {
     id: 6,
     title: 'Twitter',
-    iconSrc: iconTwitter,
+    iconSrc: faTwitter,
     link: 'https://twitter.com/El_Wardinho/',
     text: 'Be cool and follow me on Twitter!',
   },

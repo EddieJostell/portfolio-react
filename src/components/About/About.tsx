@@ -96,7 +96,7 @@ export const About = (props: IAboutProps) => {
                 whileHover={{
                   opacity: 1,
                   backgroundColor: 'transparent',
-                  transition: { duration: 1, delay: 0 },
+                  transition: { duration: 3, delay: 0 },
                 }}
                 className='layer'
               ></motion.div>
