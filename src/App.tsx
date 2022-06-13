@@ -20,6 +20,7 @@ import { Skills } from './components/Skills/Skills';
 import { Footer } from './components/Footer/Footer';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import { About } from './components/About/About';
+import { ContactForm2 } from './components/Contact/ContactForm/ContactForm2';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -98,7 +99,7 @@ function App() {
                 <Footer key='6' />,
               ]
             ) : (
-              <ContactForm key='7' toggleContact={toggleContact} />
+              <ContactForm2 key='7' toggleContact={toggleContact} />
             )}
           </Router>
         )}

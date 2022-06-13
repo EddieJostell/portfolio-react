@@ -114,7 +114,7 @@ export const ContactForm = (props: IContactFormProps) => {
     ) {
       setFormState({ ...formState, isLoading: true });
       setTimeout(() => {
-        if (1 + 1 === 3) {
+        if (1 + 1 === 2) {
           completeContactForm();
         } else {
           retryContactForm();
