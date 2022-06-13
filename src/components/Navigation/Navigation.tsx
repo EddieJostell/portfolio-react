@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import { isMobileMax } from '../../utils/userAgent';
 import './Navigation.scss';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 interface INavProps {

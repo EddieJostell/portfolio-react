@@ -84,7 +84,6 @@ export const ContactForm2 = (props: IContactFormProps) => {
       isLoading: true,
       isVisible: !formState.isVisible,
     });
-    //setVisible(!isVisible);
     setTimeout(() => {
       setFormState({
         ...formState,
@@ -98,7 +97,6 @@ export const ContactForm2 = (props: IContactFormProps) => {
 
   const closeContactForm = () => {
     setFormState({ ...formState, isVisible: !formState.isVisible });
-    //setVisible(!isVisible);
     setTimeout(() => {
       toggleContact();
     }, 2000);
@@ -188,7 +186,8 @@ export const ContactForm2 = (props: IContactFormProps) => {
                 className={
                   !formState.showFail
                     ? 'fields name'
-                    : 'fields name' + 'disabled'
+                    : // eslint-disable-next-line no-useless-concat
+                      'fields name' + 'disabled'
                 }
                 {...register('name', {
                   required:
@@ -202,7 +201,8 @@ export const ContactForm2 = (props: IContactFormProps) => {
                 className={
                   !formState.showFail
                     ? 'fields email'
-                    : 'fields email' + 'disabled'
+                    : // eslint-disable-next-line no-useless-concat
+                      'fields email' + 'disabled'
                 }
                 {...register('email', {
                   required:
@@ -224,7 +224,8 @@ export const ContactForm2 = (props: IContactFormProps) => {
                 className={
                   !formState.showFail
                     ? 'fields message'
-                    : 'fields message' + 'disabled'
+                    : // eslint-disable-next-line no-useless-concat
+                      'fields message' + 'disabled'
                 }
                 rows={5}
               />
