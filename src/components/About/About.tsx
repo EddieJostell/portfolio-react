@@ -106,45 +106,6 @@ export const About = (props: IAboutProps) => {
             </div>
           </div>
         </motion.div>
-
-        <form
-          className='Form-test'
-          onSubmit={handleSubmit((data) => {
-            console.log('data', data);
-            doSomething();
-          })}
-        >
-          <h1>Get in touch!</h1>
-          <label htmlFor='name'>Name: </label>
-          <input
-            placeholder='Name'
-            {...register('name', { required: 'Name is required' })}
-          />
-          <p>{errors.name?.message}</p>
-          <label htmlFor='email'>E-mail:</label>
-          <input
-            placeholder='E-mail'
-            {...register('email', {
-              required: 'E-mail is required',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'invalid email address',
-              },
-            })}
-          />
-          <p>{errors.email?.message}</p>
-          <label htmlFor='message'>Message:</label>
-          <textarea
-            rows={5}
-            placeholder='Message'
-            {...register('message', {
-              required: 'You have to type something :/',
-              minLength: { value: 5, message: 'Min length is 5' },
-            })}
-          />
-          <p>{errors.message?.message}</p>
-          <input type='submit' value='Click Me!' />
-        </form>
       </Container>
     </div>
   );

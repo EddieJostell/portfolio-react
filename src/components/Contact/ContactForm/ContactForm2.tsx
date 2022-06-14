@@ -33,7 +33,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ mode: 'onSubmit', reValidateMode: 'onChange' });
+  } = useForm<FormData>({ mode: 'onSubmit' /* reValidateMode: 'onChange' */ });
 
   const form = useRef<HTMLFormElement>(null);
 
@@ -45,10 +45,8 @@ export const ContactForm2 = (props: IContactFormProps) => {
   });
 
   const onDataComplete = (data: any, e: any) => {
-    console.log(data);
     e.preventDefault();
-    /* if (data) {
-      console.log('12314');
+    /*  if (data) {
       setFormState({ ...formState, isLoading: true });
       setTimeout(() => {
         if (1 + 1 === 3) {
@@ -57,12 +55,11 @@ export const ContactForm2 = (props: IContactFormProps) => {
           retryContactForm();
         }
       }, 2000);
-    }
-    setFormState({ ...formState, isLoading: false }); */
+      setFormState({ ...formState, isLoading: false });
+    } */
 
     // REAL EMAIL JS CODE
     if (data) {
-      console.log('got here?');
       setFormState({ ...formState, isLoading: true });
       emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
         (result) => {
@@ -187,7 +184,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
                   !formState.showFail
                     ? 'fields name'
                     : // eslint-disable-next-line no-useless-concat
-                      'fields name' + 'disabled'
+                      'fields name ' + 'disabled'
                 }
                 {...register('name', {
                   required:
@@ -202,7 +199,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
                   !formState.showFail
                     ? 'fields email'
                     : // eslint-disable-next-line no-useless-concat
-                      'fields email' + 'disabled'
+                      'fields email ' + 'disabled'
                 }
                 {...register('email', {
                   required:
@@ -225,7 +222,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
                   !formState.showFail
                     ? 'fields message'
                     : // eslint-disable-next-line no-useless-concat
-                      'fields message' + 'disabled'
+                      'fields message ' + 'disabled'
                 }
                 rows={5}
               />

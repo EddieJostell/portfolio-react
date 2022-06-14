@@ -13,7 +13,7 @@ import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
-import { isMobileMax } from './utils/userAgent';
+import { isComputerMin, isMobileMax } from './utils/userAgent';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Skills } from './components/Skills/Skills';
@@ -95,7 +95,7 @@ function App() {
                 <About key='2' />,
                 <Portfolio key='3' />,
                 <Skills key='4' />,
-                isMobileMax && <ContactSlim icons={true} key='5' />,
+                isComputerMin && <ContactSlim icons={true} key='5' />,
                 <Footer key='6' />,
               ]
             ) : (
