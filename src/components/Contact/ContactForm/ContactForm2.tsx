@@ -21,7 +21,6 @@ interface FormData {
 interface IMailState {
   showFail: boolean | undefined;
   showThanks: boolean | undefined;
-
   isVisible: boolean | undefined;
   isLoading: boolean | undefined;
 }
@@ -33,9 +32,19 @@ export const ContactForm2 = (props: IContactFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ mode: 'onSubmit' /* reValidateMode: 'onChange' */ });
+  } = useForm<FormData>({
+    mode: 'onSubmit',
+    /* defaultValues: {
+      name: 'Eduardo',
+      email: 'eddo@gmail.com',
+      message: 'this is a test message',
+    }, */
+    reValidateMode: 'onChange',
+  });
 
-  const form = useRef<HTMLFormElement>(null);
+  const form = useRef<HTMLFormElement>(null); //EmailJS useRef
+
+  const [isVisible, setVisible] = useState(false);
 
   const [formState, setFormState] = useState<IMailState>({
     showFail: undefined,
@@ -46,20 +55,21 @@ export const ContactForm2 = (props: IContactFormProps) => {
 
   const onDataComplete = (data: any, e: any) => {
     e.preventDefault();
-    /*  if (data) {
+    if (data) {
       setFormState({ ...formState, isLoading: true });
       setTimeout(() => {
-        if (1 + 1 === 3) {
+        if (1 + 1 === 2) {
           completeContactForm();
         } else {
           retryContactForm();
         }
       }, 2000);
       setFormState({ ...formState, isLoading: false });
-    } */
+      //e.target.reset();
+    }
 
     // REAL EMAIL JS CODE
-    if (data) {
+    /*  if (data) {
       setFormState({ ...formState, isLoading: true });
       emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
         (result) => {
@@ -72,15 +82,16 @@ export const ContactForm2 = (props: IContactFormProps) => {
         }
       );
       e.target.reset();
-    }
+    } */
   };
 
   const completeContactForm = () => {
     setFormState({
       ...formState,
       isLoading: true,
-      isVisible: !formState.isVisible,
+      //isVisible: !formState.isVisible,
     });
+    setVisible(!isVisible);
     setTimeout(() => {
       setFormState({
         ...formState,
@@ -93,7 +104,8 @@ export const ContactForm2 = (props: IContactFormProps) => {
   };
 
   const closeContactForm = () => {
-    setFormState({ ...formState, isVisible: !formState.isVisible });
+    //setFormState({ ...formState, isVisible: !formState.isVisible });
+    setVisible(!isVisible);
     setTimeout(() => {
       toggleContact();
     }, 2000);
@@ -149,7 +161,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
 
   return (
     <AnimatePresence>
-      {!formState.isVisible && (
+      {!isVisible && (
         <motion.div
           key='form-parent'
           initial={{ opacity: 0 }}
