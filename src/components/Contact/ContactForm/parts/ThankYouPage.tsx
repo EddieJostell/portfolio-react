@@ -1,24 +1,16 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import {
+  animateThankYouChild,
+  animateThankYouForm,
+} from '../helpers/ContactAnimations';
 
 export const ThankYouPage = () => {
   return (
-    <motion.div
-      key='form-parent'
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { delay: 0.2 } }}
-      className='Form'
-    >
+    <motion.div key='form-parent' {...animateThankYouForm} className='Form'>
       <motion.div
         key='thanks-child'
-        initial={{ y: 1000, opacity: 0 }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          transition: { duration: 1, delay: 0.2 },
-        }}
-        exit={{ y: 1000, transition: { duration: 1 } }}
+        {...animateThankYouChild}
         className='Form-thanks'
       >
         <div className='title'>Thanks</div>

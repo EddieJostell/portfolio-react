@@ -6,8 +6,19 @@ import emailjs from '@emailjs/browser';
 import { serviceID } from './helpers/serviceID';
 import { templateID } from './helpers/templateID';
 import { userID } from './helpers/userID';
-import { useForm } from 'react-hook-form';
+import { useForm, useFormState } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
+import {
+  animateContactChild,
+  animateContactForm,
+} from './helpers/ContactAnimations';
+import classNames from 'classnames';
+import {
+  inputEmailRules,
+  inputNameRules,
+  textAreaMessageRules,
+} from './helpers/HookFormValidationRules';
+import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
 
 interface IContactFormProps {
   toggleContact: () => void;
@@ -35,11 +46,6 @@ export const ContactForm2 = (props: IContactFormProps) => {
     formState: { errors },
   } = useForm<FormData>({
     mode: 'onSubmit',
-    /* defaultValues: {
-      name: 'Eduardo',
-      email: 'eddo@gmail.com',
-      message: 'this is a test message',
-    }, */
     reValidateMode: 'onChange',
   });
 
@@ -47,7 +53,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
 
   const [isVisible, setVisible] = useState(false);
 
-  const [formState, setFormState] = useState<IMailState>({
+  const [contactState, setContactState] = useState<IMailState>({
     showFail: undefined,
     showThanks: undefined,
     isVisible: undefined,
@@ -57,7 +63,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
   const onDataComplete = (data: any, e: any) => {
     e.preventDefault();
     if (data) {
-      setFormState({ ...formState, isLoading: true });
+      setContactState({ ...contactState, isLoading: true });
       setTimeout(() => {
         if (1 + 1 === 2) {
           completeContactForm();
@@ -65,7 +71,7 @@ export const ContactForm2 = (props: IContactFormProps) => {
           retryContactForm();
         }
       }, 2000);
-      setFormState({ ...formState, isLoading: false });
+      setContactState({ ...contactState, isLoading: false });
       //e.target.reset();
     }
 
@@ -87,16 +93,16 @@ export const ContactForm2 = (props: IContactFormProps) => {
   };
 
   const completeContactForm = () => {
-    setFormState({
-      ...formState,
+    setContactState({
+      ...contactState,
       isLoading: true,
       //isVisible: !formState.isVisible,
     });
     setVisible(!isVisible);
     setTimeout(() => {
-      setFormState({
-        ...formState,
-        showThanks: !formState.showThanks,
+      setContactState({
+        ...contactState,
+        showThanks: !contactState.showThanks,
       });
     }, 1000);
     setTimeout(() => {
@@ -113,10 +119,10 @@ export const ContactForm2 = (props: IContactFormProps) => {
   };
 
   const retryContactForm = () => {
-    setFormState({ ...formState, isLoading: true });
+    setContactState({ ...contactState, isLoading: true });
     setTimeout(() => {
-      setFormState({
-        ...formState,
+      setContactState({
+        ...contactState,
         showFail: true,
         isLoading: false,
       });
@@ -133,52 +139,37 @@ export const ContactForm2 = (props: IContactFormProps) => {
     );
   };
 
-  const showLabel = (htmlFor: string, labelText: string) => {
-    if (labelText === 'Message:') {
-      return (
-        <label htmlFor={htmlFor} className='form-label'>
-          {labelText}
-          <span className='error-label'>{errors.message?.message}</span>
-        </label>
-      );
-    }
-    if (labelText === 'E-mail:') {
-      return (
-        <label htmlFor={htmlFor} className='form-label'>
-          {labelText}
-          <span className='error-label'>{errors.email?.message}</span>
-        </label>
-      );
-    }
-    if (labelText === 'Name:') {
-      return (
-        <label htmlFor={htmlFor} className='form-label'>
-          {labelText}
-          <span className='error-label'>{errors.name?.message}</span>
-        </label>
-      );
-    }
+  const showLabel = (
+    htmlFor: string,
+    labelText: string,
+    errorMessage?: string
+  ) => {
+    return (
+      <label htmlFor={htmlFor} className='form-label'>
+        {labelText}
+        {errorMessage && <span className='error-label'>{errorMessage}</span>}
+      </label>
+    );
   };
+
+  const errorBtnClick = () => {
+    setContactState({
+      ...contactState,
+      showFail: !contactState.showFail,
+    });
+  };
+
+  const fieldRules = classNames('fields', {
+    disabled: contactState.showFail,
+  });
 
   return (
     <AnimatePresence>
       {!isVisible && (
-        <motion.div
-          key='form-parent'
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { delay: 0.5 } }}
-          className='Form'
-        >
+        <motion.div key='form-parent' {...animateContactForm} className='Form'>
           <motion.div
             key='contact-child'
-            initial={{ y: -600, opacity: 0 }}
-            animate={{
-              y: 0,
-              opacity: 1,
-              transition: { duration: 1, delay: 0.2 },
-            }}
-            exit={{ x: -1000, transition: { duration: 1 } }}
+            {...animateContactChild}
             className='Form-contact'
           >
             <div className='title'>Contact</div>
@@ -189,90 +180,41 @@ export const ContactForm2 = (props: IContactFormProps) => {
               onSubmit={handleSubmit(onDataComplete)}
             >
               <h1>Get in touch!</h1>
-              {showLabel('name', 'Name:')}
+              {showLabel('name', 'Name:', errors.name?.message)}
               <input
-                disabled={formState.showFail}
+                disabled={contactState.showFail}
                 type='text'
-                className={
-                  !formState.showFail
-                    ? 'fields name'
-                    : // eslint-disable-next-line no-useless-concat
-                      'fields name ' + 'disabled'
-                }
+                className={fieldRules}
                 {...register('name', {
-                  required:
-                    'Oh, I think you might have forgotten to state your name?',
+                  ...inputNameRules,
                 })}
               />
-              {showLabel('email', 'E-mail:')}
+              {showLabel('email', 'E-mail:', errors.email?.message)}
               <input
-                disabled={formState.showFail}
+                disabled={contactState.showFail}
                 type='text'
-                className={
-                  !formState.showFail
-                    ? 'fields email'
-                    : // eslint-disable-next-line no-useless-concat
-                      'fields email ' + 'disabled'
-                }
-                {...register('email', {
-                  required:
-                    "Oh noes, if you don't type a email I will not be able to answer you!",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message:
-                      'The email address you have provided seems to be invalid, please try again!',
-                  },
-                })}
+                className={fieldRules}
+                {...register('email', { ...inputEmailRules })}
               />
-              {showLabel('message', 'Message:')}
+              {showLabel('message', 'Message:', errors.message?.message)}
               <textarea
                 {...register('message', {
-                  required: 'Oh noes, you forgot to type a message!',
-                  minLength: { value: 5, message: 'Min length is 5' },
+                  ...textAreaMessageRules,
                 })}
-                disabled={formState.showFail}
-                className={
-                  !formState.showFail
-                    ? 'fields message'
-                    : // eslint-disable-next-line no-useless-concat
-                      'fields message ' + 'disabled'
-                }
+                disabled={contactState.showFail}
+                className={fieldRules}
                 rows={5}
               />
-
-              {!formState.showFail ? (
-                <button
-                  disabled={formState.isLoading}
-                  className={formState.isLoading ? 'btn btn-disabled' : 'btn'}
-                  type='submit'
-                  value='Submit'
-                >
-                  {formState.isLoading ? 'Sending...' : 'Send Message'}
-                </button>
-              ) : (
-                <div className='error-msg'>
-                  <div>
-                    Something has gone wrong :/, please try to send the message
-                    again.
-                  </div>
-                  <button
-                    className={'btn btn-error'}
-                    onClick={() =>
-                      setFormState({
-                        ...formState,
-                        showFail: !formState.showFail,
-                      })
-                    }
-                  >
-                    {'Try again'}
-                  </button>
-                </div>
-              )}
+              <ContactFormSubmitButton
+                errorBtn={errorBtnClick}
+                showFail={contactState.showFail}
+                isLoading={contactState.isLoading}
+              />
             </form>
           </motion.div>
         </motion.div>
       )}
-      {formState.showThanks && <ThankYouPage />}
+      {contactState.showThanks && <ThankYouPage />}
     </AnimatePresence>
   );
 };
