@@ -3,6 +3,11 @@ import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { Container } from '../Container/Container';
 import './About.scss';
+import {
+  BoxContainerAnimation,
+  PhotoLayerAnimation,
+  TitleAnimation,
+} from './AboutAnimations';
 
 interface IAboutProps {}
 
@@ -13,52 +18,15 @@ interface FormData {
 }
 
 export const About = (props: IAboutProps) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>({ mode: 'onSubmit', reValidateMode: 'onChange' });
-
-  const doSomething = () => {
-    alert('Working!!');
-  };
-
   return (
     <div className='About' id='about'>
       <Container>
-        <motion.h1
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              opacity: 0.07,
-            },
-            hidden: { opacity: 0 },
-          }}
-          transition={{
-            duration: 5,
-            delay: 0.3,
-          }}
-          className='title'
-        >
+        <motion.h1 key='title' {...TitleAnimation} className='title'>
           ABOUT ME
         </motion.h1>
         <motion.div
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              opacity: 1,
-              y: 0,
-            },
-            hidden: { y: 200, opacity: 0 },
-          }}
-          transition={{
-            duration: 2,
-            delay: 0.1,
-          }}
+          key='box-container'
+          {...BoxContainerAnimation}
           className='box-container'
         >
           <div className='content'>
@@ -95,11 +63,8 @@ export const About = (props: IAboutProps) => {
           <div className='photo'>
             <div className='frame'>
               <motion.div
-                whileHover={{
-                  opacity: 1,
-                  backgroundColor: 'transparent',
-                  transition: { duration: 3, delay: 0 },
-                }}
+                key='layer'
+                {...PhotoLayerAnimation}
                 className='layer'
               ></motion.div>
               <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
