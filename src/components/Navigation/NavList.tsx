@@ -4,6 +4,7 @@ import { Link } from 'react-scroll';
 import { INavLinkItem } from '../../utils/data';
 import { isMobileMax } from '../../utils/userAgent';
 import { ContactSlim } from '../Contact/ContactSlim';
+import { Items, List } from './NavAnimations';
 
 export interface INavListProps {
   navListItems: INavLinkItem[];
@@ -19,34 +20,6 @@ export const NavList = (props: INavListProps) => {
   const handleStuff = () => {
     setIsVisible(!IsVisible);
     toggleContact();
-  };
-
-  const list = {
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        when: 'beforeChildren',
-        staggerChildren: 0.3,
-        delay: 0.45,
-        duration: 0.5,
-      },
-    },
-
-    hidden: {
-      opacity: 0,
-      x: -300,
-      transition: {
-        when: 'afterChildren',
-        delay: 0.6,
-        duration: 1,
-      },
-    },
-  };
-
-  const item = {
-    visible: { opacity: 1, x: 0, transition: { delay: 0.3, duration: 0.3 } },
-    hidden: { opacity: 0, x: -300, transition: { duration: 0.3 } },
   };
 
   const mobileNavItems = () => {
@@ -104,7 +77,7 @@ export const NavList = (props: INavListProps) => {
             <motion.div
               initial='hidden'
               animate='visible'
-              variants={list}
+              variants={List}
               key='nav-mobile'
               className='NavList-mobile '
             >
@@ -112,7 +85,7 @@ export const NavList = (props: INavListProps) => {
                 key='items'
                 initial='hidden'
                 animate='visible'
-                variants={item}
+                variants={Items}
                 className='NavList-container'
               >
                 {mobileNavItems()}

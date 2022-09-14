@@ -13,14 +13,13 @@ import { ContextProvider, IContextState } from './utils/HelperContext';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
-import { isComputerMin, isMobileMax } from './utils/userAgent';
+import { isComputerMin } from './utils/userAgent';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Skills } from './components/Skills/Skills';
 import { Footer } from './components/Footer/Footer';
-import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import { About } from './components/About/About';
-import { ContactForm2 } from './components/Contact/ContactForm/ContactForm2';
+import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -99,7 +98,7 @@ function App() {
                 <Footer key='6' />,
               ]
             ) : (
-              <ContactForm2 key='7' toggleContact={toggleContact} />
+              <ContactForm key='7' toggleContact={toggleContact} />
             )}
           </Router>
         )}

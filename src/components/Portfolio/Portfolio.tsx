@@ -30,7 +30,7 @@ export const Portfolio = (props: IPortfolioProps) => {
           <h1>PROJECTS</h1>
         </div>
         <div className='List'>
-          {/*  {displayPortfolioData()} */}
+          {/* {displayPortfolioData()} */}
           {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
         </div>
       </Container>

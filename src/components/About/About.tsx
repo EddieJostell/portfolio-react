@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
-import { useForm } from 'react-hook-form';
 import { Container } from '../Container/Container';
 import './About.scss';
 import {
@@ -10,12 +9,6 @@ import {
 } from './AboutAnimations';
 
 interface IAboutProps {}
-
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
 
 export const About = (props: IAboutProps) => {
   return (

@@ -8,6 +8,12 @@ import './Home.scss';
 interface IHomeProps {}
 
 export const Home = (props: IHomeProps) => {
+  const NameWorkAnimation = {
+    initial: { x: -500, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    transition: { duration: 1.5, delay: 0.3 },
+  };
+
   const personalInfo = () => {
     let name = "Hello my name is Edward 'Eddie' Jostell";
     let work = 'I am a Frontend Developer';
@@ -16,18 +22,10 @@ export const Home = (props: IHomeProps) => {
 
     return (
       <>
-        <motion.div
-          initial={{ x: -500, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
-        >
+        <motion.div key='my-name' {...NameWorkAnimation}>
           <span className='name'>{onlyName}</span>
         </motion.div>
-        <motion.div
-          initial={{ x: -500, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.3 }}
-        >
+        <motion.div key='my-work' {...NameWorkAnimation}>
           <span className='work'>{onlyWork}</span>
         </motion.div>
       </>
