@@ -8,7 +8,7 @@ import {
   ScrollTopAnimation,
 } from './FooterAnimations';
 
-export const Footer = () => {
+export const Footer = (): JSX.Element => {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

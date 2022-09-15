@@ -20,7 +20,7 @@ const defaultProps: Partial<INavProps> = {
   status: '12315',
 };
 
-export const Navigation = (props: INavProps) => {
+export const Navigation = (props: INavProps): JSX.Element => {
   const { name, navIsOpen, toggleNav, navLinks, toggleContact } = props;
 
   const hamburgerMenu = () => {

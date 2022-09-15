@@ -7,7 +7,7 @@ import './Portfolio.scss';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 interface IPortfolioProps {}
 
-export const Portfolio = (props: IPortfolioProps) => {
+export const Portfolio = (): JSX.Element => {
   const Projects = useContext<IContextState>(HelperContext);
 
   const displayPortfolioData = () => {

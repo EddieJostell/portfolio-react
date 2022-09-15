@@ -1,16 +1,17 @@
 import classNames from 'classnames';
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 
 interface IContactFormSubmitButtonProps {
   errorBtn: () => void;
   showFail: boolean | undefined;
   isLoading: boolean | undefined;
+  children: ReactNode;
 }
 
 export const ContactFormSubmitButton = (
   props: IContactFormSubmitButtonProps
 ) => {
-  const { errorBtn, showFail, isLoading } = props;
+  const { errorBtn, showFail, isLoading, children } = props;
 
   const buttonRules = classNames('btn', {
     'btn-disabled': isLoading,
@@ -27,9 +28,7 @@ export const ContactFormSubmitButton = (
     </button>
   ) : (
     <div className='error-msg'>
-      <div>
-        Something has gone wrong :/, please try to send the message again.
-      </div>
+      <div>{children}</div>
       <button className={'btn btn-error'} onClick={errorBtn}>
         {'Try again'}
       </button>

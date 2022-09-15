@@ -209,7 +209,10 @@ export const ContactForm = (props: IContactFormProps) => {
                 errorBtn={errorBtnClick}
                 showFail={contactState.showFail}
                 isLoading={contactState.isLoading}
-              />
+              >
+                Something has gone wrong :/, please try to send the message
+                again.
+              </ContactFormSubmitButton>
             </form>
           </motion.div>
         </motion.div>

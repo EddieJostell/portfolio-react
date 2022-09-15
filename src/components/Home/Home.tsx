@@ -7,7 +7,7 @@ import './Home.scss';
 
 interface IHomeProps {}
 
-export const Home = (props: IHomeProps) => {
+export const Home = (): JSX.Element => {
   const NameWorkAnimation = {
     initial: { x: -500, opacity: 0 },
     animate: { x: 0, opacity: 1 },

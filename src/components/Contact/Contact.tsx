@@ -4,10 +4,10 @@ import './Contact.scss';
 
 interface IContactProps {}
 
-export const Contact = (props: IContactProps) => {
+export const Contact = (): JSX.Element => {
   return (
-    <div className="Contact" id="contact">
-      <div className="Contact-title">
+    <div className='Contact' id='contact'>
+      <div className='Contact-title'>
         <h1>CONTACT ME</h1>
       </div>
       <ContactContent />

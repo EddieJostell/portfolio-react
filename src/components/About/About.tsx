@@ -8,9 +8,7 @@ import {
   TitleAnimation,
 } from './AboutAnimations';
 
-interface IAboutProps {}
-
-export const About = (props: IAboutProps) => {
+export const About = (): JSX.Element => {
   return (
     <div className='About' id='about'>
       <Container>
@@ -55,11 +53,17 @@ export const About = (props: IAboutProps) => {
           </div>
           <div className='photo'>
             <div className='frame'>
+              {/*   <a
+                href='https://www.linkedin.com/in/eddiejostell/'
+                target='_blank'
+                rel='noopener noreferrer'
+              ></a> */}
               <motion.div
                 key='layer'
                 {...PhotoLayerAnimation}
                 className='layer'
               ></motion.div>
+
               <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
             </div>
           </div>

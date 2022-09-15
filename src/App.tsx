@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Fragment } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -10,7 +10,7 @@ import {
 } from './utils/data';
 import { Navigation } from './components/Navigation/Navigation';
 import { ContextProvider, IContextState } from './utils/HelperContext';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
 import { isComputerMin } from './utils/userAgent';
@@ -20,6 +20,7 @@ import { Skills } from './components/Skills/Skills';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
+import RouteLinks from './components/RouteLinks/RouteLinks';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -76,7 +77,7 @@ function App() {
         {appState.isLoading ? (
           displayLoader()
         ) : (
-          <Router>
+          <Fragment>
             {!appState.contactIsActive && (
               <Navigation
                 navIsOpen={appState.navIsOpen}
@@ -100,8 +101,11 @@ function App() {
             ) : (
               <ContactForm key='7' toggleContact={toggleContact} />
             )}
-          </Router>
+          </Fragment>
         )}
+        {/* <Router>
+          <Routes>{RouteLinks()}</Routes>
+        </Router> */}
       </div>
     </ContextProvider>
   );

@@ -33,8 +33,8 @@ export const BoxContainerAnimation = {
 
 export const PhotoLayerAnimation = {
   whileHover: {
-    opacity: 1,
-    backgroundColor: 'transparent',
-    transition: { duration: 3, delay: 0 },
+    opacity: 0.3,
+    backgroundColor: '#d90429',
+    transition: { duration: 0, delay: 0 },
   },
 };

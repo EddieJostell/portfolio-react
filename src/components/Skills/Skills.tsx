@@ -5,7 +5,7 @@ import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { Container } from '../Container/Container';
 import './Skills.scss';
 
-export const Skills = () => {
+export const Skills = (): JSX.Element => {
   const skillsInfo = useContext<IContextState>(HelperContext);
 
   const [showAnimation, setShowAnimation] = useState(false);
