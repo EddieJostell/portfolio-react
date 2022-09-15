@@ -52,20 +52,19 @@ export const About = (): JSX.Element => {
             </div>
           </div>
           <div className='photo'>
-            <div className='frame'>
-              {/*   <a
-                href='https://www.linkedin.com/in/eddiejostell/'
-                target='_blank'
-                rel='noopener noreferrer'
-              ></a> */}
+            <a
+              href='https://www.linkedin.com/in/eddiejostell/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='frame'
+            >
               <motion.div
                 key='layer'
                 {...PhotoLayerAnimation}
                 className='layer'
               ></motion.div>
-
               <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
-            </div>
+            </a>
           </div>
         </motion.div>
       </Container>
