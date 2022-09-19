@@ -17,10 +17,11 @@ export const ContactSlim = (props: IContactSlimProps) => {
   const displayContactIcons = () => {
     return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
       <motion.div
+        className=''
         key={key}
         whileHover={{
-          boxShadow: '0px  0px 8px rgb(255,255,255)',
-          color: '#d90429',
+          //boxShadow: '0px  0px 8px rgb(255,255,255)',
+          //fill: '#d90429',
           y: -5,
           scale: 1.1,
         }}
@@ -28,8 +29,8 @@ export const ContactSlim = (props: IContactSlimProps) => {
         <a href={tact.link} target='_blank' rel='noopener noreferrer'>
           <FontAwesomeIcon
             className='icons'
-            icon={tact.iconSrc}
             color='white'
+            icon={tact.iconSrc}
             size='1x'
           />
         </a>

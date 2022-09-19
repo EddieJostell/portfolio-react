@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
+import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
 import './About.scss';
 import {
@@ -12,9 +13,11 @@ export const About = (): JSX.Element => {
   return (
     <div className='About' id='about'>
       <Container>
-        <motion.h1 key='title' {...TitleAnimation} className='title'>
-          ABOUT ME
-        </motion.h1>
+        {isMobileMax && (
+          <motion.h1 key='title' {...TitleAnimation} className='title'>
+            ABOUT ME
+          </motion.h1>
+        )}
         <motion.div
           key='box-container'
           {...BoxContainerAnimation}

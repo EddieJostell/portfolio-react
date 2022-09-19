@@ -1,5 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import * as React from 'react';
 import './PortfolioContent.scss';
+import { faFolder } from '@fortawesome/free-regular-svg-icons';
+import { motion } from 'framer-motion';
+import { faGithub, faGithubAlt } from '@fortawesome/free-brands-svg-icons';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -9,20 +14,36 @@ interface IPortfolioContent {
 }
 
 export const PortfolioContent = (props: IPortfolioContent) => {
-  const { link, img, title, tech } = props;
+  const { link, img, title, tech, text } = props;
 
   return (
-    <div className="List-item">
-      <a className="card" href={link} target="_blank" rel="noreferrer">
-        <img src={img ? img : 'img/placeholder_360x640.png'} alt={title} />
-        <div className="info">
-          <h1>{title}</h1>
-          <p>{tech}</p>
-          <a href={link} target="_blank" rel="noreferrer">
-            {title}
+    <div className='List-item'>
+      <motion.div
+        className='Card'
+        initial={{ y: 0 }}
+        whileHover={{
+          y: -15,
+          transition: { duration: 0.2, delay: 0 },
+        }}
+      >
+        <div className='top'>
+          <div className='file'>
+            <FontAwesomeIcon icon={faFolder} size='3x' />
+          </div>
+          <a href={link} target='_blank' rel='noreferrer'>
+            <FontAwesomeIcon icon={faExternalLink} color='white' size='2x' />
           </a>
         </div>
-      </a>
+        <div className='body'>
+          <h1 className='title'>
+            <a href={link} target='_blank' rel='noreferrer'>
+              {title}
+            </a>
+          </h1>
+          <div className='text'>{text}</div>
+        </div>
+        <div className='bottom'>{tech}</div>
+      </motion.div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import {
   faTwitter,
   faInstagram,
-  faGithubSquare,
+  faGithub,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 
@@ -16,6 +16,7 @@ export const SkillsInfo: ISkillsItem[] = [
   { id: 3, skill: 'REACT' },
   { id: 4, skill: 'TYPESCRIPT' },
   { id: 5, skill: 'EPISERVER / CMS' },
+  { id: 6, skill: 'SASS/LESS' },
 ];
 
 export interface IContactItem {
@@ -50,7 +51,7 @@ export const ContactInfo: IContactItem[] = [
   {
     id: 4,
     title: 'Github',
-    iconSrc: faGithubSquare,
+    iconSrc: faGithub,
     link: 'https://github.com/EddieJostell/',
     text: 'Checkout my projects on Github!',
   },
@@ -130,7 +131,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'At my previous job I was the lead frontend developer in the team that developed and managed the website for the food chain COOP in Sweden.',
   },
   {
     id: 2,
@@ -162,7 +163,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/todo-app/',
     img: 'img/todo.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'Simple TODO-APP created with HTML, CSS and Javascript.',
   },
   {
     id: 6,
@@ -170,7 +171,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'A single page responsive web app that will help you make a decision on what to eat for lunch or dinner. Built with HTML, CSS and Javascript.',
   },
   {
     id: 7,
@@ -178,7 +179,15 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#REACT #Tailwindcss',
     link: 'https://eddiejostell.github.io/react-food/',
     img: '',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'New and improved version of my food app. Made with React and Tailwindcss.',
+  },
+  {
+    id: 8,
+    title: 'SKANDIA',
+    tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
+    link: 'https://www.skandia.se',
+    img: '',
+    text: 'My curernt job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
   },
 ];
 

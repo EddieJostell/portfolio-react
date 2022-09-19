@@ -1,7 +1,10 @@
+import { motion } from 'framer-motion';
 import React, { useContext } from 'react';
 import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
+import { isMobileMax } from '../../utils/userAgent';
 import './Portfolio.scss';
 
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
@@ -26,12 +29,16 @@ export const Portfolio = (): JSX.Element => {
   return (
     <div id='portfolio' className='Portfolio'>
       <Container>
-        <div className='Portfolio-title'>
-          <h1>PROJECTS</h1>
-        </div>
-        <div className='List'>
-          {/* {displayPortfolioData()} */}
-          {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
+        <div className='Portfolio-wrapper'>
+          {isMobileMax && (
+            <motion.h1 key='title' {...TitleAnimation} className='bg-title'>
+              MY PROJECTS
+            </motion.h1>
+          )}
+          <div className='List'>
+            {displayPortfolioData()}
+            {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
+          </div>
         </div>
       </Container>
     </div>
