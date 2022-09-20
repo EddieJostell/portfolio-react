@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import { isMobileMax } from '../../utils/userAgent';
@@ -22,6 +22,7 @@ const defaultProps: Partial<INavProps> = {
 
 export const Navigation = (props: INavProps): JSX.Element => {
   const { name, navIsOpen, toggleNav, navLinks, toggleContact } = props;
+  const [toggleScrollBtn, setToggleScrollBtn] = useState(false);
 
   const hamburgerMenu = () => {
     return (
@@ -36,8 +37,29 @@ export const Navigation = (props: INavProps): JSX.Element => {
     );
   };
 
+  const menuIsScrolling = () => {
+    if (window.scrollY > 50) {
+      setToggleScrollBtn(true);
+    } else if (window.scrollY <= 50) {
+      setToggleScrollBtn(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', menuIsScrolling);
+
+    return () => {
+      window.removeEventListener('scroll', menuIsScrolling);
+    };
+  }, []);
+
   return (
-    <div className='Navigation' data-testid='navigation'>
+    <div
+      className={`${
+        toggleScrollBtn ? 'Navigation Navigation-sticky' : 'Navigation'
+      }`}
+      data-testid='navigation'
+    >
       <div className='Container'>
         <div className='Navigation-wrapper'>
           {!navIsOpen ? (

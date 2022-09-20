@@ -22,6 +22,12 @@
     color: #edf2f4;
   }
 
+  &-sticky {
+    position: sticky;
+    top: 0;
+    background-color: #0D0E0E;
+  }
+
   .Navigation-wrapper {
     display: flex;
     flex-direction: row;

@@ -25,14 +25,16 @@
         height: 30px;
       }
     }
-    &::after {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 100px;
-    margin: 0px auto;
-    margin-top: 10px;
-    background-color: #fff;
+    @media (min-width: 769px) {
+      &:after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 100px;
+        margin: 0px auto;
+        margin-top: 10px;
+        background-color: #fff;
+        }
     }
   }
 

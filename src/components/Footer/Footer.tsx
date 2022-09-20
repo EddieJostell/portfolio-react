@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
+import { isMobileMax } from '../../utils/userAgent';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
 import './Footer.scss';
@@ -17,23 +18,29 @@ export const Footer = (): JSX.Element => {
     <div className='Footer'>
       <Container>
         <div className='Footer-wrapper'>
-          <motion.div
-            key='Footer-wrapper-name'
-            {...FooterWrapperNameAnimation}
-            className='Footer-wrapper-name'
-            onClick={scrollTop}
-          >
-            E
+          {isMobileMax && (
             <motion.div
-              key='scroll-to-top'
-              className='scroll-to-top'
-              variants={ScrollTopAnimation}
+              key='Footer-wrapper-name'
+              {...FooterWrapperNameAnimation}
+              className='Footer-wrapper-name'
+              onClick={scrollTop}
             >
-              Top
+              E
+              <motion.div
+                key='scroll-to-top'
+                className='scroll-to-top'
+                variants={ScrollTopAnimation}
+              >
+                Top
+              </motion.div>
             </motion.div>
-          </motion.div>
-          <ContactSlim icons={false} />
-          <div className='creator'>Edward 'Eddie' Jostell</div>
+          )}
+          {isMobileMax ? (
+            <ContactSlim icons={false} />
+          ) : (
+            <ContactSlim icons={true} />
+          )}
+          <div className='creator'>Built by Edward 'Eddie' Jostell</div>
         </div>
       </Container>
     </div>
