@@ -1,9 +1,4 @@
-import {
-  faTwitter,
-  faInstagram,
-  faGithub,
-  faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons';
+import { Twitter, GitHub, Linkedin, Instagram } from 'react-feather';
 
 export interface ISkillsItem {
   id: number;
@@ -11,12 +6,12 @@ export interface ISkillsItem {
 }
 
 export const SkillsInfo: ISkillsItem[] = [
-  { id: 1, skill: 'HTML/CSS' },
+  { id: 1, skill: 'HTML' },
   { id: 2, skill: 'JAVASCRIPT' },
   { id: 3, skill: 'REACT' },
   { id: 4, skill: 'TYPESCRIPT' },
   { id: 5, skill: 'EPISERVER / CMS' },
-  { id: 6, skill: 'SASS/LESS' },
+  { id: 6, skill: 'CSS/SASS/LESS' },
 ];
 
 export interface IContactItem {
@@ -44,28 +39,28 @@ export const ContactInfo: IContactItem[] = [
   {
     id: 3,
     title: 'LinkedIn',
-    iconSrc: faLinkedinIn,
+    iconSrc: <Linkedin />,
     link: 'https://www.linkedin.com/in/eddiejostell/',
     text: 'Add me to your network!',
   },
   {
     id: 4,
     title: 'Github',
-    iconSrc: faGithub,
+    iconSrc: <GitHub />,
     link: 'https://github.com/EddieJostell/',
     text: 'Checkout my projects on Github!',
   },
   {
     id: 5,
     title: 'Instagram',
-    iconSrc: faInstagram,
+    iconSrc: <Instagram />,
     link: 'https://www.instagram.com/eduardojostello/',
     text: 'Be cool and follow me on Instagram!',
   },
   {
     id: 6,
     title: 'Twitter',
-    iconSrc: faTwitter,
+    iconSrc: <Twitter />,
     link: 'https://twitter.com/El_Wardinho/',
     text: 'Be cool and follow me on Twitter!',
   },

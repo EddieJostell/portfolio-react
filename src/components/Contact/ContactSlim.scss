@@ -9,20 +9,32 @@
     top: auto;
     right: auto;
     bottom: 20px;
+    
 
     div {
+     svg {
+      height: 1.875rem;
+      width: 1.875rem;
+      > path, rect, circle, line { 
+          stroke: #edf2f4;
+        
+        }
+     } 
+      
+      
       &:hover {
-        svg > path { 
-          fill:#d90429;   
+        svg > path, rect, circle, line { 
+          stroke:#d90429;   
         }
       }
     }
 
     .icons {
       margin: 5px;
+      height: 1.5rem;
 
       @media (min-width: 769px) {
-        height: 30px;
+        height: 1.875rem;
       }
     }
     @media (min-width: 769px) {

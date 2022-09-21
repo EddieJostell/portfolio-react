@@ -6,6 +6,7 @@ import './Navigation.scss';
 //import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { NavLinksAnimation, NavNameAnimation } from './NavAnimations';
+import useScrollListener from '../../utils/useScrollListener';
 
 interface INavProps {
   name: string;
@@ -22,7 +23,19 @@ const defaultProps: Partial<INavProps> = {
 
 export const Navigation = (props: INavProps): JSX.Element => {
   const { name, navIsOpen, toggleNav, navLinks, toggleContact } = props;
-  const [toggleScrollBtn, setToggleScrollBtn] = useState(false);
+
+  const [navClassList, setNavClassList] = useState<string[]>([]);
+  const scroll = useScrollListener();
+
+  // update classList of nav on scroll
+  useEffect(() => {
+    const _classList: string[] = [];
+
+    if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
+      _classList.push('Navigation-hidden');
+
+    setNavClassList(_classList);
+  }, [scroll.y, scroll.lastY]);
 
   const hamburgerMenu = () => {
     return (
@@ -37,41 +50,16 @@ export const Navigation = (props: INavProps): JSX.Element => {
     );
   };
 
-  const menuIsScrolling = () => {
-    if (window.scrollY > 50) {
-      setToggleScrollBtn(true);
-    } else if (window.scrollY <= 50) {
-      setToggleScrollBtn(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', menuIsScrolling);
-
-    return () => {
-      window.removeEventListener('scroll', menuIsScrolling);
-    };
-  }, []);
-
   return (
     <div
-      className={`${
-        toggleScrollBtn ? 'Navigation Navigation-sticky' : 'Navigation'
-      }`}
+      className={`Navigation ${navClassList.join('')}`}
       data-testid='navigation'
     >
       <div className='Container'>
         <div className='Navigation-wrapper'>
           {!navIsOpen ? (
             <motion.div key='navigation-name' {...NavNameAnimation}>
-              <a
-                className='Navigation-name'
-                href='https://www.youtube.com/watch?v=1bG8WcFk17Y'
-                target='_blank'
-                rel='noreferrer'
-              >
-                {name}
-              </a>
+              <div className='Navigation-name'>{name}</div>
             </motion.div>
           ) : (
             <div />

@@ -4,7 +4,6 @@ import * as React from 'react';
 import './PortfolioContent.scss';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { motion } from 'framer-motion';
-import { faGithub, faGithubAlt } from '@fortawesome/free-brands-svg-icons';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -14,7 +13,7 @@ interface IPortfolioContent {
 }
 
 export const PortfolioContent = (props: IPortfolioContent) => {
-  const { link, img, title, tech, text } = props;
+  const { link, title, tech, text } = props;
 
   return (
     <div className='List-item'>

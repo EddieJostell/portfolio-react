@@ -5,8 +5,6 @@ import { Container } from '../Container/Container';
 import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
 
-interface IHomeProps {}
-
 export const Home = (): JSX.Element => {
   const NameWorkAnimation = {
     initial: { x: -500, opacity: 0 },

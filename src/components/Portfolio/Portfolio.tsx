@@ -8,7 +8,6 @@ import { isMobileMax } from '../../utils/userAgent';
 import './Portfolio.scss';
 
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
-interface IPortfolioProps {}
 
 export const Portfolio = (): JSX.Element => {
   const Projects = useContext<IContextState>(HelperContext);
@@ -27,7 +26,7 @@ export const Portfolio = (): JSX.Element => {
   };
 
   return (
-    <div id='portfolio' className='Portfolio'>
+    <div className='Portfolio' id='portfolio'>
       <Container>
         <div className='Portfolio-wrapper'>
           {isMobileMax && (

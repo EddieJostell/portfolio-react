@@ -27,12 +27,13 @@ export const ContactSlim = (props: IContactSlimProps) => {
         }}
       >
         <a href={tact.link} target='_blank' rel='noopener noreferrer'>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             className='icons'
             color='white'
             icon={tact.iconSrc}
             size='1x'
-          />
+          /> */}
+          {tact.iconSrc}
         </a>
       </motion.div>
     ));
