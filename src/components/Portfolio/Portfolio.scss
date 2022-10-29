@@ -1,12 +1,11 @@
 .Portfolio {
   padding: 0 1.25rem;
   color: #edf2f4;
-  height: 100vh;
-
 
   @media (min-width: 768px) {
     padding-left: 0px;
     padding-right: 0px;
+    height: 100vh;
   }
 
   &-wrapper {
@@ -31,12 +30,14 @@
       margin-top: 2rem !important;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       width: 100%;
+      gap: 10px;
 
       @media (min-width: 768px) {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        gap: 10px; 
       }
 
       &-item {
@@ -46,7 +47,6 @@
         justify-content: flex-start;
         list-style-type: none;
         align-items: stretch;
-        margin: 1.25rem 0;
 
         @media (min-width: 768px) {
           flex-direction: row;

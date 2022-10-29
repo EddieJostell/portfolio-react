@@ -182,7 +182,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
     link: 'https://www.skandia.se',
     img: '',
-    text: 'My curernt job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
+    text: 'My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
   },
 ];
 
