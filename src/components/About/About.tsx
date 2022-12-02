@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
+import { Skills } from '../Skills/Skills';
 import './About.scss';
 import {
   BoxContainerAnimation,
@@ -14,7 +15,7 @@ export const About = (): JSX.Element => {
     <div className='About' id='about'>
       <Container>
         {isMobileMax && (
-          <motion.h1 key='title' {...TitleAnimation} className='title'>
+          <motion.h1 key='title' {...TitleAnimation} className='BG-title'>
             ABOUT ME
           </motion.h1>
         )}
@@ -24,6 +25,7 @@ export const About = (): JSX.Element => {
           className='box-container'
         >
           <div className='content'>
+            {/*    <div className='box'></div> */}
             <div className='box'>
               <h2 className=''>Likes</h2>
               <div className=''>
@@ -33,7 +35,7 @@ export const About = (): JSX.Element => {
                 music.
               </div>
             </div>
-
+            {/* 
             <div className='box'>
               <h2 className=''>Me</h2>
               <div className=''>Name: Edward 'Eddie' Jostell.</div>
@@ -41,9 +43,9 @@ export const About = (): JSX.Element => {
               <div className=''>From: Stockholm, Sweden.</div>
               <div className=''>Occupation: Frontend-developer.</div>
               <div className=''>Current workplace: Skandia.</div>
-            </div>
+            </div> */}
 
-            <div className='box'>
+            {/* <div className='box'>
               <h2 className=''>Gamer</h2>
               <div className=''>
                 Before I became a web-developer I played at a semi-professional
@@ -52,9 +54,10 @@ export const About = (): JSX.Element => {
                 work as part of a team, Even tho I dont play on that level
                 anymore I still play for fun with my friends.
               </div>
-            </div>
+            </div> */}
           </div>
           <div className='photo'>
+            <Skills />
             <a
               href='https://www.linkedin.com/in/eddiejostell/'
               target='_blank'

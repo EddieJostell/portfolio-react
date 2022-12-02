@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState, useCallback, Fragment } from 'react';
+import { useState, useCallback, Fragment } from 'react';
 import {
   ProjectList,
   QuoteInfo,
@@ -16,7 +16,6 @@ import { ContactSlim } from './components/Contact/ContactSlim';
 import { isComputerMin } from './utils/userAgent';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
-import { Skills } from './components/Skills/Skills';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
@@ -94,12 +93,11 @@ function App() {
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                <Skills key='4' />,
-                isComputerMin && <ContactSlim icons={true} key='5' />,
-                <Footer key='6' />,
+                isComputerMin && <ContactSlim icons={true} key='4' />,
+                <Footer key='5' />,
               ]
             ) : (
-              <ContactForm key='7' toggleContact={toggleContact} />
+              <ContactForm key='6' toggleContact={toggleContact} />
             )}
           </Fragment>
         )}

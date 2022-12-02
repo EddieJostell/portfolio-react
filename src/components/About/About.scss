@@ -8,7 +8,7 @@
     height: 100vh;
   }
 
-  .title {
+  .BG-title {
     font-size: 190px;
     z-index: 0;
     position: absolute;
@@ -31,10 +31,6 @@
       flex-direction: row;
     }
 
-    h2 {
-      color: #d90429;
-    }
-
     .content {
       width: 100%;
       display: flex;
@@ -42,26 +38,46 @@
       align-items: center;
 
       @media (min-width: 768px) {
-        width: 70%;
+        width: 50%;
         flex-direction: row;
         border-right: 2px solid #d90429;
         padding-right: 10px;
       }
+
+      h2 {
+        color: #d90429;
+        font-family: Audiowide, Helvetica, Arial, sans-serif;
+      }
+
+      .box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 18px;
+        text-align: center;
+        padding: 5px;
+
+        @media (min-width: 768px) {
+          text-align: left;
+        }
+      }
     }
 
     .photo {
-      width: 30%;
+      width: 50%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-    
+      flex-direction: row;
+      justify-content: space-around;
+
       .frame {
         border-radius: 10px;
         position: relative;
         width: 300px;
         box-shadow: 0 25px 25px rgba(0, 0, 0, 0.1);
         z-index: 1;
-        
+
         &::before {
           content: '';
           overflow: hidden;
@@ -101,46 +117,5 @@
         }
       }
     }
-
-    .box {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      font-size: 18px;
-      text-align: center;
-      padding: 5px;
-
-      @media (min-width: 768px) {
-        text-align: left;
-      }
-    }
-  }
-
-  .Form-test {
-    position: relative;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-
-    input,textarea {
-      margin: 30px 0;
-      width: 100%;
-    }
-
-    input {
-      height: 25px;
-    }
-
-    label {
-      margin-bottom: 5px;
-      font-size: 18px;
-      position: relative;
-      color: #fff;
-    }
-
   }
 }
