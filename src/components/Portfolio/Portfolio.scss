@@ -1,11 +1,12 @@
 .Portfolio {
   padding: 0 1.25rem;
   color: #edf2f4;
+  height: 100%;
 
   @media (min-width: 768px) {
     padding-left: 0px;
     padding-right: 0px;
-    height: 100vh;
+    height: calc(100% - 250px);
   }
 
   &-wrapper {
@@ -27,7 +28,7 @@
     }
 
     .List {
-      margin-top: 2rem !important;
+      margin-top: 1rem !important;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -35,9 +36,10 @@
       gap: 10px;
 
       @media (min-width: 768px) {
+        margin-top: 2rem !important;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px; 
+        gap: 10px;
       }
 
       &-item {

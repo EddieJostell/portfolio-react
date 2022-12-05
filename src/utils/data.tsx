@@ -12,6 +12,7 @@ export const SkillsInfo: ISkillsItem[] = [
   { id: 4, skill: 'TYPESCRIPT' },
   { id: 5, skill: 'EPISERVER / CMS' },
   { id: 6, skill: 'CSS/SASS/LESS' },
+  { id: 7, skill: 'SEMANTIC-UI-REACT' },
 ];
 
 export interface IContactItem {
