@@ -27,14 +27,14 @@ export const RouteInfo: IRouteInfoItem[] = [
     path: '/Contact',
     element: <Contact />,
   },
-  {
+  /* {
     id: 4,
     path: '/Experiments',
     element: <Experiments />,
-  },
-  {
+  }, */
+  /* {
     id: 4,
     path: '/Skills',
     element: <Skills />,
-  },
+  }, */
 ];

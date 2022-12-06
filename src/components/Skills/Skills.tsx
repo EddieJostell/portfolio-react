@@ -4,26 +4,16 @@ import { ISkillsItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import './Skills.scss';
 
-export const Skills = (): JSX.Element => {
+interface ISkillsProps {
+  title: string;
+}
+export const Skills = (props: ISkillsProps): JSX.Element => {
+  const { title } = props;
   const skillsInfo = useContext<IContextState>(HelperContext);
 
   const showSkills = () => {
     return skillsInfo.skillsItem.map((skill: ISkillsItem, key: number) => (
       <motion.div
-        /*  initial='visible' */
-        /* viewport={{ once: true }} */
-        /* variants={{
-          visible: {
-            opacity: 1,
-            translateX: 0,
-            translateY: 0,
-          },
-          hidden: { opacity: 0, translateX: -50, translateY: -50 },
-        }}
-        transition={{
-          duration: 0.4,
-          delay: !showAnimation ? key * 0.4 : undefined,
-        }} */
         whileHover={{
           scale: 1.1,
           textShadow: '0px  0px 8px rgb(255,255,255)',
@@ -45,9 +35,7 @@ export const Skills = (): JSX.Element => {
       </Container>
     </div> */
     <div className='Skills'>
-      <span className='skill-title'>
-        Here are a few technologies I’ve been working with
-      </span>
+      <span className='skill-title'>{title}</span>
       {showSkills()}
     </div>
   );

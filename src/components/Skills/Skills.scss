@@ -6,6 +6,8 @@
   gap: 15px;
   z-index: 1;
   font-family: Goldman;
+  flex-grow: 1;
+  padding: 20px;
 
   .skill-title {
     font-size: 16px;
@@ -14,7 +16,7 @@
   }
 
   .SkillCard {
-    width: 350px;
+    width: 100%;
     padding: 10px;
     background-color: #000;
     opacity: 0.7;

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import * as React from 'react';
 import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
+import { Header } from '../Header/Header';
 import { Skills } from '../Skills/Skills';
 import './About.scss';
 import {
@@ -27,7 +28,8 @@ export const About = (): JSX.Element => {
           <div className='content'>
             {/*    <div className='box'></div> */}
             <div className='box'>
-              <h2 className=''>Likes</h2>
+              {/* <h2 className=''>Likes</h2> */}
+              <Header title='Bio' size='h2' />
               <div className=''>
                 When Im not hitting the keyboard to create magic on the web or
                 playing games I like to hang out with my friends, go to the gym,
@@ -55,22 +57,30 @@ export const About = (): JSX.Element => {
                 anymore I still play for fun with my friends.
               </div>
             </div> */}
-          </div>
-          <div className='photo'>
-            <Skills />
-            <a
-              href='https://www.linkedin.com/in/eddiejostell/'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='frame'
-            >
-              <motion.div
-                key='layer'
-                {...PhotoLayerAnimation}
-                className='layer'
-              ></motion.div>
-              <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
-            </a>
+
+            <div className='skill'>
+              <Skills title='Here are a few technologies I’ve been working with' />
+            </div>
+            <div className='photo'>
+              <a
+                href='https://www.linkedin.com/in/eddiejostell/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='frame'
+              >
+                {isMobileMax && (
+                  <motion.div
+                    key='layer'
+                    {...PhotoLayerAnimation}
+                    className='layer'
+                  ></motion.div>
+                )}
+                <img
+                  src={process.env.PUBLIC_URL + 'KELEDW.jpg'}
+                  alt='profile'
+                />
+              </a>
+            </div>
           </div>
         </motion.div>
       </Container>
