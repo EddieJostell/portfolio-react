@@ -13,17 +13,7 @@ export const Skills = (props: ISkillsProps): JSX.Element => {
 
   const showSkills = () => {
     return skillsInfo.skillsItem.map((skill: ISkillsItem, key: number) => (
-      <motion.div
-        whileHover={{
-          scale: 1.1,
-          textShadow: '0px  0px 8px rgb(255,255,255)',
-          transition: { duration: 0.2, delay: 0 },
-        }}
-        className='SkillCard'
-        key={key}
-      >
-        <span className='skill-text'>{skill.skill}</span>
-      </motion.div>
+      <li key={key}>{skill.skill}</li>
     ));
   };
 
@@ -35,8 +25,8 @@ export const Skills = (props: ISkillsProps): JSX.Element => {
       </Container>
     </div> */
     <div className='Skills'>
-      <span className='skill-title'>{title}</span>
-      {showSkills()}
+      <span className='skills-title'>{title}</span>
+      <ul className='skills-list'>{showSkills()}</ul>
     </div>
   );
 };

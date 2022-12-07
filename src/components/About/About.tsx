@@ -27,40 +27,33 @@ export const About = (): JSX.Element => {
         >
           <div className='content'>
             {/*    <div className='box'></div> */}
-            <div className='box'>
+            <div className='bio'>
               {/* <h2 className=''>Likes</h2> */}
               <Header title='Bio' size='h2' />
-              <div className=''>
-                When Im not hitting the keyboard to create magic on the web or
-                playing games I like to hang out with my friends, go to the gym,
-                long walks, relax with movies/tvshows or just listening to good
-                music.
+              <div className='text'>
+                <div>
+                  Hello! My name is Eddie and I enjoy creating things on the
+                  world wide web. I started my journey in web-development around
+                  2014 by studying .NET development. When Im not hitting the
+                  keyboard to create magic on the web or playing games I like to
+                  hang out with my friends, go to the gym, long walks, relax
+                  with movies/tvshows or just listening to good music.
+                </div>
+                <br />
+                <div>
+                  Before I became a web-developer I played at a
+                  semi-professional level in the computer game Counter Strike -
+                  Global Offensive. Playing this game has helped me with my
+                  logical thinking and to work as part of a team, Even tho I
+                  dont play on that level anymore I still play for fun with my
+                  friends.
+                </div>
+              </div>
+              <div className='skill'>
+                <Skills title='Here are a few technologies I’ve been working with' />
               </div>
             </div>
-            {/* 
-            <div className='box'>
-              <h2 className=''>Me</h2>
-              <div className=''>Name: Edward 'Eddie' Jostell.</div>
-              <div className=''>Born: 1987.</div>
-              <div className=''>From: Stockholm, Sweden.</div>
-              <div className=''>Occupation: Frontend-developer.</div>
-              <div className=''>Current workplace: Skandia.</div>
-            </div> */}
 
-            {/* <div className='box'>
-              <h2 className=''>Gamer</h2>
-              <div className=''>
-                Before I became a web-developer I played at a semi-professional
-                level in the computer game Counter Strike - Global Offensive.
-                Playing this game has helped me with my logical thinking and to
-                work as part of a team, Even tho I dont play on that level
-                anymore I still play for fun with my friends.
-              </div>
-            </div> */}
-
-            <div className='skill'>
-              <Skills title='Here are a few technologies I’ve been working with' />
-            </div>
             <div className='photo'>
               <a
                 href='https://www.linkedin.com/in/eddiejostell/'

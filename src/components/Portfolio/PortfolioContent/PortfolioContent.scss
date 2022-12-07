@@ -94,7 +94,7 @@
   text-decoration: none;
   border-radius: 5px;
 
-  @media (min-width:768px) {
+  @media (min-width: 768px) {
     min-width: 325px;
     max-width: 400px;
   }
@@ -111,12 +111,20 @@
       svg {
         color: #d90429;
       }
-  
     }
-    
-    a {
-      svg:hover {
-        color: #d90429;
+
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: baseline;
+      a {
+        &:first-child {
+          margin-right: 10px;
+        }
+        svg:hover {
+          color: #d90429;
+        }
       }
     }
   }

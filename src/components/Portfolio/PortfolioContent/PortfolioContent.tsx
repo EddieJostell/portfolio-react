@@ -4,6 +4,7 @@ import * as React from 'react';
 import './PortfolioContent.scss';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { motion } from 'framer-motion';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -29,9 +30,14 @@ export const PortfolioContent = (props: IPortfolioContent) => {
           <div className='file'>
             <FontAwesomeIcon icon={faFolder} size='3x' />
           </div>
-          <a href={link} target='_blank' rel='noreferrer'>
-            <FontAwesomeIcon icon={faExternalLink} color='white' size='2x' />
-          </a>
+          <div className='links'>
+            <a href={'link'} target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faGithub} color='white' size='2x' />
+            </a>
+            <a href={link} target='_blank' rel='noreferrer'>
+              <FontAwesomeIcon icon={faExternalLink} color='white' size='2x' />
+            </a>
+          </div>
         </div>
         <div className='body'>
           <h1 className='title'>

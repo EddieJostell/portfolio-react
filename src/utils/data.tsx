@@ -136,14 +136,14 @@ export const ProjectList: IPortfolioItem[] = [
     img: 'img/cloud9.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   },
-  {
+  /*   {
     id: 3,
     title: 'News Hub',
     tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
     link: 'https://eddiejostell.github.io/News-Hub/',
     img: 'img/news-hub.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  },
+  }, */
   {
     id: 4,
     title: 'MovieDatabase',

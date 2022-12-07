@@ -23,7 +23,6 @@
   .box-container {
     display: flex;
     flex-direction: column;
-    border-top: 2px solid #d90429;
     margin-top: 30px;
     padding-top: 10px;
 
@@ -35,36 +34,39 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
 
       @media (min-width: 768px) {
         flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: center;
       }
 
       h2 {
         color: #d90429;
         font-family: Audiowide, Helvetica, Arial, sans-serif;
+        margin-top: 0;
       }
 
-      .box {
+      .bio {
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        font-size: 18px;
+        font-size: 24px;
         text-align: center;
-        padding: 5px;
         padding-bottom: 10px;
         margin-bottom: 1em;
 
         @media (min-width: 768px) {
+          width: 50%;
           text-align: left;
           margin-bottom: 0;
           border-bottom: 0;
-          padding-bottom: 5px;
+        }
+
+        .text {
+          padding-right: 10px;
         }
       }
     }
@@ -76,11 +78,12 @@
     .photo {
       width: 100%;
       display: flex;
-      flex-direction: column-reverse;
+      justify-content: center;
       align-items: center;
       padding: 0 5px;
 
       @media (min-width: 768px) {
+        width: auto;
         flex-direction: row;
         justify-content: space-around;
       }

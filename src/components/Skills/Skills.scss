@@ -2,29 +2,41 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   gap: 15px;
   z-index: 1;
   font-family: Goldman;
   flex-grow: 1;
   padding: 20px;
 
-  .skill-title {
-    font-size: 16px;
+  .skills-title {
+    font-size: 32px;
     color: #d90429;
     font-family: Goldman;
   }
 
-  .SkillCard {
-    width: 100%;
-    padding: 10px;
-    background-color: #000;
-    opacity: 0.7;
-    border-radius: 10px;
+  .skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    gap: 0px 50px;
+    padding: 0px;
+    overflow: hidden;
+    margin: 20px 0px 0px;
 
-    .skill-text {
-      font-size: 16px;
+    li {
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      font-size: 20px;
       color: #fff;
+      list-style-type: none;
+
+      &::before {
+        content: '▹';
+        color: #d90429;
+        position: absolute;
+        left: 0;
+      }
     }
   }
 }
