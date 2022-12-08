@@ -71,16 +71,14 @@
       }
     }
 
-    .skill {
-      width: 100%;
-    }
-
     .photo {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0 5px;
+      margin-top: 80px;
+      margin-left: 10px;
 
       @media (min-width: 768px) {
         width: auto;

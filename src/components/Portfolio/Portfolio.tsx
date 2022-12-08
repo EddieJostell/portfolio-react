@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
 import { isMobileMax } from '../../utils/userAgent';
 import './Portfolio.scss';
-
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 
 export const Portfolio = (): JSX.Element => {
@@ -21,6 +20,7 @@ export const Portfolio = (): JSX.Element => {
         link={port.link}
         img={port.img}
         text={port.text}
+        github={port.github}
       />
     ));
   };

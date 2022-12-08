@@ -6,17 +6,22 @@
   z-index: 1;
   font-family: Goldman;
   flex-grow: 1;
-  padding: 20px;
+  padding-top: 20px;
+  width: 100%;
 
   .skills-title {
-    font-size: 32px;
     color: #d90429;
     font-family: Goldman;
+
+    h4 {
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
   }
 
   .skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
+    grid-template-columns: repeat(2, minmax(250px, 200px));
     gap: 0px 50px;
     padding: 0px;
     overflow: hidden;

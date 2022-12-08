@@ -6,12 +6,12 @@ export interface ISkillsItem {
 }
 
 export const SkillsInfo: ISkillsItem[] = [
-  { id: 1, skill: 'HTML' },
+  { id: 1, skill: 'HTML/CSS' },
   { id: 2, skill: 'JAVASCRIPT' },
   { id: 3, skill: 'REACT' },
   { id: 4, skill: 'TYPESCRIPT' },
   { id: 5, skill: 'EPISERVER / CMS' },
-  { id: 6, skill: 'CSS/SASS/LESS' },
+  { id: 6, skill: 'SASS/LESS' },
   { id: 7, skill: 'SEMANTIC-UI-REACT' },
 ];
 
@@ -118,6 +118,7 @@ export interface IPortfolioItem {
   link: string;
   img: string;
   text: string;
+  github?: string;
 }
 export const ProjectList: IPortfolioItem[] = [
   {
@@ -135,6 +136,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
     img: 'img/cloud9.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    github: '123',
   },
   /*   {
     id: 3,
@@ -151,6 +153,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/MovieDatabase/',
     img: 'img/moviedatabase.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    github: '',
   },
   {
     id: 5,
@@ -159,6 +162,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/todo-app/',
     img: 'img/todo.JPG',
     text: 'Simple TODO-APP created with HTML, CSS and Javascript.',
+    github: '',
   },
   {
     id: 6,
@@ -167,6 +171,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
     text: 'A single page responsive web app that will help you make a decision on what to eat for lunch or dinner. Built with HTML, CSS and Javascript.',
+    github: '',
   },
   {
     id: 7,
@@ -175,6 +180,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/react-food/',
     img: '',
     text: 'New and improved version of my food app. Made with React and Tailwindcss.',
+    github: '',
   },
   {
     id: 8,

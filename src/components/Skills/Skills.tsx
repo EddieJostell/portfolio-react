@@ -1,14 +1,10 @@
-import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { ISkillsItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { Header } from '../Header/Header';
 import './Skills.scss';
 
-interface ISkillsProps {
-  title: string;
-}
-export const Skills = (props: ISkillsProps): JSX.Element => {
-  const { title } = props;
+export const Skills = (): JSX.Element => {
   const skillsInfo = useContext<IContextState>(HelperContext);
 
   const showSkills = () => {
@@ -18,14 +14,12 @@ export const Skills = (props: ISkillsProps): JSX.Element => {
   };
 
   return (
-    /*  <div className='Skills' id='skills'>
-      <Container>
-        <h1 className='title'>Skills</h1>
-        <div className='Skills-container'>{showSkills()}</div>
-      </Container>
-    </div> */
     <div className='Skills'>
-      <span className='skills-title'>{title}</span>
+      <Header
+        className='skills-title'
+        title='Here are a few technologies I’ve been working with'
+        size='h4'
+      />
       <ul className='skills-list'>{showSkills()}</ul>
     </div>
   );

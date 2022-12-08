@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
-import * as React from 'react';
 import './PortfolioContent.scss';
 import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { motion } from 'framer-motion';
@@ -11,10 +10,11 @@ interface IPortfolioContent {
   title: string;
   tech: string;
   text: string;
+  github: string | undefined;
 }
 
 export const PortfolioContent = (props: IPortfolioContent) => {
-  const { link, title, tech, text } = props;
+  const { link, title, tech, text, github } = props;
 
   return (
     <div className='List-item'>
@@ -31,9 +31,11 @@ export const PortfolioContent = (props: IPortfolioContent) => {
             <FontAwesomeIcon icon={faFolder} size='3x' />
           </div>
           <div className='links'>
-            <a href={'link'} target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faGithub} color='white' size='2x' />
-            </a>
+            {github && (
+              <a href={github} target='_blank' rel='noreferrer'>
+                <FontAwesomeIcon icon={faGithub} color='white' size='2x' />
+              </a>
+            )}
             <a href={link} target='_blank' rel='noreferrer'>
               <FontAwesomeIcon icon={faExternalLink} color='white' size='2x' />
             </a>
