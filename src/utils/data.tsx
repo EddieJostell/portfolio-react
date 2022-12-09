@@ -109,6 +109,7 @@ export const NavigationLinks: INavLinkItem[] = [
     scrollId: 'portfolio',
   },
   { id: 3, text: 'Contact', path: '/Contact', scrollId: 'contact' },
+  { id: 4, text: 'Resume', path: '', scrollId: 'resume' },
 ];
 
 export interface IPortfolioItem {

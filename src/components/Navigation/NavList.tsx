@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { Fragment, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-scroll';
 import { INavLinkItem } from '../../utils/data';
-import { isMobileMax } from '../../utils/userAgent';
+import { isMobileMax, isMobileMin } from '../../utils/userAgent';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Items, List } from './NavAnimations';
 
@@ -18,60 +18,66 @@ export const NavList = (props: INavListProps) => {
   const [IsVisible, setIsVisible] = useState(false);
 
   const handleStuff = () => {
-    setIsVisible(!IsVisible);
-    toggleContact();
+    if (isMobileMin) {
+      setIsVisible(!IsVisible);
+      toggleContact();
+    } else {
+      toggleContact();
+    }
   };
 
-  const mobileNavItems = () => {
-    return navListItems.map((item: INavLinkItem) => (
-      <div key={item.id} className='NavList-item'>
-        {item.scrollId === 'contact' ? (
-          <span className='link' onClick={handleStuff}>
-            {item.text}
-          </span>
-        ) : (
-          <Link
-            className='link'
-            offset={-90}
-            to={item.scrollId}
-            spy={true}
-            smooth={true}
-            duration={1000}
-            onClick={() => toggleNav(!navIsOpen)}
-          >
-            {item.text}
-          </Link>
-        )}
-      </div>
-    ));
+  const toggleMobileNav = () => {
+    isMobileMin && toggleNav(!navIsOpen);
   };
 
-  const desktopNavItems = () => {
-    return navListItems.map((item: INavLinkItem) => (
-      <div key={item.id} className='NavList-item'>
-        {item.scrollId === 'contact' ? (
-          <span className='link' onClick={toggleContact}>
-            {item.text}
-          </span>
-        ) : (
-          <Link
-            className='link'
-            offset={item.scrollId === 'portfolio' ? 0 : -90}
-            to={item.scrollId}
-            spy={true}
-            smooth={true}
-            duration={1000}
-          >
-            {item.text}
-          </Link>
-        )}
-      </div>
-    ));
-  };
+  const NavItems = navListItems.map((item: INavLinkItem) => {
+    switch (item.scrollId) {
+      case 'contact':
+        return (
+          <div key={item.id} className='NavList-item'>
+            <span className='link' onClick={handleStuff}>
+              {item.text}
+            </span>
+          </div>
+        );
+      case 'resume':
+        return (
+          <div key={item.id} className='NavList-item'>
+            <a
+              href={'https://www.google.com'}
+              className='resume'
+              onClick={() => {
+                alert('Show Resume here!');
+              }}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {item.text}
+            </a>
+          </div>
+        );
+      default:
+        return (
+          <div key={item.id} className='NavList-item'>
+            <Link
+              className='link'
+              offset={item.scrollId === 'portfolio' ? 0 : -90}
+              to={item.scrollId}
+              spy={true}
+              smooth={true}
+              duration={1000}
+              onClick={toggleMobileNav}
+            >
+              {item.text}
+            </Link>
+          </div>
+        );
+    }
+  });
 
   const renderLinks = () => {
     if (isMobileMax) {
-      return <div className='NavList-desktop'>{desktopNavItems()}</div>;
+      return <div className='NavList-desktop'>{NavItems}</div>;
     } else {
       return (
         <AnimatePresence>
@@ -90,7 +96,7 @@ export const NavList = (props: INavListProps) => {
                 variants={Items}
                 className='NavList-container'
               >
-                {mobileNavItems()}
+                {NavItems}
                 <div className='NavList-contactLinks'>
                   <ContactSlim icons={true} />
                 </div>
@@ -105,5 +111,4 @@ export const NavList = (props: INavListProps) => {
   return <Fragment>{renderLinks()}</Fragment>;
 };
 
-// Remove tailwind and write SASS
 //font-sans text-2xl list-none cursor-pointer text-gray hover:text-white active:text-white visited:text-white
