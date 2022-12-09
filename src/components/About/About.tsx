@@ -29,7 +29,7 @@ export const About = (): JSX.Element => {
             {/*    <div className='box'></div> */}
             <div className='bio'>
               {/* <h2 className=''>Likes</h2> */}
-              <Header title='Bio' size='h2' />
+              <Header title='About Me' size='h2' fullWidth color textCenter />
               <div className='text'>
                 <div>
                   Hello! My name is Eddie and I enjoy creating things on the

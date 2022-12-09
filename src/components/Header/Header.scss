@@ -1,0 +1,12 @@
+.Header {
+  color: #fff;
+  &.fullWidth {
+    width: 100%;
+  }
+  &.textCenter {
+    text-align: center;
+  }
+  &.Color {
+    color: #d90429;
+  }
+}
