@@ -1,3 +1,4 @@
+import { Fragment, ReactNode } from 'react';
 import { Twitter, GitHub, Linkedin, Instagram } from 'react-feather';
 
 export interface ISkillsItem {
@@ -99,17 +100,31 @@ export interface INavLinkItem {
   text: string;
   path: string;
   scrollId: string;
+  type?: 'external' | 'localLink' | 'button';
 }
 export const NavigationLinks: INavLinkItem[] = [
-  { id: 1, text: 'About', path: '/About', scrollId: 'about' },
+  {
+    id: 1,
+    text: 'About',
+    path: '/About',
+    scrollId: 'about',
+    type: 'localLink',
+  },
   {
     id: 2,
     text: 'Projects',
     path: '/Projects',
     scrollId: 'portfolio',
+    type: 'localLink',
   },
-  { id: 3, text: 'Contact', path: '/Contact', scrollId: 'contact' },
-  { id: 4, text: 'Resume', path: '', scrollId: 'resume' },
+  {
+    id: 3,
+    text: 'Contact',
+    path: '/Contact',
+    scrollId: 'contact',
+    type: 'button',
+  },
+  { id: 4, text: 'Resumé', path: '', scrollId: 'resume', type: 'external' },
 ];
 
 export interface IPortfolioItem {

@@ -26,11 +26,9 @@ export const About = (): JSX.Element => {
           className='box-container'
         >
           <div className='content'>
-            {/*    <div className='box'></div> */}
             <div className='bio'>
-              {/* <h2 className=''>Likes</h2> */}
-              <Header title='About Me' size='h2' fullWidth color textCenter />
               <div className='text'>
+                <Header title='About Me' size='h2' fullWidth color textCenter />
                 <div>
                   Hello! My name is Eddie and I enjoy creating things on the
                   world wide web! I started my journey in web development around
@@ -70,28 +68,40 @@ export const About = (): JSX.Element => {
                 </div>
               </div>
               <Skills />
-            </div>
-
-            <div className='photo'>
-              <a
+              {/*  <a
+                className='frame-mobile'
                 href='https://www.linkedin.com/in/eddiejostell/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='frame'
               >
                 {isMobileMax && (
                   <motion.div
+                    className='layer'
                     key='layer'
                     {...PhotoLayerAnimation}
-                    className='layer'
                   ></motion.div>
                 )}
                 <img
                   src={process.env.PUBLIC_URL + 'KELEDW.jpg'}
                   alt='profile'
                 />
-              </a>
+              </a> */}
             </div>
+            <a
+              className='frame'
+              href='https://www.linkedin.com/in/eddiejostell/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {isMobileMax && (
+                <motion.div
+                  className='layer'
+                  key='layer'
+                  {...PhotoLayerAnimation}
+                ></motion.div>
+              )}
+              <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
+            </a>
           </div>
         </motion.div>
       </Container>

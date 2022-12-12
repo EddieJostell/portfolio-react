@@ -20,10 +20,8 @@ export const NavList = (props: INavListProps) => {
   const handleStuff = () => {
     if (isMobileMin) {
       setIsVisible(!IsVisible);
-      toggleContact();
-    } else {
-      toggleContact();
     }
+    toggleContact();
   };
 
   const toggleMobileNav = () => {
@@ -31,8 +29,8 @@ export const NavList = (props: INavListProps) => {
   };
 
   const NavItems = navListItems.map((item: INavLinkItem) => {
-    switch (item.scrollId) {
-      case 'contact':
+    switch (item.type) {
+      case 'button':
         return (
           <div key={item.id} className='NavList-item'>
             <span className='link' onClick={handleStuff}>
@@ -40,7 +38,7 @@ export const NavList = (props: INavListProps) => {
             </span>
           </div>
         );
-      case 'resume':
+      case 'external':
         return (
           <div key={item.id} className='NavList-item'>
             <a

@@ -19,11 +19,20 @@
 
   .skills-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(250px, 200px));
+    grid-template-columns: repeat(1, minmax(100%));
     gap: 0px 50px;
     padding: 0px;
     overflow: hidden;
     margin: 20px 0px 0px;
+
+    @media (min-width: 1100px) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(250px, 200px));
+      gap: 0px 50px;
+      padding: 0px;
+      overflow: hidden;
+      margin: 20px 0px 0px;
+    }
 
     li {
       width: 100%;
