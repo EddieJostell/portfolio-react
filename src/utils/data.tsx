@@ -164,7 +164,7 @@ export const ProjectList: IPortfolioItem[] = [
   }, */
   {
     id: 4,
-    title: 'MovieDatabase',
+    title: 'Movie Database',
     tech: '#HTML #CSS/SASS #JavaScript #Bootstrap',
     link: 'https://eddiejostell.github.io/MovieDatabase/',
     img: 'img/moviedatabase.JPG',

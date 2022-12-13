@@ -1,13 +1,6 @@
 .Portfolio {
-  padding: 0 1.25rem;
   color: #edf2f4;
   height: 100%;
-
-  @media (min-width: 768px) {
-    padding-left: 0px;
-    padding-right: 0px;
-    height: calc(100% - 250px);
-  }
 
   &-wrapper {
     position: relative;
@@ -15,7 +8,7 @@
     padding-top: 10px;
 
     .bg-title {
-      font-size: 190px;
+      font-size: 90px;
       z-index: 0;
       position: absolute;
       top: 20%;
@@ -24,6 +17,10 @@
       transform: translate(-50%, -50%);
       opacity: 0.07;
       font-family: Audiowide, Helvetica, Arial, sans-serif;
+
+      @media (min-width: 1100px) {
+        font-size: 190px;
+      }
     }
 
     .List {
@@ -32,11 +29,17 @@
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      gap: 10px;
+      gap: 20px;
 
       @media (min-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @media (min-width: 1100px) {
         margin-top: 2rem !important;
         flex-direction: row;
+        align-items: unset;
         flex-wrap: wrap;
         gap: 10px;
       }
@@ -49,7 +52,7 @@
         list-style-type: none;
         align-items: stretch;
 
-        @media (min-width: 768px) {
+        @media (min-width: 1100px) {
           flex-direction: row;
         }
       }

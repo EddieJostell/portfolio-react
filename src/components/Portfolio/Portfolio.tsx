@@ -7,6 +7,7 @@ import { Container } from '../Container/Container';
 import { isMobileMax } from '../../utils/userAgent';
 import './Portfolio.scss';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
+import { Header } from '../Header/Header';
 
 export const Portfolio = (): JSX.Element => {
   const Projects = useContext<IContextState>(HelperContext);
@@ -35,6 +36,7 @@ export const Portfolio = (): JSX.Element => {
             </motion.h1>
           )}
           <div className='List'>
+            <Header title='Projects' size='h1' fullWidth color textCenter />
             {displayPortfolioData()}
             {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
           </div>

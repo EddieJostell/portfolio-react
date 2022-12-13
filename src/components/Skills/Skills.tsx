@@ -18,7 +18,7 @@ export const Skills = (): JSX.Element => {
       <Header
         className='skills-title'
         title='Here are a few technologies I’ve been working with'
-        size='h4'
+        size='h3'
         color
       />
       <ul className='skills-list'>{showSkills()}</ul>

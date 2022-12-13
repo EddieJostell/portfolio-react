@@ -27,14 +27,18 @@ export const About = (): JSX.Element => {
         >
           <div className='content'>
             <div className='bio'>
+              <Header title='About Me' size='h1' fullWidth color textCenter />
               <div className='text'>
-                <Header title='About Me' size='h2' fullWidth color textCenter />
                 <div>
                   Hello! My name is Eddie and I enjoy creating things on the
-                  world wide web! I started my journey in web development around
-                  2014 by studying ASP.NET & CMS. After finishing that program I
-                  soon realized that I found most enjoyment coding frontend so I
-                  went back to the classroom to study frontend development and
+                  world wide web!
+                </div>
+                <br />
+                <div>
+                  I started my journey in web development around 2014 by
+                  studying ASP.NET & CMS. After finishing that program I soon
+                  realized that I found most enjoyment coding frontend so I went
+                  back to the classroom to study frontend development and
                   continued on that road.
                 </div>
                 <br />
@@ -68,25 +72,8 @@ export const About = (): JSX.Element => {
                 </div>
               </div>
               <Skills />
-              {/*  <a
-                className='frame-mobile'
-                href='https://www.linkedin.com/in/eddiejostell/'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                {isMobileMax && (
-                  <motion.div
-                    className='layer'
-                    key='layer'
-                    {...PhotoLayerAnimation}
-                  ></motion.div>
-                )}
-                <img
-                  src={process.env.PUBLIC_URL + 'KELEDW.jpg'}
-                  alt='profile'
-                />
-              </a> */}
             </div>
+
             <a
               className='frame'
               href='https://www.linkedin.com/in/eddiejostell/'
