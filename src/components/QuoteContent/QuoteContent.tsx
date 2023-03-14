@@ -14,57 +14,36 @@ interface IQuoteState {
 }
 
 export const QuoteContent = (props: Props) => {
-  const randomQuotes = React.useContext<IContextState>(HelperContext);
-  // eslint-disable-next-line
-
-  let quotes =
-    randomQuotes.quoteItem[
-      Math.floor(Math.random() * randomQuotes.quoteItem.length)
-    ];
-  const [quote, setQuote] = useState<IQuoteState>({
-    quote: quotes.quote,
-    author: quotes.author,
-  });
+  const Quotes = React.useContext<IContextState>(HelperContext);
+  const [quoteIndex, setQuoteIndex] = useState<number>(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      let randomizedQuotes =
-        randomQuotes.quoteItem[
-          Math.floor(Math.random() * randomQuotes.quoteItem.length)
-        ];
-      setQuote({
-        quote: randomizedQuotes.quote,
-        author: randomizedQuotes.author,
-      });
-    }, 6000);
-
-    return () => clearInterval(interval);
-  });
+    const timeoutId = setTimeout(() => {
+      setQuoteIndex((prevIndex) => (prevIndex + 1) % Quotes.quoteItem.length);
+    }, 20000);
+    return () => clearTimeout(timeoutId);
+  }, [quoteIndex]);
 
   return (
     <AnimatePresence>
-      <motion.div
-        key='quotes'
+      <motion.h1
+        key={quoteIndex}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          repeat: Infinity,
-          repeatType: 'mirror',
-          duration: 3,
-          delay: 6,
-          ease: 'easeInOut',
-        }}
-        exit={{ opacity: 0, transition: { duration: 3, delay: 6 } }}
+        animate={{ opacity: [0, 1, 0] }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 20 }}
       >
         <div className='QuoteContent'>
           <span className='quote'>
             <FontAwesomeIcon icon={faQuoteLeft} color='white' size='sm' />
-            &nbsp;{quote.quote}&nbsp;
+            {Quotes.quoteItem[quoteIndex].quote}
             <FontAwesomeIcon icon={faQuoteRight} color='white' size='sm' />
           </span>
-          <span>- {quote.author}</span>
+          <span className='author'>
+            - {Quotes.quoteItem[quoteIndex].author}
+          </span>
         </div>
-      </motion.div>
+      </motion.h1>
     </AnimatePresence>
   );
 };
