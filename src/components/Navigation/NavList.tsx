@@ -5,7 +5,8 @@ import { INavLinkItem } from "../../utils/data";
 import { isMobileMax, isMobileMin } from "../../utils/userAgent";
 import { ContactSlim } from "../Contact/ContactSlim";
 import { Items, List } from "./NavAnimations";
-import PDF from "../../documents/CV_Eddie_Jostell.pdf";
+
+const PDF = require("../../documents/CV_Eddie_Jostell.pdf");
 
 export interface INavListProps {
   navListItems: INavLinkItem[];
