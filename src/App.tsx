@@ -1,5 +1,5 @@
-import './App.scss';
-import { useState, useCallback, Fragment } from 'react';
+import "./App.scss";
+import { useState, useCallback, Fragment } from "react";
 import {
   ProjectList,
   QuoteInfo,
@@ -7,19 +7,19 @@ import {
   AboutMe,
   ContactInfo,
   SkillsInfo,
-} from './utils/data';
-import { Navigation } from './components/Navigation/Navigation';
-import { ContextProvider, IContextState } from './utils/HelperContext';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
-import { RouteInfo } from '../src/utils/Route';
-import { ContactSlim } from './components/Contact/ContactSlim';
-import { isComputerMin } from './utils/userAgent';
-import { Portfolio } from './components/Portfolio/Portfolio';
-import { Home } from './components/Home/Home';
-import { Footer } from './components/Footer/Footer';
-import { About } from './components/About/About';
-import { ContactForm } from './components/Contact/ContactForm/ContactForm';
-import RouteLinks from './components/RouteLinks/RouteLinks';
+} from "./utils/data";
+import { Navigation } from "./components/Navigation/Navigation";
+import { ContextProvider, IContextState } from "./utils/HelperContext";
+import { BrowserRouter as Router, Routes } from "react-router-dom";
+import { RouteInfo } from "../src/utils/Route";
+import { ContactSlim } from "./components/Contact/ContactSlim";
+import { isComputerMin } from "./utils/userAgent";
+import { Portfolio } from "./components/Portfolio/Portfolio";
+import { Home } from "./components/Home/Home";
+import { Footer } from "./components/Footer/Footer";
+import { About } from "./components/About/About";
+import { ContactForm } from "./components/Contact/ContactForm/ContactForm";
+import RouteLinks from "./components/RouteLinks/RouteLinks";
 
 interface IAppState {
   navIsOpen: boolean;
@@ -64,15 +64,15 @@ function App() {
 
   const displayLoader = () => {
     return (
-      <div className='Name-wrapper'>
-        <div className='loader-letter'>E</div>
+      <div className="Name-wrapper">
+        <div className="loader-letter">E</div>
       </div>
     );
   };
 
   return (
     <ContextProvider state={HelperContextValue}>
-      <div className='App' data-testid='application'>
+      <div className="App" data-testid="application">
         {appState.isLoading ? (
           displayLoader()
         ) : (
@@ -81,23 +81,23 @@ function App() {
               <Navigation
                 navIsOpen={appState.navIsOpen}
                 toggleNav={toggleNav}
-                name='E'
+                name="E"
                 navLinks={NavigationLinks}
                 toggleContact={toggleContact}
-                data-testid='navigation'
+                data-testid="navigation"
               />
             )}
 
             {!appState.contactIsActive ? (
               [
-                <Home key='1' />,
-                <About key='2' />,
-                <Portfolio key='3' />,
-                isComputerMin && <ContactSlim icons={true} key='4' />,
-                <Footer key='5' />,
+                <Home key="1" />,
+                <About key="2" />,
+                <Portfolio key="3" />,
+                isComputerMin && <ContactSlim icons={true} key="4" />,
+                <Footer key="5" />,
               ]
             ) : (
-              <ContactForm key='6' toggleContact={toggleContact} />
+              <ContactForm key="6" toggleContact={toggleContact} />
             )}
           </Fragment>
         )}

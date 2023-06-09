@@ -27,7 +27,7 @@ body {
 }
 .App {
   text-align: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   padding: 0 1rem;
 
@@ -41,7 +41,7 @@ body {
 
   .loader-letter {
     font-size: 70px;
-    font-family: 'Diplomata', cursive;
+    font-family: "Diplomata", cursive;
     color: #fff;
     text-decoration: none;
   }
