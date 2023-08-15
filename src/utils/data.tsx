@@ -229,7 +229,7 @@ export const QuoteInfo: IQuoteItem[] = [
   {
     id: 3,
     quote: "Of all the things I've lost I miss my mind the most.",
-    author: 'Ozzy Osburne.',
+    author: 'Ozzy Osbourne.',
   },
   {
     id: 4,
@@ -291,5 +291,11 @@ export const QuoteInfo: IQuoteItem[] = [
     quote:
       '“Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.”',
     author: 'Tupac Shakur',
+  },
+  {
+    id: 15,
+    quote:
+      '“All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.”',
+    author: 'J.R.R. Tolkien, The Fellowship of the Ring',
   },
 ];
