@@ -1,34 +1,34 @@
-import { motion } from 'framer-motion';
-import * as React from 'react';
-import { isMobileMax } from '../../utils/userAgent';
-import { Container } from '../Container/Container';
-import { Header } from '../Header/Header';
-import { Skills } from '../Skills/Skills';
-import './About.scss';
+import { motion } from "framer-motion";
+import * as React from "react";
+import { isMobileMax } from "../../utils/userAgent";
+import { Container } from "../Container/Container";
+import { Header } from "../Header/Header";
+import { Skills } from "../Skills/Skills";
+import "./About.scss";
 import {
   BoxContainerAnimation,
   PhotoLayerAnimation,
   TitleAnimation,
-} from './AboutAnimations';
+} from "./AboutAnimations";
 
 export const About = (): JSX.Element => {
   return (
-    <div className='About' id='about'>
+    <div className="About" id="about">
       <Container>
         {isMobileMax && (
-          <motion.h1 key='title' {...TitleAnimation} className='BG-title'>
+          <motion.h1 key="title" {...TitleAnimation} className="BG-title">
             ABOUT ME
           </motion.h1>
         )}
         <motion.div
-          key='box-container'
+          key="box-container"
           {...BoxContainerAnimation}
-          className='box-container'
+          className="box-container"
         >
-          <div className='content'>
-            <div className='bio'>
-              <Header title='About Me' size='h1' fullWidth color textCenter />
-              <div className='text'>
+          <div className="content">
+            <div className="bio">
+              <Header title="About Me" size="h1" fullWidth color textCenter />
+              <div className="text">
                 <div>
                   Hello! My name is Eddie and I enjoy creating things on the
                   world wide web!
@@ -59,12 +59,12 @@ export const About = (): JSX.Element => {
                 <br />
                 <div>
                   Today Im working as a frontend developer at Skandia where I
-                  maintain and develop the graphical framework that is used as
-                  foundation to help create the company{' '}
+                  maintain and develop the graphical framework that is used as a
+                  foundation to help create the company{" "}
                   <a
-                    href='https://www.skandia.se'
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    href="https://www.skandia.se"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     webpage
                   </a>
@@ -75,19 +75,19 @@ export const About = (): JSX.Element => {
             </div>
 
             <a
-              className='frame'
-              href='https://www.linkedin.com/in/eddiejostell/'
-              target='_blank'
-              rel='noopener noreferrer'
+              className="frame"
+              href="https://www.linkedin.com/in/eddiejostell/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {isMobileMax && (
                 <motion.div
-                  className='layer'
-                  key='layer'
+                  className="layer"
+                  key="layer"
                   {...PhotoLayerAnimation}
                 ></motion.div>
               )}
-              <img src={process.env.PUBLIC_URL + 'KELEDW.jpg'} alt='profile' />
+              <img src={process.env.PUBLIC_URL + "KELEDW.jpg"} alt="profile" />
             </a>
           </div>
         </motion.div>
