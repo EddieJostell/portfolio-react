@@ -91,7 +91,7 @@ export const ContactForm = (props: IContactFormProps) => {
   const closeContactForm = () => {
     setTimeout(() => {
       toggleContact();
-    }, 1000);
+    }, 300);
   };
 
   const contactHamburger = () => {
