@@ -67,7 +67,7 @@ export const ContactForm = (props: IContactFormProps) => {
     // REAL EMAIL JS CODE
     if (data) {
       dispatch({ type: "SUBMIT" });
-      /*   emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
+      emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
         (result) => {
           console.log("SUCCESS!", result.status, result.text);
           dispatch({ type: "SUCCESS" });
@@ -76,15 +76,15 @@ export const ContactForm = (props: IContactFormProps) => {
           console.log("FAILED...", error.text);
           dispatch({ type: "ERROR" });
         }
-      ); */
+      );
 
-      setTimeout(() => {
+      /*  setTimeout(() => {
         if (1 + 1 === 3) {
           dispatch({ type: "SUCCESS" });
         } else {
           dispatch({ type: "ERROR" });
         }
-      }, 2000);
+      }, 2000); */
     }
   };
 
