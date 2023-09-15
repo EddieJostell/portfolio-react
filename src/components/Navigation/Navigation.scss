@@ -1,4 +1,4 @@
-@import '../..//utils/mixins.scss';
+@import "../..//utils/mixins.scss";
 
 .Navigation {
   position: sticky;
@@ -48,10 +48,11 @@
 
     .Navigation-name {
       font-size: 64px;
-      font-family: 'Diplomata', cursive;
+      font-family: "Diplomata", cursive;
       color: #edf2f4;
       transition: opacity 0.35s ease 0.65s;
       text-decoration: none;
+      cursor: pointer;
 
       @media (min-width: 768px) {
         color: #edf2f4;
@@ -148,7 +149,7 @@
       &:after {
         background: none repeat scroll 0 0 transparent;
         bottom: -4px;
-        content: '';
+        content: "";
         display: block;
         height: 2px;
         left: 50%;

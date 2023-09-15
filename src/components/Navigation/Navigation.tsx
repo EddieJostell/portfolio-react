@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { INavLinkItem } from '../../utils/data';
-import { NavList } from './NavList';
-import { isMobileMax } from '../../utils/userAgent';
-import './Navigation.scss';
+import React, { useEffect, useState } from "react";
+import { INavLinkItem } from "../../utils/data";
+import { NavList } from "./NavList";
+import { isMobileMax } from "../../utils/userAgent";
+import "./Navigation.scss";
 //import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { NavLinksAnimation, NavNameAnimation } from './NavAnimations';
-import useScrollListener from '../../utils/useScrollListener';
+import { motion } from "framer-motion";
+import { NavLinksAnimation, NavNameAnimation } from "./NavAnimations";
+import useScrollListener from "../../utils/useScrollListener";
+import { Link } from "react-scroll";
 
 interface INavProps {
   name: string;
@@ -18,7 +19,7 @@ interface INavProps {
 }
 
 const defaultProps: Partial<INavProps> = {
-  status: '12315',
+  status: "12315",
 };
 
 export const Navigation = (props: INavProps): JSX.Element => {
@@ -32,7 +33,7 @@ export const Navigation = (props: INavProps): JSX.Element => {
     const _classList: string[] = [];
 
     if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
-      _classList.push('Navigation-hidden');
+      _classList.push("Navigation-hidden");
 
     setNavClassList(_classList);
   }, [scroll.y, scroll.lastY]);
@@ -41,7 +42,7 @@ export const Navigation = (props: INavProps): JSX.Element => {
     return (
       <div
         onClick={() => toggleNav(!navIsOpen)}
-        className={navIsOpen ? 'icon nav-icon-5 open' : 'icon nav-icon-5'}
+        className={navIsOpen ? "icon nav-icon-5 open" : "icon nav-icon-5"}
       >
         <span></span>
         <span></span>
@@ -52,20 +53,30 @@ export const Navigation = (props: INavProps): JSX.Element => {
 
   return (
     <div
-      className={`Navigation ${navClassList.join('')}`}
-      data-testid='navigation'
+      className={`Navigation ${navClassList.join("")}`}
+      data-testid="navigation"
     >
-      <div className='Container'>
-        <div className='Navigation-wrapper'>
+      <div className="Container">
+        <div className="Navigation-wrapper">
           {!navIsOpen ? (
-            <motion.div key='navigation-name' {...NavNameAnimation}>
-              <div className='Navigation-name'>{name}</div>
+            <motion.div key="navigation-name" {...NavNameAnimation}>
+              <Link
+                className="Navigation-name"
+                to={"home"}
+                offset={-80}
+                spy={true}
+                smooth={true}
+                duration={1000}
+              >
+                {name}
+              </Link>
+              {/*  <div className='Navigation-name'>{name}</div> */}
             </motion.div>
           ) : (
             <div />
           )}
-          <motion.div key='navigation-links' {...NavLinksAnimation}>
-            <div className='Links'>
+          <motion.div key="navigation-links" {...NavLinksAnimation}>
+            <div className="Links">
               {isMobileMax ? (
                 <NavList
                   toggleNav={toggleNav}
@@ -89,7 +100,7 @@ export const Navigation = (props: INavProps): JSX.Element => {
               toggleContact={toggleContact}
             />
           )
-        : ''}
+        : ""}
     </div>
   );
 };
