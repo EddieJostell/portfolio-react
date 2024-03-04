@@ -1,5 +1,5 @@
-import { Fragment, ReactNode } from "react";
-import { Twitter, GitHub, Linkedin, Instagram } from "react-feather";
+import { Fragment, ReactNode } from 'react';
+import { Twitter, GitHub, Linkedin, Instagram } from 'react-feather';
 
 export interface ISkillsItem {
   id: number;
@@ -7,13 +7,13 @@ export interface ISkillsItem {
 }
 
 export const SkillsInfo: ISkillsItem[] = [
-  { id: 1, skill: "HTML/CSS" },
-  { id: 2, skill: "JAVASCRIPT" },
-  { id: 3, skill: "REACT" },
-  { id: 4, skill: "TYPESCRIPT" },
-  { id: 5, skill: "EPISERVER / CMS" },
-  { id: 6, skill: "SASS/LESS" },
-  { id: 7, skill: "SEMANTIC-UI-REACT" },
+  { id: 1, skill: 'HTML/CSS' },
+  { id: 2, skill: 'JAVASCRIPT' },
+  { id: 3, skill: 'REACT' },
+  { id: 4, skill: 'TYPESCRIPT' },
+  { id: 5, skill: 'EPISERVER / CMS' },
+  { id: 6, skill: 'SASS/LESS' },
+  { id: 7, skill: 'SEMANTIC-UI-REACT' },
 ];
 
 export interface IContactItem {
@@ -40,31 +40,31 @@ export const ContactInfo: IContactItem[] = [
   }, */
   {
     id: 3,
-    title: "LinkedIn",
+    title: 'LinkedIn',
     iconSrc: <Linkedin />,
-    link: "https://www.linkedin.com/in/eddiejostell/",
-    text: "Add me to your network!",
+    link: 'https://www.linkedin.com/in/eddiejostell/',
+    text: 'Add me to your network!',
   },
   {
     id: 4,
-    title: "Github",
+    title: 'Github',
     iconSrc: <GitHub />,
-    link: "https://github.com/EddieJostell/",
-    text: "Checkout my projects on Github!",
+    link: 'https://github.com/EddieJostell/',
+    text: 'Checkout my projects on Github!',
   },
   {
     id: 5,
-    title: "Instagram",
+    title: 'Instagram',
     iconSrc: <Instagram />,
-    link: "https://www.instagram.com/eduardojostello/",
-    text: "Be cool and follow me on Instagram!",
+    link: 'https://www.instagram.com/eduardojostello/',
+    text: 'Be cool and follow me on Instagram!',
   },
   {
     id: 6,
-    title: "Twitter",
+    title: 'Twitter',
     iconSrc: <Twitter />,
-    link: "https://twitter.com/El_Wardinho/",
-    text: "Be cool and follow me on Twitter!",
+    link: 'https://twitter.com/El_Wardinho/',
+    text: 'Be cool and follow me on Twitter!',
   },
 ];
 
@@ -83,15 +83,15 @@ export interface IPersonal {
 export const AboutMe: IAboutMe[] = [
   {
     likes:
-      "When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.",
+      'When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.',
     personal: {
       name: "Edward 'Eddie' Jostell",
-      age: "33 summers",
-      from: "Stockholm, Sweden",
-      occupation: "Frontend Developer",
+      age: '33 summers',
+      from: 'Stockholm, Sweden',
+      occupation: 'Frontend Developer',
     },
     gamer:
-      "Before I wanted to become a web-developer I played at a semi-professional level in the computer game Counter Strike - Global Offensive. Even tho I dont play on that level anymore I still dream of a comeback.",
+      'Before I wanted to become a web-developer I played at a semi-professional level in the computer game Counter Strike - Global Offensive. Even tho I dont play on that level anymore I still dream of a comeback.',
   },
 ];
 
@@ -100,31 +100,31 @@ export interface INavLinkItem {
   text: string;
   path: string;
   scrollId: string;
-  type?: "external" | "localLink" | "button";
+  type?: 'external' | 'localLink' | 'button';
 }
 export const NavigationLinks: INavLinkItem[] = [
   {
     id: 1,
-    text: "About",
-    path: "/About",
-    scrollId: "about",
-    type: "localLink",
+    text: 'About',
+    path: '/About',
+    scrollId: 'about',
+    type: 'localLink',
   },
   {
     id: 2,
-    text: "Projects",
-    path: "/Projects",
-    scrollId: "portfolio",
-    type: "localLink",
+    text: 'Projects',
+    path: '/Projects',
+    scrollId: 'portfolio',
+    type: 'localLink',
   },
   {
     id: 3,
-    text: "Contact",
-    path: "/Contact",
-    scrollId: "contact",
-    type: "button",
+    text: 'Contact',
+    path: '/Contact',
+    scrollId: 'contact',
+    type: 'button',
   },
-  { id: 4, text: "Resumé", path: "", scrollId: "resume", type: "external" },
+  { id: 4, text: 'Resumé', path: '', scrollId: 'resume', type: 'external' },
 ];
 
 export interface IPortfolioItem {
@@ -139,20 +139,20 @@ export interface IPortfolioItem {
 export const ProjectList: IPortfolioItem[] = [
   {
     id: 1,
-    title: "COOP",
-    tech: "#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer",
-    link: "https://www.coop.se",
-    img: "img/coop.JPG",
-    text: "At my previous job I was the lead frontend developer in the team that developed and managed the website for the food chain COOP in Sweden.",
+    title: 'COOP',
+    tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
+    link: 'https://www.coop.se',
+    img: 'img/coop.JPG',
+    text: 'At my previous job I was the lead frontend developer in the team that developed and managed the website for the food chain COOP in Sweden.',
   },
   {
     id: 2,
-    title: "Cloud9 Reborn",
-    tech: "#HTML #CSS/SASS #JavaScript/jQuery #AJAX",
-    link: "https://eddiejostell.github.io/Cloud9-Reborn/",
-    img: "img/cloud9.JPG",
+    title: 'Cloud9 Reborn',
+    tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
+    link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
+    img: 'img/cloud9.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    github: "123",
+    github: '123',
   },
   /*   {
     id: 3,
@@ -164,47 +164,47 @@ export const ProjectList: IPortfolioItem[] = [
   }, */
   {
     id: 4,
-    title: "Movie Database",
-    tech: "#HTML #CSS/SASS #JavaScript #Bootstrap",
-    link: "https://eddiejostell.github.io/MovieDatabase/",
-    img: "img/moviedatabase.JPG",
+    title: 'Movie Database',
+    tech: '#HTML #CSS/SASS #JavaScript #Bootstrap',
+    link: 'https://eddiejostell.github.io/MovieDatabase/',
+    img: 'img/moviedatabase.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    github: "",
+    github: '',
   },
   {
     id: 5,
-    title: "TODO-APP",
-    tech: "#HTML #CSS #JavaScript",
-    link: "https://eddiejostell.github.io/todo-app/",
-    img: "img/todo.JPG",
-    text: "Simple TODO-APP created with HTML, CSS and Javascript.",
-    github: "",
+    title: 'TODO-APP',
+    tech: '#HTML #CSS #JavaScript',
+    link: 'https://eddiejostell.github.io/todo-app/',
+    img: 'img/todo.JPG',
+    text: 'Simple TODO-APP created with HTML, CSS and Javascript.',
+    github: '',
   },
   {
     id: 6,
-    title: "FOOD-APP",
-    tech: "#HTML #CSS #JavaScript",
-    link: "https://eddiejostell.github.io/food-app/",
-    img: "img/food-app.JPG",
-    text: "A single page responsive web app that will help you make a decision on what to eat for lunch or dinner. Built with HTML, CSS and Javascript.",
-    github: "",
+    title: 'FOOD-APP',
+    tech: '#HTML #CSS #JavaScript',
+    link: 'https://eddiejostell.github.io/food-app/',
+    img: 'img/food-app.JPG',
+    text: 'A single page responsive web app that will help you make a decision on what to eat for lunch or dinner. Built with HTML, CSS and Javascript.',
+    github: '',
   },
   {
     id: 7,
-    title: "REACT-FOOD",
-    tech: "#REACT #Tailwindcss",
-    link: "https://eddiejostell.github.io/react-food/",
-    img: "",
-    text: "New and improved version of my food app. Made with React and Tailwindcss.",
-    github: "",
+    title: 'REACT-FOOD',
+    tech: '#REACT #Tailwindcss',
+    link: 'https://eddiejostell.github.io/react-food/',
+    img: '',
+    text: 'New and improved version of my food app. Made with React and Tailwindcss.',
+    github: '',
   },
   {
     id: 8,
-    title: "SKANDIA",
-    tech: "#REACT #Typescript #HTML #CSS #jQuery #EPiServer",
-    link: "https://www.skandia.se",
-    img: "",
-    text: "My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.",
+    title: 'SKANDIA',
+    tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
+    link: 'https://www.skandia.se',
+    img: '',
+    text: 'My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
   },
 ];
 
@@ -217,91 +217,96 @@ export const QuoteInfo: IQuoteItem[] = [
   {
     id: 1,
     quote:
-      "A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?",
-    author: "Bodhi, Point Break 2015",
+      'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
+    author: 'Bodhi, Point Break 2015',
   },
   {
     id: 2,
     quote:
       "Reality can never live up to that fantasy that you have in your head. You'll be much happier if you accept the fact that real life is never perfect.",
-    author: "Unknown",
+    author: 'Unknown',
   },
   {
     id: 3,
     quote: "Of all the things I've lost I miss my mind the most.",
-    author: "Ozzy Osbourne.",
+    author: 'Ozzy Osbourne.',
   },
   {
     id: 4,
     quote:
-      "I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.",
-    author: "Bruce Lee.",
+      'I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.',
+    author: 'Bruce Lee.',
   },
   {
     id: 5,
-    quote: "Love all, trust a few, do wrong to none.",
-    author: "William Shakespeare.",
+    quote: 'Love all, trust a few, do wrong to none.',
+    author: 'William Shakespeare.',
   },
   {
     id: 6,
-    quote: "We need fantasy to survive reality.",
-    author: "Lady Gaga.",
+    quote: 'We need fantasy to survive reality.',
+    author: 'Lady Gaga.',
   },
   {
     id: 7,
-    quote: "Now I am become death, the destroyer of worlds.",
-    author: "J. Robert Oppenheimer.",
+    quote: 'Now I am become death, the destroyer of worlds.',
+    author: 'J. Robert Oppenheimer.',
   },
   {
     id: 8,
     quote:
-      "The future belongs to those who believe in the beauty of their dreams.",
-    author: "Eleanor Roosevelt",
+      'The future belongs to those who believe in the beauty of their dreams.',
+    author: 'Eleanor Roosevelt',
   },
   {
     id: 9,
     quote:
-      "Success usually comes to those who are too busy to be looking for it.",
-    author: "Henry David Thoreau",
+      'Success usually comes to those who are too busy to be looking for it.',
+    author: 'Henry David Thoreau',
   },
   {
     id: 10,
     quote:
       "Don't be distracted by criticism. Remember -- the only taste of success some people get is to take a bite out of you.",
-    author: "Zig Ziglar",
+    author: 'Zig Ziglar',
   },
   {
     id: 11,
-    quote: "I have nothing to offer but blood, toil, tears and sweat.",
-    author: "Winston Churchill",
+    quote: 'I have nothing to offer but blood, toil, tears and sweat.',
+    author: 'Winston Churchill',
   },
   {
     id: 12,
     quote:
-      "My family is everything. I am what I am thanks to my mother, my father, my brother, my sister... because they have given me everything. The education I have is thanks to them.",
-    author: "Ronaldinho",
+      'My family is everything. I am what I am thanks to my mother, my father, my brother, my sister... because they have given me everything. The education I have is thanks to them.',
+    author: 'Ronaldinho',
   },
   {
     id: 13,
     quote: "Clear eyes, full hearts, can't lose.",
-    author: "Coach Eric Taylor, Friday Night Lights (2006-2011)",
+    author: 'Coach Eric Taylor, Friday Night Lights (2006-2011)',
   },
   {
     id: 14,
     quote:
-      "“Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.”",
-    author: "Tupac Shakur",
+      '“Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.”',
+    author: 'Tupac Shakur',
   },
   {
     id: 15,
     quote:
-      "“All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.”",
-    author: "J.R.R. Tolkien, The Fellowship of the Ring",
+      '“All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.”',
+    author: 'J.R.R. Tolkien, The Fellowship of the Ring',
   },
   {
     id: 16,
     quote:
-      "A man who lays a hand on a woman is scum. Living as scum is the same as being dead.",
-    author: "Abarai Renji, Bleach, episode 363",
+      'A man who lays a hand on a woman is scum. Living as scum is the same as being dead.',
+    author: 'Abarai Renji, Bleach, episode 363',
+  },
+  {
+    id: 17,
+    quote: '“I know, too, that death is the only god who comes when you call.”',
+    author: 'Roger Zelazny, Frost & Fire ',
   },
 ];
