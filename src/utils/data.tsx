@@ -301,12 +301,17 @@ export const QuoteInfo: IQuoteItem[] = [
   {
     id: 16,
     quote:
-      'A man who lays a hand on a woman is scum. Living as scum is the same as being dead.',
+      '“A man who lays a hand on a woman is scum. Living as scum is the same as being dead.”',
     author: 'Abarai Renji, Bleach, episode 363',
   },
   {
     id: 17,
     quote: '“I know, too, that death is the only god who comes when you call.”',
     author: 'Roger Zelazny, Frost & Fire ',
+  },
+  {
+    id: 18,
+    quote: '“Spanning years and continents. Lives ruined and bloodshed. Epic.”',
+    author: 'Logan Echolls, Veronica Mars ',
   },
 ];
