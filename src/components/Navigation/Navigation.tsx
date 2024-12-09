@@ -18,12 +18,8 @@ interface INavProps {
   toggleContact: () => void;
 }
 
-const defaultProps: Partial<INavProps> = {
-  status: "12315",
-};
-
 export const Navigation = (props: INavProps): JSX.Element => {
-  const { name, navIsOpen, toggleNav, navLinks, toggleContact } = props;
+  const { name, navIsOpen, navLinks, toggleContact, toggleNav } = props;
 
   const [navClassList, setNavClassList] = useState<string[]>([]);
   const scroll = useScrollListener();
@@ -104,5 +100,3 @@ export const Navigation = (props: INavProps): JSX.Element => {
     </div>
   );
 };
-
-Navigation.defaultProps = defaultProps;
