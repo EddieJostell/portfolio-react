@@ -1,4 +1,4 @@
-@import '../..//utils/breakpoints-mixin.scss';
+@use '../..//utils/breakpoints-mixin' as *;
 
 .About {
   display: flex;
