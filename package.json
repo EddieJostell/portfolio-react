@@ -44,7 +44,7 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.2",
     "classnames": "^2.3.2",
-    "framer-motion": "^10.16.4",
+    "framer-motion": "^11.13.5",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-feather": "^2.0.10",
