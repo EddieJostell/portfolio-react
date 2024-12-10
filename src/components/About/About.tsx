@@ -5,6 +5,7 @@ import { Container } from "../Container/Container";
 import { Header } from "../Header/Header";
 import { Skills } from "../Skills/Skills";
 import "./About.scss";
+import KELEDW from "../../assets/KELEDW.jpg";
 import {
   BoxContainerAnimation,
   PhotoLayerAnimation,
@@ -87,7 +88,7 @@ export const About = (): JSX.Element => {
                   {...PhotoLayerAnimation}
                 ></motion.div>
               )}
-              <img src={process.env.PUBLIC_URL + "KELEDW.jpg"} alt="profile" />
+              <img src={KELEDW} alt="profile" />
             </a>
           </div>
         </motion.div>
