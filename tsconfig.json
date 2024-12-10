@@ -6,6 +6,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "paths": {
+      "@vitejs/plugin-react": ["./node_modules/@vitejs/plugin-react"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +22,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["node","vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": [
-    "src"
-  ]
+    "src", "config/setup.ts"
+  ],
+  "exclude": ["node_modules"]
 }
