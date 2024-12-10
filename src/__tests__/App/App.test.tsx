@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import App from '../../App';
-import Container from '../../components/Container/Container';
+import { Container } from '../../components/Container/Container';
 /* import Navigation from '../../components/Navigation/Navigation';
 import { INavLinkItem } from '../../utils/data'; */
 
