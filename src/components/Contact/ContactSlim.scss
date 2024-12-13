@@ -9,22 +9,25 @@
     top: auto;
     right: auto;
     bottom: 20px;
-    
 
     div {
-     svg {
-      height: 1.875rem;
-      width: 1.875rem;
-      > path, rect, circle, line { 
+      svg {
+        height: 1.875rem;
+        width: 1.875rem;
+        > path,
+        rect,
+        circle,
+        line {
           stroke: #edf2f4;
-        
         }
-     } 
-      
-      
+      }
+
       &:hover {
-        svg > path, rect, circle, line { 
-          stroke:#d90429;   
+        svg > path,
+        rect,
+        circle,
+        line {
+          stroke: #d90429;
         }
       }
     }
@@ -39,24 +42,25 @@
     }
     @media (min-width: 1025px) {
       &:after {
-        content: "";
+        content: '';
         display: block;
         width: 1px;
         height: 100px;
         margin: 0px auto;
         margin-top: 10px;
         background-color: #fff;
-        }
+      }
     }
   }
 
   &.desktop {
     position: fixed;
-    bottom:0;
+    bottom: 0;
     right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    z-index: 3;
   }
 
   &.fullWidth {
