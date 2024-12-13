@@ -13,4 +13,4 @@ afterEach(() => {
   });
 
 // Mocking global objects or functions if needed
-global.fetch = jest.fn();
+global.fetch = vi.fn();
