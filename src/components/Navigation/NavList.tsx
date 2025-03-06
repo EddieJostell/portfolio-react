@@ -62,7 +62,7 @@ export const NavList = (props: INavListProps) => {
           <div key={item.id} className="NavList-item">
             <Link
               className="link"
-              offset={item.scrollId === "portfolio" ? 0 : -90}
+              offset={item.scrollId === 'portfolio' ? -30 : -90}
               to={item.scrollId}
               spy={true}
               smooth={true}
