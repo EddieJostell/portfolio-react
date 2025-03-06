@@ -17,9 +17,9 @@ export const About = (): React.JSX.Element => {
     <div className="About" id="about">
       <Container>
         {isMobileMax && (
-          <motion.h1 key="title" {...TitleAnimation} className="BG-title">
+          <motion.span key='title' {...TitleAnimation} className='BG-title'>
             ABOUT ME
-          </motion.h1>
+          </motion.span>
         )}
         <motion.div
           key="box-container"
