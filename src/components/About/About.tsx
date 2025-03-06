@@ -12,7 +12,7 @@ import {
   TitleAnimation,
 } from "./AboutAnimations";
 
-export const About = (): JSX.Element => {
+export const About = (): React.JSX.Element => {
   return (
     <div className="About" id="about">
       <Container>
