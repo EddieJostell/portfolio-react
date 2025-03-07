@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { useContext, FC } from 'react';
 import { ISkillsItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { Header } from '../Header/Header';
 import './Skills.scss';
 
-export const Skills = (): JSX.Element => {
+export const Skills: FC<{}> = () => {
   const skillsInfo = useContext<IContextState>(HelperContext);
 
   const showSkills = () => {

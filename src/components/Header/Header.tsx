@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import './Header.scss';
 
 export interface IHeaderProps {
@@ -16,11 +16,14 @@ export interface IHeaderProps {
   color?: boolean;
 }
 
-export const Header: FunctionComponent<IHeaderProps> = (
-  props: IHeaderProps
-): JSX.Element => {
-  const { title, size, className, fullWidth, textCenter, color } = props;
-
+export const Header: FC<IHeaderProps> = ({
+  title,
+  size,
+  className,
+  fullWidth,
+  textCenter,
+  color,
+}: IHeaderProps) => {
   let headerClasses = classNames(
     'Header',
     {

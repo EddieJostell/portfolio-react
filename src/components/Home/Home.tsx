@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
-import * as React from 'react';
+import { FC } from 'react';
 import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
 import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
 
-export const Home = (): JSX.Element => {
+export const Home: FC<{}> = () => {
   const NameWorkAnimation = {
     initial: { x: -500, opacity: 0 },
     animate: { x: 0, opacity: 1 },

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useContext } from 'react';
+import { useContext, FC } from 'react';
 import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { TitleAnimation } from '../About/AboutAnimations';
@@ -9,7 +9,7 @@ import './Portfolio.scss';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 import { Header } from '../Header/Header';
 
-export const Portfolio = (): JSX.Element => {
+export const Portfolio: FC<{}> = () => {
   const Projects = useContext<IContextState>(HelperContext);
 
   const displayPortfolioData = () => {
