@@ -6,10 +6,6 @@
       "dom.iterable",
       "esnext"
     ],
-    "typeRoots": ["./node_modules/@types", "./types"],
-    "paths": {
-      "@vitejs/plugin-react": ["./node_modules/@vitejs/plugin-react"]
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
