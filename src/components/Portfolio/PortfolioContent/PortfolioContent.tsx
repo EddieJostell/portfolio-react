@@ -1,9 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import './PortfolioContent.scss';
-import { faFolder } from '@fortawesome/free-regular-svg-icons';
 import { motion } from 'framer-motion';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { GitHub, ExternalLink, Folder } from 'react-feather';
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -28,16 +25,16 @@ export const PortfolioContent = (props: IPortfolioContent) => {
       >
         <div className='top'>
           <div className='file'>
-            <FontAwesomeIcon icon={faFolder} size='3x' />
+            <Folder size={'45px'} />
           </div>
           <div className='links'>
             {github && (
               <a href={github} target='_blank' rel='noreferrer'>
-                <FontAwesomeIcon icon={faGithub} color='white' size='2x' />
+                <GitHub color='white' size={'40px'} />
               </a>
             )}
             <a href={link} target='_blank' rel='noreferrer'>
-              <FontAwesomeIcon icon={faExternalLink} color='white' size='2x' />
+              <ExternalLink color='white' size={'40px'} />
             </a>
           </div>
         </div>
