@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import * as React from 'react';
 import { IContactItem } from '../../utils/data';
@@ -27,12 +26,6 @@ export const ContactSlim = (props: IContactSlimProps) => {
         }}
       >
         <a href={tact.link} target='_blank' rel='noopener noreferrer'>
-          {/* <FontAwesomeIcon
-            className='icons'
-            color='white'
-            icon={tact.iconSrc}
-            size='1x'
-          /> */}
           {tact.iconSrc}
         </a>
       </motion.div>
@@ -41,13 +34,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
 
   const displayContactLinks = () => {
     return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
-      <a
-        key={key}
-        className='item'
-        href={tact.link}
-        target='_blank'
-        rel='noopener noreferrer'
-      >
+      <a key={key} className='item' href={tact.link} target='_blank' rel='noopener noreferrer'>
         <span>{tact.title}</span>
       </a>
     ));
