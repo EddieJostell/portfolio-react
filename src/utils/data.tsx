@@ -216,8 +216,7 @@ export interface IQuoteItem {
 export const QuoteInfo: IQuoteItem[] = [
   {
     id: 1,
-    quote:
-      'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
+    quote: 'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
     author: 'Bodhi, Point Break 2015',
   },
   {
@@ -254,14 +253,12 @@ export const QuoteInfo: IQuoteItem[] = [
   },
   {
     id: 8,
-    quote:
-      'The future belongs to those who believe in the beauty of their dreams.',
+    quote: 'The future belongs to those who believe in the beauty of their dreams.',
     author: 'Eleanor Roosevelt',
   },
   {
     id: 9,
-    quote:
-      'Success usually comes to those who are too busy to be looking for it.',
+    quote: 'Success usually comes to those who are too busy to be looking for it.',
     author: 'Henry David Thoreau',
   },
   {
@@ -289,29 +286,28 @@ export const QuoteInfo: IQuoteItem[] = [
   {
     id: 14,
     quote:
-      '“Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.”',
+      'Just because you lost me as a friend doesn’t mean you gained me as an enemy. I’m bigger than that. I still wanna see you eat, just not at my table.',
     author: 'Tupac Shakur',
   },
   {
     id: 15,
     quote:
-      '“All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.”',
+      'All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.',
     author: 'J.R.R. Tolkien, The Fellowship of the Ring',
   },
   {
     id: 16,
-    quote:
-      '“A man who lays a hand on a woman is scum. Living as scum is the same as being dead.”',
+    quote: 'A man who lays a hand on a woman is scum. Living as scum is the same as being dead.',
     author: 'Abarai Renji, Bleach, episode 363',
   },
   {
     id: 17,
-    quote: '“I know, too, that death is the only god who comes when you call.”',
+    quote: 'I know, too, that death is the only god who comes when you call.',
     author: 'Roger Zelazny, Frost & Fire ',
   },
   {
     id: 18,
-    quote: '“Spanning years and continents. Lives ruined and bloodshed. Epic.”',
+    quote: 'Spanning years and continents. Lives ruined and bloodshed. Epic.',
     author: 'Logan Echolls, Veronica Mars ',
   },
 ];
