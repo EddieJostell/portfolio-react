@@ -143,7 +143,7 @@ export const ProjectList: IPortfolioItem[] = [
     tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
-    text: 'At my previous job I was the lead frontend developer in the team that developed and managed the website for the food chain COOP in Sweden.',
+    text: 'At my previous job I was the lead frontend developer in the team that developed and managed the website for the grocery store company COOP in Sweden.',
   },
   {
     id: 2,
