@@ -26,7 +26,7 @@ export interface IContextState {
   skillsItem: ISkillsItem[];
 }
 
-const initialHelperContext: IContextState = {
+export const initialHelperContext: IContextState = {
   quoteItem: QuoteInfo,
   portItem: ProjectList,
   routeItem: RouteInfo,
@@ -40,7 +40,5 @@ export const HelperContext = createContext<IContextState>(initialHelperContext);
 export const ContextProvider = (props: IContextProps) => {
   const { state, children } = props;
 
-  return (
-    <HelperContext.Provider value={state}>{children}</HelperContext.Provider>
-  );
+  return <HelperContext.Provider value={state}>{children}</HelperContext.Provider>;
 };
