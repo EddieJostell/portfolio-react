@@ -10,6 +10,8 @@ import {
   IContactItem,
   ISkillsItem,
   SkillsInfo,
+  NavigationLinks,
+  INavLinkItem,
 } from '../utils/data';
 import { IRouteInfoItem, RouteInfo } from './Route';
 export interface IContextProps {
@@ -24,6 +26,7 @@ export interface IContextState {
   aboutItem: IAboutMe[];
   contactItem: IContactItem[];
   skillsItem: ISkillsItem[];
+  navLinkItem: INavLinkItem[];
 }
 
 export const initialHelperContext: IContextState = {
@@ -33,6 +36,7 @@ export const initialHelperContext: IContextState = {
   aboutItem: AboutMe,
   contactItem: ContactInfo,
   skillsItem: SkillsInfo,
+  navLinkItem: NavigationLinks,
 };
 
 export const HelperContext = createContext<IContextState>(initialHelperContext);
