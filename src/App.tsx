@@ -2,7 +2,11 @@ import './App.scss';
 import { useState, useCallback, Fragment } from 'react';
 import { NavigationLinks } from './utils/data';
 import { Navigation } from './components/Navigation/Navigation';
-import { ContextProvider, IContextState, initialHelperContext } from './utils/HelperContext';
+import {
+  ContextProvider,
+  IContextState,
+  initialHelperContext,
+} from './utils/HelperContext';
 import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
@@ -13,6 +17,7 @@ import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import RouteLinks from './components/RouteLinks/RouteLinks';
+import { useMediaQuery } from './utils/hooks';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -54,6 +59,8 @@ function App() {
     );
   };
 
+  const minComputerWidth = useMediaQuery('(min-width: 992px)');
+
   return (
     <ContextProvider state={initialHelperContext}>
       <div className='App' data-testid='application'>
@@ -77,7 +84,7 @@ function App() {
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                isComputerMin && <ContactSlim icons={true} key='4' />,
+                minComputerWidth && <ContactSlim icons={true} key='4' />,
                 <Footer key='5' />,
               ]
             ) : (

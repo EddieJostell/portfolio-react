@@ -8,17 +8,19 @@ import {
   FooterWrapperNameAnimation,
   ScrollTopAnimation,
 } from './FooterAnimations';
+import { useMediaQuery } from '../../utils/hooks';
 
 export const Footer: FC<{}> = () => {
   const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+  const mobileMaxWidth = useMediaQuery('(max-width: 767px)');
 
   return (
     <div className='Footer'>
       <Container>
         <div className='Footer-wrapper'>
-          {isMobileMax && (
+          {mobileMaxWidth && (
             <motion.div
               key='Footer-wrapper-name'
               {...FooterWrapperNameAnimation}
@@ -35,7 +37,7 @@ export const Footer: FC<{}> = () => {
               </motion.div>
             </motion.div>
           )}
-          {isMobileMax ? (
+          {mobileMaxWidth ? (
             <ContactSlim icons={false} />
           ) : (
             <ContactSlim icons={true} />
