@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
-import { isMobileMax } from '../../utils/userAgent';
 import './Navigation.scss';
 //import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { NavLinksAnimation, NavNameAnimation } from './NavAnimations';
 import useScrollListener from '../../utils/useScrollListener';
 import { Link } from 'react-scroll';
+import { useMediaQuery } from '../../utils/hooks';
 
 interface INavProps {
   name: string;
@@ -51,6 +51,8 @@ export const Navigation: FC<INavProps> = ({
     );
   };
 
+  const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
+
   return (
     <div
       className={`Navigation ${navClassList.join('')}`}
@@ -77,7 +79,7 @@ export const Navigation: FC<INavProps> = ({
           )}
           <motion.div key='navigation-links' {...NavLinksAnimation}>
             <div className='Links'>
-              {isMobileMax ? (
+              {mobileMaxWidth ? (
                 <NavList
                   toggleNav={toggleNav}
                   navListItems={navLinks}
@@ -91,7 +93,7 @@ export const Navigation: FC<INavProps> = ({
           </motion.div>
         </div>
       </div>
-      {!isMobileMax
+      {!mobileMaxWidth
         ? navIsOpen && (
             <NavList
               toggleNav={toggleNav}

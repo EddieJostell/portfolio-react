@@ -2,15 +2,10 @@ import './App.scss';
 import { useState, useCallback, Fragment } from 'react';
 import { NavigationLinks } from './utils/data';
 import { Navigation } from './components/Navigation/Navigation';
-import {
-  ContextProvider,
-  IContextState,
-  initialHelperContext,
-} from './utils/HelperContext';
+import { ContextProvider, initialHelperContext } from './utils/HelperContext';
 import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
-import { isComputerMin } from './utils/userAgent';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
