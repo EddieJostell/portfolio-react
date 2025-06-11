@@ -7,13 +7,16 @@ export interface ISkillsItem {
 }
 
 export const SkillsInfo: ISkillsItem[] = [
-  { id: 1, skill: 'HTML/CSS' },
-  { id: 2, skill: 'JAVASCRIPT' },
-  { id: 3, skill: 'REACT' },
-  { id: 4, skill: 'TYPESCRIPT' },
-  { id: 5, skill: 'EPISERVER / CMS' },
-  { id: 6, skill: 'SASS/LESS' },
-  { id: 7, skill: 'SEMANTIC-UI-REACT' },
+  { id: 0, skill: 'HTML/CSS' },
+  { id: 1, skill: 'JAVASCRIPT' },
+  { id: 2, skill: 'REACT' },
+  { id: 3, skill: 'TYPESCRIPT' },
+  { id: 4, skill: 'EPISERVER / CMS' },
+  { id: 5, skill: 'SASS/LESS' },
+  { id: 6, skill: 'SEMANTIC-UI-REACT' },
+  { id: 7, skill: 'BOOTSTRAP' },
+  { id: 8, skill: 'FRAMER-MOTION' },
+  { id: 9, skill: 'STYLED-COMPONENTS' },
 ];
 
 export interface IContactItem {
@@ -216,7 +219,8 @@ export interface IQuoteItem {
 export const QuoteInfo: IQuoteItem[] = [
   {
     id: 1,
-    quote: 'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
+    quote:
+      'A tree falls in the forest, no one puts it on YouTube. Did it ever really happen?',
     author: 'Bodhi, Point Break 2015',
   },
   {
@@ -253,12 +257,14 @@ export const QuoteInfo: IQuoteItem[] = [
   },
   {
     id: 8,
-    quote: 'The future belongs to those who believe in the beauty of their dreams.',
+    quote:
+      'The future belongs to those who believe in the beauty of their dreams.',
     author: 'Eleanor Roosevelt',
   },
   {
     id: 9,
-    quote: 'Success usually comes to those who are too busy to be looking for it.',
+    quote:
+      'Success usually comes to those who are too busy to be looking for it.',
     author: 'Henry David Thoreau',
   },
   {
@@ -297,7 +303,8 @@ export const QuoteInfo: IQuoteItem[] = [
   },
   {
     id: 16,
-    quote: 'A man who lays a hand on a woman is scum. Living as scum is the same as being dead.',
+    quote:
+      'A man who lays a hand on a woman is scum. Living as scum is the same as being dead.',
     author: 'Abarai Renji, Bleach, episode 363',
   },
   {
