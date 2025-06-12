@@ -13,6 +13,7 @@ import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import RouteLinks from './components/RouteLinks/RouteLinks';
 import { useMediaQuery } from './utils/hooks';
+import { Navigation2 } from './components/Navigation/Navigation2';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -64,14 +65,22 @@ function App() {
         ) : (
           <Fragment>
             {!appState.contactIsActive && (
-              <Navigation
-                navIsOpen={appState.navIsOpen}
-                toggleNav={toggleNav}
-                name='E'
-                navLinks={NavigationLinks}
-                toggleContact={toggleContact}
-                data-testid='navigation'
-              />
+              <>
+                <Navigation2
+                  navIsOpen={appState.navIsOpen}
+                  toggleNav={toggleNav}
+                  name='E'
+                  toggleContact={toggleContact}
+                />
+                <Navigation
+                  navIsOpen={appState.navIsOpen}
+                  toggleNav={toggleNav}
+                  name='E'
+                  navLinks={NavigationLinks}
+                  toggleContact={toggleContact}
+                  data-testid='navigation'
+                />
+              </>
             )}
 
             {!appState.contactIsActive ? (
