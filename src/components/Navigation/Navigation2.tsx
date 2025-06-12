@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import { useMediaQuery } from '../../utils/hooks';
 import { Container } from '../Container/Container';
 import { DesktopNavigation } from './DesktopNavigation';
+import useScrollListener from '../../utils/useScrollListener';
 
 interface INavProps {
   name: string;
@@ -46,6 +47,7 @@ const StyledNavigation = styled('div')(({}) => ({
   backgroundPosition: 'center center',
   backgroundAttachment: 'fixed',
   transition: 'transform(150ms ease-in-out)',
+  //border: '1px solid red',
 }));
 
 export const Navigation2: FC<INavProps> = ({
@@ -54,11 +56,22 @@ export const Navigation2: FC<INavProps> = ({
   toggleContact,
   toggleNav,
 }) => {
+  /*   const [navClassList, setNavClassList] = useState<string[]>([]);
+  const scroll = useScrollListener();
+
+  // update classList of nav on scroll
+  useEffect(() => {
+    const _classList: string[] = [];
+
+    if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
+      _classList.push('Navigation-hidden');
+
+    setNavClassList(_classList);
+  }, [scroll.y, scroll.lastY]);
+ */
   return (
     <StyledNavigation data-testid='navigation'>
       <Container>
-        {/* <div className='Navigation-wrapper'></div> */}
-
         <DesktopNavigation
           name={name}
           navIsOpen={navIsOpen}
