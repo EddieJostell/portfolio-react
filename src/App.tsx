@@ -72,14 +72,14 @@ function App() {
                   name='E'
                   toggleContact={toggleContact}
                 />
-                <Navigation
+                {/*  <Navigation
                   navIsOpen={appState.navIsOpen}
                   toggleNav={toggleNav}
                   name='E'
                   navLinks={NavigationLinks}
                   toggleContact={toggleContact}
                   data-testid='navigation'
-                />
+                /> */}
               </>
             )}
 
