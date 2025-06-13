@@ -18,17 +18,17 @@ export const NavList = (props: INavListProps) => {
   const { toggleNav, navListItems, navIsOpen, toggleContact } = props;
   const [IsVisible, setIsVisible] = useState(false);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
-  const mobielMinWidth = useMediaQuery('(max-width: 768px)');
+  const mobileMinWidth = useMediaQuery('(max-width: 768px)');
 
   const handleStuff = () => {
-    if (mobielMinWidth) {
+    if (mobileMinWidth) {
       setIsVisible(!IsVisible);
     }
     toggleContact();
   };
 
   const toggleMobileNav = () => {
-    mobielMinWidth && toggleNav(!navIsOpen);
+    mobileMinWidth && toggleNav(!navIsOpen);
   };
 
   const showResumeOnClick = () => {
