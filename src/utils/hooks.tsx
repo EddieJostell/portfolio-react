@@ -25,3 +25,7 @@ export const useMediaQuery = (query: string): boolean => {
 
   return matches;
 };
+
+export const scrollTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
