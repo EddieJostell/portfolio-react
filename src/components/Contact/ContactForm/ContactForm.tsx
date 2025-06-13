@@ -1,20 +1,21 @@
-import React, { useRef, useReducer } from "react";
-import "./ContactForm.scss";
-import "../../Navigation/Navigation.scss";
-import emailjs from "@emailjs/browser";
-import { serviceID } from "./helpers/serviceID";
-import { templateID } from "./helpers/templateID";
-import { userID } from "./helpers/userID";
-import { useForm } from "react-hook-form";
-import { ThankYouPage } from "./parts/ThankYouPage";
+import React, { useRef, useReducer } from 'react';
+import './ContactForm.scss';
+import '../../Navigation/Navigation.scss';
+import emailjs from '@emailjs/browser';
+import { serviceID } from './helpers/serviceID';
+import { templateID } from './helpers/templateID';
+import { userID } from './helpers/userID';
+import { useForm } from 'react-hook-form';
+import { ThankYouPage } from './parts/ThankYouPage';
 
-import classNames from "classnames";
+import classNames from 'classnames';
 import {
   inputEmailRules,
   inputNameRules,
   textAreaMessageRules,
-} from "./helpers/HookFormValidationRules";
-import { ContactFormSubmitButton } from "./parts/ContactFormSubmitButton";
+} from './helpers/HookFormValidationRules';
+import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
+import { HamburgerMenuIcon } from '../../Navigation/StyledNavigationElements';
 
 interface IContactFormProps {
   toggleContact: () => void;
@@ -34,11 +35,11 @@ const initialContactState = {
 
 function formReducer(state: any, action: any) {
   switch (action.type) {
-    case "SUBMIT":
+    case 'SUBMIT':
       return { ...state, isLoading: true, showFail: false };
-    case "SUCCESS":
+    case 'SUCCESS':
       return { ...state, isLoading: false, showThanks: true };
-    case "ERROR":
+    case 'ERROR':
       return { ...state, showFail: true };
     default:
       throw new Error();
@@ -57,8 +58,8 @@ export const ContactForm = (props: IContactFormProps) => {
 
     formState: { errors },
   } = useForm<FormData>({
-    mode: "onSubmit",
-    reValidateMode: "onChange",
+    mode: 'onSubmit',
+    reValidateMode: 'onChange',
   });
 
   const form = useRef<HTMLFormElement>(null); //EmailJS useRef
@@ -66,15 +67,15 @@ export const ContactForm = (props: IContactFormProps) => {
   const onDataComplete = (data: any, e: any) => {
     // REAL EMAIL JS CODE
     if (data) {
-      dispatch({ type: "SUBMIT" });
+      dispatch({ type: 'SUBMIT' });
       emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
         (result) => {
-          console.log("SUCCESS!", result.status, result.text);
-          dispatch({ type: "SUCCESS" });
+          console.log('SUCCESS!', result.status, result.text);
+          dispatch({ type: 'SUCCESS' });
         },
         (error) => {
-          console.log("FAILED...", error.text);
-          dispatch({ type: "ERROR" });
+          console.log('FAILED...', error.text);
+          dispatch({ type: 'ERROR' });
         }
       );
 
@@ -96,7 +97,7 @@ export const ContactForm = (props: IContactFormProps) => {
 
   const contactHamburger = () => {
     return (
-      <div onClick={closeContactForm} className={"icon nav-icon-5 open"}>
+      <div onClick={closeContactForm} className={'icon nav-icon-5 open'}>
         <span></span>
         <span></span>
         <span></span>
@@ -110,49 +111,50 @@ export const ContactForm = (props: IContactFormProps) => {
     errorMessage?: string
   ) => {
     return (
-      <label htmlFor={htmlFor} className="form-label">
+      <label htmlFor={htmlFor} className='form-label'>
         {labelText}
-        {errorMessage && <span className="error-label">{errorMessage}</span>}
+        {errorMessage && <span className='error-label'>{errorMessage}</span>}
       </label>
     );
   };
 
-  const fieldRules = classNames("fields", {
+  const fieldRules = classNames('fields', {
     disabled: showFail,
   });
 
   return (
     <>
       {!showThanks ? (
-        <div className="Form">
-          <div className="Form-contact">
-            <div className="title">Contact</div>
-            {contactHamburger()}
+        <div className='Form'>
+          <div className='Form-contact'>
+            <div className='title'>Contact</div>
+            {/*  {contactHamburger()} */}
+            <HamburgerMenuIcon isOpen={true} onClick={closeContactForm} />
             <form
               ref={form}
-              className="content"
+              className='content'
               onSubmit={handleSubmit(onDataComplete)}
             >
               <h1>Get in touch!</h1>
-              {showLabel("name", "Name:", errors.name?.message)}
+              {showLabel('name', 'Name:', errors.name?.message)}
               <input
                 disabled={showFail}
-                type="text"
+                type='text'
                 className={fieldRules}
-                {...register("name", {
+                {...register('name', {
                   ...inputNameRules,
                 })}
               />
-              {showLabel("email", "E-mail:", errors.email?.message)}
+              {showLabel('email', 'E-mail:', errors.email?.message)}
               <input
                 disabled={showFail}
-                type="text"
+                type='text'
                 className={fieldRules}
-                {...register("email", { ...inputEmailRules })}
+                {...register('email', { ...inputEmailRules })}
               />
-              {showLabel("message", "Message:", errors.message?.message)}
+              {showLabel('message', 'Message:', errors.message?.message)}
               <textarea
-                {...register("message", {
+                {...register('message', {
                   ...textAreaMessageRules,
                 })}
                 disabled={showFail}
