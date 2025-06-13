@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import './Navigation.scss';
@@ -7,6 +7,15 @@ import { useMediaQuery } from '../../utils/hooks';
 import { Container } from '../Container/Container';
 import { DesktopNavigation } from './DesktopNavigation';
 import useScrollListener from '../../utils/useScrollListener';
+import { HelperContext, IContextState } from '../../utils/HelperContext';
+import PDF from '../../documents/CV_Eddie_Jostell.pdf';
+import { MobileNavigation } from './MobileNavigation';
+import {
+  StyledNavMenuLink,
+  ContactLink,
+  NavigationButton,
+  NavigationLink,
+} from './StyledNavigationElements';
 
 interface INavProps {
   name: string;
@@ -47,7 +56,10 @@ const StyledNavigation = styled('div')(({}) => ({
   backgroundPosition: 'center center',
   backgroundAttachment: 'fixed',
   transition: 'transform(150ms ease-in-out)',
-  //border: '1px solid red',
+
+  '&:Navigation-hidden': {
+    transform: 'translateY(-100%)',
+  },
 }));
 
 export const Navigation2: FC<INavProps> = ({
@@ -56,8 +68,11 @@ export const Navigation2: FC<INavProps> = ({
   toggleContact,
   toggleNav,
 }) => {
-  /*   const [navClassList, setNavClassList] = useState<string[]>([]);
+  const contextObject = useContext<IContextState>(HelperContext);
+  const [IsVisible, setIsVisible] = useState(false);
+  const [navClassList, setNavClassList] = useState<string[]>([]);
   const scroll = useScrollListener();
+  const mobileMinWidth = useMediaQuery('(max-width: 768px)');
 
   // update classList of nav on scroll
   useEffect(() => {
@@ -68,16 +83,79 @@ export const Navigation2: FC<INavProps> = ({
 
     setNavClassList(_classList);
   }, [scroll.y, scroll.lastY]);
- */
+
+  const showResumeOnClick = () => {
+    console.log('showResumeOnClick');
+    window.open(PDF);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<Element>) => {
+    console.log('handleKeyDown', e.code);
+    if (e.code === 'Space') {
+      e.preventDefault();
+    }
+  };
+
+  const toggleMobileNav = () => {
+    console.log('toggleMobileNav', mobileMinWidth, navIsOpen);
+    mobileMinWidth && toggleNav(!navIsOpen);
+  };
+
+  const navItems = contextObject.navLinkItem.map((item: INavLinkItem) => {
+    switch (item.type) {
+      case 'button':
+        return (
+          <StyledNavMenuLink key={item.id}>
+            <ContactLink onKeyDown={handleKeyDown} onClick={toggleContact}>
+              {item.text}
+            </ContactLink>
+          </StyledNavMenuLink>
+        );
+      case 'external':
+        return (
+          <StyledNavMenuLink key={item.id}>
+            <NavigationButton tabIndex={0} onClick={showResumeOnClick}>
+              {item.text}
+            </NavigationButton>
+          </StyledNavMenuLink>
+        );
+
+      default:
+        return (
+          <StyledNavMenuLink key={item.id}>
+            <NavigationLink
+              offset={-90}
+              to={item.scrollId}
+              spy={true}
+              smooth={true}
+              duration={1000}
+              href='#'
+              onClick={toggleMobileNav}
+              onKeyDown={handleKeyDown}
+            >
+              {item.text}
+            </NavigationLink>
+          </StyledNavMenuLink>
+        );
+    }
+  });
+
   return (
-    <StyledNavigation data-testid='navigation'>
+    <StyledNavigation
+      data-testid='navigation'
+      className={navClassList.join(' ')}
+    >
       <Container>
-        <DesktopNavigation
-          name={name}
-          navIsOpen={navIsOpen}
-          toggleNav={toggleNav}
-          toggleContact={toggleContact}
-        />
+        {mobileMinWidth ? (
+          <MobileNavigation
+            name={name}
+            navIsOpen={navIsOpen}
+            toggleNav={toggleNav}
+            navItems={navItems}
+          />
+        ) : (
+          <DesktopNavigation name={name} navItems={navItems} />
+        )}
       </Container>
     </StyledNavigation>
   );
