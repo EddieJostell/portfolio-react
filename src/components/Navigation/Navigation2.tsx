@@ -57,9 +57,9 @@ const StyledNavigation = styled('div')(({}) => ({
   backgroundAttachment: 'fixed',
   transition: 'transform(150ms ease-in-out)',
 
-  '&:Navigation-hidden': {
+  /* '&:Navigation-hidden': {
     transform: 'translateY(-100%)',
-  },
+  }, */
 }));
 
 export const Navigation2: FC<INavProps> = ({
