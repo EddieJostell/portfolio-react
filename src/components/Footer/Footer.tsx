@@ -8,12 +8,9 @@ import {
   FooterWrapperNameAnimation,
   ScrollTopAnimation,
 } from './FooterAnimations';
-import { useMediaQuery } from '../../utils/hooks';
+import { scrollTop, useMediaQuery } from '../../utils/hooks';
 
 export const Footer: FC<{}> = () => {
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
   const mobileMaxWidth = useMediaQuery('(max-width: 767px)');
 
   return (
