@@ -5,7 +5,10 @@ export const useMediaQuery = (query: string): boolean => {
   const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    // Early return if window doesn't exist or matchMedia isn't supported
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return;
+    }
 
     const media = window.matchMedia(query);
 
