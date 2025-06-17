@@ -14,12 +14,25 @@ export const StyledIconContainer = styledComponent('div')(({}) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  zIndex: 12,
 }));
 
 export const StyledIcon = styledComponent('button')(({}) => ({
   fontSize: '3rem',
   fontFamily: "'Diplomata', cursive",
+  color: '#edf2f4',
+  transition: 'opacity 0.35s ease 0.65s',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  paddingBlock: '0',
+  paddingInline: '0',
+  borderWidth: '0',
+  borderStyle: 'none',
+  borderColor: 'none',
+  borderImage: 'none',
+}));
+
+export const MenuIconWrapper = styledComponent('button')(({}) => ({
   color: '#edf2f4',
   transition: 'opacity 0.35s ease 0.65s',
   textDecoration: 'none',
@@ -147,114 +160,3 @@ export const NavigationButton = styledComponent('button')(({}) => ({
     outline: 'none',
   },
 }));
-
-interface HamburgerMenuIconProps {
-  isOpen: boolean;
-  width?: string;
-  height?: string;
-  color?: string;
-  onClick?: () => void;
-  size?: string;
-
-  styles?: React.CSSProperties;
-}
-
-interface IconWrapperLineContainerProps {
-  size?: string;
-
-  width?: string;
-}
-
-// Button wrapper
-const IconWrapper = styledComponent('button')<IconWrapperLineContainerProps>(
-  ({ size = '40px' }) => ({
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: size,
-    height: size,
-    background: 'transparent',
-    border: 'none',
-    cursor: 'pointer',
-    padding: 0,
-    zIndex: 12,
-  })
-);
-
-// Container for the hamburger lines
-const LineContainer = styledComponent('div')<IconWrapperLineContainerProps>(
-  ({ width = '30px' }) => ({
-    position: 'relative',
-    width: width,
-    height: '24px', // Fixed height to contain all bars and transitions
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 12,
-  })
-);
-
-// The hamburger line component
-const Line = styledComponent('div')<HamburgerMenuIconProps>(
-  ({ isOpen, width, height, color }) => ({
-    position: 'absolute',
-    width: '100%',
-    height: height,
-    backgroundColor: isOpen ? 'transparent' : color,
-    borderRadius: '2px',
-    transition: 'all 0.3s ease-in-out',
-
-    '&::before, &::after': {
-      content: '""',
-      position: 'absolute',
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: color,
-      borderRadius: '2px',
-      transition: 'all 0.3s ease-in-out',
-    },
-
-    '&::before': {
-      transform: isOpen ? 'translateY(0) rotate(45deg)' : 'translateY(-8px)',
-    },
-
-    '&::after': {
-      transform: isOpen ? 'translateY(0) rotate(-45deg)' : 'translateY(8px)',
-    },
-  })
-);
-
-// The combined component
-export const HamburgerMenuIcon: React.FC<HamburgerMenuIconProps> = ({
-  isOpen,
-  width = '30px',
-  height = '3px',
-  color = '#edf2f4',
-  onClick,
-}) => {
-  return (
-    <IconWrapper type='button' onClick={onClick} size='40px'>
-      <LineContainer width={width}>
-        <Line isOpen={isOpen} width={width} height={height} color={color} />
-      </LineContainer>
-    </IconWrapper>
-  );
-};
-
-export const HamburgerMenuIcon2: React.FC<HamburgerMenuIconProps> = ({
-  isOpen,
-  width = '30px',
-  height = '3px',
-  color = '#edf2f4',
-  onClick,
-}) => {
-  return (
-    <IconWrapper type='button' onClick={onClick} size='40px'>
-      <LineContainer width={width}>
-        <Line isOpen={isOpen} width={width} height={height} color={color} />
-      </LineContainer>
-    </IconWrapper>
-  );
-};
