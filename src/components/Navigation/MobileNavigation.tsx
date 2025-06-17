@@ -1,16 +1,12 @@
 import React from 'react';
 import { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { scrollTop } from '../../utils/hooks';
-import { NavNameAnimation, NavLinksAnimation, List } from './NavAnimations';
+import { NavLinksAnimation, List } from './NavAnimations';
+import { Menu, X } from 'react-feather';
 import {
-  StyledTopNavigation,
-  StyledIconContainer,
-  StyledIcon,
   StyledNavigationContainer,
   StyledNavMenu,
-  HamburgerMenuIcon,
-  HamburgerMenuIcon2,
+  MenuIconWrapper,
 } from './StyledNavigationElements';
 import styled from '@emotion/styled';
 import { ContactSlim } from '../Contact/ContactSlim';
@@ -51,6 +47,23 @@ const MobileNavList = styled('ul')(({}) => ({
   zIndex: 12,
 }));
 
+export const MobileMenuIconWrapper = styled('button')(({}) => ({
+  color: '#edf2f4',
+  transition: 'opacity 0.35s ease 0.65s',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'transparent',
+  paddingBlock: '0',
+  paddingInline: '0',
+  borderWidth: '0',
+  borderStyle: 'none',
+  borderColor: 'none',
+  borderImage: 'none',
+  position: 'absolute',
+  top: '0.5rem',
+  right: '0.5rem',
+}));
+
 const ContactLinksContainer = styled('div')(({}) => ({
   position: 'absolute',
   bottom: '0',
@@ -63,23 +76,12 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
   toggleNav,
 }) => {
   return (
-    <StyledTopNavigation>
-      <StyledIconContainer>
-        <motion.div key='navigation-name' {...NavNameAnimation}>
-          <StyledIcon
-            aria-label='CreatorLogo press to scroll to top of the page'
-            onClick={scrollTop}
-          >
-            {name}
-          </StyledIcon>
-        </motion.div>
-      </StyledIconContainer>
+    <>
       <StyledNavigationContainer>
         <StyledNavMenu key='navigation-links' {...NavLinksAnimation}>
-          <HamburgerMenuIcon
-            isOpen={navIsOpen}
-            onClick={() => toggleNav(!navIsOpen)}
-          />
+          <MenuIconWrapper onClick={() => toggleNav(!navIsOpen)}>
+            <Menu size={52} />
+          </MenuIconWrapper>
         </StyledNavMenu>
       </StyledNavigationContainer>
       <AnimatePresence>
@@ -89,31 +91,18 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
             animate='visible'
             variants={List}
           >
-            <HamburgerMenuIcon2
-              isOpen={true}
-              onClick={() => toggleNav(!navIsOpen)}
-            />
+            <MobileMenuIconWrapper onClick={() => toggleNav(!navIsOpen)}>
+              <X aria-label='Close menu' size={42} />
+            </MobileMenuIconWrapper>
+
             <MobileNavList>{navItems}</MobileNavList>
             {/*  <ContactLinksContainer>
             <ContactSlim icons={true} />
             </ContactLinksContainer> */}
           </MobileLinksContainer>
         )}
-
-        {navIsOpen && (
-          <MobileLinksContainer
-            initial='hidden'
-            animate='visible'
-            variants={List}
-          >
-            <MobileNavList>{navItems}</MobileNavList>
-            {/*  <ContactLinksContainer>
-              <ContactSlim icons={true} />
-              </ContactLinksContainer> */}
-          </MobileLinksContainer>
-        )}
       </AnimatePresence>
-    </StyledTopNavigation>
+    </>
   );
 };
 

@@ -30,22 +30,10 @@ export const DesktopNavigation: FC<IDesktopNavigationProps> = ({
   navItems,
 }) => {
   return (
-    <StyledTopNavigation>
-      <StyledIconContainer>
-        <motion.div key='navigation-name' {...NavNameAnimation}>
-          <StyledIcon
-            aria-label='CreatorLogo press to scroll to top of the page'
-            onClick={scrollTop}
-          >
-            {name}
-          </StyledIcon>
-        </motion.div>
-      </StyledIconContainer>
-      <StyledNavigationContainer>
-        <StyledNavMenu key='navigation-links' {...NavLinksAnimation}>
-          {navItems}
-        </StyledNavMenu>
-      </StyledNavigationContainer>
-    </StyledTopNavigation>
+    <StyledNavigationContainer>
+      <StyledNavMenu key='navigation-links' {...NavLinksAnimation}>
+        {navItems}
+      </StyledNavMenu>
+    </StyledNavigationContainer>
   );
 };

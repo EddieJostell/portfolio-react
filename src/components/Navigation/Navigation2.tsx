@@ -3,7 +3,7 @@ import { INavLinkItem } from '../../utils/data';
 import { NavList } from './NavList';
 import './Navigation.scss';
 import styled from '@emotion/styled';
-import { useMediaQuery } from '../../utils/hooks';
+import { scrollTop, useMediaQuery } from '../../utils/hooks';
 import { Container } from '../Container/Container';
 import { DesktopNavigation } from './DesktopNavigation';
 import useScrollListener from '../../utils/useScrollListener';
@@ -15,7 +15,12 @@ import {
   ContactLink,
   NavigationButton,
   NavigationLink,
+  StyledIcon,
+  StyledIconContainer,
+  StyledTopNavigation,
 } from './StyledNavigationElements';
+import { NavNameAnimation } from './NavAnimations';
+import { motion } from 'framer-motion';
 
 interface INavProps {
   name: string;
@@ -114,7 +119,11 @@ export const Navigation2: FC<INavProps> = ({
       case 'external':
         return (
           <StyledNavMenuLink key={item.id}>
-            <NavigationButton tabIndex={0} onClick={showResumeOnClick}>
+            <NavigationButton
+              type='button'
+              tabIndex={0}
+              onClick={showResumeOnClick}
+            >
               {item.text}
             </NavigationButton>
           </StyledNavMenuLink>
@@ -146,16 +155,28 @@ export const Navigation2: FC<INavProps> = ({
       className={navClassList.join(' ')}
     >
       <Container>
-        {mobileMinWidth ? (
-          <MobileNavigation
-            name={name}
-            navIsOpen={navIsOpen}
-            toggleNav={toggleNav}
-            navItems={navItems}
-          />
-        ) : (
-          <DesktopNavigation name={name} navItems={navItems} />
-        )}
+        <StyledTopNavigation>
+          <StyledIconContainer>
+            <motion.div key='navigation-name' {...NavNameAnimation}>
+              <StyledIcon
+                aria-label='CreatorLogo press to scroll to top of the page'
+                onClick={scrollTop}
+              >
+                {name}
+              </StyledIcon>
+            </motion.div>
+          </StyledIconContainer>
+          {mobileMinWidth ? (
+            <MobileNavigation
+              name={name}
+              navIsOpen={navIsOpen}
+              toggleNav={toggleNav}
+              navItems={navItems}
+            />
+          ) : (
+            <DesktopNavigation name={name} navItems={navItems} />
+          )}
+        </StyledTopNavigation>
       </Container>
     </StyledNavigation>
   );
