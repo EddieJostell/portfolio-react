@@ -15,7 +15,8 @@ import {
   textAreaMessageRules,
 } from './helpers/HookFormValidationRules';
 import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
-import { HamburgerMenuIcon } from '../../Navigation/StyledNavigationElements';
+import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
+import { X } from 'react-feather';
 
 interface IContactFormProps {
   toggleContact: () => void;
@@ -95,16 +96,6 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 300);
   };
 
-  const contactHamburger = () => {
-    return (
-      <div onClick={closeContactForm} className={'icon nav-icon-5 open'}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    );
-  };
-
   const showLabel = (
     htmlFor: string,
     labelText: string,
@@ -128,8 +119,10 @@ export const ContactForm = (props: IContactFormProps) => {
         <div className='Form'>
           <div className='Form-contact'>
             <div className='title'>Contact</div>
-            {/*  {contactHamburger()} */}
-            <HamburgerMenuIcon isOpen={true} onClick={closeContactForm} />
+            <MenuIconWrapper onClick={closeContactForm}>
+              <X size={42} />
+            </MenuIconWrapper>
+
             <form
               ref={form}
               className='content'
