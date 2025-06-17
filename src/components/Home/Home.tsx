@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
 import { FC } from 'react';
-import { isMobileMax } from '../../utils/userAgent';
 import { Container } from '../Container/Container';
 import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
+import { useMediaQuery } from '../../utils/hooks';
 
 export const Home: FC<{}> = () => {
+  const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
   const NameWorkAnimation = {
     initial: { x: -500, opacity: 0 },
     animate: { x: 0, opacity: 1 },
@@ -34,7 +35,7 @@ export const Home: FC<{}> = () => {
     <div className='Home' id='home'>
       <Container>
         <div className='Home-banner'>{personalInfo()}</div>
-        {isMobileMax && <QuoteContent />}
+        {mobileMaxWidth && <QuoteContent />}
       </Container>
     </div>
   );

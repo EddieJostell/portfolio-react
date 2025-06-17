@@ -4,13 +4,14 @@ import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
-import { isMobileMax } from '../../utils/userAgent';
 import './Portfolio.scss';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 import { Header } from '../Header/Header';
+import { useMediaQuery } from '../../utils/hooks';
 
 export const Portfolio: FC<{}> = () => {
   const Projects = useContext<IContextState>(HelperContext);
+  const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
   const displayPortfolioData = () => {
     return Projects.portItem.map((port: IPortfolioItem, key: number) => (
@@ -30,7 +31,7 @@ export const Portfolio: FC<{}> = () => {
     <div className='Portfolio' id='portfolio'>
       <Container>
         <div className='Portfolio-wrapper'>
-          {isMobileMax && (
+          {mobileMaxWidth && (
             <motion.h1 key='title' {...TitleAnimation} className='bg-title'>
               MY PROJECTS
             </motion.h1>
@@ -38,11 +39,9 @@ export const Portfolio: FC<{}> = () => {
           <div className='List'>
             <Header title='Projects' size='h1' fullWidth color textCenter />
             {displayPortfolioData()}
-            {/* <PortfolioContent link={''} img={''} title={''} tech={''} text={''} /> */}
           </div>
         </div>
       </Container>
     </div>
   );
 };
-//flex flex-col items-center w-full h-full px-5 text-white md:px-0
