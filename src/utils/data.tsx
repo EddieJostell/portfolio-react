@@ -104,6 +104,7 @@ export interface INavLinkItem {
   path: string;
   scrollId: string;
   type?: 'external' | 'localLink' | 'button';
+  ariaLabel: string;
 }
 export const NavigationLinks: INavLinkItem[] = [
   {
@@ -112,6 +113,7 @@ export const NavigationLinks: INavLinkItem[] = [
     path: '/About',
     scrollId: 'about',
     type: 'localLink',
+    ariaLabel: 'Scroll to About section',
   },
   {
     id: 2,
@@ -119,6 +121,7 @@ export const NavigationLinks: INavLinkItem[] = [
     path: '/Projects',
     scrollId: 'portfolio',
     type: 'localLink',
+    ariaLabel: 'Scroll to Projects section',
   },
   {
     id: 3,
@@ -126,8 +129,16 @@ export const NavigationLinks: INavLinkItem[] = [
     path: '/Contact',
     scrollId: 'contact',
     type: 'button',
+    ariaLabel: 'Open Contact form',
   },
-  { id: 4, text: 'Resumé', path: '', scrollId: 'resume', type: 'external' },
+  {
+    id: 4,
+    text: 'Resumé',
+    path: '',
+    scrollId: 'resume',
+    type: 'external',
+    ariaLabel: 'Open Resumé PDF',
+  },
 ];
 
 export interface IPortfolioItem {
