@@ -1,19 +1,14 @@
 import './App.scss';
 import { useState, useCallback, Fragment } from 'react';
-import { NavigationLinks } from './utils/data';
-import { Navigation } from './components/Navigation/Navigation';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
-import { RouteInfo } from '../src/utils/Route';
 import { ContactSlim } from './components/Contact/ContactSlim';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
-import RouteLinks from './components/RouteLinks/RouteLinks';
 import { useMediaQuery } from './utils/hooks';
-import { Navigation2 } from './components/Navigation/Navigation2';
+import { TopNavigation } from './components/Navigation/TopNavigation/TopNavigation';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -59,30 +54,21 @@ function App() {
 
   return (
     <ContextProvider state={initialHelperContext}>
+      <header>
+        {!appState.contactIsActive && (
+          <TopNavigation
+            navIsOpen={appState.navIsOpen}
+            toggleNav={toggleNav}
+            name='E'
+            toggleContact={toggleContact}
+          />
+        )}
+      </header>
       <div className='App' data-testid='application'>
         {appState.isLoading ? (
           displayLoader()
         ) : (
           <Fragment>
-            {!appState.contactIsActive && (
-              <>
-                <Navigation2
-                  navIsOpen={appState.navIsOpen}
-                  toggleNav={toggleNav}
-                  name='E'
-                  toggleContact={toggleContact}
-                />
-                {/*  <Navigation
-                  navIsOpen={appState.navIsOpen}
-                  toggleNav={toggleNav}
-                  name='E'
-                  navLinks={NavigationLinks}
-                  toggleContact={toggleContact}
-                  data-testid='navigation'
-                /> */}
-              </>
-            )}
-
             {!appState.contactIsActive ? (
               [
                 <Home key='1' />,
@@ -96,9 +82,6 @@ function App() {
             )}
           </Fragment>
         )}
-        {/* <Router>
-          <Routes>{RouteLinks()}</Routes>
-        </Router> */}
       </div>
     </ContextProvider>
   );
