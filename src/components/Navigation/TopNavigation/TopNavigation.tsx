@@ -1,15 +1,13 @@
 import React, { FC, useContext, useEffect, useState } from 'react';
-import { INavLinkItem } from '../../utils/data';
-import { NavList } from './NavList';
-import './Navigation.scss';
+import { INavLinkItem } from '../../../utils/data';
 import styled from '@emotion/styled';
-import { scrollTop, useMediaQuery } from '../../utils/hooks';
-import { Container } from '../Container/Container';
-import { DesktopNavigation } from './DesktopNavigation';
-import useScrollListener from '../../utils/useScrollListener';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
-import PDF from '../../documents/CV_Eddie_Jostell.pdf';
-import { MobileNavigation } from './MobileNavigation';
+import { scrollTop, useHidescroll, useMediaQuery } from '../../../utils/hooks';
+import { Container } from '../../Container/Container';
+import { DesktopNavigation } from '../DesktopNavigation/DesktopNavigation';
+import useScrollListener from '../../../utils/useScrollListener';
+import { HelperContext, IContextState } from '../../../utils/HelperContext';
+import PDF from '../../../documents/CV_Eddie_Jostell.pdf';
+import { MobileNavigation } from '../MobileNavigation/MobileNavigation';
 import {
   StyledNavMenuLink,
   ContactLink,
@@ -18,8 +16,8 @@ import {
   StyledIcon,
   StyledIconContainer,
   StyledTopNavigation,
-} from './StyledNavigationElements';
-import { NavNameAnimation } from './NavAnimations';
+} from '../StyledNavigationElements';
+import { NavNameAnimation } from '../NavAnimations';
 import { motion } from 'framer-motion';
 
 interface INavProps {
@@ -31,9 +29,9 @@ interface INavProps {
 }
 
 const StyledNavigation = styled('div')(({}) => ({
+  padding: '0 1rem',
   position: 'sticky',
   top: 0,
-  width: '100%',
   height: '5rem',
   display: 'flex',
   flexDirection: 'row',
@@ -67,7 +65,7 @@ const StyledNavigation = styled('div')(({}) => ({
   }, */
 }));
 
-export const Navigation2: FC<INavProps> = ({
+export const TopNavigation: FC<INavProps> = ({
   name,
   navIsOpen,
   toggleContact,
@@ -111,7 +109,11 @@ export const Navigation2: FC<INavProps> = ({
       case 'button':
         return (
           <StyledNavMenuLink key={item.id}>
-            <ContactLink onKeyDown={handleKeyDown} onClick={toggleContact}>
+            <ContactLink
+              aria-label={item.ariaLabel}
+              onKeyDown={handleKeyDown}
+              onClick={toggleContact}
+            >
               {item.text}
             </ContactLink>
           </StyledNavMenuLink>
@@ -120,6 +122,7 @@ export const Navigation2: FC<INavProps> = ({
         return (
           <StyledNavMenuLink key={item.id}>
             <NavigationButton
+              aria-label={item.ariaLabel}
               type='button'
               tabIndex={0}
               onClick={showResumeOnClick}
@@ -133,6 +136,7 @@ export const Navigation2: FC<INavProps> = ({
         return (
           <StyledNavMenuLink key={item.id}>
             <NavigationLink
+              aria-label={item.ariaLabel}
               offset={-90}
               to={item.scrollId}
               spy={true}
@@ -159,6 +163,7 @@ export const Navigation2: FC<INavProps> = ({
           <StyledIconContainer>
             <motion.div key='navigation-name' {...NavNameAnimation}>
               <StyledIcon
+                type='button'
                 aria-label='CreatorLogo press to scroll to top of the page'
                 onClick={scrollTop}
               >
