@@ -168,13 +168,12 @@ export const Navigation2: FC<INavProps> = ({
           </StyledIconContainer>
           {mobileMinWidth ? (
             <MobileNavigation
-              name={name}
               navIsOpen={navIsOpen}
               toggleNav={toggleNav}
               navItems={navItems}
             />
           ) : (
-            <DesktopNavigation name={name} navItems={navItems} />
+            <DesktopNavigation navItems={navItems} />
           )}
         </StyledTopNavigation>
       </Container>
