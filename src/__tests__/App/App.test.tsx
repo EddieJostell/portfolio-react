@@ -2,7 +2,9 @@ import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import App from '../../App';
 import { Container } from '../../components/Container/Container';
-import { Navigation2 } from '../../components/Navigation/Navigation2';
+import { TopNavigation } from '../../components/Navigation/TopNavigation/TopNavigation';
+import { DesktopNavigation } from '../../components/Navigation/DesktopNavigation/DesktopNavigation';
+import { MobileNavigation } from '../../components/Navigation/MobileNavigation/MobileNavigation';
 
 afterEach(() => {
   cleanup();
@@ -34,6 +36,24 @@ afterEach(() => {
   useTransform: vi.fn((value) => value),
 })); */
 
+const navItems = [
+  <li key='1'>
+    <a href='/'>Home</a>
+  </li>,
+  <li key='2'>
+    <a href='/about'>About</a>
+  </li>,
+  <li key='3'>
+    <a href='/contact'>Contact</a>
+  </li>,
+  <li key='4'>
+    <a href='/portfolio'>Portfolio</a>
+  </li>,
+  <li key='5'>
+    <button>Resumé</button>
+  </li>,
+];
+
 test('renders App component', () => {
   render(<App />);
   //screen.debug();
@@ -50,7 +70,7 @@ test('renders Container component', () => {
 
 test('renders Navigation component', () => {
   render(
-    <Navigation2
+    <TopNavigation
       name='Edward'
       toggleContact={() => {}}
       toggleNav={() => {}}
