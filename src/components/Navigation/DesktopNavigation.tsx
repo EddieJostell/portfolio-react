@@ -7,14 +7,12 @@ import {
 } from './StyledNavigationElements';
 
 interface IDesktopNavigationProps {
-  name: string;
   status?: string;
 
   navItems: React.ReactNode | React.ReactNode[];
 }
 
 export const DesktopNavigation: FC<IDesktopNavigationProps> = ({
-  name,
   navItems,
 }) => {
   return (

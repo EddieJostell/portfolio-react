@@ -11,15 +11,6 @@ import {
 import styled from '@emotion/styled';
 import { ContactSlim } from '../Contact/ContactSlim';
 
-interface MobileNavigationProps {
-  name: string;
-  navIsOpen: boolean;
-  toggleNav: (visible: boolean) => void;
-  status?: string;
-
-  navItems: React.ReactNode | React.ReactNode[];
-}
-
 const MobileLinksContainer = styled(motion.div)(({}) => ({
   position: 'absolute',
   top: '0',
@@ -69,8 +60,15 @@ const ContactLinksContainer = styled('div')(({}) => ({
   bottom: '0',
 }));
 
+interface MobileNavigationProps {
+  navIsOpen: boolean;
+  toggleNav: (visible: boolean) => void;
+  status?: string;
+
+  navItems: React.ReactNode | React.ReactNode[];
+}
+
 export const MobileNavigation: FC<MobileNavigationProps> = ({
-  name,
   navIsOpen,
   navItems,
   toggleNav,
