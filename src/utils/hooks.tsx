@@ -32,3 +32,32 @@ export const useMediaQuery = (query: string): boolean => {
 export const scrollTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
+
+export const useHidescroll = () => {
+  const getScrollbarWidth = () => {
+    const scrollDiv = document.createElement('div');
+    scrollDiv.style.overflow = 'scroll';
+    document.body.appendChild(scrollDiv);
+    const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    return scrollbarWidth;
+  };
+
+  function hasScrollbar() {
+    return document.body.scrollHeight > window.innerHeight;
+  }
+
+  useEffect(() => {
+    if (hasScrollbar()) {
+      const scrollbarWidth = getScrollbarWidth();
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
+
+    document.body.classList.add('no-scroll');
+
+    return () => {
+      document.body.style.paddingRight = '';
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
+};
