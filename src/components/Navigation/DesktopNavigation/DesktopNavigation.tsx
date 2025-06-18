@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
-import { NavLinksAnimation } from './NavAnimations';
+import { NavLinksAnimation } from '../NavAnimations';
 import {
   StyledNavigationContainer,
   StyledNavMenu,
-} from './StyledNavigationElements';
+} from '../StyledNavigationElements';
 
 interface IDesktopNavigationProps {
   status?: string;
@@ -16,7 +16,7 @@ export const DesktopNavigation: FC<IDesktopNavigationProps> = ({
   navItems,
 }) => {
   return (
-    <StyledNavigationContainer>
+    <StyledNavigationContainer data-testid='desktop-navigation'>
       <StyledNavMenu key='navigation-links' {...NavLinksAnimation}>
         {navItems}
       </StyledNavMenu>
