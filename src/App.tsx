@@ -73,7 +73,7 @@ function App() {
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                minComputerWidth && <ContactSlim icons={true} key='4' />,
+                minComputerWidth && <ContactSlim icons key='4' />,
                 <Footer key='5' />,
               ]
             ) : (
