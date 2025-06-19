@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { NavLinksAnimation, List } from '../NavAnimations';
+import { List } from '../NavAnimations';
 import { Menu, X } from 'react-feather';
 import {
   StyledNavigationContainer,
@@ -10,7 +10,6 @@ import {
 } from '../StyledNavigationElements';
 import styled from '@emotion/styled';
 import { ContactSlim } from '../../Contact/ContactSlim';
-import { useHidescroll } from '../../../utils/hooks';
 
 const MobileLinksContainer = styled(motion.div)(({}) => ({
   position: 'fixed',
@@ -31,7 +30,6 @@ const MobileLinksContainer = styled(motion.div)(({}) => ({
 
 const MobileNavList = styled('ul')(({}) => ({
   display: 'flex',
-  flexGrow: '1',
   flexDirection: 'column',
   alignItems: 'center',
   listStyle: 'none',
@@ -64,6 +62,18 @@ const MobileMenuIconWrapper = styled('button')(({}) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
+
+  // Remove default outline
+  '&:focus': {
+    outline: 'none',
+  },
+
+  // Apply custom outline only for keyboard navigation
+  '&:focus-visible': {
+    outline: '1px solid white',
+    outlineOffset: '1px',
+    /*   boxShadow: '0 0 0 4px rgba(52, 152, 219, 0.5)', */
+  },
 }));
 
 const ContactLinksContainer = styled('div')(({}) => ({
@@ -85,22 +95,42 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
   navItems,
   toggleNav,
 }) => {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    if (navIsOpen) {
+    if (navIsOpen && closeButtonRef.current) {
       document.body.classList.add('no-scroll');
+
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 10);
     }
+
+    // Only add keyboard listener when navigation is open
+    if (!navIsOpen) return;
+
+    // Handle escape key
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        toggleNav(false);
+      }
+    };
+
+    // Add event listener
+    document.addEventListener('keydown', handleEscapeKey);
 
     return () => {
       document.body.style.paddingRight = '';
       document.body.classList.remove('no-scroll');
+      document.removeEventListener('keydown', handleEscapeKey);
     };
-  }, [navIsOpen]);
+  }, [navIsOpen, toggleNav]);
 
   return (
     <>
       <StyledNavigationContainer data-testid='mobile-navigation'>
         {!navIsOpen && (
-          <StyledNavMenu key='navigation-links' {...NavLinksAnimation}>
+          <StyledNavMenu>
             <MenuIconWrapper
               onClick={() => toggleNav(!navIsOpen)}
               aria-label='Open menu'
@@ -114,6 +144,7 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
       <AnimatePresence>
         {navIsOpen && (
           <MobileLinksContainer
+            aria-label='Mobile Navigation'
             data-testid='mobile-links-container'
             initial='hidden'
             animate='visible'
@@ -124,6 +155,7 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
                 onClick={() => toggleNav(!navIsOpen)}
                 aria-label='Close menu'
                 aria-expanded={true}
+                ref={closeButtonRef}
               >
                 <X size={52} />
               </MobileMenuIconWrapper>
