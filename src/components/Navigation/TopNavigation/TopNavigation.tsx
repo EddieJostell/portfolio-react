@@ -118,7 +118,7 @@ export const TopNavigation: FC<INavProps> = ({
           <StyledNavMenuLink key={item.id}>
             <NavigationLink
               aria-label={item.ariaLabel}
-              offset={-90}
+              offset={-60}
               to={item.scrollId}
               spy={true}
               smooth={true}
