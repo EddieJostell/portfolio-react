@@ -1,6 +1,5 @@
 import React, { useRef, useReducer } from 'react';
 import './ContactForm.scss';
-import '../../Navigation/Navigation.scss';
 import emailjs from '@emailjs/browser';
 import { serviceID } from './helpers/serviceID';
 import { templateID } from './helpers/templateID';
