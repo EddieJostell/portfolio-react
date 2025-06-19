@@ -6,8 +6,8 @@ import {
   IQuoteItem,
   IAboutMe,
   AboutMe,
-  ContactInfo,
-  IContactItem,
+  SocialMediaLinks,
+  ISocialMediaLink,
   ISkillsItem,
   SkillsInfo,
   NavigationLinks,
@@ -24,7 +24,7 @@ export interface IContextState {
   portItem: IPortfolioItem[];
   routeItem: IRouteInfoItem[];
   aboutItem: IAboutMe[];
-  contactItem: IContactItem[];
+  socialItem: ISocialMediaLink[];
   skillsItem: ISkillsItem[];
   navLinkItem: INavLinkItem[];
 }
@@ -34,7 +34,7 @@ export const initialHelperContext: IContextState = {
   portItem: ProjectList,
   routeItem: RouteInfo,
   aboutItem: AboutMe,
-  contactItem: ContactInfo,
+  socialItem: SocialMediaLinks,
   skillsItem: SkillsInfo,
   navLinkItem: NavigationLinks,
 };
@@ -44,5 +44,7 @@ export const HelperContext = createContext<IContextState>(initialHelperContext);
 export const ContextProvider = (props: IContextProps) => {
   const { state, children } = props;
 
-  return <HelperContext.Provider value={state}>{children}</HelperContext.Provider>;
+  return (
+    <HelperContext.Provider value={state}>{children}</HelperContext.Provider>
+  );
 };
