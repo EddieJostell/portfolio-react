@@ -163,7 +163,7 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
 
             <MobileNavList>{navItems}</MobileNavList>
             <ContactLinksContainer>
-              <ContactSlim icons={true} />
+              <ContactSlim icons />
             </ContactLinksContainer>
           </MobileLinksContainer>
         )}
