@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import * as React from 'react';
-import { IContactItem } from '../../utils/data';
+import { ISocialMediaLink } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import './ContactSlim.scss';
 import { useMediaQuery } from '../../utils/hooks';
@@ -15,7 +15,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
   const displayContactIcons = () => {
-    return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
+    return contactInfo.socialItem.map((tact: ISocialMediaLink, key: number) => (
       <motion.div
         className=''
         key={key}
@@ -39,7 +39,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
   };
 
   const displayContactLinks = () => {
-    return contactInfo.contactItem.map((tact: IContactItem, key: number) => (
+    return contactInfo.socialItem.map((tact: ISocialMediaLink, key: number) => (
       <a
         key={key}
         className='item'
