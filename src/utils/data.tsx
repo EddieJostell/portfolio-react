@@ -25,6 +25,8 @@ export interface IContactItem {
   iconSrc?: any;
   text: string;
   link?: string;
+
+  ariaLabel: string;
 }
 
 export const ContactInfo: IContactItem[] = [
@@ -47,6 +49,7 @@ export const ContactInfo: IContactItem[] = [
     iconSrc: <Linkedin />,
     link: 'https://www.linkedin.com/in/eddiejostell/',
     text: 'Add me to your network!',
+    ariaLabel: 'Open LinkedIn profile',
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ export const ContactInfo: IContactItem[] = [
     iconSrc: <GitHub />,
     link: 'https://github.com/EddieJostell/',
     text: 'Checkout my projects on Github!',
+    ariaLabel: 'Open Github profile',
   },
   {
     id: 5,
@@ -61,13 +65,15 @@ export const ContactInfo: IContactItem[] = [
     iconSrc: <Instagram />,
     link: 'https://www.instagram.com/eduardojostello/',
     text: 'Be cool and follow me on Instagram!',
+    ariaLabel: 'Open Instagram profile',
   },
   {
     id: 6,
     title: 'Twitter',
     iconSrc: <Twitter />,
-    link: 'https://twitter.com/El_Wardinho/',
+    link: 'https://x.com/VastoLorde117/',
     text: 'Be cool and follow me on Twitter!',
+    ariaLabel: 'Open Twitter profile',
   },
 ];
 

@@ -26,7 +26,12 @@ export const ContactSlim = (props: IContactSlimProps) => {
           scale: 1.1,
         }}
       >
-        <a href={tact.link} target='_blank' rel='noopener noreferrer'>
+        <a
+          href={tact.link}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label={tact.ariaLabel}
+        >
           {tact.iconSrc}
         </a>
       </motion.div>
@@ -41,6 +46,7 @@ export const ContactSlim = (props: IContactSlimProps) => {
         href={tact.link}
         target='_blank'
         rel='noopener noreferrer'
+        aria-label={tact.ariaLabel}
       >
         <span>{tact.title}</span>
       </a>
