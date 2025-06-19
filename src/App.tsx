@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState, useCallback, Fragment } from 'react';
+import { useState, useCallback, Fragment, FC } from 'react';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
 import { ContactSlim } from './components/Contact/ContactSlim';
 import { Portfolio } from './components/Portfolio/Portfolio';
@@ -16,7 +16,7 @@ interface IAppState {
   isLoading: boolean;
 }
 
-function App() {
+const App: FC<IAppState> = ({}) => {
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
     contactIsActive: false,
@@ -84,6 +84,6 @@ function App() {
       </div>
     </ContextProvider>
   );
-}
+};
 
 export default App;
