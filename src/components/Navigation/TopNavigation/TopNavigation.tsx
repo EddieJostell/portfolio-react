@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { scrollTop, useHidescroll, useMediaQuery } from '../../../utils/hooks';
 import { Container } from '../../Container/Container';
 import { DesktopNavigation } from '../DesktopNavigation/DesktopNavigation';
-import useScrollListener from '../../../utils/useScrollListener';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
 import PDF from '../../../documents/CV_Eddie_Jostell.pdf';
 import { MobileNavigation } from '../MobileNavigation/MobileNavigation';
@@ -28,10 +27,12 @@ interface INavProps {
   toggleContact: () => void;
 }
 
-const StyledNavigation = styled('div')(({}) => ({
+const StyledNavigation = styled('header')(({}) => ({
   padding: '0 1rem',
-  position: 'sticky',
+  position: 'fixed',
   top: 0,
+  left: '0',
+  right: '0',
   height: '5rem',
   display: 'flex',
   flexDirection: 'row',
@@ -58,11 +59,7 @@ const StyledNavigation = styled('div')(({}) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center center',
   backgroundAttachment: 'fixed',
-  transition: 'transform(150ms ease-in-out)',
-
-  /* '&:Navigation-hidden': {
-    transform: 'translateY(-100%)',
-  }, */
+  transition: 'transform 300ms ease',
 }));
 
 export const TopNavigation: FC<INavProps> = ({
@@ -72,35 +69,19 @@ export const TopNavigation: FC<INavProps> = ({
   toggleNav,
 }) => {
   const contextObject = useContext<IContextState>(HelperContext);
-  const [IsVisible, setIsVisible] = useState(false);
-  const [navClassList, setNavClassList] = useState<string[]>([]);
-  const scroll = useScrollListener();
   const mobileMinWidth = useMediaQuery('(max-width: 768px)');
 
-  // update classList of nav on scroll
-  useEffect(() => {
-    const _classList: string[] = [];
-
-    if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
-      _classList.push('Navigation-hidden');
-
-    setNavClassList(_classList);
-  }, [scroll.y, scroll.lastY]);
-
   const showResumeOnClick = () => {
-    console.log('showResumeOnClick');
     window.open(PDF);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<Element>) => {
-    console.log('handleKeyDown', e.code);
     if (e.code === 'Space') {
       e.preventDefault();
     }
   };
 
   const toggleMobileNav = () => {
-    console.log('toggleMobileNav', mobileMinWidth, navIsOpen);
     mobileMinWidth && toggleNav(!navIsOpen);
   };
 
@@ -154,10 +135,7 @@ export const TopNavigation: FC<INavProps> = ({
   });
 
   return (
-    <StyledNavigation
-      data-testid='navigation'
-      className={navClassList.join(' ')}
-    >
+    <StyledNavigation data-testid='navigation'>
       <Container>
         <StyledTopNavigation>
           <StyledIconContainer>

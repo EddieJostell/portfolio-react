@@ -54,16 +54,15 @@ function App() {
 
   return (
     <ContextProvider state={initialHelperContext}>
-      <header>
-        {!appState.contactIsActive && (
-          <TopNavigation
-            navIsOpen={appState.navIsOpen}
-            toggleNav={toggleNav}
-            name='E'
-            toggleContact={toggleContact}
-          />
-        )}
-      </header>
+      {!appState.contactIsActive && (
+        <TopNavigation
+          navIsOpen={appState.navIsOpen}
+          toggleNav={toggleNav}
+          name='E'
+          toggleContact={toggleContact}
+        />
+      )}
+
       <div className='App' data-testid='application'>
         {appState.isLoading ? (
           displayLoader()
