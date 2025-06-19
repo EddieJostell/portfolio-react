@@ -19,7 +19,7 @@ export const SkillsInfo: ISkillsItem[] = [
   { id: 9, skill: 'STYLED-COMPONENTS' },
 ];
 
-export interface IContactItem {
+export interface ISocialMediaLink {
   id: number;
   title: string;
   iconSrc?: any;
@@ -29,7 +29,7 @@ export interface IContactItem {
   ariaLabel: string;
 }
 
-export const ContactInfo: IContactItem[] = [
+export const SocialMediaLinks: ISocialMediaLink[] = [
   /*  {
     id: 1,
     title: '+46 73 026 30 92',
