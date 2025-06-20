@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
 
-interface ISocialMediaProps {}
+interface ISocialMediaProps {
+  icons?: boolean;
+  links?: boolean;
+}
 
-export const SocialMedia: FC<ISocialMediaProps> = ({}) => {
+export const SocialMedia: FC<ISocialMediaProps> = ({ icons, links }) => {
   return <div>SocialMedia</div>;
 };
