@@ -55,7 +55,7 @@ const navItems = [
 ];
 
 test('renders App component', () => {
-  render(<App />);
+  render(<App navIsOpen={false} contactIsActive={false} isLoading={false} />);
   //screen.debug();
   const AppElement = screen.getByTestId('application');
   expect(AppElement).not.toBe(undefined);
