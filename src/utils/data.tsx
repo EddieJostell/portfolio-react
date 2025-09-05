@@ -334,4 +334,9 @@ export const QuoteInfo: IQuoteItem[] = [
     quote: 'Spanning years and continents. Lives ruined and bloodshed. Epic.',
     author: 'Logan Echolls, Veronica Mars ',
   },
+  {
+    id: 19,
+    quote: 'The thing about smart people is they seem weird to dumb people.',
+    author: 'Albert Einstein',
+  },
 ];
