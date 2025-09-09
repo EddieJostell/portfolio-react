@@ -8,7 +8,6 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MobileNavigation } from './MobileNavigation';
-import { a } from 'framer-motion/dist/types.d-B_QPEvFK';
 
 describe('MobileNavigation', () => {
   // Common test props
