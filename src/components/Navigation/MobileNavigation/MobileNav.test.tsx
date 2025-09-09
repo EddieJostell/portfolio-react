@@ -1,24 +1,28 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
-import { render, screen, cleanup, within } from '@testing-library/react';
+import {
+  render,
+  screen,
+  cleanup,
+  within,
+  waitFor,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MobileNavigation } from './MobileNavigation';
+import { a } from 'framer-motion/dist/types.d-B_QPEvFK';
 
 describe('MobileNavigation', () => {
   // Common test props
   const mockNavItems = [
     <li key='item1' data-testid='nav-item'>
-      <a href='/home'>Home</a>
-    </li>,
-    <li key='item2' data-testid='nav-item'>
       <a href='/about'>About</a>
     </li>,
-    <li key='item3' data-testid='nav-item'>
+    <li key='item2' data-testid='nav-item'>
       <a href='/portfolio'>Portfolio</a>
     </li>,
-    <li key='item4' data-testid='nav-item'>
+    <li key='item3' data-testid='nav-item'>
       <button onClick={() => {}}>Contact</button>
     </li>,
-    <li key='item5' data-testid='nav-item'>
+    <li key='item4' data-testid='nav-item'>
       <button onClick={() => {}}>Resume</button>
     </li>,
   ];
@@ -88,8 +92,7 @@ describe('MobileNavigation', () => {
       const mobileLinksContainer = screen.getByTestId('mobile-links-container');
       const navItems = within(mobileLinksContainer).getAllByTestId('nav-item');
 
-      expect(navItems).toHaveLength(5);
-      expect(mobileLinksContainer).toHaveTextContent('Home');
+      expect(navItems).toHaveLength(4);
       expect(mobileLinksContainer).toHaveTextContent('About');
       expect(mobileLinksContainer).toHaveTextContent('Contact');
       expect(mobileLinksContainer).toHaveTextContent('Portfolio');
@@ -126,6 +129,23 @@ describe('MobileNavigation', () => {
       expect(toggleNav).toHaveBeenCalledTimes(1);
       expect(toggleNav).toHaveBeenCalledWith(false);
     });
+
+    it('should add no-scroll class to body when menu is open', () => {
+      // Store original methods
+      const originalAdd = document.body.classList.add;
+      const originalRemove = document.body.classList.remove;
+
+      // Mock the methods
+      document.body.classList.add = vi.fn();
+      document.body.classList.remove = vi.fn();
+
+      renderMobileNav(true);
+      expect(document.body.classList.add).toHaveBeenCalledWith('no-scroll');
+
+      // Restore original methods
+      document.body.classList.add = originalAdd;
+      document.body.classList.remove = originalRemove;
+    });
   });
 
   describe('Accessibility', () => {
@@ -141,6 +161,31 @@ describe('MobileNavigation', () => {
 
       const openMenuButton = screen.getByLabelText('Close menu');
       expect(openMenuButton).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('should focus the close button when menu opens', async () => {
+      renderMobileNav(true);
+
+      const closeButton = screen.getByLabelText('Close menu');
+      await waitFor(() => {
+        expect(document.activeElement).toBe(closeButton);
+      });
+    });
+
+    it('should have about as active element when tab is pressed when menu is open', async () => {
+      const user = userEvent.setup();
+      renderMobileNav(true);
+
+      const closeButton = screen.getByLabelText('Close menu');
+      await waitFor(() => {
+        expect(document.activeElement).toBe(closeButton);
+      });
+
+      const aboutLink = screen.getByText('About');
+      await user.tab();
+      await waitFor(() => {
+        expect(document.activeElement).toBe(aboutLink);
+      });
     });
   });
 });
