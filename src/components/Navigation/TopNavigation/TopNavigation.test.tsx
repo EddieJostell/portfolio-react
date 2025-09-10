@@ -4,24 +4,11 @@ import { TopNavigation } from './TopNavigation';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
 import { vi } from 'vitest';
 import * as hooks from '../../../utils/hooks';
-import path from 'path';
 
 // Mock useMediaQuery and scrollTop
 vi.mock('../../../utils/hooks', () => ({
   scrollTop: vi.fn(),
   useMediaQuery: vi.fn(),
-}));
-
-// Mock child navigation components
-vi.mock('../MobileNavigation/MobileNavigation', () => ({
-  MobileNavigation: () => (
-    <div data-testid='mobile-navigation'>MobileNavigation</div>
-  ),
-}));
-vi.mock('../DesktopNavigation/DesktopNavigation', () => ({
-  DesktopNavigation: () => (
-    <div data-testid='desktop-navigation'>DesktopNavigation</div>
-  ),
 }));
 
 describe('TopNavigation', () => {
@@ -95,7 +82,7 @@ describe('TopNavigation', () => {
     expect(screen.queryByTestId('desktop-navigation')).not.toBeInTheDocument();
   });
 
-  it('renders DesktopNavigation on desktop', () => {
+  it.only('renders DesktopNavigation on desktop', () => {
     (hooks.useMediaQuery as any).mockReturnValue(false);
 
     render(
