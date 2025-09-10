@@ -72,7 +72,7 @@ const App: FC<IAppState> = ({}) => {
                 <Footer key='4' />,
               ]
             ) : (
-              <ContactForm key='6' toggleContact={toggleContact} />
+              <ContactForm key='5' toggleContact={toggleContact} />
             )}
           </Fragment>
         )}
