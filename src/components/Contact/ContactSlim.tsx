@@ -4,13 +4,16 @@ import { ISocialMediaLink } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import './ContactSlim.scss';
 import { useMediaQuery } from '../../utils/hooks';
+import classNames from 'classnames';
 
 interface IContactSlimProps {
   icons: boolean;
+
+  className?: string;
 }
 
 export const ContactSlim = (props: IContactSlimProps) => {
-  const { icons } = props;
+  const { icons, className } = props;
   const contactInfo = React.useContext<IContextState>(HelperContext);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
@@ -52,6 +55,11 @@ export const ContactSlim = (props: IContactSlimProps) => {
       </a>
     ));
   };
+  const contactClasses = classNames(className, 'ContactSlim', {
+    'ContactSlim-icons': icons,
+    desktop: mobileMaxWidth,
+    fullWidth: !icons,
+  });
 
   return (
     <>
@@ -60,13 +68,12 @@ export const ContactSlim = (props: IContactSlimProps) => {
           initial={{ y: 500, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className={`
-            ContactSlim ContactSlim-icons ${mobileMaxWidth && 'desktop'}`}
+          className={contactClasses}
         >
           {displayContactIcons()}
         </motion.div>
       ) : (
-        <div className={`ContactSlim ${!icons && 'fullWidth'}`}>
+        <div className={contactClasses}>
           <div className='ContactSlim-links'>{displayContactLinks()}</div>
         </div>
       )}
