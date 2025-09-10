@@ -1,4 +1,3 @@
-import { ContactContent } from './ContactContent/ContactContent';
 import './Contact.scss';
 import { FC } from 'react';
 
@@ -10,7 +9,6 @@ export const Contact: FC<IContactProps> = () => {
       <div className='Contact-title'>
         <h1>CONTACT ME</h1>
       </div>
-      <ContactContent />
     </div>
   );
 };
