@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import React, { FC } from 'react';
-import { isMobileMax } from '../../utils/userAgent';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
 import './Footer.scss';
@@ -17,14 +16,14 @@ export const Footer: FC<{}> = () => {
     <div className='Footer'>
       <Container>
         <div className='Footer-wrapper'>
-          {mobileMaxWidth && (
-            <motion.div
-              key='Footer-wrapper-name'
-              {...FooterWrapperNameAnimation}
-              className='Footer-wrapper-name'
-              onClick={scrollTop}
-            >
-              E
+          <motion.div
+            key='Footer-wrapper-name'
+            {...FooterWrapperNameAnimation}
+            className='Footer-wrapper-name'
+            onClick={scrollTop}
+          >
+            E
+            {!mobileMaxWidth && (
               <motion.div
                 key='scroll-to-top'
                 className='scroll-to-top'
@@ -32,12 +31,12 @@ export const Footer: FC<{}> = () => {
               >
                 Top
               </motion.div>
-            </motion.div>
-          )}
+            )}
+          </motion.div>
           {mobileMaxWidth ? (
-            <ContactSlim icons={false} />
+            <ContactSlim icons={false} data-testid='mobile-contact' />
           ) : (
-            <ContactSlim icons={true} />
+            <ContactSlim icons={true} data-testid='desktop-contact' />
           )}
           <div className='creator'>Built by Edward 'Eddie' Jostell</div>
         </div>
