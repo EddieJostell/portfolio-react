@@ -8,11 +8,7 @@ import { useForm } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
 
 import classNames from 'classnames';
-import {
-  inputEmailRules,
-  inputNameRules,
-  textAreaMessageRules,
-} from './helpers/HookFormValidationRules';
+import { contactFormRules } from './helpers/HookFormValidationRules';
 import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
 import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
 import { X } from 'react-feather';
@@ -134,7 +130,7 @@ export const ContactForm = (props: IContactFormProps) => {
                 type='text'
                 className={fieldRules}
                 {...register('name', {
-                  ...inputNameRules,
+                  ...contactFormRules.inputNameRules,
                 })}
               />
               {showLabel('email', 'E-mail:', errors.email?.message)}
@@ -142,12 +138,12 @@ export const ContactForm = (props: IContactFormProps) => {
                 disabled={showFail}
                 type='text'
                 className={fieldRules}
-                {...register('email', { ...inputEmailRules })}
+                {...register('email', { ...contactFormRules.inputEmailRules })}
               />
               {showLabel('message', 'Message:', errors.message?.message)}
               <textarea
                 {...register('message', {
-                  ...textAreaMessageRules,
+                  ...contactFormRules.textAreaMessageRules,
                 })}
                 disabled={showFail}
                 className={fieldRules}
