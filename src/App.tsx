@@ -1,13 +1,11 @@
 import './App.scss';
 import { useState, useCallback, Fragment, FC } from 'react';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
-import { ContactSlim } from './components/Contact/ContactSlim';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
-import { useMediaQuery } from './utils/hooks';
 import { TopNavigation } from './components/Navigation/TopNavigation/TopNavigation';
 
 interface IAppState {
@@ -50,8 +48,6 @@ const App: FC<IAppState> = ({}) => {
     );
   };
 
-  const minComputerWidth = useMediaQuery('(min-width: 992px)');
-
   return (
     <ContextProvider state={initialHelperContext}>
       {!appState.contactIsActive && (
@@ -73,8 +69,7 @@ const App: FC<IAppState> = ({}) => {
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                minComputerWidth && <ContactSlim icons key='4' />,
-                <Footer key='5' />,
+                <Footer key='4' />,
               ]
             ) : (
               <ContactForm key='6' toggleContact={toggleContact} />
