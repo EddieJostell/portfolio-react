@@ -167,6 +167,14 @@ export const ProjectList: IPortfolioItem[] = [
   },
   {
     id: 2,
+    title: 'SKANDIA',
+    tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
+    link: 'https://www.skandia.se',
+    img: '',
+    text: 'My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
+  },
+  {
+    id: 3,
     title: 'Cloud9 Reborn',
     tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
@@ -217,14 +225,6 @@ export const ProjectList: IPortfolioItem[] = [
     img: '',
     text: 'New and improved version of my food app. Made with React and Tailwindcss.',
     github: '',
-  },
-  {
-    id: 8,
-    title: 'SKANDIA',
-    tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
-    link: 'https://www.skandia.se',
-    img: '',
-    text: 'My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
   },
 ];
 
