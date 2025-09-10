@@ -82,7 +82,7 @@ describe('TopNavigation', () => {
     expect(screen.queryByTestId('desktop-navigation')).not.toBeInTheDocument();
   });
 
-  it.only('renders DesktopNavigation on desktop', () => {
+  it('renders DesktopNavigation on desktop', () => {
     (hooks.useMediaQuery as any).mockReturnValue(false);
 
     render(
