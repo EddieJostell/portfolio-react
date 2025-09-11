@@ -21,7 +21,7 @@ export const StyledFooterLogo = styledComponent('button')(({}) => ({
   width: '200px',
   fontSize: '3rem',
   fontFamily: "'Diplomata', cursive",
-  color: 'fff',
+  color: '#fff',
   transition: 'opacity 0.35s ease 0.65s',
   textDecoration: 'none',
   cursor: 'pointer',
@@ -32,4 +32,17 @@ export const StyledFooterLogo = styledComponent('button')(({}) => ({
   borderStyle: 'none',
   borderColor: 'none',
   borderImage: 'none',
+}));
+
+export const StyledScrollToTop = styledComponent(motion.div)(({}) => ({
+  position: 'absolute',
+  top: '31px',
+  right: '8px',
+  fontSize: '0.75rem',
+}));
+
+export const StyledCreatorTag = styledComponent('div')(({}) => ({
+  color: '#fff',
+  fontSize: '0.875rem',
+  fontFamily: "'Poppins', sans-serif",
 }));
