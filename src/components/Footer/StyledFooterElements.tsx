@@ -9,14 +9,14 @@ export const StyledFooterComponent = styledComponent('footer')(({}) => ({
   },
 }));
 
-export const StyledFooterWrapper = styledComponent(motion.div)(({}) => ({
+export const StyledFooterWrapper = styledComponent('div')(({}) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
 }));
 
-export const StyledFooterLogo = styledComponent('button')(({}) => ({
+export const StyledFooterLogo = styledComponent(motion.button)(({}) => ({
   position: 'relative',
   width: '200px',
   fontSize: '3rem',
@@ -36,8 +36,8 @@ export const StyledFooterLogo = styledComponent('button')(({}) => ({
 
 export const StyledScrollToTop = styledComponent(motion.div)(({}) => ({
   position: 'absolute',
-  top: '31px',
-  right: '8px',
+  top: '22px',
+  right: '-32px',
   fontSize: '0.75rem',
 }));
 
