@@ -25,6 +25,8 @@ interface INavProps {
   toggleNav: (visible: boolean) => void;
   status?: string;
   toggleContact: () => void;
+
+  topNavIconRef?: React.RefObject<HTMLButtonElement | null>;
 }
 
 const StyledNavigation = styled('header')(({}) => ({
@@ -67,6 +69,7 @@ export const TopNavigation: FC<INavProps> = ({
   navIsOpen,
   toggleContact,
   toggleNav,
+  topNavIconRef,
 }) => {
   const contextObject = useContext<IContextState>(HelperContext);
   const mobileMinWidth = useMediaQuery('(max-width: 768px)');
@@ -144,6 +147,7 @@ export const TopNavigation: FC<INavProps> = ({
                 type='button'
                 aria-label='CreatorLogo press to scroll to top of the page'
                 onClick={scrollTop}
+                ref={topNavIconRef}
               >
                 {name}
               </StyledIcon>

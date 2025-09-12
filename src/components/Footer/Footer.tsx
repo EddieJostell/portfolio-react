@@ -1,46 +1,55 @@
-import { motion } from 'framer-motion';
 import React, { FC } from 'react';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
-import './Footer.scss';
+
 import {
   FooterWrapperNameAnimation,
   ScrollTopAnimation,
 } from './FooterAnimations';
 import { scrollTop, useMediaQuery } from '../../utils/hooks';
+import {
+  StyledCreatorTag,
+  StyledFooterComponent,
+  StyledFooterLogo,
+  StyledFooterWrapper,
+  StyledScrollToTop,
+} from './StyledFooterElements';
 
-export const Footer: FC<{}> = () => {
+interface IFooterProps {
+  handleScrollToTop: () => void;
+}
+
+export const Footer: FC<IFooterProps> = ({ handleScrollToTop }) => {
   const mobileMaxWidth = useMediaQuery('(max-width: 767px)');
 
   return (
-    <div className='Footer'>
+    <StyledFooterComponent>
       <Container>
-        <div className='Footer-wrapper'>
-          <motion.div
+        <StyledFooterWrapper>
+          <StyledFooterLogo
             key='Footer-wrapper-name'
             {...FooterWrapperNameAnimation}
-            className='Footer-wrapper-name'
-            onClick={scrollTop}
+            onClick={handleScrollToTop}
+            aria-label='Creator Logo, Click to scroll to top of page'
           >
             E
             {!mobileMaxWidth && (
-              <motion.div
+              <StyledScrollToTop
                 key='scroll-to-top'
-                className='scroll-to-top'
                 variants={ScrollTopAnimation}
               >
-                Top
-              </motion.div>
+                Go to Top
+              </StyledScrollToTop>
             )}
-          </motion.div>
+          </StyledFooterLogo>
           {mobileMaxWidth ? (
             <ContactSlim icons={false} data-testid='mobile-contact' />
           ) : (
             <ContactSlim icons={true} data-testid='desktop-contact' />
           )}
-          <div className='creator'>Built by Edward 'Eddie' Jostell</div>
-        </div>
+          <StyledCreatorTag>Built by Edward 'Eddie' Jostell</StyledCreatorTag>
+        </StyledFooterWrapper>
       </Container>
-    </div>
+    </StyledFooterComponent>
   );
 };

@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState, useCallback, Fragment, FC } from 'react';
+import { useState, useCallback, Fragment, FC, useRef } from 'react';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
 import { Portfolio } from './components/Portfolio/Portfolio';
 import { Home } from './components/Home/Home';
@@ -7,6 +7,7 @@ import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
 import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import { TopNavigation } from './components/Navigation/TopNavigation/TopNavigation';
+import { scrollTop } from './utils/hooks';
 
 interface IAppState {
   navIsOpen: boolean;
@@ -20,6 +21,7 @@ const App: FC<IAppState> = ({}) => {
     contactIsActive: false,
     isLoading: false,
   });
+  const topNavIconRef = useRef<HTMLButtonElement>(null);
 
   const toggleNav = (visible: boolean) => {
     setAppState({ ...appState, navIsOpen: visible });
@@ -48,6 +50,12 @@ const App: FC<IAppState> = ({}) => {
     );
   };
 
+  const handleScrollToTop = () => {
+    console.log('scroll to top and focus');
+    scrollTop();
+    topNavIconRef.current?.focus();
+  };
+
   return (
     <ContextProvider state={initialHelperContext}>
       {!appState.contactIsActive && (
@@ -56,6 +64,7 @@ const App: FC<IAppState> = ({}) => {
           toggleNav={toggleNav}
           name='E'
           toggleContact={toggleContact}
+          topNavIconRef={topNavIconRef}
         />
       )}
 
@@ -69,7 +78,7 @@ const App: FC<IAppState> = ({}) => {
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                <Footer key='4' />,
+                <Footer key='4' handleScrollToTop={handleScrollToTop} />,
               ]
             ) : (
               <ContactForm key='5' toggleContact={toggleContact} />
