@@ -7,9 +7,11 @@ import { useMediaQuery } from '../../utils/hooks';
 import classNames from 'classnames';
 
 interface IContactSlimProps {
-  icons: boolean;
+  icons?: boolean;
 
   className?: string;
+
+  [dataAttribute: `data-${string}`]: string;
 }
 
 export const ContactSlim = (props: IContactSlimProps) => {
