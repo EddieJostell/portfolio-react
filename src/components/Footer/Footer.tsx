@@ -2,11 +2,8 @@ import React, { FC } from 'react';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
 
-import {
-  FooterWrapperNameAnimation,
-  ScrollTopAnimation,
-} from './FooterAnimations';
-import { scrollTop, useMediaQuery } from '../../utils/hooks';
+import { childMotionProps, parentMotionProps } from './FooterAnimations';
+import { useMediaQuery } from '../../utils/hooks';
 import {
   StyledCreatorTag,
   StyledFooterComponent,
@@ -28,24 +25,21 @@ export const Footer: FC<IFooterProps> = ({ handleScrollToTop }) => {
         <StyledFooterWrapper>
           <StyledFooterLogo
             key='Footer-wrapper-name'
-            {...FooterWrapperNameAnimation}
+            {...parentMotionProps}
             onClick={handleScrollToTop}
             aria-label='Creator Logo, Click to scroll to top of page'
           >
             E
             {!mobileMaxWidth && (
-              <StyledScrollToTop
-                key='scroll-to-top'
-                variants={ScrollTopAnimation}
-              >
+              <StyledScrollToTop key='scroll-to-top' {...childMotionProps}>
                 Go to Top
               </StyledScrollToTop>
             )}
           </StyledFooterLogo>
           {mobileMaxWidth ? (
-            <ContactSlim icons={false} data-testid='mobile-contact' />
+            <ContactSlim data-testid='mobile-contact' />
           ) : (
-            <ContactSlim icons={true} data-testid='desktop-contact' />
+            <ContactSlim icons data-testid='desktop-contact' />
           )}
           <StyledCreatorTag>Built by Edward 'Eddie' Jostell</StyledCreatorTag>
         </StyledFooterWrapper>
