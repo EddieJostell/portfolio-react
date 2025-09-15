@@ -1,18 +1,32 @@
-export const FooterWrapperNameAnimation = {
-  initial: 'rest',
-  animate: 'rest',
-  whileHover: 'hover',
-};
+import { easeIn, easeOut } from 'framer-motion';
 
-export const ScrollTopAnimation = {
-  rest: { x: -15, opacity: 0, ease: 'easeOut', duration: 0.2, type: 'tween' },
-  hover: {
-    x: 8,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      type: 'tween',
-      ease: 'easeIn',
+export const parentMotionProps = {
+  variants: {
+    rest: {},
+    hover: {
+      transition: {
+        staggerChildren: 0.2,
+      },
     },
   },
+  initial: 'rest',
+  whileHover: 'hover',
+  animate: 'rest',
+};
+
+export const childMotionProps = {
+  variants: {
+    hidden: {
+      opacity: 0,
+      x: -15,
+      transition: { duration: 0.2, ease: easeOut },
+    },
+    hover: {
+      opacity: 1,
+      x: 8,
+      transition: { duration: 0.4, ease: easeIn },
+    },
+  },
+  initial: 'hidden',
+  animate: 'hidden',
 };
