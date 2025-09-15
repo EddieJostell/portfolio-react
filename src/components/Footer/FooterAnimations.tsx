@@ -1,6 +1,9 @@
-import { easeIn, easeOut } from 'framer-motion';
+import { animate, easeIn, easeOut } from 'framer-motion';
 
 export const parentMotionProps = {
+  initial: 'rest',
+  animate: 'rest',
+  whileHover: 'hover',
   variants: {
     rest: {},
     hover: {
@@ -9,24 +12,20 @@ export const parentMotionProps = {
       },
     },
   },
-  initial: 'rest',
-  whileHover: 'hover',
-  animate: 'rest',
 };
 
 export const childMotionProps = {
+  initial: 'rest',
   variants: {
-    hidden: {
+    rest: {
       opacity: 0,
-      x: -15,
-      transition: { duration: 0.2, ease: easeOut },
+      y: -10,
+      transition: { duration: 0.2 },
     },
     hover: {
       opacity: 1,
-      x: 8,
-      transition: { duration: 0.4, ease: easeIn },
+      y: 0,
+      transition: { duration: 0.3 },
     },
   },
-  initial: 'hidden',
-  animate: 'hidden',
 };
