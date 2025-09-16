@@ -19,35 +19,20 @@ interface IFooterProps {
 export const Footer: FC<IFooterProps> = ({ handleScrollToTop }) => {
   const mobileMaxWidth = useMediaQuery('(max-width: 767px)');
 
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
     <StyledFooterComponent>
       <Container>
         <StyledFooterWrapper>
           <StyledFooterLogo
             type='button'
-            /*  key='Footer-wrapper-name'
-            {...parentMotionProps} */
-
-            onHoverStart={() => {
-              console.log('hover start!!!!');
-              setIsHovered(true);
-            }}
-            onHoverEnd={() => setIsHovered(false)}
+            key='Footer-wrapper-name'
+            {...parentMotionProps}
             onClick={handleScrollToTop}
             aria-label='Creator Logo, Click to scroll to top of page'
           >
             E
             {!mobileMaxWidth && (
-              <StyledScrollToTop
-                initial={{ opacity: 0, x: -12 }}
-                animate={
-                  isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }
-                }
-                transition={{ duration: 0.4, ease: 'easeInOut', type: 'tween' }}
-                /*  key='scroll-to-top' {...childMotionProps} */
-              >
+              <StyledScrollToTop key='scroll-to-top' {...childMotionProps}>
                 Go to Top
               </StyledScrollToTop>
             )}
