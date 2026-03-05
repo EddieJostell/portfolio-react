@@ -180,7 +180,7 @@ export const ProjectList: IPortfolioItem[] = [
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
     img: 'img/cloud9.JPG',
     text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    github: '123',
+    github: '',
   },
   /*   {
     id: 3,
