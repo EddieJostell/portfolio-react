@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from 'react';
+import React, { useRef, useReducer, useEffect } from 'react';
 import './ContactForm.scss';
 import emailjs from '@emailjs/browser';
 import { serviceID } from './helpers/serviceID';
@@ -59,6 +59,11 @@ export const ContactForm = (props: IContactFormProps) => {
   });
 
   const form = useRef<HTMLFormElement>(null); //EmailJS useRef
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    nameInputRef.current?.focus();
+  }, []);
 
   const onDataComplete = (data: any, e: any) => {
     // REAL EMAIL JS CODE
@@ -72,7 +77,7 @@ export const ContactForm = (props: IContactFormProps) => {
         (error) => {
           console.log('FAILED...', error.text);
           dispatch({ type: 'ERROR' });
-        }
+        },
       );
 
       /*  setTimeout(() => {
@@ -94,7 +99,7 @@ export const ContactForm = (props: IContactFormProps) => {
   const showLabel = (
     htmlFor: string,
     labelText: string,
-    errorMessage?: string
+    errorMessage?: string,
   ) => {
     return (
       <label htmlFor={htmlFor} className='form-label'>
@@ -132,6 +137,10 @@ export const ContactForm = (props: IContactFormProps) => {
                 {...register('name', {
                   ...contactFormRules.inputNameRules,
                 })}
+                ref={(e) => {
+                  register('name').ref(e);
+                  nameInputRef.current = e;
+                }}
               />
               {showLabel('email', 'E-mail:', errors.email?.message)}
               <input
