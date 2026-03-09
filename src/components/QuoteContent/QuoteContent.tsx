@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import './QuoteContent.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
+import styled from '@emotion/styled';
 
 interface Props {}
 
@@ -12,6 +13,10 @@ interface IQuoteState {
   quote: string;
   author: string;
 }
+
+const StyledMotionSpan = styled(motion.span)(({}) => ({
+  fontFamily: 'Goldman, Helvetica, sans-serif',
+}));
 
 export const QuoteContent = (props: Props) => {
   const Quotes = React.useContext<IContextState>(HelperContext);
@@ -26,7 +31,7 @@ export const QuoteContent = (props: Props) => {
 
   return (
     <AnimatePresence>
-      <motion.h1
+      <StyledMotionSpan
         key={quoteIndex}
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 1, 0] }}
@@ -43,7 +48,7 @@ export const QuoteContent = (props: Props) => {
             - {Quotes.quoteItem[quoteIndex].author}
           </span>
         </div>
-      </motion.h1>
+      </StyledMotionSpan>
     </AnimatePresence>
   );
 };
