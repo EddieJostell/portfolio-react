@@ -37,7 +37,7 @@ export const Portfolio: FC<{}> = () => {
             </motion.div>
           )}
           <div className='List'>
-            <Header title='Projects' size='h1' fullWidth color textCenter />
+            <Header title='Projects' size='h2' fullWidth color textCenter />
             {displayPortfolioData()}
           </div>
         </div>
