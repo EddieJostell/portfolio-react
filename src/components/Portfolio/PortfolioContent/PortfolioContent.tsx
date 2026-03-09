@@ -44,11 +44,10 @@ export const PortfolioContent = (props: IPortfolioContent) => {
           </div>
         </div>
         <div className='body'>
-          <h1 className='title'>
-            <a href={link} target='_blank' rel='noreferrer' aria-label={title}>
-              {title}
-            </a>
-          </h1>
+          <a href={link} target='_blank' rel='noreferrer' aria-label={title}>
+            {title}
+          </a>
+
           <div className='text'>{text}</div>
         </div>
         <div className='bottom'>{tech}</div>
