@@ -32,9 +32,9 @@ export const Portfolio: FC<{}> = () => {
       <Container>
         <div className='Portfolio-wrapper'>
           {mobileMaxWidth && (
-            <motion.h1 key='title' {...TitleAnimation} className='bg-title'>
+            <motion.div key='title' {...TitleAnimation} className='bg-title'>
               MY PROJECTS
-            </motion.h1>
+            </motion.div>
           )}
           <div className='List'>
             <Header title='Projects' size='h1' fullWidth color textCenter />
