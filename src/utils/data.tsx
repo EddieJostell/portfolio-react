@@ -339,4 +339,9 @@ export const QuoteInfo: IQuoteItem[] = [
     quote: 'The thing about smart people is they seem weird to dumb people.',
     author: 'Albert Einstein',
   },
+  {
+    id: 20,
+    quote: 'Victory is celebrated in the light but it is won in the darkness.',
+    author: 'Dune: Prophecy (2024)',
+  },
 ];
