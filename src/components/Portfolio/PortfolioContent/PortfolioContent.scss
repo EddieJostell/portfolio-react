@@ -53,9 +53,12 @@
     flex: 1 0 auto;
     z-index: 1;
     color: #edf2f4;
-    .title > a {
+    a {
+      font-size: 2rem;
+      font-family: Goldman, Helvetica, sans-serif;
       color: #edf2f4;
       text-decoration: none;
+      margin-bottom: 0.5rem;
 
       &:hover {
         color: #d90429;
