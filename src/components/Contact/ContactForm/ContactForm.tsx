@@ -104,7 +104,11 @@ export const ContactForm = (props: IContactFormProps) => {
     return (
       <label htmlFor={htmlFor} className='form-label'>
         {labelText}
-        {errorMessage && <span className='error-label'>{errorMessage}</span>}
+        {errorMessage && (
+          <span className='error-label' id={`${htmlFor}-error`} role='alert'>
+            {errorMessage}
+          </span>
+        )}
       </label>
     );
   };
@@ -119,21 +123,36 @@ export const ContactForm = (props: IContactFormProps) => {
         <div className='Form'>
           <div className='Form-contact'>
             <div className='title'>Contact</div>
-            <MenuIconWrapper onClick={closeContactForm}>
-              <X size={42} />
+            <MenuIconWrapper
+              onClick={closeContactForm}
+              aria-label='Close contact form'
+              role='button'
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  closeContactForm();
+                }
+              }}
+            >
+              <X size={42} aria-hidden='true' />
             </MenuIconWrapper>
 
             <form
               ref={form}
               className='content'
               onSubmit={handleSubmit(onDataComplete)}
+              aria-label='Contact form'
             >
               <h1>Get in touch!</h1>
               {showLabel('name', 'Name:', errors.name?.message)}
               <input
+                id='name'
                 disabled={showFail}
                 type='text'
                 className={fieldRules}
+                aria-invalid={errors.name ? 'true' : 'false'}
+                aria-describedby={errors.name ? 'name-error' : undefined}
                 {...register('name', {
                   ...contactFormRules.inputNameRules,
                 })}
@@ -144,19 +163,25 @@ export const ContactForm = (props: IContactFormProps) => {
               />
               {showLabel('email', 'E-mail:', errors.email?.message)}
               <input
+                id='email'
                 disabled={showFail}
-                type='text'
+                type='email'
                 className={fieldRules}
+                aria-invalid={errors.email ? 'true' : 'false'}
+                aria-describedby={errors.email ? 'email-error' : undefined}
                 {...register('email', { ...contactFormRules.inputEmailRules })}
               />
               {showLabel('message', 'Message:', errors.message?.message)}
               <textarea
+                id='message'
                 {...register('message', {
                   ...contactFormRules.textAreaMessageRules,
                 })}
                 disabled={showFail}
                 className={fieldRules}
                 rows={5}
+                aria-invalid={errors.message ? 'true' : 'false'}
+                aria-describedby={errors.message ? 'message-error' : undefined}
               />
               <ContactFormSubmitButton
                 showFail={showFail}
@@ -165,6 +190,16 @@ export const ContactForm = (props: IContactFormProps) => {
                 Something has gone wrong :/, please try to send the message
                 again.
               </ContactFormSubmitButton>
+              {/* Screen reader announcements */}
+              <div
+                role='status'
+                aria-live='polite'
+                aria-atomic='true'
+                className='sr-only'
+              >
+                {isLoading && 'Sending message...'}
+                {showFail && 'Failed to send message. Please try again.'}
+              </div>
             </form>
           </div>
         </div>
