@@ -1,6 +1,8 @@
 import './PortfolioContent.scss';
 import { motion } from 'framer-motion';
 import { GitHub, ExternalLink, Folder } from 'react-feather';
+import { useMediaQuery } from '../../../utils/hooks';
+
 interface IPortfolioContent {
   link: string;
   img: string;
@@ -12,16 +14,21 @@ interface IPortfolioContent {
 
 export const PortfolioContent = (props: IPortfolioContent) => {
   const { link, title, tech, text, github } = props;
+  const isDesktop = useMediaQuery('(min-width: 992px)');
 
   return (
     <div className='List-item'>
       <motion.div
         className='Card'
         initial={{ y: 0 }}
-        whileHover={{
-          y: -15,
-          transition: { duration: 0.2, delay: 0 },
-        }}
+        whileHover={
+          isDesktop
+            ? {
+                y: -15,
+                transition: { duration: 0.2, delay: 0 },
+              }
+            : {}
+        }
       >
         <div className='top'>
           <div className='file'>
