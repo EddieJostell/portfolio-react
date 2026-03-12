@@ -118,11 +118,10 @@ export const ContactForm = (props: IContactFormProps) => {
   });
 
   return (
-    <>
+    <div className='Form'>
       {!showThanks ? (
-        <div className='Form'>
-          <div className='Form-contact'>
-            <div className='title'>Contact</div>
+        <div className='Form-contact'>
+          <div className='title'>Contact</div>
             <MenuIconWrapper
               onClick={closeContactForm}
               aria-label='Close contact form'
@@ -201,11 +200,10 @@ export const ContactForm = (props: IContactFormProps) => {
                 {showFail && 'Failed to send message. Please try again.'}
               </div>
             </form>
-          </div>
         </div>
       ) : (
         <ThankYouPage toggleContact={toggleContact} />
       )}
-    </>
+    </div>
   );
 };
