@@ -13,20 +13,6 @@ export const Portfolio: FC<{}> = () => {
   const Projects = useContext<IContextState>(HelperContext);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
-  const displayPortfolioData = () => {
-    return Projects.portItem.map((port: IPortfolioItem, key: number) => (
-      <PortfolioContent
-        key={key}
-        title={port.title}
-        tech={port.tech}
-        link={port.link}
-        img={port.img}
-        text={port.text}
-        github={port.github}
-      />
-    ));
-  };
-
   return (
     <div className='Portfolio' id='portfolio'>
       <Container>
@@ -38,7 +24,17 @@ export const Portfolio: FC<{}> = () => {
           )}
           <div className='List'>
             <Header title='Projects' size='h2' fullWidth color textCenter />
-            {displayPortfolioData()}
+            {Projects.portItem.map((port: IPortfolioItem, key: number) => (
+              <PortfolioContent
+                key={key}
+                title={port.title}
+                tech={port.tech}
+                link={port.link}
+                img={port.img}
+                text={port.text}
+                github={port.github}
+              />
+            ))}
           </div>
         </div>
       </Container>
