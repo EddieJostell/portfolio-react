@@ -10,6 +10,7 @@ import { ThankYouPage } from './parts/ThankYouPage';
 import classNames from 'classnames';
 import { contactFormRules } from './helpers/HookFormValidationRules';
 import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
+import { FormLabel } from './parts/FormLabel';
 import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
 import { X } from 'react-feather';
 
@@ -96,23 +97,6 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 300);
   };
 
-  const showLabel = (
-    htmlFor: string,
-    labelText: string,
-    errorMessage?: string,
-  ) => {
-    return (
-      <label htmlFor={htmlFor} className='form-label'>
-        {labelText}
-        {errorMessage && (
-          <span className='error-label' id={`${htmlFor}-error`} role='alert'>
-            {errorMessage}
-          </span>
-        )}
-      </label>
-    );
-  };
-
   const fieldRules = classNames('fields', {
     disabled: showFail,
   });
@@ -122,84 +106,92 @@ export const ContactForm = (props: IContactFormProps) => {
       {!showThanks ? (
         <div className='Form-contact'>
           <div className='title'>Contact</div>
-            <MenuIconWrapper
-              onClick={closeContactForm}
-              aria-label='Close contact form'
-              role='button'
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  closeContactForm();
-                }
-              }}
-            >
-              <X size={42} aria-hidden='true' />
-            </MenuIconWrapper>
+          <MenuIconWrapper
+            onClick={closeContactForm}
+            aria-label='Close contact form'
+            role='button'
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                closeContactForm();
+              }
+            }}
+          >
+            <X size={42} aria-hidden='true' />
+          </MenuIconWrapper>
 
-            <form
-              ref={form}
-              className='content'
-              onSubmit={handleSubmit(onDataComplete)}
-              aria-label='Contact form'
+          <form
+            ref={form}
+            className='content'
+            onSubmit={handleSubmit(onDataComplete)}
+            aria-label='Contact form'
+          >
+            <h1>Get in touch!</h1>
+            <FormLabel
+              htmlFor='name'
+              labelText='Name:'
+              errorMessage={errors.name?.message}
+            />
+            <input
+              id='name'
+              disabled={showFail}
+              type='text'
+              className={fieldRules}
+              aria-invalid={errors.name ? 'true' : 'false'}
+              aria-describedby={errors.name ? 'name-error' : undefined}
+              {...register('name', {
+                ...contactFormRules.inputNameRules,
+              })}
+              ref={(e) => {
+                register('name').ref(e);
+                nameInputRef.current = e;
+              }}
+            />
+            <FormLabel
+              htmlFor='email'
+              labelText='E-mail:'
+              errorMessage={errors.email?.message}
+            />
+            <input
+              id='email'
+              disabled={showFail}
+              type='email'
+              className={fieldRules}
+              aria-invalid={errors.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'email-error' : undefined}
+              {...register('email', { ...contactFormRules.inputEmailRules })}
+            />
+            <FormLabel
+              htmlFor='message'
+              labelText='Message:'
+              errorMessage={errors.message?.message}
+            />
+            <textarea
+              id='message'
+              {...register('message', {
+                ...contactFormRules.textAreaMessageRules,
+              })}
+              disabled={showFail}
+              className={fieldRules}
+              rows={5}
+              aria-invalid={errors.message ? 'true' : 'false'}
+              aria-describedby={errors.message ? 'message-error' : undefined}
+            />
+            <ContactFormSubmitButton showFail={showFail} isLoading={isLoading}>
+              Something has gone wrong :/, please try to send the message again.
+            </ContactFormSubmitButton>
+            {/* Screen reader announcements */}
+            <div
+              role='status'
+              aria-live='polite'
+              aria-atomic='true'
+              className='sr-only'
             >
-              <h1>Get in touch!</h1>
-              {showLabel('name', 'Name:', errors.name?.message)}
-              <input
-                id='name'
-                disabled={showFail}
-                type='text'
-                className={fieldRules}
-                aria-invalid={errors.name ? 'true' : 'false'}
-                aria-describedby={errors.name ? 'name-error' : undefined}
-                {...register('name', {
-                  ...contactFormRules.inputNameRules,
-                })}
-                ref={(e) => {
-                  register('name').ref(e);
-                  nameInputRef.current = e;
-                }}
-              />
-              {showLabel('email', 'E-mail:', errors.email?.message)}
-              <input
-                id='email'
-                disabled={showFail}
-                type='email'
-                className={fieldRules}
-                aria-invalid={errors.email ? 'true' : 'false'}
-                aria-describedby={errors.email ? 'email-error' : undefined}
-                {...register('email', { ...contactFormRules.inputEmailRules })}
-              />
-              {showLabel('message', 'Message:', errors.message?.message)}
-              <textarea
-                id='message'
-                {...register('message', {
-                  ...contactFormRules.textAreaMessageRules,
-                })}
-                disabled={showFail}
-                className={fieldRules}
-                rows={5}
-                aria-invalid={errors.message ? 'true' : 'false'}
-                aria-describedby={errors.message ? 'message-error' : undefined}
-              />
-              <ContactFormSubmitButton
-                showFail={showFail}
-                isLoading={isLoading}
-              >
-                Something has gone wrong :/, please try to send the message
-                again.
-              </ContactFormSubmitButton>
-              {/* Screen reader announcements */}
-              <div
-                role='status'
-                aria-live='polite'
-                aria-atomic='true'
-                className='sr-only'
-              >
-                {isLoading && 'Sending message...'}
-                {showFail && 'Failed to send message. Please try again.'}
-              </div>
-            </form>
+              {isLoading && 'Sending message...'}
+              {showFail && 'Failed to send message. Please try again.'}
+            </div>
+          </form>
         </div>
       ) : (
         <ThankYouPage toggleContact={toggleContact} />
