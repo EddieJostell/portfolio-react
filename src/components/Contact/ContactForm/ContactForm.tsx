@@ -6,13 +6,14 @@ import { templateID } from './helpers/templateID';
 import { userID } from './helpers/userID';
 import { useForm } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
-
+import styled from '@emotion/styled';
 import classNames from 'classnames';
 import { contactFormRules } from './helpers/HookFormValidationRules';
 import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
 import { FormLabel } from './parts/FormLabel';
 import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
 import { X } from 'react-feather';
+import { Header } from '../../Header/Header';
 
 interface IContactFormProps {
   toggleContact: () => void;
@@ -29,6 +30,12 @@ const initialContactState = {
   showThanks: false,
   isLoading: false,
 };
+
+const StyledTopBar = styled('div')(({}) => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  padding: '10px',
+}));
 
 function formReducer(state: any, action: any) {
   switch (action.type) {
@@ -81,11 +88,11 @@ export const ContactForm = (props: IContactFormProps) => {
         },
       );
 
-      /*  setTimeout(() => {
+      /* setTimeout(() => {
         if (1 + 1 === 3) {
-          dispatch({ type: "SUCCESS" });
+          dispatch({ type: 'SUCCESS' });
         } else {
-          dispatch({ type: "ERROR" });
+          dispatch({ type: 'ERROR' });
         }
       }, 2000); */
     }
@@ -106,20 +113,22 @@ export const ContactForm = (props: IContactFormProps) => {
       {!showThanks ? (
         <div className='Form-contact'>
           <div className='title'>Contact</div>
-          <MenuIconWrapper
-            onClick={closeContactForm}
-            aria-label='Close contact form'
-            role='button'
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                closeContactForm();
-              }
-            }}
-          >
-            <X size={42} aria-hidden='true' />
-          </MenuIconWrapper>
+          <StyledTopBar>
+            <MenuIconWrapper
+              onClick={closeContactForm}
+              aria-label='Close contact form'
+              role='button'
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  closeContactForm();
+                }
+              }}
+            >
+              <X size={42} aria-hidden='true' />
+            </MenuIconWrapper>
+          </StyledTopBar>
 
           <form
             ref={form}
@@ -127,7 +136,7 @@ export const ContactForm = (props: IContactFormProps) => {
             onSubmit={handleSubmit(onDataComplete)}
             aria-label='Contact form'
           >
-            <h1>Get in touch!</h1>
+            <Header size='h1' title='Get in touch!' />
             <FormLabel
               htmlFor='name'
               labelText='Name:'
