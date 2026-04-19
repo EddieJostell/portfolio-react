@@ -344,4 +344,9 @@ export const QuoteInfo: IQuoteItem[] = [
     quote: 'Victory is celebrated in the light but it is won in the darkness.',
     author: 'Dune: Prophecy (2024)',
   },
+  {
+    id: 20,
+    quote: 'I am the master of my fate, I am the captain of my soul.',
+    author: 'William Ernest Henley, Invictus',
+  },
 ];
