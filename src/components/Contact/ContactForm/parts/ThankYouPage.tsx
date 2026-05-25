@@ -1,8 +1,36 @@
 import React, { useEffect, useRef } from 'react';
-
+import styled from '@emotion/styled';
+import { Header } from '../../../Header/Header';
 interface ThankYouPageProps {
   toggleContact: () => void;
 }
+
+const StyledThanksContainer = styled('div')(({}) => ({
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+  overflowX: 'hidden',
+  backgroundColor: '#ffffff',
+}));
+
+const StyledTitle = styled('div')(({}) => ({
+  position: 'absolute',
+  bottom: '30px',
+  right: '-200px',
+  color: '#000',
+  fontSize: '190px',
+  opacity: 0.3,
+  fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
+  zIndex: 0,
+}));
+
+const StyledDescription = styled('div')(({}) => ({
+  zIndex: 1,
+  textAlign: 'left',
+  padding: '40px',
+  marginTop: '40px',
+  fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
+}));
 
 export const ThankYouPage = (props: ThankYouPageProps) => {
   const { toggleContact } = props;
@@ -14,14 +42,14 @@ export const ThankYouPage = (props: ThankYouPageProps) => {
   }, []);
 
   return (
-    <div className='Form-thanks' role='alert' aria-live='polite'>
-      <div className='title'>Thanks</div>
-      <div className='description'>
+    <StyledThanksContainer role='alert' aria-live='polite'>
+      <StyledTitle>Thanks</StyledTitle>
+      <StyledDescription>
         <h1 ref={headingRef} tabIndex={-1}>
           Message has been sent!
         </h1>
         Thank you for reaching out! I will get back at you as soon as possible!
-      </div>
+      </StyledDescription>
       <button
         className='btn'
         onClick={toggleContact}
@@ -29,6 +57,6 @@ export const ThankYouPage = (props: ThankYouPageProps) => {
       >
         Back to start
       </button>
-    </div>
+    </StyledThanksContainer>
   );
 };
