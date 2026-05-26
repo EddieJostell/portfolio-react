@@ -29,7 +29,13 @@ export const About: FC<{}> = ({}) => {
         >
           <div className='content'>
             <div className='bio'>
-              <Header title='About Me' size='h2' fullWidth color textCenter />
+              <Header
+                title='About Me'
+                size='h2'
+                fullWidth
+                color='red'
+                textCenter
+              />
               <div className='text'>
                 <div>
                   Hello! My name is Eddie and I enjoy creating things on the

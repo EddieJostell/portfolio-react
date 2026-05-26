@@ -23,7 +23,13 @@ export const Portfolio: FC<{}> = () => {
             </motion.div>
           )}
           <div className='List'>
-            <Header title='Projects' size='h2' fullWidth color textCenter />
+            <Header
+              title='Projects'
+              size='h2'
+              fullWidth
+              color='red'
+              textCenter
+            />
             {Projects.portItem.map((port: IPortfolioItem, key: number) => (
               <PortfolioContent
                 key={key}

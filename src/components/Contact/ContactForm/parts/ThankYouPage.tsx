@@ -19,7 +19,7 @@ const StyledTitle = styled('div')(({}) => ({
   right: '-200px',
   color: '#000',
   fontSize: '190px',
-  opacity: 0.3,
+  opacity: 0.5,
   fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
   zIndex: 0,
 }));
@@ -45,9 +45,13 @@ export const ThankYouPage = (props: ThankYouPageProps) => {
     <StyledThanksContainer role='alert' aria-live='polite'>
       <StyledTitle>Thanks</StyledTitle>
       <StyledDescription>
-        <h1 ref={headingRef} tabIndex={-1}>
-          Message has been sent!
-        </h1>
+        <Header
+          size='h1'
+          color='black'
+          title='Message has been sent!'
+          ref={headingRef}
+          tabIndex={-1}
+        />
         Thank you for reaching out! I will get back at you as soon as possible!
       </StyledDescription>
       <button
