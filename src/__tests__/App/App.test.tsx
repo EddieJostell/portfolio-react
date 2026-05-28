@@ -55,7 +55,7 @@ const navItems = [
 ];
 
 test('renders App component', () => {
-  render(<App navIsOpen={false} contactIsActive={false} isLoading={false} />);
+  render(<App />);
   //screen.debug();
   const AppElement = screen.getByTestId('application');
   expect(AppElement).not.toBe(undefined);
@@ -76,7 +76,7 @@ test('renders Navigation component', () => {
       toggleNav={() => {}}
       navIsOpen={false}
       data-testid='navigation'
-    />
+    />,
   );
 
   const ContainerElement = screen.getByTestId('navigation');

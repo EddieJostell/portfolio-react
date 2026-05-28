@@ -15,7 +15,7 @@ interface IAppState {
   isLoading: boolean;
 }
 
-const App: FC<IAppState> = ({}) => {
+const App: FC = () => {
   const [appState, setAppState] = useState<IAppState>({
     navIsOpen: false,
     contactIsActive: false,
