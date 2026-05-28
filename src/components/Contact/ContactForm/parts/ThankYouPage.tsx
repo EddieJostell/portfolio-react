@@ -32,6 +32,31 @@ const StyledDescription = styled('div')(({}) => ({
   fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
 }));
 
+const StyledButton = styled('button')(({}) => ({
+  padding: '12px 20px',
+  background: '#d90429',
+  border: 'none',
+  color: '#edf2f4',
+  cursor: 'pointer',
+  zIndex: 2,
+  fontSize: '0.875em',
+  letterSpacing: '2px',
+  width: '50%',
+
+  '@media screen and (min-width: 768px)': {
+    width: '35%',
+  },
+
+  '&.btn-disabled': {
+    opacity: 0.9,
+    background: '#8d99ae',
+    cursor: 'not-allowed',
+  },
+  '&.btn-error': {
+    background: '#ef233c',
+  },
+}));
+
 export const ThankYouPage = (props: ThankYouPageProps) => {
   const { toggleContact } = props;
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -54,13 +79,12 @@ export const ThankYouPage = (props: ThankYouPageProps) => {
         />
         Thank you for reaching out! I will get back at you as soon as possible!
       </StyledDescription>
-      <button
-        className='btn'
+      <StyledButton
         onClick={toggleContact}
         aria-label='Close contact form and return to start'
       >
         Back to start
-      </button>
+      </StyledButton>
     </StyledThanksContainer>
   );
 };
