@@ -7,26 +7,26 @@ import { afterEach } from 'vitest';
 // /C:/Projects/home/portfolio-react/config/setup.ts
 // Configure testing library
 
-
 // Mock IntersectionObserver with proper interface implementation
 class MockIntersectionObserver implements IntersectionObserver {
   readonly root: Element | Document | null = null;
   readonly rootMargin: string = '';
   readonly thresholds: ReadonlyArray<number> = [];
-  
+  readonly scrollMargin: string = '';
+
   constructor(
     private callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit
+    options?: IntersectionObserverInit,
   ) {
     if (options) {
       this.root = options.root || null;
       this.rootMargin = options.rootMargin || '0px';
-      this.thresholds = Array.isArray(options.threshold) 
-        ? options.threshold 
+      this.thresholds = Array.isArray(options.threshold)
+        ? options.threshold
         : [options.threshold || 0];
     }
   }
-  
+
   observe = vi.fn();
   unobserve = vi.fn();
   disconnect = vi.fn();
@@ -37,14 +37,14 @@ class MockIntersectionObserver implements IntersectionObserver {
 Object.defineProperty(window, 'IntersectionObserver', {
   writable: true,
   configurable: true,
-  value: MockIntersectionObserver
+  value: MockIntersectionObserver,
 });
 
 configure({ testIdAttribute: 'data-testid' });
 
 afterEach(() => {
-    cleanup();
-  });
+  cleanup();
+});
 
 // Mocking global objects or functions if needed
 global.fetch = vi.fn();
