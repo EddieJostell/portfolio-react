@@ -7,10 +7,10 @@ import { userID } from './helpers/userID';
 import { useForm } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
 import styled from '@emotion/styled';
-import classNames from 'classnames';
 import { contactFormRules } from './helpers/HookFormValidationRules';
-import { ContactFormSubmitButton } from './parts/ContactFormSubmitButton';
+import { ContactFormSubmitControl } from './parts/ContactFormSubmitControl';
 import { FormLabel } from './parts/FormLabel';
+import { FormField } from './parts/FormField';
 import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
 import { X } from 'react-feather';
 import { Header } from '../../Header/Header';
@@ -26,7 +26,7 @@ interface FormData {
 }
 
 interface FormState {
-  showFail: boolean;
+  hasFailed: boolean;
   showThanks: boolean;
   isLoading: boolean;
 }
@@ -34,7 +34,7 @@ interface FormState {
 type FormAction = { type: 'SUBMIT' } | { type: 'SUCCESS' } | { type: 'ERROR' };
 
 const initialContactState: FormState = {
-  showFail: false,
+  hasFailed: false,
   showThanks: false,
   isLoading: false,
 };
@@ -45,14 +45,47 @@ const StyledTopBar = styled('div')(({}) => ({
   padding: '10px',
 }));
 
+const StyledForm = styled('form')(({}) => ({
+  zIndex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  textAlign: 'left',
+  color: '#edf2f4',
+  padding: '40px',
+  marginTop: '40px',
+  fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
+}));
+
+const StyledFormContainer = styled('div')(({}) => ({
+  width: '100%',
+  height: '100%',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  webkitTransform: 'translate(-50%, -50%)',
+  backgroundColor: 'transparent',
+  display: 'flex',
+  flexDirection: 'row',
+  boxShadow: '0 20px 80px 0 rgba(0, 0, 0, 0.55)',
+
+  '@media screen and (min-width: 992px)': {
+    width: '585px',
+    height: '700px',
+    overflow: 'hidden',
+    flexDirection: 'column',
+  },
+}));
+
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case 'SUBMIT':
-      return { ...state, isLoading: true, showFail: false };
+      return { ...state, isLoading: true, hasFailed: false };
     case 'SUCCESS':
       return { ...state, isLoading: false, showThanks: true };
     case 'ERROR':
-      return { ...state, isLoading: false, showFail: true };
+      return { ...state, isLoading: false, hasFailed: true };
     default:
       return state;
   }
@@ -62,7 +95,7 @@ export const ContactForm = (props: IContactFormProps) => {
   const { toggleContact } = props;
 
   const [state, dispatch] = useReducer(formReducer, initialContactState);
-  const { showFail, showThanks, isLoading } = state;
+  const { hasFailed, showThanks, isLoading } = state;
 
   const {
     register,
@@ -113,14 +146,17 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 300);
   };
 
-  const fieldRules = classNames('fields', {
-    disabled: showFail,
-  });
-
   return (
     <div className='Form'>
-      {!showThanks ? (
-        <div className='Form-contact'>
+      {showThanks ? (
+        <ThankYouPage toggleContact={toggleContact} />
+      ) : (
+        <StyledFormContainer
+          className='Form-contact'
+          role='dialog'
+          aria-modal='true'
+          aria-labelledby='contact-title'
+        >
           <div className='title'>Contact</div>
           <StyledTopBar>
             <MenuIconWrapper
@@ -139,9 +175,8 @@ export const ContactForm = (props: IContactFormProps) => {
             </MenuIconWrapper>
           </StyledTopBar>
 
-          <form
+          <StyledForm
             ref={form}
-            className='content'
             onSubmit={handleSubmit(onDataComplete)}
             aria-label='Contact form'
           >
@@ -151,19 +186,18 @@ export const ContactForm = (props: IContactFormProps) => {
               labelText='Name:'
               errorMessage={errors.name?.message}
             />
-            <input
+            <FormField
               id='name'
-              disabled={showFail}
+              disabled={hasFailed}
               type='text'
-              className={fieldRules}
-              aria-invalid={errors.name ? 'true' : 'false'}
-              aria-describedby={errors.name ? 'name-error' : undefined}
+              hasError={!!errors.name}
+              errorId='name-error'
               {...register('name', {
                 ...contactFormRules.inputNameRules,
               })}
               ref={(e) => {
                 register('name').ref(e);
-                nameInputRef.current = e;
+                nameInputRef.current = e as HTMLInputElement | null;
               }}
             />
             <FormLabel
@@ -171,13 +205,12 @@ export const ContactForm = (props: IContactFormProps) => {
               labelText='E-mail:'
               errorMessage={errors.email?.message}
             />
-            <input
+            <FormField
               id='email'
-              disabled={showFail}
+              disabled={hasFailed}
               type='email'
-              className={fieldRules}
-              aria-invalid={errors.email ? 'true' : 'false'}
-              aria-describedby={errors.email ? 'email-error' : undefined}
+              hasError={!!errors.email}
+              errorId='email-error'
               {...register('email', { ...contactFormRules.inputEmailRules })}
             />
             <FormLabel
@@ -185,20 +218,23 @@ export const ContactForm = (props: IContactFormProps) => {
               labelText='Message:'
               errorMessage={errors.message?.message}
             />
-            <textarea
+            <FormField
+              as='textarea'
               id='message'
               {...register('message', {
                 ...contactFormRules.textAreaMessageRules,
               })}
-              disabled={showFail}
-              className={fieldRules}
+              disabled={hasFailed}
               rows={5}
-              aria-invalid={errors.message ? 'true' : 'false'}
-              aria-describedby={errors.message ? 'message-error' : undefined}
+              hasError={!!errors.message}
+              errorId='message-error'
             />
-            <ContactFormSubmitButton showFail={showFail} isLoading={isLoading}>
+            <ContactFormSubmitControl
+              hasFailed={hasFailed}
+              isLoading={isLoading}
+            >
               Something has gone wrong :/, please try to send the message again.
-            </ContactFormSubmitButton>
+            </ContactFormSubmitControl>
             {/* Screen reader announcements */}
             <div
               role='status'
@@ -207,12 +243,10 @@ export const ContactForm = (props: IContactFormProps) => {
               className='sr-only'
             >
               {isLoading && 'Sending message...'}
-              {showFail && 'Failed to send message. Please try again.'}
+              {hasFailed && 'Failed to send message. Please try again.'}
             </div>
-          </form>
-        </div>
-      ) : (
-        <ThankYouPage toggleContact={toggleContact} />
+          </StyledForm>
+        </StyledFormContainer>
       )}
     </div>
   );
