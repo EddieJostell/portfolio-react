@@ -19,6 +19,7 @@ export const Skills: FC<{}> = () => {
         className='skills-title'
         title='Here are a few technologies I’ve been working with'
         size='h3'
+        color='red'
       />
       <ul className='skills-list'>{showSkills()}</ul>
     </div>
