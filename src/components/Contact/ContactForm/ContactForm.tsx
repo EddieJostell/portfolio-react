@@ -25,7 +25,15 @@ interface FormData {
   message: string;
 }
 
-const initialContactState = {
+interface FormState {
+  showFail: boolean;
+  showThanks: boolean;
+  isLoading: boolean;
+}
+
+type FormAction = { type: 'SUBMIT' } | { type: 'SUCCESS' } | { type: 'ERROR' };
+
+const initialContactState: FormState = {
   showFail: false,
   showThanks: false,
   isLoading: false,
@@ -37,16 +45,16 @@ const StyledTopBar = styled('div')(({}) => ({
   padding: '10px',
 }));
 
-function formReducer(state: any, action: any) {
+function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case 'SUBMIT':
       return { ...state, isLoading: true, showFail: false };
     case 'SUCCESS':
       return { ...state, isLoading: false, showThanks: true };
     case 'ERROR':
-      return { ...state, showFail: true };
+      return { ...state, isLoading: false, showFail: true };
     default:
-      throw new Error();
+      return state;
   }
 }
 
@@ -88,6 +96,7 @@ export const ContactForm = (props: IContactFormProps) => {
         },
       ); */
 
+      dispatch({ type: 'SUBMIT' });
       setTimeout(() => {
         if (1 + 1 === 2) {
           dispatch({ type: 'SUCCESS' });
