@@ -1,5 +1,4 @@
 import React, { useRef, useReducer, useEffect } from 'react';
-import './ContactForm.scss';
 import emailjs from '@emailjs/browser';
 import { serviceID } from './helpers/serviceID';
 import { templateID } from './helpers/templateID';
@@ -78,6 +77,28 @@ const StyledFormContainer = styled('div')(({}) => ({
   },
 }));
 
+const StyledBigTitle = styled(Header)(({ theme }) => ({
+  position: 'absolute',
+  bottom: '30px',
+  right: '-300px',
+  fontSize: '190px',
+  opacity: 0.07,
+  fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
+  zIndex: 0,
+}));
+
+const StyledA11yContent = styled('div')(({}) => ({
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0, 0, 0, 0)',
+  whiteSpace: 'nowrap',
+  borderWidth: 0,
+}));
+
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
     case 'SUBMIT':
@@ -147,7 +168,7 @@ export const ContactForm = (props: IContactFormProps) => {
   };
 
   return (
-    <div className='Form'>
+    <StyledFormContainer /* className='Form' */>
       {showThanks ? (
         <ThankYouPage toggleContact={toggleContact} />
       ) : (
@@ -157,7 +178,12 @@ export const ContactForm = (props: IContactFormProps) => {
           aria-modal='true'
           aria-labelledby='contact-title'
         >
-          <div className='title'>Contact</div>
+          <StyledBigTitle
+            id='contact-title'
+            size='h2'
+            title='Contact'
+            color='white'
+          />
           <StyledTopBar>
             <MenuIconWrapper
               onClick={closeContactForm}
@@ -236,18 +262,18 @@ export const ContactForm = (props: IContactFormProps) => {
               Something has gone wrong :/, please try to send the message again.
             </ContactFormSubmitControl>
             {/* Screen reader announcements */}
-            <div
+            <StyledA11yContent
               role='status'
               aria-live='polite'
               aria-atomic='true'
-              className='sr-only'
+              /*  className='sr-only' */
             >
               {isLoading && 'Sending message...'}
               {hasFailed && 'Failed to send message. Please try again.'}
-            </div>
+            </StyledA11yContent>
           </StyledForm>
         </StyledFormContainer>
       )}
-    </div>
+    </StyledFormContainer>
   );
 };
