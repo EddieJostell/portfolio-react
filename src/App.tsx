@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState, useCallback, Fragment, FC, useRef } from 'react';
+import { useState, useCallback, FC, useRef } from 'react';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
 import { Portfolio } from './components/Portfolio/Portfolio';
 // import { Commits } from './components/Commits/Commits';
@@ -43,18 +43,34 @@ const App: FC = () => {
     setAppState({ ...appState, isLoading: !appState.isLoading });
   }, []); */
 
-  const displayLoader = () => {
-    return (
-      <div className='Name-wrapper'>
-        <div className='loader-letter'>E</div>
-      </div>
-    );
-  };
-
   const handleScrollToTop = () => {
     console.log('scroll to top and focus');
     scrollTop();
     topNavIconRef.current?.focus();
+  };
+
+  const renderContent = () => {
+    if (appState.isLoading) {
+      return (
+        <div className='Name-wrapper'>
+          <div className='loader-letter'>E</div>
+        </div>
+      );
+    }
+
+    if (appState.contactIsActive) {
+      return <ContactForm toggleContact={toggleContact} />;
+    }
+
+    return (
+      <>
+        <Home />
+        <About />
+        <Portfolio />
+        {/* <Commits /> */}
+        <Footer handleScrollToTop={handleScrollToTop} />
+      </>
+    );
   };
 
   return (
@@ -70,23 +86,7 @@ const App: FC = () => {
       )}
 
       <div className='App' data-testid='application'>
-        {appState.isLoading ? (
-          displayLoader()
-        ) : (
-          <Fragment>
-            {appState.contactIsActive ? (
-              <ContactForm key='6' toggleContact={toggleContact} />
-            ) : (
-              [
-                <Home key='1' />,
-                <About key='2' />,
-                <Portfolio key='3' />,
-                // <Commits key='4' />,
-                <Footer key='5' handleScrollToTop={handleScrollToTop} />,
-              ]
-            )}
-          </Fragment>
-        )}
+        {renderContent()}
       </div>
     </ContextProvider>
   );
