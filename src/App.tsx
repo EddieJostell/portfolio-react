@@ -2,6 +2,7 @@ import './App.scss';
 import { useState, useCallback, Fragment, FC, useRef } from 'react';
 import { ContextProvider, initialHelperContext } from './utils/HelperContext';
 import { Portfolio } from './components/Portfolio/Portfolio';
+// import { Commits } from './components/Commits/Commits';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
@@ -73,15 +74,16 @@ const App: FC = () => {
           displayLoader()
         ) : (
           <Fragment>
-            {!appState.contactIsActive ? (
+            {appState.contactIsActive ? (
+              <ContactForm key='6' toggleContact={toggleContact} />
+            ) : (
               [
                 <Home key='1' />,
                 <About key='2' />,
                 <Portfolio key='3' />,
-                <Footer key='4' handleScrollToTop={handleScrollToTop} />,
+                // <Commits key='4' />,
+                <Footer key='5' handleScrollToTop={handleScrollToTop} />,
               ]
-            ) : (
-              <ContactForm key='5' toggleContact={toggleContact} />
             )}
           </Fragment>
         )}
