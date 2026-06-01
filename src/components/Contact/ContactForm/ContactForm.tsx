@@ -1,5 +1,5 @@
 import { useRef, useReducer, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
 import styled from '@emotion/styled';
 import { contactFormRules } from './helpers/HookFormValidationRules';
@@ -9,6 +9,7 @@ import { FormField } from './parts/FormField';
 import { MenuIconWrapper } from '../../Navigation/StyledNavigationElements';
 import { X } from 'react-feather';
 import { Header } from '../../Header/Header';
+//import { sendEmailProd } from './helpers/sendEmailProd';
 
 interface IContactFormProps {
   toggleContact: () => void;
@@ -124,18 +125,18 @@ export const ContactForm = (props: IContactFormProps) => {
     reValidateMode: 'onChange',
   });
 
-  const form = useRef<HTMLFormElement>(null); //EmailJS useRef
   const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     nameInputRef.current?.focus();
   }, []);
 
-  const onDataComplete = (data: ContactFormData) => {
+  const onDataComplete: SubmitHandler<ContactFormData> = (data, event) => {
     if (data) {
-      // For production, import { sendEmailProd } from './helpers/sendEmailProd'
-      // and call: sendEmailProd(form.current!, dispatch);
+      const formEl = event?.target as HTMLFormElement | undefined;
+      if (!formEl) return;
       dispatch({ type: 'SUBMIT' });
+      /*  sendEmailProd(formEl, dispatch); */
       setTimeout(() => {
         // eslint-disable-next-line no-constant-condition -- NOSONAR: temporary stub for ThankYouPage development
         if (1 + 1 === 2) {
@@ -153,113 +154,105 @@ export const ContactForm = (props: IContactFormProps) => {
     }, 300);
   };
 
-  return (
-    <StyledFormContainer /* className='Form' */>
-      {showThanks ? (
-        <ThankYouPage toggleContact={toggleContact} />
-      ) : (
-        <StyledFormContainer
-          className='Form-contact'
-          role='dialog'
-          aria-modal='true'
-          aria-labelledby='contact-title'
+  return showThanks ? (
+    <ThankYouPage toggleContact={toggleContact} />
+  ) : (
+    <StyledFormContainer
+      className='Form-contact'
+      role='dialog'
+      aria-modal='true'
+      aria-labelledby='contact-title'
+    >
+      <StyledBigTitle
+        id='contact-title'
+        size='h2'
+        title='Contact'
+        color='white'
+      />
+      <StyledTopBar>
+        <MenuIconWrapper
+          onClick={closeContactForm}
+          aria-label='Close contact form'
+          role='button'
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              closeContactForm();
+            }
+          }}
         >
-          <StyledBigTitle
-            id='contact-title'
-            size='h2'
-            title='Contact'
-            color='white'
-          />
-          <StyledTopBar>
-            <MenuIconWrapper
-              onClick={closeContactForm}
-              aria-label='Close contact form'
-              role='button'
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  closeContactForm();
-                }
-              }}
-            >
-              <X size={42} aria-hidden='true' />
-            </MenuIconWrapper>
-          </StyledTopBar>
+          <X size={42} aria-hidden='true' />
+        </MenuIconWrapper>
+      </StyledTopBar>
 
-          <StyledForm
-            ref={form}
-            onSubmit={handleSubmit(onDataComplete)}
-            aria-label='Contact form'
-          >
-            <Header size='h1' title='Get in touch!' />
-            <FormLabel
-              htmlFor='name'
-              labelText='Name:'
-              errorMessage={errors.name?.message}
-            />
-            <FormField
-              id='name'
-              disabled={hasFailed}
-              type='text'
-              hasError={!!errors.name}
-              errorId='name-error'
-              {...register('name', {
-                ...contactFormRules.inputNameRules,
-              })}
-              ref={(e) => {
-                register('name').ref(e);
-                nameInputRef.current = e as HTMLInputElement | null;
-              }}
-            />
-            <FormLabel
-              htmlFor='email'
-              labelText='E-mail:'
-              errorMessage={errors.email?.message}
-            />
-            <FormField
-              id='email'
-              disabled={hasFailed}
-              type='email'
-              hasError={!!errors.email}
-              errorId='email-error'
-              {...register('email', { ...contactFormRules.inputEmailRules })}
-            />
-            <FormLabel
-              htmlFor='message'
-              labelText='Message:'
-              errorMessage={errors.message?.message}
-            />
-            <FormField
-              as='textarea'
-              id='message'
-              {...register('message', {
-                ...contactFormRules.textAreaMessageRules,
-              })}
-              disabled={hasFailed}
-              rows={5}
-              hasError={!!errors.message}
-              errorId='message-error'
-            />
-            <ContactFormSubmitControl
-              hasFailed={hasFailed}
-              isLoading={isLoading}
-            >
-              Something has gone wrong :/, please try to send the message again.
-            </ContactFormSubmitControl>
-            {/* Screen reader announcements */}
-            <StyledA11yContent
-              role='status'
-              aria-live='polite'
-              aria-atomic='true'
-              /*  className='sr-only' */
-            >
-              {isLoading && 'Sending message...'}
-              {hasFailed && 'Failed to send message. Please try again.'}
-            </StyledA11yContent>
-          </StyledForm>
-        </StyledFormContainer>
-      )}
+      <StyledForm
+        onSubmit={handleSubmit(onDataComplete)}
+        aria-label='Contact form'
+      >
+        <Header size='h1' title='Get in touch!' />
+        <FormLabel
+          htmlFor='name'
+          labelText='Name:'
+          errorMessage={errors.name?.message}
+        />
+        <FormField
+          id='name'
+          disabled={hasFailed}
+          type='text'
+          hasError={!!errors.name}
+          errorId='name-error'
+          {...register('name', {
+            ...contactFormRules.inputNameRules,
+          })}
+          ref={(e) => {
+            register('name').ref(e);
+            nameInputRef.current = e as HTMLInputElement | null;
+          }}
+        />
+        <FormLabel
+          htmlFor='email'
+          labelText='E-mail:'
+          errorMessage={errors.email?.message}
+        />
+        <FormField
+          id='email'
+          disabled={hasFailed}
+          type='email'
+          hasError={!!errors.email}
+          errorId='email-error'
+          {...register('email', { ...contactFormRules.inputEmailRules })}
+        />
+        <FormLabel
+          htmlFor='message'
+          labelText='Message:'
+          errorMessage={errors.message?.message}
+        />
+        <FormField
+          as='textarea'
+          id='message'
+          {...register('message', {
+            ...contactFormRules.textAreaMessageRules,
+          })}
+          disabled={hasFailed}
+          rows={5}
+          hasError={!!errors.message}
+          errorId='message-error'
+        />
+        <ContactFormSubmitControl hasFailed={hasFailed} isLoading={isLoading}>
+          Something has gone wrong :/, please try to send the message again.
+        </ContactFormSubmitControl>
+        {/* Screen reader announcements */}
+        <StyledA11yContent
+          role='status'
+          aria-live='polite'
+          aria-atomic='true'
+          /*  className='sr-only' */
+        >
+          {isLoading && 'Sending message...'}
+          {hasFailed && 'Failed to send message. Please try again.'}
+        </StyledA11yContent>
+      </StyledForm>
     </StyledFormContainer>
   );
 };

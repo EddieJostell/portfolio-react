@@ -1,8 +1,6 @@
 import emailjs from '@emailjs/browser';
 import type React from 'react';
-import { serviceID } from './serviceID';
-import { templateID } from './templateID';
-import { userID } from './userID';
+import { serviceID, templateID, userID } from './emailConfig';
 
 type FormAction = { type: 'SUBMIT' } | { type: 'SUCCESS' } | { type: 'ERROR' };
 
@@ -11,7 +9,7 @@ export const sendEmailProd = (
   dispatch: React.Dispatch<FormAction>,
 ) => {
   dispatch({ type: 'SUBMIT' });
-  emailjs.sendForm(serviceID(), templateID(), formEl, userID()).then(
+  emailjs.sendForm(serviceID, templateID, formEl, userID).then(
     (result) => {
       console.log('SUCCESS!', result.status, result.text);
       dispatch({ type: 'SUCCESS' });
