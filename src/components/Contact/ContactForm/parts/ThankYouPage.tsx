@@ -6,11 +6,22 @@ interface ThankYouPageProps {
 }
 
 const StyledThanksContainer = styled('div')({
-  position: 'relative',
   width: '100%',
   height: '100%',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  webkitTransform: 'translate(-50%, -50%)',
   overflowX: 'hidden',
   backgroundColor: '#ffffff',
+  boxShadow: '0 20px 80px 0 rgba(0, 0, 0, 0.55)',
+
+  '@media screen and (min-width: 992px)': {
+    width: '585px',
+    height: '700px',
+    overflow: 'hidden',
+  },
 });
 
 const StyledTitle = styled('div')({
