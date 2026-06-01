@@ -1,12 +1,36 @@
 import React from 'react';
-import './Container.scss';
+import styled from '@emotion/styled';
 
-export interface IContainerProps {}
-
-export function Container(props: { children: React.ReactNode }) {
-  return (
-    <div className="Container" data-testid="container">
-      {props.children}
-    </div>
-  );
+export interface ContainerProps {
+  children: React.ReactNode;
 }
+
+const StyledContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+    padding: 0 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1280px;
+  }
+
+  @media (min-width: 1536px) {
+    max-width: 1536px;
+  }
+`;
+
+export const Container: React.FC<ContainerProps> = ({ children }) => {
+  return <StyledContainer data-testid='container'>{children}</StyledContainer>;
+};
