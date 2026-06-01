@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
 import { ISocialMediaLink } from '../../../utils/data';
 
@@ -36,7 +36,7 @@ export const SocialMedia: FC<ISocialMediaProps> = ({ icons, links }) => {
           )}
         </>
       );
-    }
+    },
   );
 
   return <div>{mapLinksOrIcons}</div>;

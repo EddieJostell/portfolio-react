@@ -11,7 +11,7 @@ import {
 } from './AboutAnimations';
 import { useMediaQuery } from '../../utils/hooks';
 
-export const About: FC<{}> = ({}) => {
+export const About: FC = () => {
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
   return (

@@ -34,7 +34,7 @@ const App: FC = () => {
       contactIsActive: !appState.contactIsActive,
       navIsOpen: false,
     });
-  }, [appState.contactIsActive]);
+  }, [appState]);
 
   /*  useEffect(() => {
     setTimeout(() => {

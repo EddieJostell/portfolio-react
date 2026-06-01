@@ -1,4 +1,4 @@
-import {
+/* import {
   createContext,
   PropsWithChildren,
   Reducer,
@@ -102,3 +102,4 @@ export const GlobalProvider = ({
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };
+ */

@@ -23,14 +23,15 @@ const formatDate = (iso: string): string => {
 const firstLine = (message: string): string => message.split('\n')[0];
 
 export const Commits: FC = () => {
-  const [status, setStatus] = useState<Status>('idle');
+  const [status, setStatus] = useState<Status>(
+    featuredCommits.length === 0 ? 'idle' : 'loading',
+  );
   const [commits, setCommits] = useState<Commit[]>([]);
 
   useEffect(() => {
     if (featuredCommits.length === 0) return;
 
     let cancelled = false;
-    setStatus('loading');
 
     fetchCommits(featuredCommits.map((c) => c.sha))
       .then((result) => {

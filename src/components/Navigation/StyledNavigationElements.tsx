@@ -2,21 +2,21 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 import styledComponent from '@emotion/styled';
 
-export const StyledTopNavigation = styledComponent('div')(({}) => ({
+export const StyledTopNavigation = styledComponent('div')({
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-}));
+});
 
-export const StyledIconContainer = styledComponent('div')(({}) => ({
+export const StyledIconContainer = styledComponent('div')({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-}));
+});
 
-export const StyledIcon = styledComponent('button')(({}) => ({
+export const StyledIcon = styledComponent('button')({
   fontSize: '3rem',
   fontFamily: "'Diplomata', cursive",
   color: '#edf2f4',
@@ -30,9 +30,9 @@ export const StyledIcon = styledComponent('button')(({}) => ({
   borderStyle: 'none',
   borderColor: 'none',
   borderImage: 'none',
-}));
+});
 
-export const MenuIconWrapper = styledComponent('button')(({}) => ({
+export const MenuIconWrapper = styledComponent('button')({
   color: '#edf2f4',
   transition: 'opacity 0.35s ease 0.65s',
   textDecoration: 'none',
@@ -44,33 +44,33 @@ export const MenuIconWrapper = styledComponent('button')(({}) => ({
   borderStyle: 'none',
   borderColor: 'none',
   borderImage: 'none',
-}));
+});
 
-export const StyledNavigationContainer = styledComponent('nav')(({}) => ({
+export const StyledNavigationContainer = styledComponent('nav')({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-}));
+});
 
-export const StyledNavMenu = styledComponent(motion.ul)(({}) => ({
+export const StyledNavMenu = styledComponent(motion.ul)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   listStyle: 'none',
   margin: 0,
   padding: 0,
-}));
+});
 
-export const StyledNavMenuLink = styledComponent('li')(({}) => ({
+export const StyledNavMenuLink = styledComponent('li')({
   position: 'relative',
   margin: '1rem',
   listStyleType: 'none',
   cursor: 'pointer',
   fontFamily: "'Goldman', Times New Roman, Times, serif",
-}));
+});
 
-export const NavigationLink = styledComponent(Link)(({}) => ({
+export const NavigationLink = styledComponent(Link)({
   fontSize: '1.5rem',
   lineHeight: '2rem',
   listStyleType: 'none',
@@ -99,9 +99,9 @@ export const NavigationLink = styledComponent(Link)(({}) => ({
     width: '100%',
     left: '0',
   },
-}));
+});
 
-export const ContactLink = styledComponent('button')(({}) => ({
+export const ContactLink = styledComponent('button')({
   fontFamily: "'Goldman', Times New Roman, Times, serif",
   backgroundColor: 'transparent',
   fontSize: '1.5rem',
@@ -138,9 +138,9 @@ export const ContactLink = styledComponent('button')(({}) => ({
     width: '100%',
     left: '0',
   },
-}));
+});
 
-export const NavigationButton = styledComponent('button')(({}) => ({
+export const NavigationButton = styledComponent('button')({
   backgroundColor: 'transparent',
   fontSize: '1rem',
   lineHeight: '2rem',
@@ -159,4 +159,4 @@ export const NavigationButton = styledComponent('button')(({}) => ({
     color: '#d90429',
     outline: 'none',
   },
-}));
+});

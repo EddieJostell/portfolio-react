@@ -1,8 +1,7 @@
 import { ReactNode } from 'react';
-import { Contact } from '../components/Contact/Contact';
-import { Experiments } from '../components/Experiments/Experiments';
 import { Home } from '../components/Home/Home';
 import { Portfolio } from '../components/Portfolio/Portfolio';
+import { Experiments } from '../components/Experiments/Experiments';
 import { Skills } from '../components/Skills/Skills';
 
 export interface IRouteInfoItem {
@@ -24,17 +23,12 @@ export const RouteInfo: IRouteInfoItem[] = [
   },
   {
     id: 3,
-    path: '/Contact',
-    element: <Contact />,
-  },
-  /* {
-    id: 4,
     path: '/Experiments',
     element: <Experiments />,
-  }, */
-  /* {
+  },
+  {
     id: 4,
     path: '/Skills',
     element: <Skills />,
-  }, */
+  },
 ];

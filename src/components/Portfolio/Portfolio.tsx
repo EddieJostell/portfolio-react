@@ -9,7 +9,7 @@ import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 import { Header } from '../Header/Header';
 import { useMediaQuery } from '../../utils/hooks';
 
-export const Portfolio: FC<{}> = () => {
+export const Portfolio: FC = () => {
   const Projects = useContext<IContextState>(HelperContext);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
@@ -30,9 +30,9 @@ export const Portfolio: FC<{}> = () => {
               color='red'
               textCenter
             />
-            {Projects.portItem.map((port: IPortfolioItem, key: number) => (
+            {Projects.portItem.map((port: IPortfolioItem) => (
               <PortfolioContent
-                key={key}
+                key={port.title}
                 title={port.title}
                 tech={port.tech}
                 link={port.link}

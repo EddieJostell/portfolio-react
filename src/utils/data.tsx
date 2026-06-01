@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Twitter, GitHub, Linkedin, Instagram } from 'react-feather';
 
 export interface ISkillsItem {
@@ -22,7 +22,7 @@ export const SkillsInfo: ISkillsItem[] = [
 export interface ISocialMediaLink {
   id: number;
   title: string;
-  iconSrc?: any;
+  iconSrc?: ReactNode;
   text: string;
   link?: string;
 

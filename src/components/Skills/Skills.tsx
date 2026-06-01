@@ -4,12 +4,12 @@ import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { Header } from '../Header/Header';
 import './Skills.scss';
 
-export const Skills: FC<{}> = () => {
+export const Skills: FC = () => {
   const skillsInfo = useContext<IContextState>(HelperContext);
 
   const showSkills = () => {
-    return skillsInfo.skillsItem.map((skill: ISkillsItem, key: number) => (
-      <li key={key}>{skill.skill}</li>
+    return skillsInfo.skillsItem.map((skill: ISkillsItem) => (
+      <li key={skill.skill}>{skill.skill}</li>
     ));
   };
 

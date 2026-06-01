@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext } from 'react';
+import { ReactNode, createContext } from 'react';
 import {
   ProjectList,
   IPortfolioItem,

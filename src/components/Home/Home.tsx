@@ -5,7 +5,7 @@ import { QuoteContent } from '../QuoteContent/QuoteContent';
 import './Home.scss';
 import { useMediaQuery } from '../../utils/hooks';
 
-export const Home: FC<{}> = () => {
+export const Home: FC = () => {
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
   const NameWorkAnimation = {
     initial: { x: -500, opacity: 0 },
@@ -14,10 +14,10 @@ export const Home: FC<{}> = () => {
   };
 
   const personalInfo = () => {
-    let name = "Hello my name is Edward 'Eddie' Jostell";
-    let work = 'I am a Frontend Developer';
-    let onlyName = name.substring(17, name.length);
-    let onlyWork = work.substring(7, work.length);
+    const name = "Hello my name is Edward 'Eddie' Jostell";
+    const work = 'I am a Frontend Developer';
+    const onlyName = name.substring(17, name.length);
+    const onlyWork = work.substring(7, work.length);
 
     return (
       <>

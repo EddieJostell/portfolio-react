@@ -1,19 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { Header } from '../../../Header/Header';
 interface ThankYouPageProps {
   toggleContact: () => void;
 }
 
-const StyledThanksContainer = styled('div')(({}) => ({
+const StyledThanksContainer = styled('div')({
   position: 'relative',
   width: '100%',
   height: '100%',
   overflowX: 'hidden',
   backgroundColor: '#ffffff',
-}));
+});
 
-const StyledTitle = styled('div')(({}) => ({
+const StyledTitle = styled('div')({
   position: 'absolute',
   bottom: '30px',
   right: '-200px',
@@ -22,17 +22,17 @@ const StyledTitle = styled('div')(({}) => ({
   opacity: 0.5,
   fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
   zIndex: 0,
-}));
+});
 
-const StyledDescription = styled('div')(({}) => ({
+const StyledDescription = styled('div')({
   zIndex: 1,
   textAlign: 'left',
   padding: '40px',
   marginTop: '40px',
   fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
-}));
+});
 
-const StyledButton = styled('button')(({}) => ({
+const StyledButton = styled('button')({
   padding: '12px 20px',
   background: '#d90429',
   border: 'none',
@@ -55,7 +55,7 @@ const StyledButton = styled('button')(({}) => ({
   '&.btn-error': {
     background: '#ef233c',
   },
-}));
+});
 
 export const ThankYouPage = (props: ThankYouPageProps) => {
   const { toggleContact } = props;

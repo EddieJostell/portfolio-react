@@ -7,18 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 import styled from '@emotion/styled';
 
-interface Props {}
-
-interface IQuoteState {
-  quote: string;
-  author: string;
-}
-
-const StyledMotionSpan = styled(motion.span)(({}) => ({
+const StyledMotionSpan = styled(motion.span)(() => ({
   fontFamily: 'Goldman, Helvetica, sans-serif',
 }));
 
-export const QuoteContent = (props: Props) => {
+export const QuoteContent: React.FC = () => {
   const Quotes = React.useContext<IContextState>(HelperContext);
   const [quoteIndex, setQuoteIndex] = useState<number>(0);
 

@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,7 +9,7 @@ const root = createRoot(container!); // createRoot(container!) if you use TypeSc
 root.render(
   <StrictMode>
     <App />
-  </StrictMode>
+  </StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

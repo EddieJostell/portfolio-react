@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TopNavigation } from './TopNavigation';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
@@ -21,7 +20,7 @@ describe('TopNavigation', () => {
       text: 'About',
       path: '/About',
       scrollId: 'about',
-      type: 'localLink' as 'localLink',
+      type: 'localLink' as const,
       ariaLabel: 'Go to About',
     },
     {
@@ -29,7 +28,7 @@ describe('TopNavigation', () => {
       text: 'Projects',
       path: '/Projects',
       scrollId: 'projects',
-      type: 'localLink' as 'localLink',
+      type: 'localLink' as const,
       ariaLabel: 'Go to Projects',
     },
     {
@@ -37,7 +36,7 @@ describe('TopNavigation', () => {
       text: 'Contact',
       path: '/Contact',
       scrollId: 'contact',
-      type: 'button' as 'button',
+      type: 'button' as const,
       ariaLabel: 'Contact me',
     },
     {
@@ -45,7 +44,7 @@ describe('TopNavigation', () => {
       text: 'Resume',
       path: '',
       scrollId: 'resume',
-      type: 'external' as 'external',
+      type: 'external' as const,
       ariaLabel: 'Show resume',
     },
   ];
@@ -65,7 +64,7 @@ describe('TopNavigation', () => {
   });
 
   it('renders MobileNavigation on mobile', () => {
-    (hooks.useMediaQuery as any).mockReturnValue(true);
+    vi.mocked(hooks.useMediaQuery).mockReturnValue(true);
 
     render(
       <HelperContext.Provider value={mockContextValue}>
@@ -75,7 +74,7 @@ describe('TopNavigation', () => {
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>
+      </HelperContext.Provider>,
     );
 
     expect(screen.getByTestId('mobile-navigation')).toBeInTheDocument();
@@ -83,7 +82,7 @@ describe('TopNavigation', () => {
   });
 
   it('renders DesktopNavigation on desktop', () => {
-    (hooks.useMediaQuery as any).mockReturnValue(false);
+    vi.mocked(hooks.useMediaQuery).mockReturnValue(false);
 
     render(
       <HelperContext.Provider value={mockContextValue}>
@@ -93,7 +92,7 @@ describe('TopNavigation', () => {
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>
+      </HelperContext.Provider>,
     );
 
     expect(screen.getByTestId('desktop-navigation')).toBeInTheDocument();
@@ -101,7 +100,7 @@ describe('TopNavigation', () => {
   });
 
   it('calls scrollTop when logo is clicked', () => {
-    (hooks.useMediaQuery as any).mockReturnValue(false);
+    vi.mocked(hooks.useMediaQuery).mockReturnValue(false);
 
     render(
       <HelperContext.Provider value={mockContextValue}>
@@ -111,11 +110,11 @@ describe('TopNavigation', () => {
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>
+      </HelperContext.Provider>,
     );
 
     const logo = screen.getByLabelText(
-      'CreatorLogo press to scroll to top of the page'
+      'CreatorLogo press to scroll to top of the page',
     );
     fireEvent.click(logo);
     expect(hooks.scrollTop).toHaveBeenCalled();

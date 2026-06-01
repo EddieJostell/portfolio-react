@@ -1,8 +1,4 @@
-import React, { useRef, useReducer, useEffect } from 'react';
-import emailjs from '@emailjs/browser';
-import { serviceID } from './helpers/serviceID';
-import { templateID } from './helpers/templateID';
-import { userID } from './helpers/userID';
+import { useRef, useReducer, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { ThankYouPage } from './parts/ThankYouPage';
 import styled from '@emotion/styled';
@@ -18,7 +14,7 @@ interface IContactFormProps {
   toggleContact: () => void;
 }
 
-interface FormData {
+interface ContactFormData {
   name: string;
   email: string;
   message: string;
@@ -38,13 +34,13 @@ const initialContactState: FormState = {
   isLoading: false,
 };
 
-const StyledTopBar = styled('div')(({}) => ({
+const StyledTopBar = styled('div')({
   display: 'flex',
   justifyContent: 'flex-end',
   padding: '10px',
-}));
+});
 
-const StyledForm = styled('form')(({}) => ({
+const StyledForm = styled('form')({
   zIndex: 1,
   display: 'flex',
   flexDirection: 'column',
@@ -54,9 +50,9 @@ const StyledForm = styled('form')(({}) => ({
   padding: '40px',
   marginTop: '40px',
   fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
-}));
+});
 
-const StyledFormContainer = styled('div')(({}) => ({
+const StyledFormContainer = styled('div')({
   width: '100%',
   height: '100%',
   position: 'fixed',
@@ -75,9 +71,9 @@ const StyledFormContainer = styled('div')(({}) => ({
     overflow: 'hidden',
     flexDirection: 'column',
   },
-}));
+});
 
-const StyledBigTitle = styled(Header)(({ theme }) => ({
+const StyledBigTitle = styled(Header)({
   position: 'absolute',
   bottom: '30px',
   right: '-300px',
@@ -85,9 +81,9 @@ const StyledBigTitle = styled(Header)(({ theme }) => ({
   opacity: 0.07,
   fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
   zIndex: 0,
-}));
+});
 
-const StyledA11yContent = styled('div')(({}) => ({
+const StyledA11yContent = styled('div')({
   position: 'absolute',
   width: '1px',
   height: '1px',
@@ -97,7 +93,7 @@ const StyledA11yContent = styled('div')(({}) => ({
   clip: 'rect(0, 0, 0, 0)',
   whiteSpace: 'nowrap',
   borderWidth: 0,
-}));
+});
 
 function formReducer(state: FormState, action: FormAction): FormState {
   switch (action.type) {
@@ -123,7 +119,7 @@ export const ContactForm = (props: IContactFormProps) => {
     handleSubmit,
 
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<ContactFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
   });
@@ -135,23 +131,13 @@ export const ContactForm = (props: IContactFormProps) => {
     nameInputRef.current?.focus();
   }, []);
 
-  const onDataComplete = (data: any, e: any) => {
-    // REAL EMAIL JS CODE
+  const onDataComplete = (data: ContactFormData) => {
     if (data) {
-      /* dispatch({ type: 'SUBMIT' });
-      emailjs.sendForm(serviceID(), templateID(), form.current!, userID()).then(
-        (result) => {
-          console.log('SUCCESS!', result.status, result.text);
-          dispatch({ type: 'SUCCESS' });
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          dispatch({ type: 'ERROR' });
-        },
-      ); */
-
+      // For production, import { sendEmailProd } from './helpers/sendEmailProd'
+      // and call: sendEmailProd(form.current!, dispatch);
       dispatch({ type: 'SUBMIT' });
       setTimeout(() => {
+        // eslint-disable-next-line no-constant-condition -- NOSONAR: temporary stub for ThankYouPage development
         if (1 + 1 === 2) {
           dispatch({ type: 'SUCCESS' });
         } else {

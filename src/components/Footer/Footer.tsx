@@ -1,7 +1,6 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
-
 import { childMotionProps, parentMotionProps } from './FooterAnimations';
 import { useMediaQuery } from '../../utils/hooks';
 import {
@@ -12,11 +11,11 @@ import {
   StyledScrollToTop,
 } from './StyledFooterElements';
 
-interface IFooterProps {
+interface FooterProps {
   handleScrollToTop: () => void;
 }
 
-export const Footer: FC<IFooterProps> = ({ handleScrollToTop }) => {
+export const Footer: FC<FooterProps> = ({ handleScrollToTop }) => {
   const mobileMaxWidth = useMediaQuery('(max-width: 767px)');
 
   return (
@@ -42,7 +41,9 @@ export const Footer: FC<IFooterProps> = ({ handleScrollToTop }) => {
           ) : (
             <ContactSlim icons data-testid='desktop-contact' />
           )}
-          <StyledCreatorTag>Built by Edward 'Eddie' Jostell</StyledCreatorTag>
+          <StyledCreatorTag>
+            Built by Edward &apos;Eddie&apos; Jostell
+          </StyledCreatorTag>
         </StyledFooterWrapper>
       </Container>
     </StyledFooterComponent>

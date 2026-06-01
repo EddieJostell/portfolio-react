@@ -1,7 +1,7 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext } from 'react';
 import { INavLinkItem } from '../../../utils/data';
 import styled from '@emotion/styled';
-import { scrollTop, useHidescroll, useMediaQuery } from '../../../utils/hooks';
+import { scrollTop, useMediaQuery } from '../../../utils/hooks';
 import { Container } from '../../Container/Container';
 import { DesktopNavigation } from '../DesktopNavigation/DesktopNavigation';
 import { HelperContext, IContextState } from '../../../utils/HelperContext';
@@ -19,7 +19,7 @@ import {
 import { NavNameAnimation } from '../NavAnimations';
 import { motion } from 'framer-motion';
 
-interface INavProps {
+interface TopNavProps {
   name: string;
   navIsOpen: boolean;
   toggleNav: (visible: boolean) => void;
@@ -29,7 +29,7 @@ interface INavProps {
   topNavIconRef?: React.RefObject<HTMLButtonElement | null>;
 }
 
-const StyledNavigation = styled('header')(({}) => ({
+const StyledNavigation = styled('header')({
   padding: '0 1rem',
   position: 'fixed',
   top: 0,
@@ -62,9 +62,9 @@ const StyledNavigation = styled('header')(({}) => ({
   backgroundPosition: 'center center',
   backgroundAttachment: 'fixed',
   transition: 'transform 300ms ease',
-}));
+});
 
-export const TopNavigation: FC<INavProps> = ({
+export const TopNavigation: FC<TopNavProps> = ({
   name,
   navIsOpen,
   toggleContact,
@@ -85,7 +85,9 @@ export const TopNavigation: FC<INavProps> = ({
   };
 
   const toggleMobileNav = () => {
-    mobileMinWidth && toggleNav(!navIsOpen);
+    if (mobileMinWidth) {
+      toggleNav(!navIsOpen);
+    }
   };
 
   const navItems = contextObject.navLinkItem.map((item: INavLinkItem) => {

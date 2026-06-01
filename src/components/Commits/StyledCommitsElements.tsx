@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledCommitsSection = styled('section')(({}) => ({
+export const StyledCommitsSection = styled('section')({
   padding: '60px 30px',
   color: '#edf2f4',
   fontFamily: "'Poppins', sans-serif",
@@ -8,16 +8,16 @@ export const StyledCommitsSection = styled('section')(({}) => ({
   '@media (max-width: 768px)': {
     padding: '40px 20px',
   },
-}));
+});
 
-export const StyledCommitsHeading = styled('h2')(({}) => ({
+export const StyledCommitsHeading = styled('h2')({
   fontFamily: 'Goldman, Helvetica, Arial, sans-serif',
   fontSize: '2rem',
   marginBottom: '24px',
   textAlign: 'center',
-}));
+});
 
-export const StyledCommitList = styled('ul')(({}) => ({
+export const StyledCommitList = styled('ul')({
   listStyle: 'none',
   padding: 0,
   margin: '0 auto',
@@ -25,9 +25,9 @@ export const StyledCommitList = styled('ul')(({}) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
-}));
+});
 
-export const StyledCommitItem = styled('li')(({}) => ({
+export const StyledCommitItem = styled('li')({
   padding: '20px',
   border: '1px solid rgba(237, 242, 244, 0.15)',
   borderRadius: '8px',
@@ -38,9 +38,9 @@ export const StyledCommitItem = styled('li')(({}) => ({
     transform: 'translateY(-2px)',
     borderColor: 'rgba(237, 242, 244, 0.4)',
   },
-}));
+});
 
-export const StyledCommitLink = styled('a')(({}) => ({
+export const StyledCommitLink = styled('a')({
   color: '#edf2f4',
   textDecoration: 'none',
   fontWeight: 600,
@@ -51,24 +51,24 @@ export const StyledCommitLink = styled('a')(({}) => ({
   '&:hover, &:focus': {
     textDecoration: 'underline',
   },
-}));
+});
 
-export const StyledCommitMeta = styled('div')(({}) => ({
+export const StyledCommitMeta = styled('div')({
   fontSize: '0.8rem',
   opacity: 0.7,
   marginBottom: '8px',
   fontFamily: 'monospace',
-}));
+});
 
-export const StyledCommitNote = styled('p')(({}) => ({
+export const StyledCommitNote = styled('p')({
   margin: '8px 0 0',
   fontSize: '0.9rem',
   fontStyle: 'italic',
   opacity: 0.85,
-}));
+});
 
-export const StyledCommitsStatus = styled('p')(({}) => ({
+export const StyledCommitsStatus = styled('p')({
   textAlign: 'center',
   opacity: 0.7,
   fontSize: '0.9rem',
-}));
+});
