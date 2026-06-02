@@ -1,35 +1,80 @@
 import { motion } from 'framer-motion';
 import { useContext, FC } from 'react';
+import styled from '@emotion/styled';
 import { IPortfolioItem } from '../../utils/data';
 import { HelperContext, IContextState } from '../../utils/HelperContext';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
-import './Portfolio.scss';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
 import { Header } from '../Header/Header';
 import { useMediaQuery } from '../../utils/hooks';
+
+const PortfolioSection = styled('section')({
+  color: '#edf2f4',
+  height: '100%',
+});
+
+const PortfolioWrapper = styled('div')({
+  position: 'relative',
+  marginTop: '30px',
+  paddingTop: '10px',
+});
+
+const BgTitle = styled(motion.div)({
+  fontSize: '90px',
+  zIndex: 0,
+  position: 'absolute',
+  top: '20%',
+  left: '40%',
+  transform: 'translate(-50%, -50%)',
+  opacity: 0.07,
+  fontFamily: 'Audiowide, Helvetica, Arial, sans-serif',
+
+  '@media (min-width: 1100px)': {
+    fontSize: '190px',
+  },
+});
+
+const PortfolioList = styled('ul')({
+  marginTop: '1rem',
+  marginBottom: 0,
+  padding: 0,
+  listStyle: 'none',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  width: '100%',
+  gap: '20px',
+
+  '@media (min-width: 768px)': {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+
+  '@media (min-width: 1100px)': {
+    marginTop: '2rem',
+    flexDirection: 'row',
+    alignItems: 'unset',
+    flexWrap: 'wrap',
+    gap: '10px',
+  },
+});
 
 export const Portfolio: FC = () => {
   const Projects = useContext<IContextState>(HelperContext);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
   return (
-    <div className='Portfolio' id='portfolio'>
+    <PortfolioSection id='portfolio'>
       <Container>
-        <div className='Portfolio-wrapper'>
+        <PortfolioWrapper>
           {mobileMaxWidth && (
-            <motion.div key='title' {...TitleAnimation} className='bg-title'>
+            <BgTitle key='title' {...TitleAnimation} aria-hidden='true'>
               MY PROJECTS
-            </motion.div>
+            </BgTitle>
           )}
-          <div className='List'>
-            <Header
-              title='Projects'
-              size='h2'
-              fullWidth
-              color='red'
-              textCenter
-            />
+          <Header title='Projects' size='h2' fullWidth color='red' textCenter />
+          <PortfolioList>
             {Projects.portItem.map((port: IPortfolioItem) => (
               <PortfolioContent
                 key={port.title}
@@ -41,9 +86,9 @@ export const Portfolio: FC = () => {
                 github={port.github}
               />
             ))}
-          </div>
-        </div>
+          </PortfolioList>
+        </PortfolioWrapper>
       </Container>
-    </div>
+    </PortfolioSection>
   );
 };
