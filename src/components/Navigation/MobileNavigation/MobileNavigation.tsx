@@ -11,7 +11,7 @@ import {
 import styled from '@emotion/styled';
 import { ContactSlim } from '../../Contact/ContactSlim';
 
-const MobileLinksContainer = styled(motion.div)(() => ({
+const MobileLinksContainer = styled(motion.div)({
   position: 'fixed',
   top: '0',
   left: '0',
@@ -26,9 +26,9 @@ const MobileLinksContainer = styled(motion.div)(() => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   paddingBottom: '14rem',
-}));
+});
 
-const MobileNavList = styled('ul')(() => ({
+const MobileNavList = styled('ul')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -36,17 +36,17 @@ const MobileNavList = styled('ul')(() => ({
   margin: 0,
   padding: 0,
   zIndex: 12,
-}));
+});
 
-const MobileMenuTopContainer = styled('div')(() => ({
+const MobileMenuTopContainer = styled('div')({
   width: '100%',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-end',
   alignItems: 'center',
-}));
+});
 
-const MobileMenuIconWrapper = styled('button')(() => ({
+const MobileMenuIconWrapper = styled('button')({
   color: '#edf2f4',
   transition: 'opacity 0.35s ease 0.65s',
   textDecoration: 'none',
@@ -74,13 +74,13 @@ const MobileMenuIconWrapper = styled('button')(() => ({
     outlineOffset: '1px',
     /*   boxShadow: '0 0 0 4px rgba(52, 152, 219, 0.5)', */
   },
-}));
+});
 
-const ContactLinksContainer = styled('div')(() => ({
+const ContactLinksContainer = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   marginBottom: '1rem',
-}));
+});
 
 interface MobileNavigationProps {
   navIsOpen: boolean;
