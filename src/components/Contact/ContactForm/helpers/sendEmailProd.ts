@@ -9,7 +9,7 @@ export const sendEmailProd = (
   dispatch: React.Dispatch<FormAction>,
 ) => {
   dispatch({ type: 'SUBMIT' });
-  emailjs.sendForm(serviceID, templateID, formEl, userID).then(
+  emailjs.sendForm(serviceID, templateID, formEl, { publicKey: userID }).then(
     (result) => {
       console.log('SUCCESS!', result.status, result.text);
       dispatch({ type: 'SUCCESS' });
