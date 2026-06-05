@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { INavLinkItem } from '../../../utils/data';
+import { NavLinkItem } from '../../../utils/data';
 import styled from '@emotion/styled';
 import { scrollTop, useMediaQuery } from '../../../utils/hooks';
 import { Container } from '../../Container/Container';
@@ -19,7 +19,7 @@ import {
 import { NavNameAnimation } from '../NavAnimations';
 import { motion } from 'framer-motion';
 
-interface TopNavProps {
+interface TopNavigationProps {
   name: string;
   navIsOpen: boolean;
   toggleNav: (visible: boolean) => void;
@@ -64,7 +64,7 @@ const StyledNavigation = styled('header')({
   transition: 'transform 300ms ease',
 });
 
-export const TopNavigation: FC<TopNavProps> = ({
+export const TopNavigation: FC<TopNavigationProps> = ({
   name,
   navIsOpen,
   toggleContact,
@@ -90,7 +90,7 @@ export const TopNavigation: FC<TopNavProps> = ({
     }
   };
 
-  const navItems = navLinks.map((item: INavLinkItem) => {
+  const navItems = navLinks.map((item: NavLinkItem) => {
     switch (item.type) {
       case 'button':
         return (

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FC } from 'react';
 import styled from '@emotion/styled';
-import { IPortfolioItem } from '../../utils/data';
+import { PortfolioItem } from '../../utils/data';
 import { usePortfolio } from '../../utils/siteData';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
@@ -75,7 +75,7 @@ export const Portfolio: FC = () => {
           )}
           <Header title='Projects' size='h2' fullWidth color='red' textCenter />
           <PortfolioList>
-            {projects.map((port: IPortfolioItem) => (
+            {projects.map((port: PortfolioItem) => (
               <PortfolioContent
                 key={port.title}
                 title={port.title}

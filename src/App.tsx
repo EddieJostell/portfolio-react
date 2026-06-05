@@ -10,14 +10,14 @@ import { ContactForm } from './components/Contact/ContactForm/ContactForm';
 import { TopNavigation } from './components/Navigation/TopNavigation/TopNavigation';
 import { scrollTop } from './utils/hooks';
 
-interface IAppState {
+interface AppState {
   navIsOpen: boolean;
   contactIsActive: boolean;
   isLoading: boolean;
 }
 
 const App: FC = () => {
-  const [appState, setAppState] = useState<IAppState>({
+  const [appState, setAppState] = useState<AppState>({
     navIsOpen: false,
     contactIsActive: false,
     isLoading: false,

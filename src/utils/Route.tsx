@@ -4,13 +4,13 @@ import { Portfolio } from '../components/Portfolio/Portfolio';
 import { Experiments } from '../components/Experiments/Experiments';
 import { Skills } from '../components/Skills/Skills';
 
-export interface IRouteInfoItem {
+export interface RouteInfoItem {
   id: number;
   path: string;
   element: ReactNode;
 }
 
-export const RouteInfo: IRouteInfoItem[] = [
+export const RouteInfo: RouteInfoItem[] = [
   {
     id: 1,
     path: '/',

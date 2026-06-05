@@ -11,7 +11,7 @@ import { X } from 'react-feather';
 import { Header } from '../../Header/Header';
 //import { sendEmailProd } from './helpers/sendEmailProd';
 
-interface IContactFormProps {
+interface ContactFormProps {
   toggleContact: () => void;
 }
 
@@ -109,7 +109,7 @@ function formReducer(state: FormState, action: FormAction): FormState {
   }
 }
 
-export const ContactForm = (props: IContactFormProps) => {
+export const ContactForm = (props: ContactFormProps) => {
   const { toggleContact } = props;
 
   const [state, dispatch] = useReducer(formReducer, initialContactState);

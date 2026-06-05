@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 import { Twitter, GitHub, Linkedin, Instagram } from 'react-feather';
 
-export interface ISkillsItem {
+export interface SkillsItem {
   id: number;
   skill: string;
 }
 
-export const SkillsInfo: ISkillsItem[] = [
+export const SkillsInfo: SkillsItem[] = [
   { id: 0, skill: 'HTML/CSS' },
   { id: 1, skill: 'JAVASCRIPT' },
   { id: 2, skill: 'REACT' },
@@ -19,7 +19,7 @@ export const SkillsInfo: ISkillsItem[] = [
   { id: 9, skill: 'STYLED-COMPONENTS' },
 ];
 
-export interface ISocialMediaLink {
+export interface SocialMediaLink {
   id: number;
   title: string;
   iconSrc?: ReactNode;
@@ -29,7 +29,7 @@ export interface ISocialMediaLink {
   ariaLabel: string;
 }
 
-export const SocialMediaLinks: ISocialMediaLink[] = [
+export const SocialMediaLinks: SocialMediaLink[] = [
   /*  {
     id: 1,
     title: '+46 73 026 30 92',
@@ -77,19 +77,19 @@ export const SocialMediaLinks: ISocialMediaLink[] = [
   },
 ];
 
-export interface IAboutMe {
+export interface AboutMeItem {
   likes: string;
-  personal: IPersonal;
+  personal: Personal;
   gamer: string;
 }
 
-export interface IPersonal {
+export interface Personal {
   name: string;
   age: string;
   from: string;
   occupation: string;
 }
-export const AboutMe: IAboutMe[] = [
+export const AboutMe: AboutMeItem[] = [
   {
     likes:
       'When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.',
@@ -104,7 +104,7 @@ export const AboutMe: IAboutMe[] = [
   },
 ];
 
-export interface INavLinkItem {
+export interface NavLinkItem {
   id: number;
   text: string;
   path: string;
@@ -112,7 +112,7 @@ export interface INavLinkItem {
   type?: 'external' | 'localLink' | 'button';
   ariaLabel: string;
 }
-export const NavigationLinks: INavLinkItem[] = [
+export const NavigationLinks: NavLinkItem[] = [
   {
     id: 1,
     text: 'About',
@@ -147,7 +147,7 @@ export const NavigationLinks: INavLinkItem[] = [
   },
 ];
 
-export interface IPortfolioItem {
+export interface PortfolioItem {
   id: number;
   title: string;
   tech: string;
@@ -156,7 +156,7 @@ export interface IPortfolioItem {
   text: string;
   github?: string;
 }
-export const ProjectList: IPortfolioItem[] = [
+export const ProjectList: PortfolioItem[] = [
   {
     id: 1,
     title: 'COOP',
@@ -228,12 +228,12 @@ export const ProjectList: IPortfolioItem[] = [
   },
 ];
 
-export interface IQuoteItem {
+export interface QuoteItem {
   id: number;
   quote: string;
   author: string;
 }
-export const QuoteInfo: IQuoteItem[] = [
+export const QuoteInfo: QuoteItem[] = [
   {
     id: 1,
     quote:

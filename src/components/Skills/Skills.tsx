@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ISkillsItem } from '../../utils/data';
+import { SkillsItem } from '../../utils/data';
 import { useSkills } from '../../utils/siteData';
 import { Header } from '../Header/Header';
 import './Skills.scss';
@@ -8,7 +8,7 @@ export const Skills: FC = () => {
   const skills = useSkills();
 
   const showSkills = () => {
-    return skills.map((skill: ISkillsItem) => (
+    return skills.map((skill: SkillsItem) => (
       <li key={skill.skill}>{skill.skill}</li>
     ));
   };

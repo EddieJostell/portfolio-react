@@ -1,16 +1,16 @@
 import { FC } from 'react';
 import { useSocialLinks } from '../../../utils/siteData';
-import { ISocialMediaLink } from '../../../utils/data';
+import { SocialMediaLink } from '../../../utils/data';
 
-interface ISocialMediaProps {
+interface SocialMediaProps {
   icons?: boolean;
   links?: boolean;
 }
 
-export const SocialMedia: FC<ISocialMediaProps> = ({ icons, links }) => {
+export const SocialMedia: FC<SocialMediaProps> = ({ icons, links }) => {
   const socialLinks = useSocialLinks();
 
-  const mapLinksOrIcons = socialLinks.map((item: ISocialMediaLink) => {
+  const mapLinksOrIcons = socialLinks.map((item: SocialMediaLink) => {
     return (
       <>
         {icons && (

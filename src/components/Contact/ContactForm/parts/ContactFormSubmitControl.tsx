@@ -48,14 +48,14 @@ const StyledErrorMessage = styled('div')({
   },
 });
 
-interface IContactFormSubmitControlProps {
+interface ContactFormSubmitControlProps {
   hasFailed: boolean | undefined;
   isLoading: boolean | undefined;
   children: ReactNode;
 }
 
 export const ContactFormSubmitControl = (
-  props: IContactFormSubmitControlProps,
+  props: ContactFormSubmitControlProps,
 ) => {
   const { hasFailed, isLoading, children } = props;
 

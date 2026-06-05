@@ -1,28 +1,28 @@
 import { createContext, useContext } from 'react';
 import {
   ProjectList,
-  IPortfolioItem,
+  PortfolioItem,
   QuoteInfo,
-  IQuoteItem,
-  IAboutMe,
+  QuoteItem,
+  AboutMeItem,
   AboutMe,
   SocialMediaLinks,
-  ISocialMediaLink,
-  ISkillsItem,
+  SocialMediaLink,
+  SkillsItem,
   SkillsInfo,
   NavigationLinks,
-  INavLinkItem,
+  NavLinkItem,
 } from './data';
-import { IRouteInfoItem, RouteInfo } from './Route';
+import { RouteInfoItem, RouteInfo } from './Route';
 
 export interface SiteData {
-  quoteItem: IQuoteItem[];
-  portItem: IPortfolioItem[];
-  routeItem: IRouteInfoItem[];
-  aboutItem: IAboutMe[];
-  socialItem: ISocialMediaLink[];
-  skillsItem: ISkillsItem[];
-  navLinkItem: INavLinkItem[];
+  quoteItem: QuoteItem[];
+  portItem: PortfolioItem[];
+  routeItem: RouteInfoItem[];
+  aboutItem: AboutMeItem[];
+  socialItem: SocialMediaLink[];
+  skillsItem: SkillsItem[];
+  navLinkItem: NavLinkItem[];
 }
 
 export const initialSiteData: SiteData = {
