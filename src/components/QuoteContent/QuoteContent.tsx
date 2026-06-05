@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { useQuotes } from '../../utils/siteData';
 import { AnimatePresence, motion } from 'framer-motion';
 import './QuoteContent.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,15 +12,15 @@ const StyledMotionSpan = styled(motion.span)(() => ({
 }));
 
 export const QuoteContent: React.FC = () => {
-  const Quotes = React.useContext<IContextState>(HelperContext);
+  const quotes = useQuotes();
   const [quoteIndex, setQuoteIndex] = useState<number>(0);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setQuoteIndex((prevIndex) => (prevIndex + 1) % Quotes.quoteItem.length);
+      setQuoteIndex((prevIndex) => (prevIndex + 1) % quotes.length);
     }, 20000);
     return () => clearTimeout(timeoutId);
-  }, [quoteIndex]);
+  }, [quoteIndex, quotes.length]);
 
   return (
     <AnimatePresence>
@@ -34,12 +34,10 @@ export const QuoteContent: React.FC = () => {
         <div className='QuoteContent'>
           <span className='quote'>
             <FontAwesomeIcon icon={faQuoteLeft} color='white' size='sm' />
-            {Quotes.quoteItem[quoteIndex].quote}
+            {quotes[quoteIndex].quote}
             <FontAwesomeIcon icon={faQuoteRight} color='white' size='sm' />
           </span>
-          <span className='author'>
-            - {Quotes.quoteItem[quoteIndex].author}
-          </span>
+          <span className='author'>- {quotes[quoteIndex].author}</span>
         </div>
       </StyledMotionSpan>
     </AnimatePresence>

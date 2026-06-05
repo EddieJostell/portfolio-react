@@ -1,6 +1,6 @@
 import './App.scss';
 import { useState, useCallback, FC, useRef } from 'react';
-import { ContextProvider, initialHelperContext } from './utils/HelperContext';
+import { SiteDataProvider } from './utils/SiteDataContext';
 import { Portfolio } from './components/Portfolio/Portfolio';
 // import { Commits } from './components/Commits/Commits';
 import { Home } from './components/Home/Home';
@@ -74,7 +74,7 @@ const App: FC = () => {
   };
 
   return (
-    <ContextProvider state={initialHelperContext}>
+    <SiteDataProvider>
       {!appState.contactIsActive && (
         <TopNavigation
           navIsOpen={appState.navIsOpen}
@@ -88,7 +88,7 @@ const App: FC = () => {
       <div className='App' data-testid='application'>
         {renderContent()}
       </div>
-    </ContextProvider>
+    </SiteDataProvider>
   );
 };
 

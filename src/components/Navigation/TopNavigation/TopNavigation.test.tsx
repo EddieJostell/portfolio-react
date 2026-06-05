@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TopNavigation } from './TopNavigation';
-import { HelperContext, IContextState } from '../../../utils/HelperContext';
+import { SiteDataContext, SiteData } from '../../../utils/siteData';
 import { vi } from 'vitest';
 import * as hooks from '../../../utils/hooks';
 
@@ -49,7 +49,7 @@ describe('TopNavigation', () => {
     },
   ];
 
-  const mockContextValue: IContextState = {
+  const mockContextValue: SiteData = {
     navLinkItem: mockNavLinkItems,
     portItem: [],
     quoteItem: [],
@@ -67,14 +67,14 @@ describe('TopNavigation', () => {
     vi.mocked(hooks.useMediaQuery).mockReturnValue(true);
 
     render(
-      <HelperContext.Provider value={mockContextValue}>
+      <SiteDataContext.Provider value={mockContextValue}>
         <TopNavigation
           name='E'
           navIsOpen={false}
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>,
+      </SiteDataContext.Provider>,
     );
 
     expect(screen.getByTestId('mobile-navigation')).toBeInTheDocument();
@@ -85,14 +85,14 @@ describe('TopNavigation', () => {
     vi.mocked(hooks.useMediaQuery).mockReturnValue(false);
 
     render(
-      <HelperContext.Provider value={mockContextValue}>
+      <SiteDataContext.Provider value={mockContextValue}>
         <TopNavigation
           name='E'
           navIsOpen={false}
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>,
+      </SiteDataContext.Provider>,
     );
 
     expect(screen.getByTestId('desktop-navigation')).toBeInTheDocument();
@@ -103,14 +103,14 @@ describe('TopNavigation', () => {
     vi.mocked(hooks.useMediaQuery).mockReturnValue(false);
 
     render(
-      <HelperContext.Provider value={mockContextValue}>
+      <SiteDataContext.Provider value={mockContextValue}>
         <TopNavigation
           name='E'
           navIsOpen={false}
           toggleNav={mockToggleNav}
           toggleContact={mockToggleContact}
         />
-      </HelperContext.Provider>,
+      </SiteDataContext.Provider>,
     );
 
     const logo = screen.getByLabelText(

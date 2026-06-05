@@ -112,7 +112,7 @@ describe('App', () => {
     });
   });
 
-  test('provides initialHelperContext so nav items render', () => {
+  test('provides initialSiteData so nav items render', () => {
     render(<App />);
     expect(
       screen.getByRole('button', { name: /open contact form/i }),

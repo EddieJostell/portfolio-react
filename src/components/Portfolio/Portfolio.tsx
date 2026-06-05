@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import { useContext, FC } from 'react';
+import { FC } from 'react';
 import styled from '@emotion/styled';
 import { IPortfolioItem } from '../../utils/data';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { usePortfolio } from '../../utils/siteData';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
@@ -61,7 +61,7 @@ const PortfolioList = styled('ul')({
 });
 
 export const Portfolio: FC = () => {
-  const Projects = useContext<IContextState>(HelperContext);
+  const projects = usePortfolio();
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
 
   return (
@@ -75,7 +75,7 @@ export const Portfolio: FC = () => {
           )}
           <Header title='Projects' size='h2' fullWidth color='red' textCenter />
           <PortfolioList>
-            {Projects.portItem.map((port: IPortfolioItem) => (
+            {projects.map((port: IPortfolioItem) => (
               <PortfolioContent
                 key={port.title}
                 title={port.title}

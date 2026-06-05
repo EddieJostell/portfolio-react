@@ -1,11 +1,11 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { Route } from 'react-router-dom';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { useRoutes } from '../../utils/siteData';
 
 const RouteLinks = () => {
-  const Routes = useContext<IContextState>(HelperContext);
+  const routes = useRoutes();
 
-  const routeLinks = Routes.routeItem.map(({ path, element }) => (
+  const routeLinks = routes.map(({ path, element }) => (
     <Route key={path} path={path} element={element} />
   ));
 

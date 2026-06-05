@@ -1,10 +1,10 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { INavLinkItem } from '../../../utils/data';
 import styled from '@emotion/styled';
 import { scrollTop, useMediaQuery } from '../../../utils/hooks';
 import { Container } from '../../Container/Container';
 import { DesktopNavigation } from '../DesktopNavigation/DesktopNavigation';
-import { HelperContext, IContextState } from '../../../utils/HelperContext';
+import { useNavLinks } from '../../../utils/siteData';
 import PDF from '../../../documents/CV_Eddie_Jostell.pdf';
 import { MobileNavigation } from '../MobileNavigation/MobileNavigation';
 import {
@@ -71,7 +71,7 @@ export const TopNavigation: FC<TopNavProps> = ({
   toggleNav,
   topNavIconRef,
 }) => {
-  const contextObject = useContext<IContextState>(HelperContext);
+  const navLinks = useNavLinks();
   const mobileMinWidth = useMediaQuery('(max-width: 768px)');
 
   const showResumeOnClick = () => {
@@ -90,7 +90,7 @@ export const TopNavigation: FC<TopNavProps> = ({
     }
   };
 
-  const navItems = contextObject.navLinkItem.map((item: INavLinkItem) => {
+  const navItems = navLinks.map((item: INavLinkItem) => {
     switch (item.type) {
       case 'button':
         return (

@@ -1,14 +1,14 @@
-import { useContext, FC } from 'react';
+import { FC } from 'react';
 import { ISkillsItem } from '../../utils/data';
-import { HelperContext, IContextState } from '../../utils/HelperContext';
+import { useSkills } from '../../utils/siteData';
 import { Header } from '../Header/Header';
 import './Skills.scss';
 
 export const Skills: FC = () => {
-  const skillsInfo = useContext<IContextState>(HelperContext);
+  const skills = useSkills();
 
   const showSkills = () => {
-    return skillsInfo.skillsItem.map((skill: ISkillsItem) => (
+    return skills.map((skill: ISkillsItem) => (
       <li key={skill.skill}>{skill.skill}</li>
     ));
   };
