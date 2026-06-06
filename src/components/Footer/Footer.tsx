@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ContactSlim } from '../Contact/ContactSlim';
+//import { ContactSlim } from '../Contact/ContactSlim';
 import { Container } from '../Container/Container';
 import { childMotionProps, parentMotionProps } from './FooterAnimations';
 import { useMediaQuery } from '../../utils/hooks';
@@ -10,6 +10,7 @@ import {
   StyledFooterWrapper,
   StyledScrollToTop,
 } from './StyledFooterElements';
+import { SocialMedia } from '../Contact/SocialMedia/SocialMedia';
 
 interface FooterProps {
   handleScrollToTop: () => void;
@@ -37,9 +38,9 @@ export const Footer: FC<FooterProps> = ({ handleScrollToTop }) => {
             )}
           </StyledFooterLogo>
           {mobileMaxWidth ? (
-            <ContactSlim data-testid='mobile-contact' />
+            <SocialMedia links data-testid='mobile-contact' />
           ) : (
-            <ContactSlim icons data-testid='desktop-contact' />
+            <SocialMedia icons data-testid='desktop-contact' />
           )}
           <StyledCreatorTag>
             Built by Edward &apos;Eddie&apos; Jostell

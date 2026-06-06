@@ -9,7 +9,7 @@ import {
   MenuIconWrapper,
 } from '../StyledNavigationElements';
 import styled from '@emotion/styled';
-import { ContactSlim } from '../../Contact/ContactSlim';
+import { SocialMedia } from '../../Contact/SocialMedia/SocialMedia';
 
 const MobileLinksContainer = styled(motion.div)({
   position: 'fixed',
@@ -163,7 +163,7 @@ export const MobileNavigation: FC<MobileNavigationProps> = ({
 
             <MobileNavList>{navItems}</MobileNavList>
             <ContactLinksContainer>
-              <ContactSlim icons />
+              <SocialMedia links />
             </ContactLinksContainer>
           </MobileLinksContainer>
         )}
