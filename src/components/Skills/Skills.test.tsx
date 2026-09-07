@@ -26,31 +26,27 @@ describe('Skills', () => {
     });
 
     const root = container.firstElementChild as HTMLElement;
-    if (root.classList.contains('Skills')) {
-      expect(list).toHaveClass('skills-list');
-    } else {
-      expect(getComputedStyle(root)).toMatchObject({
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '15px',
-        width: '100%',
-      });
-      expect(getComputedStyle(list)).toMatchObject({
-        display: 'grid',
-        padding: '0px',
-        overflow: 'hidden',
-        marginTop: '20px',
-      });
+    expect(getComputedStyle(root)).toMatchObject({
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px',
+      width: '100%',
+    });
+    expect(getComputedStyle(list)).toMatchObject({
+      display: 'grid',
+      padding: '0px',
+      overflow: 'hidden',
+      marginTop: '20px',
+    });
 
-      expect(
-        getComputedStyle(list.firstElementChild as HTMLElement),
-      ).toMatchObject({
-        position: 'relative',
-        paddingLeft: '20px',
-        fontSize: '20px',
-        color: 'rgb(255, 255, 255)',
-        listStyleType: 'none',
-      });
-    }
+    expect(
+      getComputedStyle(list.firstElementChild as HTMLElement),
+    ).toMatchObject({
+      position: 'relative',
+      paddingLeft: '20px',
+      fontSize: '20px',
+      color: 'rgb(255, 255, 255)',
+      listStyleType: 'none',
+    });
   });
 });
