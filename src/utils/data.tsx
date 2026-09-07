@@ -15,8 +15,9 @@ export const SkillsInfo: SkillsItem[] = [
   { id: 5, skill: 'SASS/LESS' },
   { id: 6, skill: 'SEMANTIC-UI-REACT' },
   { id: 7, skill: 'BOOTSTRAP' },
-  { id: 8, skill: 'FRAMER-MOTION' },
-  { id: 9, skill: 'STYLED-COMPONENTS' },
+  { id: 8, skill: 'MATERIAL-UI' },
+  { id: 9, skill: 'FRAMER-MOTION' },
+  { id: 10, skill: 'STYLED-COMPONENTS' },
 ];
 
 export interface SocialMediaLink {
