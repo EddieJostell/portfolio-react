@@ -41,11 +41,16 @@ vi.mock('framer-motion', async () => {
 });
 
 import { QuoteContent } from './QuoteContent';
+import { QuoteInfo } from '../../utils/data';
 import { initialSiteData, SiteDataContext } from '../../utils/siteData';
 
 describe('QuoteContent', () => {
   afterEach(() => {
     vi.restoreAllMocks();
+  });
+
+  it('has unique quote IDs in the source data', () => {
+    expect(new Set(QuoteInfo.map(({ id }) => id)).size).toBe(QuoteInfo.length);
   });
 
   it('renders the initial quote and author from the site data provider', () => {
@@ -248,5 +253,77 @@ describe('QuoteContent', () => {
     expect(
       screen.getByText(shortenedQuoteData.quoteItem[0].quote),
     ).toBeInTheDocument();
+  });
+
+  it('preserves quote identity when the collection is reordered', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.999);
+    const quoteData = {
+      ...initialSiteData,
+      quoteItem: initialSiteData.quoteItem.slice(0, 3),
+    };
+    const reorderedQuoteData = {
+      ...quoteData,
+      quoteItem: [
+        quoteData.quoteItem[2],
+        quoteData.quoteItem[0],
+        quoteData.quoteItem[1],
+      ],
+    };
+
+    const { rerender } = render(
+      <SiteDataContext.Provider value={quoteData}>
+        <QuoteContent />
+      </SiteDataContext.Provider>,
+    );
+
+    rerender(
+      <SiteDataContext.Provider value={reorderedQuoteData}>
+        <QuoteContent />
+      </SiteDataContext.Provider>,
+    );
+
+    expect(screen.getByText(quoteData.quoteItem[0].quote)).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Complete quote animation' }),
+    );
+    expect(screen.getByText(quoteData.quoteItem[1].quote)).toBeInTheDocument();
+  });
+
+  it('rebuilds the queue when a quote ID is replaced at the same length', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.999);
+    const quoteData = {
+      ...initialSiteData,
+      quoteItem: initialSiteData.quoteItem.slice(0, 3),
+    };
+    const replacementQuote = {
+      ...quoteData.quoteItem[0],
+      id: 999,
+      quote: 'Replacement quote',
+    };
+    const replacedQuoteData = {
+      ...quoteData,
+      quoteItem: [
+        replacementQuote,
+        quoteData.quoteItem[1],
+        quoteData.quoteItem[2],
+      ],
+    };
+
+    const { rerender } = render(
+      <SiteDataContext.Provider value={quoteData}>
+        <QuoteContent />
+      </SiteDataContext.Provider>,
+    );
+
+    rerender(
+      <SiteDataContext.Provider value={replacedQuoteData}>
+        <QuoteContent />
+      </SiteDataContext.Provider>,
+    );
+
+    expect(screen.getByText(replacementQuote.quote)).toBeInTheDocument();
+    expect(
+      screen.queryByText(quoteData.quoteItem[0].quote),
+    ).not.toBeInTheDocument();
   });
 });

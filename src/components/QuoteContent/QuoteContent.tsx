@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useQuotes } from '../../utils/siteData';
 import { motion } from 'framer-motion';
 import type { MotionProps } from 'framer-motion';
@@ -37,22 +37,22 @@ const StyledAuthor = styled.span({
   lineHeight: '1.75rem',
 });
 
-const shuffleIndices = (length: number, previousLastIndex?: number) => {
-  const indices = Array.from({ length }, (_, index) => index);
+const shuffleIds = (ids: number[], previousLastId?: number) => {
+  const shuffledIds = [...ids];
 
-  for (let index = length - 1; index > 0; index -= 1) {
+  for (let index = shuffledIds.length - 1; index > 0; index -= 1) {
     const randomIndex = Math.floor(Math.random() * (index + 1));
-    [indices[index], indices[randomIndex]] = [
-      indices[randomIndex],
-      indices[index],
+    [shuffledIds[index], shuffledIds[randomIndex]] = [
+      shuffledIds[randomIndex],
+      shuffledIds[index],
     ];
   }
 
-  if (length > 1 && indices[0] === previousLastIndex) {
-    [indices[0], indices[1]] = [indices[1], indices[0]];
+  if (shuffledIds.length > 1 && shuffledIds[0] === previousLastId) {
+    [shuffledIds[0], shuffledIds[1]] = [shuffledIds[1], shuffledIds[0]];
   }
 
-  return indices;
+  return shuffledIds;
 };
 
 const quoteMotionProps: MotionProps = {
@@ -64,55 +64,68 @@ const quoteMotionProps: MotionProps = {
 export const QuoteContent: React.FC = () => {
   const quotes = useQuotes();
   const [quoteQueue, setQuoteQueue] = useState(() => ({
-    indices: shuffleIndices(quotes.length),
+    ids: shuffleIds(quotes.map(({ id }) => id)),
     position: 0,
   }));
-  const quoteCountRef = useRef(quotes.length);
 
-  const quoteIndex =
-    quotes.length > 0
-      ? Math.min(
-          quoteQueue.indices[quoteQueue.position] ?? 0,
-          quotes.length - 1,
-        )
-      : undefined;
+  const activeId = quoteQueue.ids[quoteQueue.position];
+  const currentQuote = quotes.find(({ id }) => id === activeId) ?? quotes[0];
 
   useEffect(() => {
-    if (quoteCountRef.current !== quotes.length) {
-      quoteCountRef.current = quotes.length;
-      setQuoteQueue({
-        indices: shuffleIndices(quotes.length),
+    const quoteIds = quotes.map(({ id }) => id);
+
+    // Reconcile asynchronous provider updates with the current randomized queue.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setQuoteQueue((currentQueue) => {
+      const hasSameIds =
+        currentQueue.ids.length === quoteIds.length &&
+        currentQueue.ids.every((id) => quoteIds.includes(id));
+
+      if (hasSameIds) {
+        return currentQueue;
+      }
+
+      const previousLastId = quoteIds.includes(
+        currentQueue.ids[currentQueue.position],
+      )
+        ? currentQueue.ids[currentQueue.position]
+        : undefined;
+
+      return {
+        ids: shuffleIds(quoteIds, previousLastId),
         position: 0,
-      });
-    }
-  }, [quotes.length]);
+      };
+    });
+  }, [quotes]);
 
   const handleAnimationComplete = useCallback(() => {
     setQuoteQueue((currentQueue) => {
-      if (currentQueue.position < currentQueue.indices.length - 1) {
+      if (currentQueue.position < currentQueue.ids.length - 1) {
         return {
           ...currentQueue,
           position: currentQueue.position + 1,
         };
       }
 
+      const quoteIds = quotes.map(({ id }) => id);
+
       return {
-        indices: shuffleIndices(
-          quotes.length,
-          currentQueue.indices[currentQueue.position],
+        ids: shuffleIds(
+          quoteIds,
+          currentQueue.ids[currentQueue.position],
         ),
         position: 0,
       };
     });
-  }, [quotes.length]);
+  }, [quotes]);
 
-  if (quoteIndex === undefined || quotes.length === 0) {
+  if (!currentQuote) {
     return null;
   }
 
   return (
     <StyledMotionSpan
-      key={quoteIndex}
+      key={currentQuote.id}
       {...(quotes.length > 1
         ? quoteMotionProps
         : { initial: { opacity: 1 }, animate: { opacity: 1 } })}
@@ -123,10 +136,10 @@ export const QuoteContent: React.FC = () => {
       <StyledQuoteContent>
         <StyledQuote>
           <FontAwesomeIcon icon={faQuoteLeft} color='white' size='sm' />
-          {quotes[quoteIndex].quote}
+          {currentQuote.quote}
           <FontAwesomeIcon icon={faQuoteRight} color='white' size='sm' />
         </StyledQuote>
-        <StyledAuthor>- {quotes[quoteIndex].author}</StyledAuthor>
+        <StyledAuthor>- {currentQuote.author}</StyledAuthor>
       </StyledQuoteContent>
     </StyledMotionSpan>
   );

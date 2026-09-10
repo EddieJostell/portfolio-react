@@ -346,7 +346,7 @@ export const QuoteInfo: QuoteItem[] = [
     author: 'Dune: Prophecy (2024)',
   },
   {
-    id: 20,
+    id: 21,
     quote: 'I am the master of my fate, I am the captain of my soul.',
     author: 'William Ernest Henley, Invictus',
   },
