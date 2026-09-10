@@ -110,10 +110,7 @@ export const QuoteContent: React.FC = () => {
       const quoteIds = quotes.map(({ id }) => id);
 
       return {
-        ids: shuffleIds(
-          quoteIds,
-          currentQueue.ids[currentQueue.position],
-        ),
+        ids: shuffleIds(quoteIds, currentQueue.ids[currentQueue.position]),
         position: 0,
       };
     });
