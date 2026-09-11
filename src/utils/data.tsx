@@ -79,29 +79,42 @@ export const SocialMediaLinks: SocialMediaLink[] = [
 ];
 
 export interface AboutMeItem {
-  likes: string;
-  personal: Personal;
-  gamer: string;
+  biography: BiographyEntry[];
 }
 
-export interface Personal {
-  name: string;
-  age: string;
-  from: string;
-  occupation: string;
+export interface BiographyEntry {
+  id: number;
+  text: string;
+  linkLabel?: string;
+  suffix?: string;
 }
+
 export const AboutMe: AboutMeItem[] = [
   {
-    likes:
-      'When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.',
-    personal: {
-      name: "Edward 'Eddie' Jostell",
-      age: '33 summers',
-      from: 'Stockholm, Sweden',
-      occupation: 'Frontend Developer',
-    },
-    gamer:
-      'Before I wanted to become a web-developer I played at a semi-professional level in the computer game Counter Strike - Global Offensive. Even tho I dont play on that level anymore I still dream of a comeback.',
+    biography: [
+      {
+        id: 1,
+        text: 'Hello! My name is Eddie and I enjoy creating things on the world wide web!',
+      },
+      {
+        id: 2,
+        text: 'I started my journey in web development around 2014 by studying ASP.NET & CMS. After finishing that program I soon realized that I found most enjoyment coding frontend so I went back to the classroom to study frontend development and continued on that road.',
+      },
+      {
+        id: 3,
+        text: 'When Im not hitting the keyboard to create magic on the web or playing games I like to hang out with my friends, go to the gym, long walks, relax with movies/tvshows or just listening to good music.',
+      },
+      {
+        id: 4,
+        text: 'Before I became a developer I played at a semi-professional level in the computer game Counter Strike - Global Offensive. Playing this game has helped me with my logical thinking and to work as part of a team, Even tho I dont play on that level anymore I still play for fun with my friends.',
+      },
+      {
+        id: 5,
+        text: 'Today Im working as a frontend developer at Skandia where I maintain and develop the graphical framework that is used as a foundation to help create the company ',
+        linkLabel: 'webpage',
+        suffix: '.',
+      },
+    ],
   },
 ];
 
