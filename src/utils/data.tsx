@@ -145,6 +145,14 @@ export const NavigationLinks: NavLinkItem[] = [
   },
   {
     id: 3,
+    text: 'Commits',
+    path: '/Commits',
+    scrollId: 'commits',
+    type: 'localLink',
+    ariaLabel: 'Scroll to Commits section',
+  },
+  {
+    id: 4,
     text: 'Contact',
     path: '/Contact',
     scrollId: 'contact',
@@ -152,7 +160,7 @@ export const NavigationLinks: NavLinkItem[] = [
     ariaLabel: 'Open Contact form',
   },
   {
-    id: 4,
+    id: 5,
     text: 'Resumé',
     path: '',
     scrollId: 'resume',
