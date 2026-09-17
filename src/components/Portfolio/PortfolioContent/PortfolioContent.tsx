@@ -83,17 +83,31 @@ const CardText = styled('div')({
   textAlign: 'left',
 });
 
-const CardBottom = styled('div')({
+const CardBottom = styled('ul')({
   zIndex: 1,
   marginTop: '15px',
   textAlign: 'left',
+  listStyle: 'none',
+  padding: 0,
+});
+
+const TechPill = styled('li')({
+  display: 'inline-block',
+  backgroundColor: 'transparent',
+  color: '#fff',
+  padding: '5px 10px',
+  border: '1px solid #edf2f4',
+  borderRadius: '10px',
+  marginRight: '5px',
+  marginBottom: '5px',
+  fontSize: '0.875rem',
 });
 
 interface PortfolioContentProps {
   link: string;
   img: string;
   title: string;
-  tech: string;
+  tech: string[];
   text: string;
   github: string | undefined;
 }
@@ -145,7 +159,14 @@ export const PortfolioContent: FC<PortfolioContentProps> = ({
         </CardTitle>
         <CardText>{text}</CardText>
       </CardBody>
-      <CardBottom>{tech}</CardBottom>
+      <CardBottom aria-label='Technologies used'>
+        {tech.map((t) => (
+          <TechPill key={t}>
+            <span aria-hidden='true'>#</span>
+            {t}
+          </TechPill>
+        ))}
+      </CardBottom>
     </Card>
   );
 };

@@ -164,7 +164,7 @@ export const NavigationLinks: NavLinkItem[] = [
 export interface PortfolioItem {
   id: number;
   title: string;
-  tech: string;
+  tech: string[];
   link: string;
   img: string;
   text: string;
@@ -174,7 +174,14 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 1,
     title: 'COOP',
-    tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
+    tech: [
+      'HTML',
+      'CSS/LESS',
+      'jQuery',
+      'TypeScript',
+      'ASP.NET/MVC',
+      'EPiServer',
+    ],
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
     text: "Lead frontend developer for COOP's e-commerce site, one of Sweden's largest grocery retailers - built and maintained on ASP.NET/EPiServer with a TypeScript-driven frontend.",
@@ -182,7 +189,7 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 2,
     title: 'SKANDIA',
-    tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
+    tech: ['REACT', 'Typescript', 'HTML', 'CSS', 'jQuery', 'EPiServer'],
     link: 'https://www.skandia.se',
     img: '',
     text: 'Currently building and maintaining the shared React/TypeScript design system that every developer team at Skandia builds their products on top of.',
@@ -190,7 +197,7 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 3,
     title: 'Cloud9 Reborn',
-    tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
+    tech: ['HTML', 'CSS/SASS', 'JavaScript/jQuery', 'AJAX'],
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
     img: 'img/cloud9.JPG',
     text: 'A recreated fan site for the CS:GO team Cloud9, built to practice DOM manipulation - includes a dynamic news feed, player roster with bios, and a contact form.',
@@ -199,15 +206,15 @@ export const ProjectList: PortfolioItem[] = [
   /*   {
     id: 3,
     title: 'News Hub',
-    tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
+    tech: ['HTML', 'CSS/SASS', 'JavaScript/jQuery', 'AJAX'],
     link: 'https://eddiejostell.github.io/News-Hub/',
     img: 'img/news-hub.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'A news aggregator that pulls headlines from major outlets around the world via the NewsAPI, with links to explore each story at its source.',
   }, */
   {
     id: 4,
     title: 'Movie Database',
-    tech: '#HTML #CSS/SASS #JavaScript #Bootstrap',
+    tech: ['HTML', 'CSS/SASS', 'JavaScript', 'Bootstrap'],
     link: 'https://eddiejostell.github.io/MovieDatabase/',
     img: 'img/moviedatabase.JPG',
     text: 'A movie catalog app with full CRUD functionality - add or edit movies, and sort the collection by top rated, genre or release year.',
@@ -216,7 +223,7 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 5,
     title: 'TODO-APP',
-    tech: '#HTML #CSS #JavaScript',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://eddiejostell.github.io/todo-app/',
     img: 'img/todo.JPG',
     text: 'A classic to-do list app for creating, completing and deleting tasks - built with vanilla HTML, CSS and JavaScript.',
@@ -225,7 +232,7 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 6,
     title: 'FOOD-APP',
-    tech: '#HTML #CSS #JavaScript',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
     text: "A responsive single-page app that randomly suggests what to eat for lunch or dinner when you can't decide - built with vanilla HTML, CSS and JavaScript.",
@@ -234,7 +241,7 @@ export const ProjectList: PortfolioItem[] = [
   {
     id: 7,
     title: 'REACT-FOOD',
-    tech: '#REACT #Tailwindcss',
+    tech: ['REACT', 'Tailwindcss'],
     link: 'https://eddiejostell.github.io/react-food/',
     img: '',
     text: 'A modern rebuild of the food-decision app with React and Tailwind CSS, replacing the vanilla JS version with a component-based architecture.',
