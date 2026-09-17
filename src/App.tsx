@@ -2,7 +2,7 @@ import './App.scss';
 import { useState, useCallback, FC, useRef } from 'react';
 import { SiteDataProvider } from './utils/SiteDataContext';
 import { Portfolio } from './components/Portfolio/Portfolio';
-// import { Commits } from './components/Commits/Commits';
+import { Commits } from './components/Commits/Commits';
 import { Home } from './components/Home/Home';
 import { Footer } from './components/Footer/Footer';
 import { About } from './components/About/About';
@@ -67,7 +67,7 @@ const App: FC = () => {
         <Home />
         <About />
         <Portfolio />
-        {/* <Commits /> */}
+        <Commits />
         <Footer handleScrollToTop={handleScrollToTop} />
       </>
     );

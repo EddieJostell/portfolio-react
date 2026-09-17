@@ -17,6 +17,9 @@ vi.mock('../../components/About/About', () => ({
 vi.mock('../../components/Portfolio/Portfolio', () => ({
   Portfolio: () => <div data-testid='portfolio-mock'>Portfolio</div>,
 }));
+vi.mock('../../components/Commits/Commits', () => ({
+  Commits: () => <div data-testid='commits-mock'>Commits</div>,
+}));
 vi.mock('../../components/Footer/Footer', () => ({
   Footer: ({ handleScrollToTop }: { handleScrollToTop: () => void }) => (
     <button data-testid='footer-mock' onClick={handleScrollToTop}>
@@ -61,6 +64,7 @@ describe('App', () => {
     expect(screen.getByTestId('home-mock')).toBeInTheDocument();
     expect(screen.getByTestId('about-mock')).toBeInTheDocument();
     expect(screen.getByTestId('portfolio-mock')).toBeInTheDocument();
+    expect(screen.getByTestId('commits-mock')).toBeInTheDocument();
     expect(screen.getByTestId('footer-mock')).toBeInTheDocument();
   });
 

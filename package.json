@@ -7,6 +7,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "test": "vitest --config ./vitest.config.ts",
+    "select-commits": "node scripts/select-commits.mjs",
+    "test:select-commits": "node --test scripts/select-commits.test.mjs",
     "test:ui": "vitest --ui --config ./vitest.config.ts",
     "serve": "vite preview",
     "lint": "eslint ."
