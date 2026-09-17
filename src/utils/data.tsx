@@ -177,7 +177,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#HTML #CSS/LESS #jQuery #TypeScript #ASP.NET/MVC #EPiServer',
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
-    text: 'At my previous job I was the lead frontend developer in the team that developed and managed the website for the grocery store company COOP in Sweden.',
+    text: "Lead frontend developer for COOP's e-commerce site, one of Sweden's largest grocery retailers - built and maintained on ASP.NET/EPiServer with a TypeScript-driven frontend.",
   },
   {
     id: 2,
@@ -185,7 +185,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#REACT #Typescript #HTML #CSS #jQuery #EPiServer',
     link: 'https://www.skandia.se',
     img: '',
-    text: 'My current job where my team develop and manage the graphical frameworks that is used by all other developer teams on Skandia.',
+    text: 'Currently building and maintaining the shared React/TypeScript design system that every developer team at Skandia builds their products on top of.',
   },
   {
     id: 3,
@@ -193,7 +193,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#HTML #CSS/SASS #JavaScript/jQuery #AJAX',
     link: 'https://eddiejostell.github.io/Cloud9-Reborn/',
     img: 'img/cloud9.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'A recreated fan site for the CS:GO team Cloud9, built to practice DOM manipulation - includes a dynamic news feed, player roster with bios, and a contact form.',
     github: '',
   },
   /*   {
@@ -210,7 +210,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#HTML #CSS/SASS #JavaScript #Bootstrap',
     link: 'https://eddiejostell.github.io/MovieDatabase/',
     img: 'img/moviedatabase.JPG',
-    text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    text: 'A movie catalog app with full CRUD functionality - add or edit movies, and sort the collection by top rated, genre or release year.',
     github: '',
   },
   {
@@ -219,7 +219,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/todo-app/',
     img: 'img/todo.JPG',
-    text: 'Simple TODO-APP created with HTML, CSS and Javascript.',
+    text: 'A classic to-do list app for creating, completing and deleting tasks - built with vanilla HTML, CSS and JavaScript.',
     github: '',
   },
   {
@@ -228,7 +228,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#HTML #CSS #JavaScript',
     link: 'https://eddiejostell.github.io/food-app/',
     img: 'img/food-app.JPG',
-    text: 'A single page responsive web app that will help you make a decision on what to eat for lunch or dinner. Built with HTML, CSS and Javascript.',
+    text: "A responsive single-page app that randomly suggests what to eat for lunch or dinner when you can't decide - built with vanilla HTML, CSS and JavaScript.",
     github: '',
   },
   {
@@ -237,7 +237,7 @@ export const ProjectList: PortfolioItem[] = [
     tech: '#REACT #Tailwindcss',
     link: 'https://eddiejostell.github.io/react-food/',
     img: '',
-    text: 'New and improved version of my food app. Made with React and Tailwindcss.',
+    text: 'A modern rebuild of the food-decision app with React and Tailwind CSS, replacing the vanilla JS version with a component-based architecture.',
     github: '',
   },
 ];
