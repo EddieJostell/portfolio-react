@@ -128,7 +128,7 @@ export const TopNavigation: FC<TopNavigationProps> = ({
               spy={true}
               smooth={true}
               duration={1000}
-              href='#'
+              href={`#${item.scrollId}`}
               onClick={toggleMobileNav}
               onKeyDown={handleKeyDown}
             >
