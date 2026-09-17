@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { useSocialLinks } from '../../../utils/siteData';
 import { SocialMediaLink } from '../../../utils/data';
 import { useMediaQuery } from '../../../utils/hooks';
@@ -23,14 +23,13 @@ export const SocialMedia: FC<SocialMediaProps> = ({ icons, links }) => {
 
   const mapLinksOrIcons = socialLinks.map((item: SocialMediaLink) => {
     return (
-      <>
+      <Fragment key={item.id}>
         {icons && (
           <StyledIconLink
             href={item.link}
             target='_blank'
             rel='noopener noreferrer'
             aria-label={item.ariaLabel}
-            key={item.id}
             whileHover={{
               y: -5,
               scale: 1.1,
@@ -49,12 +48,11 @@ export const SocialMedia: FC<SocialMediaProps> = ({ icons, links }) => {
             target='_blank'
             rel='noopener noreferrer'
             aria-label={item.ariaLabel}
-            key={item.id}
           >
             <span>{item.title}</span>
           </StyledLink>
         )}
-      </>
+      </Fragment>
     );
   });
 
