@@ -169,6 +169,7 @@ export interface PortfolioItem {
   img: string;
   text: string;
   github?: string;
+  featured: boolean;
 }
 export const ProjectList: PortfolioItem[] = [
   {
@@ -185,6 +186,7 @@ export const ProjectList: PortfolioItem[] = [
     link: 'https://www.coop.se',
     img: 'img/coop.JPG',
     text: "Lead frontend developer for COOP's e-commerce site, one of Sweden's largest grocery retailers - built and maintained on ASP.NET/EPiServer with a TypeScript-driven frontend.",
+    featured: true,
   },
   {
     id: 2,
@@ -193,6 +195,7 @@ export const ProjectList: PortfolioItem[] = [
     link: 'https://www.skandia.se',
     img: '',
     text: 'Currently building and maintaining the shared React/TypeScript design system that every developer team at Skandia builds their products on top of.',
+    featured: true,
   },
   {
     id: 3,
@@ -202,6 +205,7 @@ export const ProjectList: PortfolioItem[] = [
     img: 'img/cloud9.JPG',
     text: 'A recreated fan site for the CS:GO team Cloud9, built to practice DOM manipulation - includes a dynamic news feed, player roster with bios, and a contact form.',
     github: '',
+    featured: false,
   },
   /*   {
     id: 3,
@@ -210,6 +214,7 @@ export const ProjectList: PortfolioItem[] = [
     link: 'https://eddiejostell.github.io/News-Hub/',
     img: 'img/news-hub.JPG',
     text: 'A news aggregator that pulls headlines from major outlets around the world via the NewsAPI, with links to explore each story at its source.',
+    featured: false,
   }, */
   {
     id: 4,
@@ -219,6 +224,7 @@ export const ProjectList: PortfolioItem[] = [
     img: 'img/moviedatabase.JPG',
     text: 'A movie catalog app with full CRUD functionality - add or edit movies, and sort the collection by top rated, genre or release year.',
     github: '',
+    featured: false,
   },
   {
     id: 5,
@@ -228,6 +234,7 @@ export const ProjectList: PortfolioItem[] = [
     img: 'img/todo.JPG',
     text: 'A classic to-do list app for creating, completing and deleting tasks - built with vanilla HTML, CSS and JavaScript.',
     github: '',
+    featured: false,
   },
   {
     id: 6,
@@ -237,6 +244,7 @@ export const ProjectList: PortfolioItem[] = [
     img: 'img/food-app.JPG',
     text: "A responsive single-page app that randomly suggests what to eat for lunch or dinner when you can't decide - built with vanilla HTML, CSS and JavaScript.",
     github: '',
+    featured: false,
   },
   {
     id: 7,
@@ -246,6 +254,7 @@ export const ProjectList: PortfolioItem[] = [
     img: '',
     text: 'A modern rebuild of the food-decision app with React and Tailwind CSS, replacing the vanilla JS version with a component-based architecture.',
     github: '',
+    featured: true,
   },
 ];
 

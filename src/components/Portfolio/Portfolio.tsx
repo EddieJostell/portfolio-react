@@ -1,17 +1,19 @@
-import { motion } from 'framer-motion';
-import { FC } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FC, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { PortfolioItem } from '../../utils/data';
 import { usePortfolio } from '../../utils/siteData';
 import { TitleAnimation } from '../About/AboutAnimations';
 import { Container } from '../Container/Container';
 import { PortfolioContent } from './PortfolioContent/PortfolioContent';
+import { ProjectArchive } from './ProjectArchive/ProjectArchive';
 import { Header } from '../Header/Header';
 import { useMediaQuery } from '../../utils/hooks';
 
 const PortfolioSection = styled('section')({
   color: '#edf2f4',
-  height: '100%',
+  minHeight: '100vh',
+  boxSizing: 'border-box',
 });
 
 const PortfolioWrapper = styled('div')({
@@ -60,9 +62,45 @@ const PortfolioList = styled('ul')({
   },
 });
 
+const ArchiveLinkWrapper = styled('div')({
+  marginTop: '2rem',
+  textAlign: 'center',
+});
+
+const ArchiveLinkButton = styled('button')({
+  background: 'none',
+  border: 'none',
+  color: '#edf2f4',
+  fontSize: '1rem',
+  fontFamily: 'Goldman, Helvetica, sans-serif',
+  textDecoration: 'underline',
+  cursor: 'pointer',
+
+  '&:hover': {
+    color: '#d90429',
+  },
+});
+
 export const Portfolio: FC = () => {
   const projects = usePortfolio();
+  const featuredProjects = projects.filter(
+    (port: PortfolioItem) => port.featured,
+  );
+  const archivedProjects = projects.filter(
+    (port: PortfolioItem) => !port.featured,
+  );
+  const [showArchive, setShowArchive] = useState(false);
   const mobileMaxWidth = useMediaQuery('(min-width: 767px)');
+  const archiveToggleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showArchive) {
+      archiveToggleRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [showArchive]);
 
   return (
     <PortfolioSection id='portfolio'>
@@ -75,7 +113,7 @@ export const Portfolio: FC = () => {
           )}
           <Header title='Projects' size='h2' fullWidth color='red' textCenter />
           <PortfolioList>
-            {projects.map((port: PortfolioItem) => (
+            {featuredProjects.map((port: PortfolioItem) => (
               <PortfolioContent
                 key={port.title}
                 title={port.title}
@@ -87,6 +125,30 @@ export const Portfolio: FC = () => {
               />
             ))}
           </PortfolioList>
+          <ArchiveLinkWrapper ref={archiveToggleRef}>
+            <ArchiveLinkButton
+              onClick={() => setShowArchive((prev) => !prev)}
+              aria-expanded={showArchive}
+            >
+              {showArchive
+                ? 'Hide Project Archive'
+                : 'View Full Project Archive'}
+            </ArchiveLinkButton>
+          </ArchiveLinkWrapper>
+          <AnimatePresence initial={false}>
+            {showArchive && (
+              <motion.div
+                key='project-archive'
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
+                style={{ overflow: 'hidden' }}
+              >
+                <ProjectArchive projects={archivedProjects} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </PortfolioWrapper>
       </Container>
     </PortfolioSection>
