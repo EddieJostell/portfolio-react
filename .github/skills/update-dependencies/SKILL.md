@@ -70,11 +70,12 @@ Major bumps are **always** listed in a separate "requires confirmation" section,
 1. **If the plan contains any major bumps**, ask the user explicitly: _"Vill du inkludera följande major-uppdateringar? [list]"_. Only apply the ones they confirm. Patch/minor bumps may be applied automatically when the user asked to "update all".
 2. Edit `package.json` and bump the version strings. Preserve the range prefix.
 3. For nested `package.json` files, apply the same version to the same package name to keep versions aligned.
-4. Run the install command to refresh the lockfile:
+4. **Before installing**, check that every bumped package's new `peerDependencies` are still satisfied by the other versions in the plan (npm: `npm info <pkg>@<new-version> peerDependencies`). Pay special attention to packages that share a peer contract, e.g. `vitest` + `@vitest/ui` + `@vitest/browser-playwright` must stay on matching major/minor versions. Flag and resolve any mismatch in the plan *before* running install — a correct plan should never hit an install-time peer-dependency crash.
+5. Run the install command to refresh the lockfile:
    - `npm install`
    - `pnpm install`
    - `yarn install`
-5. Do **not** pass `--force` or `--legacy-peer-deps` unless the user explicitly asks.
+6. Do **not** pass `--force` or `--legacy-peer-deps` unless the user explicitly asks.
 
 ### 6. Verify
 
@@ -105,6 +106,7 @@ Report back:
 - **Pinned exact versions** (no `^` or `~`): the user has pinned on purpose. Do not change the prefix — only bump the number, and flag it in the plan.
 - **Deprecated packages**: `npm view <pkg> deprecated` — warn the user and suggest a successor instead of bumping.
 - **Security-only updates**: defer to `npm audit fix`; this skill is not the right tool.
+- **Peer-dependency version mismatches** (can surface as an npm internal crash like `Cannot read properties of null (reading 'edgesOut')`): prevent this during planning by confirming related packages share compatible peer versions (e.g. `vitest`, `@vitest/ui`, `@vitest/browser-playwright`) before applying any bump. If the crash still occurs despite matching versions, suspect a transitive conflict or a stale cache — run `npm cache clean --force` and retry before considering `--legacy-peer-deps`.
 - **TypeScript major bump → adjust `tsconfig.json`**: after applying a `typescript` major bump, re-run `tsc --noEmit` and parse output for `TS5xxx` deprecation errors (e.g. `target=ES5`, `moduleResolution=node10`, `importsNotUsedAsValues`). For each deprecation:
   1. Read the affected `tsconfig.json` (and any `tsconfig.*.json` referenced via `extends`/`references`).
   2. Present the user with **three options** before editing config:
