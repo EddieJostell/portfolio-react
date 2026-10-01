@@ -15,7 +15,7 @@ export const sendEmailProd = (
       dispatch({ type: 'SUCCESS' });
     },
     (error) => {
-      console.log('FAILED...', error.text);
+      console.error('EmailJS request failed:', error);
       dispatch({ type: 'ERROR' });
     },
   );
