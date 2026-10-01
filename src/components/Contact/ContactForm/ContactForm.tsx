@@ -131,12 +131,16 @@ export const ContactForm = (props: ContactFormProps) => {
     nameInputRef.current?.focus();
   }, []);
 
+  const nameRegistration = register('name', {
+    ...contactFormRules.inputNameRules,
+  });
+
   const onDataComplete: SubmitHandler<ContactFormData> = (data, event) => {
     if (data) {
       const formEl = event?.target as HTMLFormElement | undefined;
       if (!formEl) return;
       dispatch({ type: 'SUBMIT' });
-      /*  sendEmailProd(formEl, dispatch); */
+      /* sendEmailProd(formEl, dispatch); */
       setTimeout(() => {
         // eslint-disable-next-line no-constant-condition -- NOSONAR: temporary stub for ThankYouPage development
         if (1 + 1 === 2) {
@@ -189,6 +193,7 @@ export const ContactForm = (props: ContactFormProps) => {
       <StyledForm
         onSubmit={handleSubmit(onDataComplete)}
         aria-label='Contact form'
+        noValidate
       >
         <Header size='h1' title='Get in touch!' />
         <FormLabel
@@ -202,11 +207,9 @@ export const ContactForm = (props: ContactFormProps) => {
           type='text'
           hasError={!!errors.name}
           errorId='name-error'
-          {...register('name', {
-            ...contactFormRules.inputNameRules,
-          })}
+          {...nameRegistration}
           ref={(e) => {
-            register('name').ref(e);
+            nameRegistration.ref(e);
             nameInputRef.current = e as HTMLInputElement | null;
           }}
         />
